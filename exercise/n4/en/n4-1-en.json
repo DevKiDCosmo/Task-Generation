@@ -1,0 +1,48 @@
+{
+  "id": "No.4-1",
+  "category": ["Shoemei", "Keisan", "Kaishaku"],
+  "cid": "SKK-1",
+  "time": 240,
+  "nam_score": 4.0,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82",
+  "GUID": "1092a837-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+  "main": {
+    "title": "Standard Windmill with Reachability of all Points - Task 1",
+    "content": [
+      "Given a set of $2n$ randomly distributed points in general position in $\\mathbb{R}^n$, where:",
+      "\\begin{itemize}",
+      "\\item a point set with $|A| = n + 1$,\n ",
+      "\\item $B$ a point set with $|B| = n - 1$,\n",
+      "\\item $A \\cap B = \\emptyset$, $A \\cup B = P$, with $|P| = 2n$.",
+      "\\end{itemize}",
+      "The points are distributed in space such that:",
+      "\\begin{itemize}",
+      "no $n+1$ points lie in a common $(n-1)$-dimensional hyperplane (general position),",
+      "never more than two points can be touched at the same time during a hyper-surface rotation.",
+      "\\end{itemize}",
+      "A \\textbf{windmill process} starts at an arbitrary point from $P$ (i.e., from $A$ or $B$) with an $(n-1)$-dimensional hyper-surface (\"wing\") through this point. This hyper-surface rotates continuously in the space clockwise (i.e., according to a fixed orientation in the space) until it touches exactly one other point.",
+      "\\subsubsection{Transition rule}",
+      "If a point from the other group (i.e., from $A$ if the current pivot point is in $B$, or vice versa) is hit, this point becomes the new pivot point, and the windmill process continues there with a new $(n-1)$-hyper-surface.",
+      "\\subsubsection{Goal}",
+      "Prove that all points in $P$ are reached as pivot points in this construction, regardless of starting point and starting angle. Also explain what kind of starting point must be chosen so that all points can be reached as pivot points.",
+      "",
+      "Requirements for proving: Prove the task up to $n \\le 5$."
+    ],
+    "solution": ["Not available yet in English."]
+  },
+  "difficulty": 7,
+  "tags": [
+    "induction",
+    "point set",
+    "general position",
+    "windmill process",
+    "rotation",
+    "hyper-surface",
+    "transition rule",
+    "pivot point",
+    "reachability",
+    "starting point"
+  ]
+}

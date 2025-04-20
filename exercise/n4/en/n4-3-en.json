@@ -1,0 +1,48 @@
+{
+  "id": "No.4-3",
+  "category": ["Proof", "Calculation", "Interpretation"],
+  "cid": "SKK-1/3",
+  "time": 450,
+  "nam_score": 8.0,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82",
+  "GUID": "21ac39df-1b8e-4d3b-9f5c-23a6d1e0f3a2b",
+  "main": {
+    "title": "Standard Windmill with Reachability of All Points - Task 3",
+    "content": [
+      "Given is a set of undefined randomly distributed points in general position in $\\mathbb{R}^n$, where:",
+      "\\begin{itemize}",
+      "\\item a point set with $|A| = n + 1$,",
+      "\\item $B$ a point set with $|B| = n - 1$,",
+      "\\item $A \\cap B = \\emptyset$, $A \\cup B = P$, with $|P| = 2n$.",
+      "\\end{itemize}",
+      "Additionally, $n$ and $k$ are unequal on every plane. The points are distributed in space such that:",
+      "\\begin{itemize}",
+      "\\item no $k+1$ points lie in a common $(n-1)$-dimensional hyperplane (general position),",
+      "\\item never more than two points can be touched simultaneously during a hyper-surface rotation.",
+      "\\end{itemize}",
+      "A windmill process starts at an arbitrary point from $P$ (i.e., from $A$ or $B$) with an $(n-1)$-dimensional hyper-surface (\"wing\") through this point. This hyper-surface rotates continuously in the space clockwise (i.e., according to a fixed orientation in the space) until it touches exactly one other point.",
+      "\\subsubsection{Transition Rule}",
+      "If a point from the other group (i.e., from $A$ if the current pivot point is in $B$, or vice versa) is hit, this point becomes the new pivot point, and the windmill process continues there with a new $(n-1)$-hyper-surface.",
+      "\\subsubsection{Goal}",
+      "Prove that in this construction all points in $P$ are reached as pivot points, regardless of the starting point and starting angle. Also explain what kind of starting point must be chosen so that all points can be reached as pivot points.",
+      "",
+      "Requirements for proving: Prove the task up to $n \\lq 5$."
+    ],
+    "solution": ["Not yet available in English."]
+  },
+  "difficulty": 8,
+  "tags": [
+    "Induction",
+    "Point set",
+    "General position",
+    "Hyper-surface",
+    "Windmill process",
+    "Rotation",
+    "Transformation",
+    "Pivot point",
+    "Rotation angle",
+    "Reachability"
+  ]
+}
