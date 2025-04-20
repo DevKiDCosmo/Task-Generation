@@ -1,0 +1,46 @@
+{
+  "id": "No.4-2",
+  "category": ["Shoemei", "Keisan", "Kaishaku"],
+  "cid": "SKK-1/2",
+  "time": 600,
+  "nam_score": 9.0,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82",
+  "GUID": "05b002a4-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+  "main": {
+    "title": "Standard Windmill with Reachability of all Points - Task 2",
+    "content": [
+      "Given a set of $2n$ randomly distributed points in general position in $\\mathbb{R}^n$, where:",
+      "\\begin{itemize}",
+      "\\item  $2n$ random points in general position in $\\mathbb{R}^n$,",
+      "\\item point sets $A$ and $B$ with $|A| = n+1$, $|B| = n-1$, $A \\cap B = \\emptyset$.",
+      "\\end{itemize}",
+      "The windmill process proceeds exactly as described:",
+      "\\begin{itemize}",
+      "\\item Rotation around a point until a point from the respective other group is touched,",
+      "\\item then change of the pivot point and continuation with a new hyper-surface.",
+      "\\end{itemize}",
+      "\\subsubsection{New rule}",
+      "each point from $P$ may be used as a pivot point at most once - if a corresponding sequence exists.",
+      "\\subsubsection{Goal}",
+      "Show that a windmill sequence exists in which each point is a pivot point exactly once, while valid group changes occur and the movement is executed correctly in space.",
+      "",
+      "Requirements for proving: Prove the task up to $n \\le 5$."
+    ],
+    "solution": ["Not available yet in English."]
+  },
+  "difficulty": 8,
+  "tags": [
+    "induction",
+    "point set",
+    "general position",
+    "windmill process",
+    "rotation",
+    "hyper-surface",
+    "transition rule",
+    "pivot point",
+    "reachability",
+    "starting point"
+  ]
+}
