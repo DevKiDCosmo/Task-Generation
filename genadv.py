@@ -5,14 +5,21 @@ import sys
 import json
 import os
 import typing
+import log as lg
 
 exercise_dir = "./exercise/"
-exerciseProcess = []
-difficulty = "information/difficulty.json"
+exerciseForProcessing = []
+difficulty = "information/difficulty.json" # Information about difficulty and translation
 paths_exercise, paths_solution = [], []
 
+# TODO: better logging system and error handling
+# TODO: add more information about the error in the log.write statement
+# TODO: create an application to generate the JSON file for the exercise
+
+log = lg.Log()
+
 def prase_exercise(information: typing.Dict) -> typing.Optional[None]:
-    global exerciseProcess
+    global exerciseForProcessing
     
     # Collect keys to remove
     keys_to_remove = []
@@ -24,7 +31,7 @@ def prase_exercise(information: typing.Dict) -> typing.Optional[None]:
             version_info = content["version"]
             exercise_info = content["exercise"]
         except KeyError as e:
-            print(f"KeyError: {e} in {infomration_access}")
+            log.write(f"KeyError: {e} in {infomration_access}")
             keys_to_remove.append(infomration_access)
             continue
 
@@ -33,15 +40,15 @@ def prase_exercise(information: typing.Dict) -> typing.Optional[None]:
             with open(f"./exercise/{infomration_access}.json", 'r', encoding="utf-8") as f:
                 data = json.load(f)
         except json.JSONDecodeError:
-            print(f"JSONDecodeError: {infomration_access}.json is not a valid JSON file")
+            log.write(f"JSONDecodeError: {infomration_access}.json is not a valid JSON file")
             keys_to_remove.append(infomration_access)
             continue
         except PermissionError:
-            print(f"PermissionError: {infomration_access}.json is not accessible")
+            log.write(f"PermissionError: {infomration_access}.json is not accessible")
             keys_to_remove.append(infomration_access)
             continue
         except FileNotFoundError:
-            print(f"FileNotFoundError: {infomration_access}.json not found in exercise folder")
+            log.write(f"FileNotFoundError: {infomration_access}.json not found in exercise folder")
             keys_to_remove.append(infomration_access)
             continue
 
@@ -50,23 +57,23 @@ def prase_exercise(information: typing.Dict) -> typing.Optional[None]:
 
         # Check if lengths of language and version match
         if len(languages_info) != len(version_info):
-            print(f"Error: Mismatched lengths for 'language' and 'version' in {infomration_access}. Skipping.")
+            log.write(f"Error: Mismatched lengths for 'language' and 'version' in {infomration_access}. Skipping.")
             keys_to_remove.append(infomration_access)
             continue
 
         for language, version in zip(languages_info, version_info):
             if language not in language_avaiable:
-                print(f"Language {language} is not available in {infomration_access}")
+                log.write(f"Language {language} is not available in {infomration_access}")
                 continue
 
             # Check if version is available for the language
             language_keys = list(data[language].keys())
             if len(language_keys) > 0:  # Ensure there is at least one key
                 if version not in language_keys:  # Check if the version matches the key name
-                    print(f"Version {version} is not available in {infomration_access} for {language}")
+                    log.write(f"Version {version} is not available in {infomration_access} for {language}")
                     continue
             else:
-                print(f"No keys available in {infomration_access} for {language}")
+                log.write(f"No keys available in {infomration_access} for {language}")
                 continue
 
             # Process exercise_info globally for all languages and versions
@@ -81,22 +88,22 @@ def prase_exercise(information: typing.Dict) -> typing.Optional[None]:
                         current = os.path.join(exercise_dir, file_name + ".json")
 
                         if os.path.exists(current):
-                            exerciseProcess.append((language, current, version))  # Append the correct version
+                            exerciseForProcessing.append((language, current, version))  # Append the correct version
                         else:
-                            print(f"File does not exist: {current} in {infomration_access} for {language}")
+                            log.write(f"File does not exist: {current} in {infomration_access} for {language}")
                     except IndexError:
-                        print(f"Index {i} is out of bounds in {infomration_access}")
+                        log.write(f"Index {i} is out of bounds in {infomration_access}")
             else:
-                print(f"No valid exercise information available in {infomration_access} for {language}")
+                log.write(f"No valid exercise information available in {infomration_access} for {language}")
 
     # Remove invalid keys after iteration
     for key in keys_to_remove:
         del information[key]
 
-    # Sort the exerciseProcess list by language
-    exerciseProcess.sort(key=lambda x: (x[0], x[1]))
+    # Sort the exerciseForProcessing list by language
+    exerciseForProcessing.sort(key=lambda x: (x[0], x[1]))
 
-    # print(exerciseProcess)
+    # log.write(exerciseForProcessing)
     return None  # Isn't necessary, but added for clarity
 
 def difficulty_to_str(difficulty_: int, language: str) -> str:
@@ -116,7 +123,7 @@ def difficulty_to_str(difficulty_: int, language: str) -> str:
 
 
 def generating_exercise(language: string, file: string, paper: string, version: string) -> None:
-    global exerciseProcess
+    global exerciseForProcessing
     with open(file, 'r', encoding="utf-8") as f:
         data = json.load(f)
         f.close()
@@ -136,13 +143,13 @@ def generating_exercise(language: string, file: string, paper: string, version: 
         difficulty: str = difficulty_to_str(data["difficulty"], language)
         tags = data["tags"]
     except KeyError as e:
-        print(f"KeyError: {e} in {file}")
+        log.write(f"KeyError: {e} in {file}")
         return None
     except json.JSONDecodeError:
-        print(f"JSONDecodeError: {file} is not a valid JSON file")
+        log.write(f"JSONDecodeError: {file} is not a valid JSON file")
         return None
     except PermissionError:
-        print(f"PermissionError: {file} is not accessible")
+        log.write(f"PermissionError: {file} is not accessible")
         return None
     
     # Generate dir
@@ -178,7 +185,7 @@ def generating_exercise(language: string, file: string, paper: string, version: 
         f.write(f"\\textbf{{Difficulty}}: {difficulty}\n")
         f.write(f"\\textbf{{Tags}}: {', '.join(tags)}\n\n")
         f.write(f"\\textbf{{UUID}}: {UUID}~--~\\textit{{GUID}}: {GUID} on {date}\n")
-    print("Generated exercise file:", f"./generated/exercise/{language}/{id}/{paper}_{id}_{language}.tex")
+    log.write(f"Generated exercise file: ./generated/exercise/{language}/{id}/{paper}_{id}_{language}.tex")
     
     with open(f"./generated/solution/{language}/{id}/{paper}_{id}_{language}.tex", 'w', encoding="utf-8") as f:
         f.write(f"\\subsection{{{{{language.upper()} {cid} {id}{paper}V{version}}}: {title}}}\n")
@@ -203,7 +210,7 @@ def generating_exercise(language: string, file: string, paper: string, version: 
         f.write(f"\\textbf{{Difficulty}}: {difficulty}\n")
         f.write(f"\\textbf{{Tags}}: {', '.join(tags)}\n\n")
         f.write(f"\\textbf{{UUID}}: {UUID}~--~\\textit{{GUID}}: {GUID} on {date}\n")
-    print("Generated solution file:", f"./generated/solution/{language}/{id}/{paper}_{id}_{language}.tex")
+    log.write(f"Generated solution file: ./generated/solution/{language}/{id}/{paper}_{id}_{language}.tex")
     
     paths_exercise.append(f"../exercise/{language}/{id}/{paper}_{id}_{language}")
     paths_solution.append(f"../solution/{language}/{id}/{paper}_{id}_{language}")
@@ -213,47 +220,58 @@ def generating_exercise(language: string, file: string, paper: string, version: 
 def copy_template(paper: string) -> None:
     # Check if the directory exists before attempting to copy
     if not os.path.exists("./template"):
-        print("No 'template' directory to copy from.")
+        log.write("No 'template' directory to copy from.")
         return
 
-    # Copy the template directory to the generated folder
-    shutil.copytree("./template", f"./generated/{paper}", dirs_exist_ok=True)
-    
+    # Ensure the destination directory exists
+    destination_dir = f"./generated/{paper}"
+    os.makedirs(destination_dir, exist_ok=True)
+
+    # Copy only banko.cls and template.tex
+    files_to_copy = ["banko.cls", "template.tex"]
+    for file_name in files_to_copy:
+        source_path = os.path.join("./template", file_name)
+        destination_path = os.path.join(destination_dir, file_name)
+        if os.path.exists(source_path):
+            shutil.copy2(source_path, destination_path)
+        else:
+            log.write(f"File {file_name} not found in the template directory.")
+
     # Rename template.tex to paper.tex
-    template_path = f"./generated/{paper}/template.tex"
-    new_path = f"./generated/{paper}/{paper}.tex"
+    template_path = os.path.join(destination_dir, "template.tex")
+    new_path = os.path.join(destination_dir, f"{paper}.tex")
     if os.path.exists(template_path):
         os.rename(template_path, new_path)
-    print("Copied template files to generated folder.")
+    log.write(f"Copied and renamed template files to {destination_dir}.")
 
 def compile_files(paper: string) -> None:
     # Change dir
     file = f"{paper}.tex"
-    print("Generating PDF for file:", file)
+    log.write(f"Generating PDF for file: {file}")
     os.chdir("./generated/" + paper)
     subprocess.run(
         ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
-    print("Finishing init PDF")
+    log.write("Finishing init PDF")
     subprocess.run(
         ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
-    print("Finishing content")
+    log.write("Finishing content")
     subprocess.run(
         ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
-    print("Finishing references and alignments")
+    log.write("Finishing references and alignments")
     os.chdir("../..")
-    print("PDF generation finished for file:", file)
+    log.write("PDF generation finished for file: " + file)
 
 def generating_paper(paper: string, information: list) -> None:
-    global exerciseProcess
+    global exerciseForProcessing
     copy_template(paper)
     
     # Read the template file as a single string
@@ -273,12 +291,12 @@ def generating_paper(paper: string, information: list) -> None:
     data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
     
     import_list = ""
-    for i in range(len(exerciseProcess)):
+    for i in range(len(exerciseForProcessing)):
         import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
         
     data = data.replace("__PAPER_IMPORTS__", import_list)
     
-    # Extract all unique IDs from the exerciseProcess list
+    # Extract all unique IDs from the exerciseForProcessing list
     used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
     
     # Join the IDs into a single string separated by commas
@@ -292,12 +310,12 @@ def generating_paper(paper: string, information: list) -> None:
     with open(f"./generated/{paper}/{paper}.tex", 'w', encoding="utf-8") as f:
         f.write(data)
     compile_files(paper)
-    print("Generated paper file:", f"./generated/{paper}/{paper}.tex")
+    log.write(f"Generated paper file: ./generated/{paper}/{paper}.tex")
     
     return None
 
 def generating_solution_paper(paper: string, information: list) -> None:
-    global exerciseProcess
+    global exerciseForProcessing
     path = "solution" + paper
     copy_template(path)
     
@@ -318,13 +336,13 @@ def generating_solution_paper(paper: string, information: list) -> None:
     data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
     
     import_list = ""
-    for i in range(len(exerciseProcess)):
+    for i in range(len(exerciseForProcessing)):
         import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
-    for i in range(len(exerciseProcess)):
+    for i in range(len(exerciseForProcessing)):
         import_list += f"\\input{{{paths_solution[i]}}}\\clearpage\n"
     data = data.replace("__PAPER_IMPORTS__", import_list)
     
-    # Extract all unique IDs from the exerciseProcess list
+    # Extract all unique IDs from the exerciseForProcessing list
     used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
     
     # Join the IDs into a single string separated by commas
@@ -338,24 +356,60 @@ def generating_solution_paper(paper: string, information: list) -> None:
     with open(f"./generated/{path}/{path}.tex", 'w', encoding="utf-8") as f:
         f.write(data)
     compile_files(path)
-    print("Generated paper file:", f"./generated/{path}/{path}.tex")
+    log.write(f"Generated paper file: ./generated/{path}/{path}.tex")
     
     return None
 
-def clear_files():
-    # Check if the directory exists before attempting to clear it
+def clear_absolute(): # Not used for bucket creation
+    """
+    Remove everything in the 'generated' folder.
+    """
+    try:
+        if os.path.exists("./generated"):
+            shutil.rmtree("./generated")
+            log.write("Removed 'generated' directory and its contents.")
+        else:
+            log.write("No 'generated' directory to remove.")
+    except Exception as e:
+        log.write(f"Error while clearing 'generated' directory: {e}")
+
+def clear_non_pdf():
+    # Check if the directory exists
     if not os.path.exists("./generated"):
-        print("No 'generated' directory to clear.")
+        log.write("No 'generated' directory to clean.")
         return
 
-    # Remove the entire 'generated' directory
-    shutil.rmtree("./generated")
-    print("Removed 'generated' directory and all its contents.")
+    # Walk through the directory
+    for root, dirs, files in os.walk("./generated", topdown=False):
+        for file in files:
+            if not file.endswith(".pdf"):  # Keep only PDF files
+                os.remove(os.path.join(root, file))
+                log.write(f"Removed file: {os.path.join(root, file)}")
+        for dir in dirs:
+            dir_path = os.path.join(root, dir)
+            # Remove directories if they are empty
+            if not os.listdir(dir_path):
+                os.rmdir(dir_path)
+                log.write(f"Removed empty directory: {dir_path}")
+
+    log.write("Cleaned 'generated' directory, keeping only PDF files.")
 
 def main(file: string) -> None:
-    clear_files()
-    with open(file, 'r', encoding="utf-8") as f:
-        data = json.load(f)
+    clear_non_pdf()
+    try:
+        with open(file, 'r', encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError:
+        log.write(f"JSONDecodeError: {file} is not a valid JSON file")
+        return None
+    except PermissionError:
+        log.write(f"PermissionError: {file} is not accessible")
+        return None
+    except FileNotFoundError:
+        log.write(f"FileNotFoundError: {file} not found")
+        return None
+       
+    log.write("Generating paper from JSON file")
 
     title = data["title"]
     date = data["date"]
@@ -370,11 +424,14 @@ def main(file: string) -> None:
 
     prase_exercise(exercise)
     
-    for language, file, version in exerciseProcess:
+    for language, file, version in exerciseForProcessing:
         generating_exercise(language, file, paper, version)
 
     generating_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])
     generating_solution_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])
+
+    clear_non_pdf()
+    log.create_log()
 
 if __name__ == "__main__":
     main(sys.argv[1])
