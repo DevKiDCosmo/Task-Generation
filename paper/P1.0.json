@@ -1,0 +1,16 @@
+{
+  "title": "Aufgabensammlung zur Beweisen",
+  "date": "19.04.2025",
+  "paper": "P1.0",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "3891M-932",
+  "doi": "10.5281/zenodo.15249602",
+  "description": "Aufgaben zur Beweisen mit Induktion, Summen und ungeraden Zahlen.",
+  "exercise": {
+    "n1": { "language": ["de", "en", "fr"], "version": ["1.0", "1.0", "1.0"], "exercise": [1] },
+    "n4": { "language": ["de", "en"], "version": ["1.0d", "1.1e"], "exercise": [1, 2, 3, 4] },
+    "n5": { "language": ["de", "en"], "version": ["1.0", "1.0"], "exercise": [1] }
+  },
+  "tags": ["induction", "sum", "odd numbers", "natural numbers"]
+}
