@@ -1,0 +1,37 @@
+Untersuchen Sie ein raumzeitlich abhängiges Wellenphänomen unter dem Einfluss eines stochastischen Rauschens. Die Wellenfunktion sei gegeben durch:
+
+\[
+\Psi(x,t,\omega) = \psi(x,t) + N(x,t,\omega)
+\]
+
+wobei:
+\begin{itemize}
+  \item $\psi(x,t) = A \sin(kx - \omega t)$ eine deterministische Basiswelle ist,
+  \item $N(x,t,\omega)$ ein Gauß-Prozess mit Mittelwert $0$ und stationärer Kovarianzfunktion ist.
+\end{itemize}
+
+\textbf{Gegeben:}
+
+Ein Gauß-Prozess mit Kovarianzfunktion:
+
+\[
+K(x_1, x_2) = \sigma^2 \exp(-\lambda |x_1 - x_2|)
+\]
+
+und bekannter Rauschstärke $\sigma^2$ sowie Skalenparameter $\lambda > 0$.
+
+\subsubsection{Aufgaben}
+
+\begin{enumerate}
+  \item \textbf{Modellierung:} Formulieren Sie $N(x,t,\omega)$ als Gauß-Prozess mit obiger Kovarianzfunktion.
+
+  \item \textbf{Simulation:} Simulieren Sie mehrere Realisierungen von $\Psi(x,t,\omega)$ auf einem Gitter $(x_i, t_j)$ für verschiedene Parameter $\sigma^2$ und $k$.
+
+  \item \textbf{Statistik:} Berechnen Sie Erwartungswert $E[\Psi(x,t)]$ und Varianz $Var[\Psi(x,t)]$ sowohl analytisch als auch aus den simulierten Daten.
+
+  \item \textbf{Spektralanalyse:} Führen Sie eine Fourier-Zerlegung von $\Psi(x,t,\omega)$ durch und berechnen Sie die spektrale Energiedichte.
+
+  \item \textbf{Extremwertstatistik:} Schätzen Sie die Wahrscheinlichkeitsverteilung der Maxima im Intervall $[a, b]$ mithilfe von Maximum-Likelihood oder Bayesianischen Methoden.
+
+  \item[\textbf{(Bonus)}] \textbf{Rekonstruktion:} Trainieren Sie ein neuronales Netz, das aus verrauschten Beobachtungen $\Psi(x,t,\omega)$ die Basiswelle $\psi(x,t)$ rekonstruiert.
+\end{enumerate}

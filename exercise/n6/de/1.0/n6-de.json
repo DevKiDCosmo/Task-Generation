@@ -1,0 +1,25 @@
+{
+  "id": "No.6",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SKT-1",
+  "time": 5500,
+  "nam_score": 6.2,
+  "author": "Original",
+  "date": "22.04.2025",
+  "UUID": "f4273154-ca61-44eb-a6f0-db200d780f39",
+  "GUID": "05b002a4-1b8e-4d3b-9f5c-2398579abc39",
+  "main": {
+    "title": "Hyperdimensionale Flächendurchlauf-Prozesse und Erreichbarkeitsgraphen",
+    "content": "content/n6-de.exr",
+    "solution": "solution/n6-de.exr"
+  },
+  "difficulty": 8,
+  "tags": [
+    "Graphen",
+    "Hypergraphen",
+    "Flächendurchlauf-Prozesse",
+    "Erreichbarkeitsgraphen"
+  ]
+}

@@ -1,0 +1,26 @@
+Ein gekrümmter Raum $\mathbb{R}^3$ mit einer glatten Metrik $g_{ij}(x, y, z)$, in dem sich eine Wellenfunktion $\Psi(x, y, z, t)$ ausbreitet. Diese erfüllt die verallgemeinerte Wellengleichung:
+
+$$
+\square_g \Psi = \frac{1}{|g|} \partial_i \left( |g| g^{ij} \partial_j \Psi \right) - \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} = 0
+$
+
+mit $|g| = \det(g_{ij})$ und $c$ als lokale Ausbreitungsgeschwindigkeit.
+
+Aufgaben:
+\begin{enumerate}
+\item Löse (symbolisch oder numerisch) die Wellengleichung im Spezialfall einer sphärisch symmetrischen Metrik:
+
+\[ ds^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta \, d\phi^2\]
+
+mit geeigneten Randbedingungen (z. B. Dirichlet auf einer Kugeloberfläche $r = R$).
+
+\item Zeige, dass sich die Lösung $\Psi$ als Superposition von Eigenfunktionen der Laplace-Beltrami-Operatoren schreiben lässt, und berechne explizit die ersten nichttrivialen Moden.
+
+\item Berechne das Gesamtenergiespektrum durch Integration über den Raum:
+\[
+E(t) = \int_{\Omega} \left[ \frac{1}{2} \left( \frac{\partial \Psi}{\partial t} \right)^2 + \frac{1}{2} g^{ij} \frac{\partial \Psi}{\partial x^i} \frac{\partial \Psi}{\partial x^j} \right] \sqrt{|g|} \, d^3x
+\]
+\item Untersuche numerisch oder analytisch, wie sich die Energie über die Zeit verteilt – insbesondere bei Interferenz von zwei punktförmigen Quellen mit zeitlich phasenverschobener Emission.
+
+\item Optional (Bonus): Modelliere und visualisiere den Effekt eines zeitabhängigen Metrikterms, etwa $g_{ij}(x, t)$, der eine Gravitationswelle simuliert. Untersuche, wie sich die Interferenzstruktur und Energieverteilung verändert.
+\end{enumerate}
