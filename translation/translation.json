@@ -1,0 +1,70 @@
+{
+  "eta": {
+    "de": "Zeit zur Bearbeitung",
+    "en": "Estimated time for solving",
+    "fr": "Temps estimé pour résoudre",
+    "jp": "解決までの推定時間",
+    "kr": "해결 예상 시간",
+    "zh": "解决的预计时间"
+  },
+  "difficulty": {
+    "de": "Schwierigkeitsgrad",
+    "en": "Difficulty",
+    "fr": "Difficulté",
+    "jp": "難易度",
+    "kr": "난이도",
+    "zh": "难度"
+  },
+  "tags": {
+    "de": "Stichwörter",
+    "en": "Tags",
+    "fr": "Étiquettes",
+    "jp": "タグ",
+    "kr": "태그",
+    "zh": "标签"
+  },
+  "on_date": {
+    "de": "am",
+    "en": "on",
+    "fr": "le",
+    "jp": "日付",
+    "kr": "날짜",
+    "zh": "日期"
+  },
+  "author": {
+    "de": "Autor",
+    "en": "Author",
+    "fr": "Auteur",
+    "jp": "著者",
+    "kr": "저자",
+    "zh": "作者"
+  },
+  "original": {
+    "de": "Ein Original",
+    "en": "An Original",
+    "fr": "Un Original",
+    "jp": "オリジナル",
+    "kr": "원본",
+    "zh": "原创"
+  },
+  "category": {
+    "de": "Kategorie",
+    "en": "Category",
+    "fr": "Catégorie",
+    "jp": "カテゴリー",
+    "kr": "카테고리",
+    "zh": "类别"
+  },
+  "language_instruction": {
+    "de": "Einführung und Informationen",
+    "en": "Introduction and Information",
+    "fr": "Introduction et informations",
+    "jp": "導入と情報",
+    "kr": "소개 및 정보",
+    "zh": "介绍和信息"
+  },
+  "solution": {
+    "de": "Lösung",
+    "en": "Solution"
+  }
+}

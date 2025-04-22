@@ -16,7 +16,7 @@ def create_paper_json():
                                                                                                         "paper",
                                                                                                         "template"]
 
-    # Prompt for exercise information
+    # Prompt for exercise translation
     exercise_data = {}
     while True:
         exercise_id = input("Enter the exercise ID (e.g., n1, n4): ").strip()
