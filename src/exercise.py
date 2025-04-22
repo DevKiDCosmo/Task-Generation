@@ -6,6 +6,7 @@ import uuid
 
 from conda.env.env import from_file
 
+# TODO: High priority changing everything since new version of exercise hirachic order.
 
 def create_uuid():
     return str(uuid.uuid4())
