@@ -1,0 +1,6 @@
+Given: Three points $A_1, A_2, A_3$ form an equilateral windmill in $\mathbb{R}^2$, where the center $M$ of the equilateral triangle is also given. A point $P$ lies outside the windmill.
+\subsubsection{Task}
+Determine the reflection of point $P$ on the line passing through two windmill points (e.g., $A_1$ and $A_2$). Then calculate the distance between $P$ and its reflection. Show that this distance is minimal when the line passes through the center $M$ and is orthogonal to the vector $\vec{MP}$.
+\textbf{Hint}: Use vector calculations and geometric considerations for reflection on lines and orthogonal projection in $\mathbb{R}^2$.
+
+Requirements for proving: Prove the task up to $n \le 5$.
