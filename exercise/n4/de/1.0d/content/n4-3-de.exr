@@ -1,0 +1,18 @@
+Gegeben ist eine Menge von unbestimmten zufällig verteilten Punkten in allgemeiner Lage im $\mathbb{R}^n$, wobei:
+\begin{itemize}
+\item eine Punktmenge mit $|A| = n + 1$,\n
+\item $B$ eine Punktmenge mit $|B| = n - 1$,\n
+\item $A \cap B = \emptyset$, $A \cup B = P$, mit $|P| = 2n$.
+\end{itemize}
+Außerdem sind $n$ und $k$ auf jeder Ebene ungleich. Die Punkte sind so im Raum verteilt, dass:
+\begin{itemize}
+\item keine $k+1$ Punkte in einer gemeinsamen $(n-1)$-dimensionalen Hyperebene liegen (allgemeine Lage),
+\item niemals mehr als zwei Punkte bei einer Hyperflächenrotation gleichzeitig berührt werden können.
+\end{itemize}
+Ein Windmühlenprozess startet bei einem beliebigen Punkt aus $P$ (also aus $A$ oder $B$) mit einer $(n-1)$-dimensionalen Hyperfläche (\Flügel\) durch diesen Punkt. Diese Hyperfläche rotiert im Raum kontinuierlich im Uhrzeigersinn (d. h. gemäß einer festen Orientierung im Raum), bis sie genau einen weiteren Punkt berührt.
+\subsubsection{Übergangsregel}
+Wird ein Punkt der anderen Gruppe (d. h. aus $A$ wenn aktueller Drehpunkt in $B$ liegt, oder umgekehrt) getroffen, wird dieser Punkt neuer Drehpunkt, und der Windmühlenprozess setzt sich dort fort mit einer neuen $(n-1)$-Hyperfläche.
+\subsubsection{Ziel}
+Beweise, dass bei dieser Konstruktion alle Punkte in $P$ als Drehpunkt erreicht werden, unabhängig von Startpunkt und Startwinkel. Erkläre auch welche Art von Startpunkt gewählt werden musst, damit alle Punkte als Drehpunkte erreicht werden können.
+
+Anforderungen zum Beweisen: Beweisen Sie die Aufgabe bis $n \le 5$.

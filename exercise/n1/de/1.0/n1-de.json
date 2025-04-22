@@ -1,0 +1,18 @@
+{
+  "id": "No.1",
+  "category": ["Shoemei"],
+  "cid": "SH-1",
+  "time": 5,
+  "nam_score": 1.0,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "e89de9cb-5ccc-4512-a077-38f7b983aef4",
+  "GUID": "21c0f2a4-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+  "main": {
+    "title": "Beweise, dass $n^2 = \\sum^{{n}{2}}_{n = 1} = (2n - 1) = n^2$",
+    "content": "content/n1-de.exr",
+    "solution": "solution/n1-de.exr"
+  },
+  "difficulty": 1,
+  "tags": ["Induktion", "Summen", "Ungerade Zahlen", "Naturelle Zahlen"]
+}

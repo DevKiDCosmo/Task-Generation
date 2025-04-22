@@ -1,0 +1,11 @@
+Given $n$ points $P_1, P_2, P_3,\dots, P_n\in\mathbb{R}^{n-1}$, where each point $P_i$ represents the standard basis, i.e.: $$ P_i = e_i = (0,\dots, 0, 1, 0,\dots, 0)\in\mathbb{R}^{n-1} $$ (the entry 1 is at the $i$-th position)
+
+\begin{enumerate}
+\item Prove that the\textbf{points all have the same distance from each other}, i.e., for all $i\not= j$: $$\parallel P_i - P_j\parallel =\sqrt{2} $$
+
+\item Represent the points $P_1,\dots, P_n$ as column vectors of a matrix $A\in\mathbb{R}^{n\times n}$.
+
+\item\textbf{Additionally prove}: The points $P_1,\dots, P_n$ are\textbf{linearly independent} and form an\textbf{($n-1$)-dimensional simplex} in $\\mathbb{R}^n$.
+
+\item Compute the volume of the regular simplex in $\\mathbb{R}^{n-1}$.
+\end{enumerate}

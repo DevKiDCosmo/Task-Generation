@@ -1,0 +1,71 @@
+\begin{enumerate}
+\item\textbf{Prove that all points have the same distance $\sqrt{2}$}
+
+Given: The points $P_1 ,\dots, P_n\in\mathbb{R}^{n-1}$ are:
+$$ P_i = e_i = (0,\dots,0, 1,0,\dots, 0),\quad\quad P_j = e_j = (0,\dots,0, 1,0,\dots, 0) $$
+
+Difference between two points: $\Delta d = P_i - P_j =  e_i - e_j$
+
+This vector has:
+\begin{itemize}
+\item at position $i$: $1$,
+\item at position $j$: $-1$,
+\item otherwise $0$
+\end{itemize}
+
+Norm:
+$$\parallel P_i - P_j\parallel^2 = (1)^2 + (-1)^2 = 2\Rightarrow\parallel P_i - P_j\parallel =\sqrt{2} $$
+
+$\to$ All points have the same distance from each other.
+
+\item\textbf{Matrix representation}
+
+$$ A=\begin{bmatrix} 1 & 0 & 0 &\dots & 0\\ 0 & 1 & 0 &\dots & 0\\vdots &\vdots &\ddots &\ddots &\vdots\\ 0 & 0 &\dots & 1 & 0\\ 0 & 0 &\dots & 0 & 1\end{bmatrix} $$
+
+\item\textbf{Linear independence}
+
+\textbf{Definition}: A set of vectors is linearly independent if:
+$$\sum_{i=1}^n\lambda_i e_i = 0\Rightarrow\lambda_i = 0\forall i $$
+
+\textbf{Proof}:
+$$\lambda_1 e_1 +\lambda_2 e_2 +\dots +\lambda_n e_n = 0\Rightarrow\begin{bmatrix}\lambda_1\\lambda_2\\vdots\\lambda_n\end{bmatrix} =\begin{bmatrix} 0\\ 0\\vdots\\ 0\end{bmatrix} $$
+
+The standard basis is\textbf{linearly independent}.
+
+\item\textbf{Volume of the regular simplex in $\mathbb{R}^{n-1}$}
+
+We shift the points so that they are centered at the origin and calculate the volume using Gram determinants or the formula for the volume of a simplex from vectors:
+
+\textbf{Volume formula for simplex from vectors}
+
+For an $(n-1)$-simplex $S$ with basis vectors $v_1,\dots, v_{n-1}$:
+$$\text{Vol}(S) =\frac{1}{(n-1)!}\cdot\sqrt{\det(G)} $$
+
+where $G$ is the\textbf{Gram matrix}:
+$$ G_{ij} =\langle v_i, v_j\rangle $$
+
+It is known that the volume of a regular simplex with edge length $\ell$ in $\mathbb{R}^{n-1}$ is:
+$$\text{Vol}_n =\frac{\ell^{n-1}}{(n-1)!}\cdot\sqrt{\frac{n}{2^{n-1}}} $$
+
+For $\ell =\sqrt{2}$:
+$$\text{Vol}_n =\frac{2^{(n-1)/2}}{(n-1)!}\cdot\sqrt{\frac{n}{2^{n-1}}} =\frac{1}{(n-1)!}\cdot\sqrt{n} $$
+
+This is the volume of a simplex with $n$ vertices and edge length $\sqrt{2}$.
+
+\item\textbf{Points Table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|l|c|}
+\hline
+\textbf{Condition} &\textbf{Description} &\textbf{Points}\\hline
+Norm Equation Setup & Prove that all points have the same distance $\sqrt{2}$. & 3\\hline
+Matrix & Represent the points as a matrix. & 1\\hline
+Equation and Independence & Prove linear independence. & 2\\hline
+Volume Formula & Derive the volume formula for the simplex. & 1\\hline
+Example & Provide an example calculation. & 2\\hline
+General Summary & Summarize the results. & 2\\hline
+\end{tabular}
+\caption{Points Allocation for the Solution}
+\end{table}
+\end{enumerate}

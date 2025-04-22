@@ -60,7 +60,7 @@ def create_task_structure():
 
         # Check if the language is already used
         if language in task_structure:
-            # Ask for version
+            # Ask for a version
             version = ask(f"Enter the version for {language} (e.g., 1.0)").strip()
             if not version:
                 print("Error: Version cannot be empty. Please try again.")
@@ -75,7 +75,7 @@ def create_task_structure():
                     print(f"Skipping version '{version}' for language '{language}'.")
                     continue
         else:
-            # If the language is not used, ask for version
+            # If the language is not used, ask for a version
             version = ask(f"Enter the version for {language} (e.g., 1.0)").strip()
             if not version:
                 print("Error: Version cannot be empty. Please try again.")

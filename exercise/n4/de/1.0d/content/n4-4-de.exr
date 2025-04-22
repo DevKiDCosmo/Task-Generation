@@ -1,0 +1,6 @@
+Gegeben: Drei Punkte $A_1, A_2, A_3$ bilden eine gleichseitige Mühle im $\mathbb{R}^2$, wobei der Mittelpunkt $M$ des gleichseitigen Dreiecks ebenfalls gegeben ist. Ein Punkt $P$ liegt außerhalb der Mühle.
+\subsubsection{Aufgabe}
+Bestimme die Spiegelung des Punktes $P$ an der Geraden, die durch zwei Mühlenpunkte (z. B. $A_1$ und $A_2$) verläuft. Berechne anschließend den Abstand zwischen $P$ und seiner Spiegelung. Zeige, dass dieser Abstand minimal ist, wenn die Gerade durch den Mittelpunkt $M$ verläuft und orthogonal zum Vektor $\vec{MP}$ steht.
+\textbf{Hinweis}: Nutze Vektorrechnung und geometrische Überlegungen zur Spiegelung an Geraden und orthogonalen Projektion im $\mathbb{R}^2$.
+
+Anforderungen zum Beweisen: Beweisen Sie die Aufgabe bis $n \le 5$.

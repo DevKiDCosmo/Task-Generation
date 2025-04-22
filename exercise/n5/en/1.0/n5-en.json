@@ -1,0 +1,18 @@
+{
+  "id": "No.5",
+  "category": ["Shoemei"],
+  "cid": "SKT-1",
+  "time": 50,
+  "nam_score": 1.2,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "f4273154-ca61-44eb-a6f0-db200d780f38",
+  "GUID": "05b002a4-1b8e-4d3b-9f5c-7a6d1e0f312f",
+  "main": {
+    "title": "Distances in the $n$-dimensional space",
+    "content": "content/n5-en.exr",
+    "solution": "solution/n5-en.exr"
+  },
+  "difficulty": 3,
+  "tags": ["induction", "geometry", "space", "real numbers"]
+}
