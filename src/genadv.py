@@ -9,8 +9,9 @@ import log as lg
 
 exercise_dir = "./exercise/"
 exerciseForProcessing = []
-difficulty = "information/difficulty.json"  # Information about difficulty and translation
+difficulty = "translation/difficulty.json"  # Information about difficulty and translation
 paths_exercise, paths_solution = [], []
+translation = "translation/translation.json"  # Information about translation
 
 log = lg.Log()
 
@@ -63,7 +64,7 @@ def phrase_exercise(information: typing.Dict) -> typing.Optional[None]:
                 log.write(f"Language {language} is not available in {information_access}")
                 continue
 
-            # Check if version is available for the language
+            # Check if a version is available for the language
             language_keys = list(data[language].keys())
             if len(language_keys) > 0:  # Ensure there is at least one key
                 if version not in language_keys:  # Check if the version matches the key name
@@ -122,6 +123,26 @@ def difficulty_to_str(difficulty_: int, language: str) -> str:
         return "Unknown Language"
 
 
+def translation_to_str(translation_key: str, language: str) -> str:
+    global translation
+    try:
+        with open(translation, 'r', encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        log.write(f"Error loading translation file: {e}")
+        return "Unknown Translation"
+
+    # Überprüfen, ob der Übersetzungsschlüssel existiert
+    if translation_key in data:
+        # Überprüfen, ob die Sprache existiert
+        if language in data[translation_key]:
+            return data[translation_key][language]
+        else:
+            return f"Unknown Language: {language}"
+    else:
+        return f"Unknown Translation for key: {translation_key}"
+
+
 def generating_exercise(language: string, file: string, paper: string, version: string, raw: string) -> None:
     global exerciseForProcessing
     with open(file, 'r', encoding="utf-8") as f:
@@ -169,20 +190,19 @@ def generating_exercise(language: string, file: string, paper: string, version: 
     solution = str(main_content.get("solution", ""))
 
     exercise_title = f"\\subsection{{{{{language.upper()} {cid} {id_exercise}{paper}V{version}}}: {title}}}\n"
-    header_information = f"\\textbf{{Time for Exercise}}: {time} \\quad \\textit{{Nam-Score: {score}}} \\quad"
+    header_information = f"\\textbf{{{translation_to_str("eta", language)}}}: {time} \\quad \\textit{{Nam-Score: {score}}} \\quad"
+
+    author_info = f"\\textit{{{translation_to_str('original', language)}}}\n\n" if author == "Original" else f"\\textit{{{translation_to_str('author', language)}: {author}}}\n\n"
 
     with open(f"./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w',
               encoding="utf-8") as f:
         f.write(exercise_title)
         f.write(header_information)
-
-        if author == "Original":
-            f.write("\\textit{An Original}\n\n")
-        else:
-            f.write(f"\\textit{{Author: {author}}}\n\n")
+        f.write(author_info)
 
         try:
-            with open(path := raw + "/" +os.path.join(language, version, content), 'r', encoding="utf-8") as content_file:
+            with open(path := raw + "/" + os.path.join(language, version, content), 'r',
+                      encoding="utf-8") as content_file:
                 content_lines = content_file.read().splitlines()
                 for line in content_lines:
                     f.write(line + "\n")
@@ -190,10 +210,11 @@ def generating_exercise(language: string, file: string, paper: string, version: 
             log.write(f"FileNotFoundError: {path} not found")
             return None
 
-        f.write(f"\n\\textbf{{Category}}: {', '.join(category)}\n")
-        f.write(f"\\textbf{{Difficulty}}: {difficulty_info}\n")
-        f.write(f"\\textbf{{Tags}}: {', '.join(tags)}\n\n")
-        f.write(f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} on {date}\n")
+        f.write(f"\n\\textbf{{{translation_to_str("category", language)}}}: {', '.join(category)}\n")
+        f.write(f"\\textbf{{{translation_to_str("difficulty", language)}}}: {difficulty_info}\n")
+        f.write(f"\\textbf{{{translation_to_str("tags", language)}}}: {', '.join(tags)}\n\n")
+        f.write(
+            f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} {translation_to_str("on_date", language)} {date}\n")
     log.write(
         f"Generated exercise file: ./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
 
@@ -201,14 +222,11 @@ def generating_exercise(language: string, file: string, paper: string, version: 
               encoding="utf-8") as f:
         f.write(exercise_title)
         f.write(header_information)
-
-        if author == "Original":
-            f.write("\\textit{An Original}\n\n")
-        else:
-            f.write(f"\\textit{{Author: {author}}}\n\n")
+        f.write(author_info)
 
         try:
-            with open(path := raw + "/" + os.path.join(language, version, content), 'r', encoding="utf-8") as content_file:
+            with open(path := raw + "/" + os.path.join(language, version, content), 'r',
+                      encoding="utf-8") as content_file:
                 content_lines = content_file.read().splitlines()
                 for line in content_lines:
                     f.write(line + "\n")
@@ -216,11 +234,12 @@ def generating_exercise(language: string, file: string, paper: string, version: 
             log.write(f"FileNotFoundError: {path} not found")
             return None
 
-        f.write("\\hline\n")
+        f.write("\\vspace{1em}\\hline\\vspace{1em}\n")
         f.write("\\subsubsection{Solution}\n")
 
         try:
-            with open(path := raw + "/" + os.path.join(language, version, solution), 'r', encoding="utf-8") as solution_file:
+            with open(path := raw + "/" + os.path.join(language, version, solution), 'r',
+                      encoding="utf-8") as solution_file:
                 solution_file = solution_file.read().splitlines()
                 for line in solution_file:
                     f.write(line + "\n")
@@ -228,10 +247,11 @@ def generating_exercise(language: string, file: string, paper: string, version: 
             log.write(f"FileNotFoundError: {path} not found")
             return None
 
-        f.write(f"\n\\textbf{{Category}}: {', '.join(category)}\n")
-        f.write(f"\\textbf{{Difficulty}}: {difficulty_info}\n")
-        f.write(f"\\textbf{{Tags}}: {', '.join(tags)}\n\n")
-        f.write(f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} on {date}\n")
+        f.write(f"\n\\textbf{{{translation_to_str("category", language)}}}: {', '.join(category)}\n")
+        f.write(f"\\textbf{{{translation_to_str("difficulty", language)}}}: {difficulty_info}\n")
+        f.write(f"\\textbf{{{translation_to_str("tags", language)}}}: {', '.join(tags)}\n\n")
+        f.write(
+            f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} {translation_to_str("on_date", language)} {date}\n")
     log.write(
         f"Generated solution file: ./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
 
@@ -239,6 +259,25 @@ def generating_exercise(language: string, file: string, paper: string, version: 
     paths_solution.append(f"../solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
 
     return None
+
+def instruction_translation(language: str) -> str:
+    instruction_path = "translation/instruction_translation.json"
+    try:
+        with open(instruction_path, 'r', encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        log.write(f"Error loading instruction translation file: {e}")
+        return "Unknown Instruction"
+
+    if language in data:
+        try:
+            with open(f"./translation/{data[language]}", 'r', encoding="utf-8") as content:
+                return content.read()
+        except (FileNotFoundError, PermissionError) as e:
+            log.write(f"Error reading translation file for language '{language}': {e}")
+            return "Unknown Instruction"
+    else:
+        return f"Instruction not available for language: {language}"
 
 
 def copy_template(paper: string) -> None:
@@ -316,8 +355,16 @@ def generating_paper(paper: string, information: list) -> None:
     data = data.replace("__PAPER_DOI__", information[7])
     data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
 
+
     import_list = ""
-    for i in range(len(exerciseForProcessing)):
+    previous_language = None
+
+    for i, (language, _, _, _) in enumerate(exerciseForProcessing):
+        if language != previous_language:
+            # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
+            import_list += f"\\section{{{translation_to_str('language_instruction', language)}}}\n"
+            import_list += instruction_translation(language) + "\n\n"
+            previous_language = language
         import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
 
     data = data.replace("__PAPER_IMPORTS__", import_list)
@@ -351,7 +398,7 @@ def generating_solution_paper(paper: string, information: list) -> None:
 
     # Processing __PARAMETERS__ in the template
     # [title, date, paper, description, version, revision, archive, doi, tags]
-    data = data.replace("__PAPER_TITLE__", information[0])
+    data = data.replace("__PAPER_TITLE__", "Solution: " + information[0])
     data = data.replace("__PAPER_DATE__", information[1])
     data = data.replace("__PAPER_ID__", information[2])
     data = data.replace("__PAPER_DESCRIPTION__", information[3])
@@ -362,10 +409,23 @@ def generating_solution_paper(paper: string, information: list) -> None:
     data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
 
     import_list = ""
-    for i in range(len(exerciseForProcessing)):
+    previous_language = None
+    for i, (language, _, _, _) in enumerate(exerciseForProcessing):
+        if language != previous_language:
+            # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
+            import_list += f"\\section{{{translation_to_str('language_instruction', language)}}}\n"
+            import_list += instruction_translation(language) + "\n\n"
+            previous_language = language
         import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
-    for i in range(len(exerciseForProcessing)):
+
+    previous_language = None
+    for i, (language, _, _, _) in enumerate(exerciseForProcessing):
+        if language != previous_language:
+            # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
+            import_list += f"\\section{{{translation_to_str('solution', language)}}}\n"
+            previous_language = language
         import_list += f"\\input{{{paths_solution[i]}}}\\clearpage\n"
+
     data = data.replace("__PAPER_IMPORTS__", import_list)
 
     # Extract all unique IDs from the exerciseForProcessing list
@@ -422,7 +482,7 @@ def clear_non_pdf():
     log.write("Cleaned 'generated' directory, keeping only PDF files.")
 
 
-def main(file: string) -> None:
+def main(file: string) -> typing.Optional[None]:
     clear_non_pdf()
     try:
         with open(file, 'r', encoding="utf-8") as f:
@@ -460,6 +520,8 @@ def main(file: string) -> None:
 
     clear_non_pdf()
     log.create_log()
+
+    return None
 
 
 if __name__ == "__main__":
