@@ -12,5 +12,7 @@
     "n4": { "language": ["de", "en"], "version": ["1.0d", "1.1e"], "exercise": [1, 2, 3, 4] },
     "n5": { "language": ["de", "en"], "version": ["1.0", "1.0"], "exercise": [1] }
   },
-  "tags": ["induction", "sum", "odd numbers", "natural numbers"]
+  "tags": ["induction", "sum", "odd numbers", "natural numbers"],
+  "UUID": "...",
+  "GUID": "..."
 }
