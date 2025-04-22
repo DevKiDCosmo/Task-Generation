@@ -1,0 +1,41 @@
+Gegeben sei eine Punktmenge $P \subset \mathbb{R}^n$ mit $|P| = kn$ für ein $k \in \mathbb{N}_{\geq 2}$, wobei die Punkte in allgemeiner Lage liegen (d.h. keine $n+1$ Punkte liegen in einer $(n-1)$-dimensionalen Hyperebene).
+
+Ein Drehdurchlaufprozess funktioniert wie folgt:
+
+\begin{itemize}
+\item Wähle einen Startpunkt $p_0 \in P$.
+
+\item Konstruiere eine $(n-1)$-Hyperfläche (eine "Drehfläche") durch diesen Punkt.
+
+\item Diese Hyperfläche wird kontinuierlich in festgelegter Weise (z.B. gemäß einer festen Orientierung im Raum) gedreht.
+
+\item Sobald ein weiterer Punkt $p_i \in P$ von der Fläche "berührt" wird (das heißt, sich auf der Fläche befindet), wird $p_i$ zum neuen Ankerpunkt.
+
+\item Die Bewegung wird dort fortgesetzt.
+
+\end{itemize}
+
+\subsubsection{Erweiterung}
+
+\begin{itemize}
+
+\item Zwischen jeder Drehung wird die Orientierung der Fläche mit einer gegebenen Matrix aus $SO(n)$ verändert (d.h. jede Rotation ist durch einen Übergangsoperator festgelegt).
+
+\item Zwischenpunktsbeziehungen werden als gerichteter Graph $G = (V, E)$ gespeichert, wobei ein gerichteter Übergang $p_i \to p_j$ besteht, wenn $p_j$ durch eine zulässige Drehung von $p_i$ erreicht wurde.
+
+\end{itemize}
+
+\subsubsection{Aufgaben}
+
+\begin{enumerate}
+
+\item Beweise oder widerlege: Für bestimmte Punktkonfigurationen (z.B. reguläre Gitter, zufällige Punktwolken, Punkte auf Sphären oder simplizialen Flächen) ist der Erreichbarkeitsgraph stark zusammenhängend.
+
+\item Finde einen allgemeinen Algorithmus, der für beliebiges $n$ und Punktmenge $P$ entscheidet, ob eine vollständige Erreichbarkeit aller Punkte durch den Prozess möglich ist.
+
+\item Untersuche: Wie verändert sich die Erreichbarkeit bei Einführung von Übergangsverzögerungen oder zufälligen Störfaktoren in der Drehung?
+
+\item Formuliere eine Optimierung: Finde einen minimalen Rotationspfad durch alle Punkte, der die Übergangsregeln beachtet.
+
+\item Entwirf eine Visualisierung (in 2D, 3D oder nD-Projektionen), die den Prozess und Graphen dynamisch zeigt.
+\end{enumerate}

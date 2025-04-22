@@ -1,0 +1,26 @@
+{
+  "id": "No.8",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SKT-1",
+  "time": 6830,
+  "nam_score": 9.3,
+  "author": "Original",
+  "date": "22.04.2025",
+  "UUID": "02853973-ca61-44eb-a6f0-db200d780f39",
+  "GUID": "2c0a8372-1073-4d3b-9f5c-2398579abc39",
+  "main": {
+    "title": "Stochastische Analyse von Wellenphänomenen mittels Fourier- und Wahrscheinlichkeitsdichtefunktionen",
+    "content": "content/n8-de.exr",
+    "solution": "solution/n8-de.exr"
+  },
+  "difficulty": 10,
+  "tags": [
+    "Stochastik",
+    "Analyse",
+    "Wellenphänomene",
+    "Fourier-Transformation",
+    "Wahrscheinlichkeitsdichtefunktionen"
+  ]
+}

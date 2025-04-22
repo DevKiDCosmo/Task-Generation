@@ -28,10 +28,18 @@ Generating PDFs with JSON Exercise
 
 ```json
 {
-  "language": {
-    "version": ["paths to your exercises json without .json extension"]
-  }
+  "de": {
+    "1.0": ["n1/de/1.0/n1-de"]
+  },
+  "en": {
+    "1.0": ["n1/en/1.0/n1-en"]
+  },
+  "fr": {
+    "1.0": ["n1/fr/1.0/n1-fr"]
+  },
+  "UUID": "e89de9cb-5ccc-4512-a077-38f7b983aef4"
 }
+
 ```
 
 ## EXERCISE
