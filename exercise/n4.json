@@ -1,8 +1,8 @@
 {
   "de": {
-    "1.0d": ["n4/de/n4-1-de", "n4/de/n4-2-de", "n4/de/n4-3-de", "n4/de/n4-4-de"]
+    "1.0d": ["n4/de/1.0d/n4-1-de", "n4/de/1.0d/n4-2-de", "n4/de/1.0d/n4-3-de", "n4/de/1.0d/n4-4-de"]
   },
   "en": {
-    "1.1e": ["n4/en/n4-1-en", "n4/en/n4-2-en", "n4/en/n4-3-en", "n4/en/n4-4-en"]
+    "1.1e": ["n4/en/1.1e/n4-1-en", "n4/en/1.1e/n4-2-en", "n4/en/1.1e/n4-3-en", "n4/en/1.1e/n4-4-en"]
   }
 }

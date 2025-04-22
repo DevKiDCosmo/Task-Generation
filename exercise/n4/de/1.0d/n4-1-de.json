@@ -1,0 +1,29 @@
+{
+  "id": "No.4-1",
+  "category": ["Shoemei", "Keisan", "Kaishaku"],
+  "cid": "SKK-1",
+  "time": 240,
+  "nam_score": 4.0,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82",
+  "GUID": "05b0f2a4-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+  "main": {
+    "title": "Standard-Windmühle mit Erreichbarkeit aller Punkte - Aufgabe 2",
+    "content": "content/n4-1-de.exr",
+    "solution": "solution/n4-1-de.exr"
+  },
+  "difficulty": 7,
+  "tags": [
+    "Induktion",
+    "Punkt menge",
+    "Generelle Lage",
+    "Hyperfläche",
+    "Windmühlenprozess",
+    "Rotation",
+    "Transformation",
+    "Drehpunkt",
+    "Drehwinkel",
+    "Erreichbarkeit"
+  ]
+}

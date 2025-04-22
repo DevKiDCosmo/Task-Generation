@@ -1,0 +1,11 @@
+Gegeben seien $n$ Punkte $P_1, P_2, P_3, \dots, P_n \in \mathbb{R}^{n-1}$, wobei jeder Punkt $P_i$ die Standardbasis darstellt, also: $$ P_i = e_i = (0, \dots, 0, 1, 0, \dots, 0) \in \mathbb{R}^{n-1} $$ (der Eintrag 1 steht an der $i$-ten Stelle)
+      
+\begin{enumerate}
+\item Zeige, dass die \textbf{Punkte alle den gleichen Abstand voneinander haben}, d. h. für alle $i \not= j$ gilt: $$ \parallel P_i - P_j \parallel = \sqrt{2} $$
+
+\item Stelle die Punkte $P_1, \dots, P_n$ als Spaltenvektoren einer Matrix $A \in \mathbb{R}^{n \times n}$ dar.
+
+\item \textbf{Zeige zusätzlich}: Die Punkte $P_1, \dots, P_n$ sind \textbf{nicht linear abhängig} und bilden ein \textbf{($n-1$)-dimensionales Simplex} in $\mathbb{R}^n$.
+
+\item Berechne das Volumen des regulären Simplex in $\mathbb{R}^{n-1}$.
+\end{enumerate}

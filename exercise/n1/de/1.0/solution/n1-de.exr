@@ -1,0 +1,9 @@
+Induktionsanfang: $n=1$
+$$ 1 = 1^2 $$
+
+Induktionsschritt: Sei $n \in \mathbb{N}$ und die Aussage für $n$ wahr.
+$$ 1 + 3 + 5 + \dots + (2n-1) = n^2 $$
+Dann gilt:
+$$ 1 + 3 + 5 + \dots + (2n-1) + (2(n+1)-1) = n^2 + (2(n+1)-1) $$
+$$ = n^2 + (2n+2-1) = n^2 + (2n+1) $$
+$$ = n^2 + 2n + 1 = (n+1)^2 $$

@@ -1,0 +1,29 @@
+{
+  "id": "No.4-1",
+  "category": ["Shoemei", "Keisan", "Kaishaku"],
+  "cid": "SKK-1",
+  "time": 240,
+  "nam_score": 4.0,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82",
+  "GUID": "1092a837-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+  "main": {
+    "title": "Standard Windmill with Reachability of all Points - Task 1",
+    "content": "content/n4-1-en.exr",
+    "solution": "solution/n4-1-en.exr"
+  },
+  "difficulty": 7,
+  "tags": [
+    "induction",
+    "point set",
+    "general position",
+    "windmill process",
+    "rotation",
+    "hyper-surface",
+    "transition rule",
+    "pivot point",
+    "reachability",
+    "starting point"
+  ]
+}

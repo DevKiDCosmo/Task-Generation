@@ -1,0 +1,18 @@
+{
+  "id": "No.5",
+  "category": ["Shoemei"],
+  "cid": "SKT-1",
+  "time": 50,
+  "nam_score": 1.2,
+  "author": "Original",
+  "date": "19.04.2025",
+  "UUID": "f4273154-ca61-44eb-a6f0-db200d780f38",
+  "GUID": "05b002a4-1b8e-4d3b-9f5c-7a6d1e0f3a2f",
+  "main": {
+    "title": "Abstände im $n$-dimensionalen Raum",
+    "content": "content/n5-de.exr",
+    "solution": "solution/n5-de.exr"
+  },
+  "difficulty": 3,
+  "tags": ["Induktion", "Geometrie", "Raum", "Reele Nummern", "Punkte", "Vektoren", "Matrix", "Lineare Unabhängigkeit", "Volumen"]
+}

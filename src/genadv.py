@@ -83,9 +83,11 @@ def phrase_exercise(information: typing.Dict) -> typing.Optional[None]:
                         # Get the file name from the JSON data
                         file_name = data[language][version][i]
                         current = os.path.join(exercise_dir, file_name + ".json")
+                        raw = os.path.join(exercise_dir, information_access)  # Give id not file_name
 
                         if os.path.exists(current):
-                            exerciseForProcessing.append((language, current, version))  # Append the correct version
+                            exerciseForProcessing.append(
+                                (language, current, version, raw))  # Append the correct version
                         else:
                             log.write(f"File does not exist: {current} in {information_access} for {language}")
                     except IndexError:
@@ -120,7 +122,7 @@ def difficulty_to_str(difficulty_: int, language: str) -> str:
         return "Unknown Language"
 
 
-def generating_exercise(language: string, file: string, paper: string, version: string) -> None:
+def generating_exercise(language: string, file: string, paper: string, version: string, raw: string) -> None:
     global exerciseForProcessing
     with open(file, 'r', encoding="utf-8") as f:
         data = json.load(f)
@@ -163,51 +165,75 @@ def generating_exercise(language: string, file: string, paper: string, version: 
     # Split the main field into title, content, and solution
     main_content = data["main"]
     title = main_content.get("title", "Unknown Title")
-    content = main_content.get("content", [])
-    solution = main_content.get("solution", [])
+    content = str(main_content.get("content", ""))
+    solution = str(main_content.get("solution", ""))
 
-    with open(f"./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w', encoding="utf-8") as f:
-        f.write(f"\\subsection{{{{{language.upper()} {cid} {id_exercise}{paper}V{version}}}: {title}}}\n")
+    exercise_title = f"\\subsection{{{{{language.upper()} {cid} {id_exercise}{paper}V{version}}}: {title}}}\n"
+    header_information = f"\\textbf{{Time for Exercise}}: {time} \\quad \\textit{{Nam-Score: {score}}} \\quad"
 
-        f.write(f"\\textbf{{Time for Exercise}}: {time} \\quad \\textit{{Nam-Score: {score}}} \\quad")
+    with open(f"./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w',
+              encoding="utf-8") as f:
+        f.write(exercise_title)
+        f.write(header_information)
 
         if author == "Original":
             f.write("\\textit{An Original}\n\n")
         else:
             f.write(f"\\textit{{Author: {author}}}\n\n")
 
-        for line in content:
-            f.write(line + "\n")
+        try:
+            with open(path := raw + "/" +os.path.join(language, version, content), 'r', encoding="utf-8") as content_file:
+                content_lines = content_file.read().splitlines()
+                for line in content_lines:
+                    f.write(line + "\n")
+        except FileNotFoundError:
+            log.write(f"FileNotFoundError: {path} not found")
+            return None
+
         f.write(f"\n\\textbf{{Category}}: {', '.join(category)}\n")
         f.write(f"\\textbf{{Difficulty}}: {difficulty_info}\n")
         f.write(f"\\textbf{{Tags}}: {', '.join(tags)}\n\n")
         f.write(f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} on {date}\n")
-    log.write(f"Generated exercise file: ./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
+    log.write(
+        f"Generated exercise file: ./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
 
-    with open(f"./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w', encoding="utf-8") as f:
-        f.write(f"\\subsection{{{{{language.upper()} {cid} {id_exercise}{paper}V{version}}}: {title}}}\n")
-
-        f.write(f"\\textbf{{Time for Exercise}}: {time} \\quad \\textit{{Nam-Score: {score}}} \\quad")
+    with open(f"./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w',
+              encoding="utf-8") as f:
+        f.write(exercise_title)
+        f.write(header_information)
 
         if author == "Original":
             f.write("\\textit{An Original}\n\n")
         else:
             f.write(f"\\textit{{Author: {author}}}\n\n")
 
-        for line in content:
-            f.write(line + "\n")
+        try:
+            with open(path := raw + "/" + os.path.join(language, version, content), 'r', encoding="utf-8") as content_file:
+                content_lines = content_file.read().splitlines()
+                for line in content_lines:
+                    f.write(line + "\n")
+        except FileNotFoundError:
+            log.write(f"FileNotFoundError: {path} not found")
+            return None
 
         f.write("\\hline\n")
         f.write("\\subsubsection{Solution}\n")
 
-        for line in solution:
-            f.write(line + "\n")
+        try:
+            with open(path := raw + "/" + os.path.join(language, version, solution), 'r', encoding="utf-8") as solution_file:
+                solution_file = solution_file.read().splitlines()
+                for line in solution_file:
+                    f.write(line + "\n")
+        except FileNotFoundError:
+            log.write(f"FileNotFoundError: {path} not found")
+            return None
 
         f.write(f"\n\\textbf{{Category}}: {', '.join(category)}\n")
         f.write(f"\\textbf{{Difficulty}}: {difficulty_info}\n")
         f.write(f"\\textbf{{Tags}}: {', '.join(tags)}\n\n")
         f.write(f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} on {date}\n")
-    log.write(f"Generated solution file: ./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
+    log.write(
+        f"Generated solution file: ./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
 
     paths_exercise.append(f"../exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
     paths_solution.append(f"../solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
@@ -426,8 +452,8 @@ def main(file: string) -> None:
 
     phrase_exercise(exercise)
 
-    for language, file, version in exerciseForProcessing:
-        generating_exercise(language, file, paper, version)
+    for language, file, version, raw in exerciseForProcessing:
+        generating_exercise(language, file, paper, version, raw)
 
     generating_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])
     generating_solution_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])
