@@ -1,19 +1,61 @@
 {
-  "title": "Aufgabensammlung zur Beweisen",
-  "date": "19.04.2025",
+  "title": "Aufgabensammlung",
+  "date": "23.04.2025",
   "paper": "P1.1",
   "version": "1.0",
   "revision": "1",
   "archive": "209387-932",
-  "doi": "10.5281/zenodo.15249602",
-  "description": "Aufgaben des Scores zwischen 6-10 (IMO-Silver bis Absolut)",
+  "doi": "10.5281/zenodo.15266189",
+  "description": "Difficulty: 6-10",
   "exercise": {
-    "n6": { "language": ["de"], "version": ["1.0"], "exercise": [1] },
-    "n7": { "language": ["de"], "version": ["1.0"], "exercise": [1] },
-    "n8": { "language": ["de"], "version": ["1.0"], "exercise": [1] }
+    "n6": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n7": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n8": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
   },
   "tags": [
-    "problem solving", "geometry", "algebra", "inequality", "combinatorics", "number theory", "competition"
+    "problem solving",
+    "geometry",
+    "algebra",
+    "inequality",
+    "combinatorics",
+    "number theory",
+    "competition"
   ],
   "UUID": "...",
   "GUID": "..."

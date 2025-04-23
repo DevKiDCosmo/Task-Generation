@@ -1,0 +1,25 @@
+{
+  "id": "No.6",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SH-2",
+  "time": 5500,
+  "nam_score": 6.2,
+  "author": "Original",
+  "date": "23.04.2025",
+  "UUID": "f4273154-ca61-44eb-a6f0-db200d780f39",
+  "GUID": "19999942-1b8e-4d3b-9f5c-2398579abc39",
+  "main": {
+    "title": "Hyperdimensional surface traversal processes and reachability graphs",
+    "content": "content/n6-en.exr",
+    "solution": "solution/n6-en.exr"
+  },
+  "difficulty": 8,
+  "tags": [
+    "Graphs",
+    "Hypergraphs",
+    "Surface traversal processes",
+    "Reachability graphs"
+  ]
+}

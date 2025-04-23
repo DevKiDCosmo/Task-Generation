@@ -1,0 +1,26 @@
+{
+  "id": "No.8",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SH-4",
+  "time": 6830,
+  "nam_score": 9.3,
+  "author": "Original",
+  "date": "23.04.2025",
+  "UUID": "02853973-ca61-44eb-a6f0-db200d780f39",
+  "GUID": "10047928-1073-4d3b-9f5c-2398579abc39",
+  "main": {
+    "title": "Stochastic analysis of wave phenomena using Fourier and probability density functions",
+    "content": "content/n8-en.exr",
+    "solution": "solution/n8-en.exr"
+  },
+  "difficulty": 10,
+  "tags": [
+    "Stochastic",
+    "Analysis",
+    "Wave phenomena",
+    "Fourier transformation",
+    "Probability density functions"
+  ]
+}
