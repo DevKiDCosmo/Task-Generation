@@ -1,594 +1,569 @@
 import shutil
-import string
+# import str
 import subprocess
 import sys
 import json
 import os
 import typing
 import log as lg
-
-exercise_dir = "./exercise/"
-exerciseForProcessing = []
-difficulty = "translation/difficulty.json"  # Information about difficulty and translation
-paths_exercise, paths_solution = [], []
-translation = "translation/translation.json"  # Information about translation
-
+# import mypy
+from dotenv import load_dotenv
 log = lg.Log()
 
+class Generation():
+    def __init__(self, exercideDIR: str, difficulty_: str, translation_: str):
+        self.exercise_dir = exercideDIR
+        self.difficulty = difficulty_
+        self.translation = translation_
 
-def phrase_exercise(information: typing.Dict) -> typing.Optional[None]:
-    global exerciseForProcessing
+    def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> list[
+        tuple[str, str, str, str]]:
 
-    # Collect keys to remove
-    keys_to_remove = []
+        # Collect keys to remove
+        keys_to_remove = []
 
-    for information_access, content in list(information.items()):  # Use list() to safely iterate
-        # Try to access the keys in the content dictionary
-        try:
-            languages_info = content["language"]
-            version_info = content["version"]
-            exercise_info = content["exercise"]
-        except KeyError as e:
-            log.write(f"KeyError: {e} in {information_access}")
-            keys_to_remove.append(information_access)
-            continue
-
-        # Reading JSON file
-        try:
-            with open(f"./exercise/{information_access}.json", 'r', encoding="utf-8") as f:
-                data = json.load(f)
-        except json.JSONDecodeError:
-            log.write(f"JSONDecodeError: {information_access}.json is not a valid JSON file")
-            keys_to_remove.append(information_access)
-            continue
-        except PermissionError:
-            log.write(f"PermissionError: {information_access}.json is not accessible")
-            keys_to_remove.append(information_access)
-            continue
-        except FileNotFoundError:
-            log.write(f"FileNotFoundError: {information_access}.json not found in exercise folder")
-            keys_to_remove.append(information_access)
-            continue
-
-        # Getting available languages from the data
-        language_available = list(data.keys())
-
-        # Check if lengths of language and version match
-        if len(languages_info) != len(version_info):
-            log.write(f"Error: Mismatched lengths for 'language' and 'version' in {information_access}. Skipping.")
-            keys_to_remove.append(information_access)
-            continue
-
-        for language, version in zip(languages_info, version_info):
-            if language not in language_available:
-                log.write(f"Language {language} is not available in {information_access}")
+        for information_access, content in list(information.items()):  # Use list() to safely iterate
+            # Try to access the keys in the content dictionary
+            try:
+                languages_info = content["language"]
+                version_info = content["version"]
+                exercise_info = content["exercise"]
+            except KeyError as e:
+                log.write(f"KeyError: {e} in {information_access}")
+                keys_to_remove.append(information_access)
                 continue
 
-            # Check if a version is available for the language
-            language_keys = list(data[language].keys())
-            if len(language_keys) > 0:  # Ensure there is at least one key
-                if version not in language_keys:  # Check if the version matches the key name
-                    log.write(f"Version {version} is not available in {information_access} for {language}")
+            # Reading JSON file
+            try:
+                with open(f"./exercise/{information_access}.json", 'r', encoding="utf-8") as f:
+                    data = json.load(f)
+            except json.JSONDecodeError:
+                log.write(f"JSONDecodeError: {information_access}.json is not a valid JSON file")
+                keys_to_remove.append(information_access)
+                continue
+            except PermissionError:
+                log.write(f"PermissionError: {information_access}.json is not accessible")
+                keys_to_remove.append(information_access)
+                continue
+            except FileNotFoundError:
+                log.write(f"FileNotFoundError: {information_access}.json not found in exercise folder")
+                keys_to_remove.append(information_access)
+                continue
+
+            # Getting available languages from the data
+            language_available = list(data.keys())
+
+            # Check if lengths of language and version match
+            if len(languages_info) != len(version_info):
+                log.write(f"Error: Mismatched lengths for 'language' and 'version' in {information_access}. Skipping.")
+                keys_to_remove.append(information_access)
+                continue
+
+            for language, version in zip(languages_info, version_info):
+                if language not in language_available:
+                    log.write(f"Language {language} is not available in {information_access}")
                     continue
-            else:
-                log.write(f"No keys available in {information_access} for {language}")
-                continue
 
-            # Process exercise_info globally for all languages and versions
-            max_index = len(data[language][version])
-            filtered_exercise_info = [i - 1 for i in exercise_info if 1 <= i <= max_index]
+                # Check if a version is available for the language
+                language_keys = list(data[language].keys())
+                if len(language_keys) > 0:  # Ensure there is at least one key
+                    if version not in language_keys:  # Check if the version matches the key name
+                        log.write(f"Version {version} is not available in {information_access} for {language}")
+                        continue
+                else:
+                    log.write(f"No keys available in {information_access} for {language}")
+                    continue
 
-            if filtered_exercise_info:  # Ensure filtered_exercise_info is not empty
-                for i in filtered_exercise_info:
-                    try:
-                        # Get the file name from the JSON data
-                        file_name = data[language][version][i]
-                        current = os.path.join(exercise_dir, file_name + ".json")
-                        raw = os.path.join(exercise_dir, information_access)  # Give id not file_name
+                # Process exercise_info globally for all languages and versions
+                max_index = len(data[language][version])
+                filtered_exercise_info = [i - 1 for i in exercise_info if 1 <= i <= max_index]
 
-                        if os.path.exists(current):
-                            exerciseForProcessing.append(
-                                (language, current, version, raw))  # Append the correct version
-                        else:
-                            log.write(f"File does not exist: {current} in {information_access} for {language}")
-                    except IndexError:
-                        log.write(f"Index {i} is out of bounds in {information_access}")
-            else:
-                log.write(f"No valid exercise information available in {information_access} for {language}")
+                if filtered_exercise_info:  # Ensure filtered_exercise_info is not empty
+                    for i in filtered_exercise_info:
+                        try:
+                            # Get the file name from the JSON data
+                            file_name = data[language][version][i]
+                            current = os.path.join(exercise_dir, file_name + ".json")
+                            raw = os.path.join(exercise_dir, information_access)  # Give id not file_name
 
-    # Remove invalid keys after iteration
-    for key in keys_to_remove:
-        del information[key]
+                            if os.path.exists(current):
+                                exerciseForProcessing.append(
+                                    (language, current, version, raw))  # Append the correct version
+                            else:
+                                log.write(f"File does not exist: {current} in {information_access} for {language}")
+                        except IndexError:
+                            log.write(f"Index {i} is out of bounds in {information_access}")
+                else:
+                    log.write(f"No valid exercise information available in {information_access} for {language}")
 
-    # Sort the exerciseForProcessing list by language
-    exerciseForProcessing.sort(key=lambda x: (x[0], x[1]))
+        # Remove invalid keys after iteration
+        for key in keys_to_remove:
+            del information[key]
 
-    # log.write(exerciseForProcessing)
-    return None  # Isn't necessary, but added for clarity
+        # Sort the exerciseForProcessing list by language
+        exerciseForProcessing.sort(key=lambda x: (x[0], x[1]))
 
+        # log.write(exerciseForProcessing)
+        return exerciseForProcessing  # Isn't necessary, but added for clarity
 
-def difficulty_to_str(difficulty_: int, language: str) -> str:
-    global difficulty
-    with open(difficulty, 'r', encoding="utf-8") as f:
-        data = json.load(f)
-
-    if language in data:
-        # Convert difficulty_ to a string because JSON keys are strings
-        difficulty_key = str(difficulty_)
-        if difficulty_key in data[language]:
-            return data[language][difficulty_key]
-        else:
-            return "Unknown Difficulty"
-    else:
-        return "Unknown Language"
-
-
-def translation_to_str(translation_key: str, language: str) -> str:
-    global translation
-    try:
-        with open(translation, 'r', encoding="utf-8") as f:
+    def difficulty_to_str(self, difficulty_: int, language: str) -> str:
+        with open(self.difficulty, 'r', encoding="utf-8") as f:
             data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        log.write(f"Error loading translation file: {e}")
-        return "Unknown Translation"
 
-    # Überprüfen, ob der Übersetzungsschlüssel existiert
-    if translation_key in data:
-        # Überprüfen, ob die Sprache existiert
-        if language in data[translation_key]:
-            return data[translation_key][language]
+        if language in data:
+            # Convert difficulty_ to a str because JSON keys are strs
+            difficulty_key = str(difficulty_)
+            if difficulty_key in data[language]:
+                return data[language][difficulty_key]
+            else:
+                return "Unknown Difficulty"
         else:
-            return f"Unknown Language: {language}"
-    else:
-        return f"Unknown Translation for key: {translation_key}"
+            return "Unknown Language"
 
-
-def generating_exercise(language: string, file: string, paper: string, version: string, raw: string) -> typing.Optional[int]:
-    global exerciseForProcessing
-    with open(file, 'r', encoding="utf-8") as f:
-        data = json.load(f)
-        f.close()
-    try:
-        id_exercise = data["id"]
-        category = data["category"]
-        cid = data["cid"]
-        time: int = data["time"]
-        time: str = f"{time // 60} h {time % 60} min" if time >= 60 else f"{time} min"
-
-        score = data["nam_score"]
-        author = data["author"]
-        date = data["date"]
-        uuid = data["UUID"]
-        guid = data["GUID"]
-        difficulty_info: str = difficulty_to_str(data["difficulty"], language)
-        tags = data["tags"]
-    except KeyError as e:
-        log.write(f"KeyError: {e} in {file}")
-        return 0
-    except json.JSONDecodeError:
-        log.write(f"JSONDecodeError: {file} is not a valid JSON file")
-        return 0
-    except PermissionError:
-        log.write(f"PermissionError: {file} is not accessible")
-        return 0
-
-    # Generate dir
-    if not os.path.exists(f"./generated/exercise/{language}"):
-        os.makedirs(f"./generated/exercise/{language}")
-    if not os.path.exists(f"./generated/exercise/{language}/{id_exercise}"):
-        os.makedirs(f"./generated/exercise/{language}/{id_exercise}")
-    if not os.path.exists(f"./generated/solution/{language}"):
-        os.makedirs(f"./generated/solution/{language}")
-    if not os.path.exists(f"./generated/solution/{language}/{id_exercise}"):
-        os.makedirs(f"./generated/solution/{language}/{id_exercise}")
-
-    # Split the main field into title, content, and solution
-    main_content = data["main"]
-    title = main_content.get("title", "Unknown Title")
-    content = str(main_content.get("content", ""))
-    solution = str(main_content.get("solution", ""))
-
-    exercise_title = f"\\subsection{{{{{language.upper()} {cid} {id_exercise}{paper}V{version}}}: {title}}}\n"
-    header_information = f"\\textbf{{{translation_to_str("eta", language)}}}: {time} \\quad \\textit{{Nam-Score: {score}}} \\quad"
-
-    author_info = f"\\textit{{{translation_to_str('original', language)}}}\n\n" if author == "Original" else f"\\textit{{{translation_to_str('author', language)}: {author}}}\n\n"
-
-    with open(f"./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w',
-              encoding="utf-8") as f:
-        f.write(exercise_title)
-        f.write(header_information)
-        f.write(author_info)
-
+    def translation_to_str(self, translation_key: str, language: str) -> str:
         try:
-            with open(path := raw + "/" + os.path.join(language, version, content), 'r',
-                      encoding="utf-8") as content_file:
-                content_lines = content_file.read().splitlines()
-                for line in content_lines:
-                    f.write(line + "\n")
-        except FileNotFoundError:
-            log.write(f"FileNotFoundError: {path} not found")
-            return None
+            with open(self.translation, 'r', encoding="utf-8") as f:
+                data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            log.write(f"Error loading translation file: {e}")
+            return "Unknown Translation"
 
-        f.write(f"\n\\textbf{{{translation_to_str("category", language)}}}: {', '.join(category)}\n")
-        f.write(f"\\textbf{{{translation_to_str("difficulty", language)}}}: {difficulty_info}\n")
-        f.write(f"\\textbf{{{translation_to_str("tags", language)}}}: {', '.join(tags)}\n\n")
-        f.write(
-            f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} {translation_to_str("on_date", language)} {date}\n")
-    log.write(
-        f"Generated exercise file: ./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
-
-    with open(f"./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w',
-              encoding="utf-8") as f:
-        f.write(exercise_title)
-        f.write(header_information)
-        f.write(author_info)
-
-        try:
-            with open(path := raw + "/" + os.path.join(language, version, content), 'r',
-                      encoding="utf-8") as content_file:
-                content_lines = content_file.read().splitlines()
-                for line in content_lines:
-                    f.write(line + "\n")
-        except FileNotFoundError:
-            log.write(f"FileNotFoundError: {path} not found")
-            return None
-
-        f.write("\\vspace{1em}\\hline\\vspace{1em}\n")
-        f.write("\\subsubsection{Solution}\n")
-
-        try:
-            with open(path := raw + "/" + os.path.join(language, version, solution), 'r',
-                      encoding="utf-8") as solution_file:
-                solution_file = solution_file.read().splitlines()
-                for line in solution_file:
-                    f.write(line + "\n")
-        except FileNotFoundError:
-            log.write(f"FileNotFoundError: {path} not found")
-            return None
-
-        f.write(f"\n\\textbf{{{translation_to_str("category", language)}}}: {', '.join(category)}\n")
-        f.write(f"\\textbf{{{translation_to_str("difficulty", language)}}}: {difficulty_info}\n")
-        f.write(f"\\textbf{{{translation_to_str("tags", language)}}}: {', '.join(tags)}\n\n")
-        f.write(
-            f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} {translation_to_str("on_date", language)} {date}\n")
-    log.write(
-        f"Generated solution file: ./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
-
-    paths_exercise.append(f"../exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
-    paths_solution.append(f"../solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
-
-    return data["time"]
-
-
-def instruction_translation(language: str) -> str:
-    instruction_path = "translation/instruction_translation.json"
-    try:
-        with open(instruction_path, 'r', encoding="utf-8") as f:
-            data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        log.write(f"Error loading instruction translation file: {e}")
-        return "Unknown Instruction"
-
-    if language in data:
-        try:
-            with open(f"./translation/{data[language]}", 'r', encoding="utf-8") as content:
-                return content.read()
-        except (FileNotFoundError, PermissionError) as e:
-            log.write(f"Error reading translation file for language '{language}': {e}")
-            return "Unknown Instruction"
-    else:
-        return f"Instruction not available for language: {language}"
-
-
-def copy_template(paper: string) -> None:
-    # Check if the directory exists before attempting to copy
-    if not os.path.exists("./template"):
-        log.write("No 'template' directory to copy from.")
-        return
-
-    # Ensure the destination directory exists
-    destination_dir = f"./generated/{paper}"
-    os.makedirs(destination_dir, exist_ok=True)
-
-    # Copy only banko.cls and template.tex
-    files_to_copy = ["banko.cls", "template.tex"]
-    for file_name in files_to_copy:
-        source_path = os.path.join("./template", file_name)
-        destination_path = os.path.join(destination_dir, file_name)
-        if os.path.exists(source_path):
-            shutil.copy2(source_path, destination_path)
+        # Überprüfen, ob der Übersetzungsschlüssel existiert
+        if translation_key in data:
+            # Überprüfen, ob die Sprache existiert
+            if language in data[translation_key]:
+                return data[translation_key][language]
+            else:
+                return f"Unknown Language: {language}"
         else:
-            log.write(f"File {file_name} not found in the template directory.")
+            return f"Unknown Translation for key: {translation_key}"
 
-    # Rename template.tex to paper.tex
-    template_path = os.path.join(destination_dir, "template.tex")
-    new_path = os.path.join(destination_dir, f"{paper}.tex")
-    if os.path.exists(template_path):
-        os.rename(template_path, new_path)
-    log.write(f"Copied and renamed template files to {destination_dir}.")
+    def generating_exercise(self, language: str, file: str, paper: str, version: str, raw: str,
+                            paths_exercise: list, paths_solution: list) -> tuple[int, list[str], list[str]]:
 
-
-def compile_files(paper: string) -> None:
-    # Change dir
-    file = f"{paper}.tex"
-    log.write(f"Generating PDF for file: {file}")
-    os.chdir("./generated/" + paper)
-    subprocess.run(
-        ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL
-    )
-    log.write("Finishing init PDF")
-    subprocess.run(
-        ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL
-    )
-    log.write("Finishing content")
-    subprocess.run(
-        ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL
-    )
-    log.write("Finishing references and alignments")
-    os.chdir("../..")
-    log.write("PDF generation finished for file: " + file)
-
-
-def generating_paper(paper: string, information: list) -> None:
-    global exerciseForProcessing
-    copy_template(paper)
-
-    # Read the template file as a single string
-    with open(f"./generated/{paper}/{paper}.tex", 'r', encoding="utf-8") as f:
-        data = f.read()
-
-    # Processing __PARAMETERS__ in the template
-    # [title, date, paper, description, version, revision, archive, doi, tags]
-    data = data.replace("__PAPER_TITLE__", information[0])
-    data = data.replace("__PAPER_DATE__", information[1])
-    data = data.replace("__PAPER_ID__", information[2])
-    data = data.replace("__PAPER_DESCRIPTION__", information[3])
-    data = data.replace("__PAPER_VERSION__", information[4])
-    data = data.replace("__PAPER_REVISION__", information[5])
-    data = data.replace("__PAPER_ARCHIVE__", information[6])
-    data = data.replace("__PAPER_DOI__", information[7])
-    data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
-
-    import_list = ""
-    previous_language = None
-
-    previous_language_time = None
-    list_TotalTime = {}
-    for i, (language, _, _, _, time) in enumerate(exerciseForProcessing):
-        # Initialisiere die Liste oder den Wert für die Sprache, falls nicht vorhanden
-        if language not in list_TotalTime:
-            list_TotalTime[language] = 0  # Initialisiere mit 0 für die Summierung
-
-        # Addiere die Zeit für jede Sprache
-        if language != previous_language_time:
-            list_TotalTime[language] += time
-        else:
-            list_TotalTime[language] += time  # Zeit wird weiterhin addiert
-
-    # Convert the times (min) into hours and minutes
-    for language, time in list_TotalTime.items():
-        if time >= 60:
-            hours = time // 60
-            minutes = time % 60
-            list_TotalTime[language] = f"{hours} h {minutes} min"
-        else:
-            list_TotalTime[language] = f"{time} min"
-
-    for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
-        if language != previous_language:
-            # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
-            import_list += f"\\section{{{translation_to_str('language_instruction', language)}: {list_TotalTime[language]}}}\n"
-            import_list += instruction_translation(language) + "\n\n"
-            previous_language = language
-        import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
-
-    data = data.replace("__PAPER_IMPORTS__", import_list)
-
-    formatted_total_time = ", ".join(
-        f"{language.capitalize()}: {time}" for language, time in list_TotalTime.items()
-    )
-
-    data = data.replace("__PAPER_TOTAL_TIME__", formatted_total_time)
-
-    # Extract all unique IDs from the exerciseForProcessing list
-    used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
-
-    # Join the IDs into a single string separated by commas
-    import_list_id = ', '.join(sorted(used_ids))
-
-    # Replace the placeholder with the generated list of IDs
-    data = data.replace("__PAPER_USED_ID__", import_list_id)
-
-    # Write the modified content back to the file
-    with open(f"./generated/{paper}/{paper}.tex", 'w', encoding="utf-8") as f:
-        f.write(data)
-    compile_files(paper)
-    log.write(f"Generated paper file: ./generated/{paper}/{paper}.tex")
-
-    return None
-
-
-def generating_solution_paper(paper: string, information: list) -> None:
-    global exerciseForProcessing
-    path = "solution" + paper
-    copy_template(path)
-
-    # Read the template file as a single string
-    with open(f"./generated/{path}/{path}.tex", 'r', encoding="utf-8") as f:
-        data = f.read()
-
-    # Processing __PARAMETERS__ in the template
-    # [title, date, paper, description, version, revision, archive, doi, tags]
-    data = data.replace("__PAPER_TITLE__", "Solution: " + information[0])
-    data = data.replace("__PAPER_DATE__", information[1])
-    data = data.replace("__PAPER_ID__", information[2])
-    data = data.replace("__PAPER_DESCRIPTION__", information[3])
-    data = data.replace("__PAPER_VERSION__", information[4])
-    data = data.replace("__PAPER_REVISION__", information[5])
-    data = data.replace("__PAPER_ARCHIVE__", information[6])
-    data = data.replace("__PAPER_DOI__", information[7])
-    data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
-
-    import_list = ""
-    previous_language = None
-
-    previous_language_time = None
-    list_TotalTime = {}
-    for i, (language, _, _, _, time) in enumerate(exerciseForProcessing):
-        # Initialisiere die Liste oder den Wert für die Sprache, falls nicht vorhanden
-        if language not in list_TotalTime:
-            list_TotalTime[language] = 0  # Initialisiere mit 0 für die Summierung
-
-        # Addiere die Zeit für jede Sprache
-        if language != previous_language_time:
-            list_TotalTime[language] += time
-        else:
-            list_TotalTime[language] += time  # Zeit wird weiterhin addiert
-
-    # Convert the times (min) into hours and minutes
-    for language, time in list_TotalTime.items():
-        if time >= 60:
-            hours = time // 60
-            minutes = time % 60
-            list_TotalTime[language] = f"{hours} h {minutes} min"
-        else:
-            list_TotalTime[language] = f"{time} min"
-
-    for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
-        if language != previous_language:
-            # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
-            import_list += f"\\section{{{translation_to_str('language_instruction', language)}: {list_TotalTime[language]}}}\n"
-            import_list += instruction_translation(language) + "\n\n"
-            previous_language = language
-        import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
-
-    data = data.replace("__PAPER_IMPORTS__", import_list)
-
-    formatted_total_time = ", ".join(
-        f"{language.capitalize()}: {time}" for language, time in list_TotalTime.items()
-    )
-
-    data = data.replace("__PAPER_TOTAL_TIME__", formatted_total_time)
-
-    previous_language = None
-    for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
-        if language != previous_language:
-            # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
-            import_list += f"\\section{{{translation_to_str('solution', language)}}}\n"
-            previous_language = language
-        import_list += f"\\input{{{paths_solution[i]}}}\\clearpage\n"
-
-    data = data.replace("__PAPER_IMPORTS__", import_list)
-
-    # Extract all unique IDs from the exerciseForProcessing list
-    used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
-
-    # Join the IDs into a single string separated by commas
-    import_list_id = ', '.join(sorted(used_ids))
-
-    # Replace the placeholder with the generated list of IDs
-    data = data.replace("__PAPER_USED_ID__", import_list_id)
-
-    # Write the modified content back to the file
-    with open(f"./generated/{path}/{path}.tex", 'w', encoding="utf-8") as f:
-        f.write(data)
-    compile_files(path)
-    log.write(f"Generated paper file: ./generated/{path}/{path}.tex")
-
-    return None
-
-
-def clear_absolute():  # Not used for bucket creation
-    """
-    Remove everything in the 'generated' folder.
-    """
-    try:
-        if os.path.exists("./generated"):
-            shutil.rmtree("./generated")
-            log.write("Removed 'generated' directory and its contents.")
-        else:
-            log.write("No 'generated' directory to remove.")
-    except Exception as e:
-        log.write(f"Error while clearing 'generated' directory: {e}")
-
-
-def clear_non_pdf():
-    # Check if the directory exists
-    if not os.path.exists("./generated"):
-        log.write("No 'generated' directory to clean.")
-        return
-
-    # Walk through the directory
-    for root, dirs, files in os.walk("./generated", topdown=False):
-        for file in files:
-            if not file.endswith(".pdf"):  # Keep only PDF files
-                os.remove(os.path.join(root, file))
-                log.write(f"Removed file: {os.path.join(root, file)}")
-        for dir_ in dirs:
-            dir_path = os.path.join(root, dir_)
-            # Remove directories if they are empty
-            if not os.listdir(dir_path):
-                os.rmdir(dir_path)
-                log.write(f"Removed empty directory: {dir_path}")
-
-    log.write("Cleaned 'generated' directory, keeping only PDF files.")
-
-
-def main(file: string) -> typing.Optional[None]:
-    global exerciseForProcessing  # Globale Variable deklarieren
-    clear_non_pdf()
-    try:
         with open(file, 'r', encoding="utf-8") as f:
             data = json.load(f)
-    except json.JSONDecodeError:
-        log.write(f"JSONDecodeError: {file} is not a valid JSON file")
+            f.close()
+        try:
+            id_exercise = data["id"]
+            category = data["category"]
+            cid = data["cid"]
+            time: int = data["time"]
+
+            score = data["nam_score"]
+            author = data["author"]
+            date = data["date"]
+            uuid = data["UUID"]
+            guid = data["GUID"]
+
+            time_str: str = f"{time // 60} h {time % 60} min" if time >= 60 else f"{time} min"
+            difficulty_str: str = self.difficulty_to_str(data["difficulty"], language)
+
+            tags = data["tags"]
+        except KeyError as e:
+            log.write(f"KeyError: {e} in {file}")
+            return (0, [""], [""])
+        except json.JSONDecodeError:
+            log.write(f"JSONDecodeError: {file} is not a valid JSON file")
+            return (0, [""], [""])
+        except PermissionError:
+            log.write(f"PermissionError: {file} is not accessible")
+            return (0, [""], [""])
+
+        # Generate dir
+        if not os.path.exists(f"./generated/exercise/{language}"):
+            os.makedirs(f"./generated/exercise/{language}")
+        if not os.path.exists(f"./generated/exercise/{language}/{id_exercise}"):
+            os.makedirs(f"./generated/exercise/{language}/{id_exercise}")
+        if not os.path.exists(f"./generated/solution/{language}"):
+            os.makedirs(f"./generated/solution/{language}")
+        if not os.path.exists(f"./generated/solution/{language}/{id_exercise}"):
+            os.makedirs(f"./generated/solution/{language}/{id_exercise}")
+
+        # Split the main field into title, content, and solution
+        main_content = data["main"]
+        title = main_content.get("title", "Unknown Title")
+        content = str(main_content.get("content", ""))
+        solution = str(main_content.get("solution", ""))
+
+        exercise_title = f"\\subsection{{{{{language.upper()} {cid} {id_exercise}{paper}V{version}}}: {title}}}\n"
+        header_information = f"\\textbf{{{self.translation_to_str("eta", language)}}}: {time_str} \\quad \\textit{{Nam-Score: {score}}} \\quad"
+
+        author_info = f"\\textit{{{self.translation_to_str('original', language)}}}\n\n" if author == "Original" else f"\\textit{{{self.translation_to_str('author', language)}: {author}}}\n\n"
+
+        try:
+            with open(path := raw + "/" + os.path.join(language, version, content), 'r',
+                      encoding="utf-8") as content_file:
+                content_lines: list[str] = content_file.read().splitlines()
+        except FileNotFoundError:
+            log.write(f"FileNotFoundError: {path} not found")
+            return (0, [""], [""])
+
+        with open(f"./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w',
+                  encoding="utf-8") as f:
+            f.write(exercise_title)
+            f.write(header_information)
+            f.write(author_info)
+
+            for line in content_lines:
+                f.write(line + "\n")
+
+            f.write(f"\n\\textbf{{{self.translation_to_str("category", language)}}}: {', '.join(category)}\n")
+            f.write(f"\\textbf{{{self.translation_to_str("difficulty", language)}}}: {difficulty_str}\n")
+            f.write(f"\\textbf{{{self.translation_to_str("tags", language)}}}: {', '.join(tags)}\n\n")
+            f.write(
+                f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} {self.translation_to_str("on_date", language)} {date}\n")
+        log.write(
+            f"Generated exercise file: ./generated/exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
+
+        with open(f"./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex", 'w',
+                  encoding="utf-8") as f:
+            f.write(exercise_title)
+            f.write(header_information)
+            f.write(author_info)
+
+            for line in content_lines:
+                f.write(line + "\n")
+
+            f.write("\\vspace{1em}\\hline\\vspace{1em}\n")
+            f.write("\\subsubsection{Solution}\n")
+
+            try:
+                with open(path := raw + "/" + os.path.join(language, version, solution), 'r',
+                          encoding="utf-8") as content_:  # Change to content_ because mypy
+                    solution_file: list[str] = content_.read().splitlines()
+                    for line in solution_file:
+                        f.write(line + "\n")
+            except FileNotFoundError:
+                log.write(f"FileNotFoundError: {path} not found")
+                return (0, [""], [""])
+
+            f.write(f"\n\\textbf{{{self.translation_to_str("category", language)}}}: {', '.join(category)}\n")
+            f.write(f"\\textbf{{{self.translation_to_str("difficulty", language)}}}: {difficulty_str}\n")
+            f.write(f"\\textbf{{{self.translation_to_str("tags", language)}}}: {', '.join(tags)}\n\n")
+            f.write(
+                f"\\textbf{{UUID}}: {uuid}~--~\\textit{{GUID}}: {guid} {self.translation_to_str("on_date", language)} {date}\n")
+        log.write(
+            f"Generated solution file: ./generated/solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}.tex")
+
+        paths_exercise.append(f"../exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
+        paths_solution.append(f"../solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
+
+        return data["time"], paths_exercise, paths_solution
+
+    def instruction_translation(self, language: str) -> str:
+        instruction_path = "translation/instruction_translation.json"
+        try:
+            with open(instruction_path, 'r', encoding="utf-8") as f:
+                data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            log.write(f"Error loading instruction translation file: {e}")
+            return "Unknown Instruction"
+
+        if language in data:
+            try:
+                with open(f"./translation/{data[language]}", 'r', encoding="utf-8") as content:
+                    return content.read()
+            except (FileNotFoundError, PermissionError) as e:
+                log.write(f"Error reading translation file for language '{language}': {e}")
+                return "Unknown Instruction"
+        else:
+            return f"Instruction not available for language: {language}"
+
+    def copy_template(self, paper: str) -> None:
+        # Check if the directory exists before attempting to copy
+        if not os.path.exists("./template"):
+            log.write("No 'template' directory to copy from.")
+            return
+
+        # Ensure the destination directory exists
+        destination_dir = f"./generated/{paper}"
+        os.makedirs(destination_dir, exist_ok=True)
+
+        # Copy only banko.cls and template.tex
+        files_to_copy = ["banko.cls", "template.tex"]
+        for file_name in files_to_copy:
+            source_path = os.path.join("./template", file_name)
+            destination_path = os.path.join(destination_dir, file_name)
+            if os.path.exists(source_path):
+                shutil.copy2(source_path, destination_path)
+            else:
+                log.write(f"File {file_name} not found in the template directory.")
+
+        # Rename template.tex to paper.tex
+        template_path = os.path.join(destination_dir, "template.tex")
+        new_path = os.path.join(destination_dir, f"{paper}.tex")
+        if os.path.exists(template_path):
+            os.rename(template_path, new_path)
+        log.write(f"Copied and renamed template files to {destination_dir}.")
+
+    def compile_files(self, paper: str) -> None:
+        # return None # -  Used only for testing - Compiling takes to long
+        # Change dir
+        file = f"{paper}.tex"
+        log.write(f"Generating PDF for file: {file}")
+        os.chdir("./generated/" + paper)
+        subprocess.run(
+            ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        log.write("Finishing init PDF")
+        subprocess.run(
+            ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        log.write("Finishing content")
+        subprocess.run(
+            ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        log.write("Finishing references and alignments")
+        os.chdir("../..")
+        log.write("PDF generation finished for file: " + file)
+
+    def exercise_and_times(self, data: str, exerciseForProcessing: list[tuple[str, str, str, str, int]],
+                           paths_exercise: list[str]) -> tuple[str, str]:
+        import_list = ""
+        previous_language = None
+
+        previous_language_time = None
+        list_TotalTime = {}
+        for i, (language, _, _, _, time) in enumerate(exerciseForProcessing):
+            # Initialisiere die Liste oder den Wert für die Sprache, falls nicht vorhanden
+            if language not in list_TotalTime:
+                list_TotalTime[language] = 0  # Initialisiere mit 0 für die Summierung
+
+            # Addiere die Zeit für jede Sprache
+            if language != previous_language_time:
+                list_TotalTime[language] += time
+            else:
+                list_TotalTime[language] += time  # Zeit wird weiterhin addiert
+
+        # Convert the times (min) into hours and minutes
+        formatted_TotalTime: dict[str, str] = {}
+
+        for language, time in list_TotalTime.items():
+            if time >= 60:
+                hours = time // 60
+                minutes = time % 60
+                formatted_TotalTime[language] = f"{hours} h {minutes} min"
+            else:
+                formatted_TotalTime[language] = f"{time} min"
+
+        for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
+            if language != previous_language:
+                # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
+                import_list += f"\\section{{{self.translation_to_str('language_instruction', language)}: {formatted_TotalTime[language]}}}\n"
+                import_list += self.instruction_translation(language) + "\n\n"
+                previous_language = language
+            import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
+
+        data = data.replace("__PAPER_IMPORTS__", import_list)
+
+        formatted_total_time = ", ".join(
+            f"{language.capitalize()}: {time}" for language, time in formatted_TotalTime.items()
+        )
+
+        data = data.replace("__PAPER_TOTAL_TIME__", formatted_total_time)
+
+        return data, import_list
+
+    def generating_paper(self, paper: str, information: list, paths_exercise: list,
+                         exerciseForProcessing: list[tuple[str, str, str, str, int]]) -> None:
+
+        self.copy_template(paper)
+
+        # Read the template file as a single str
+        with open(f"./generated/{paper}/{paper}.tex", 'r', encoding="utf-8") as f:
+            data = f.read()
+
+        # Processing __PARAMETERS__ in the template
+        # [title, date, paper, description, version, revision, archive, doi, tags]
+        data = data.replace("__PAPER_TITLE__", information[0])
+        data = data.replace("__PAPER_DATE__", information[1])
+        data = data.replace("__PAPER_ID__", information[2])
+        data = data.replace("__PAPER_DESCRIPTION__", information[3])
+        data = data.replace("__PAPER_VERSION__", information[4])
+        data = data.replace("__PAPER_REVISION__", information[5])
+        data = data.replace("__PAPER_ARCHIVE__", information[6])
+        data = data.replace("__PAPER_DOI__", information[7])
+        data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
+
+        data, _ = self.exercise_and_times(data, exerciseForProcessing, paths_exercise)
+
+        # Extract all unique IDs from the exerciseForProcessing list
+        used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
+
+        # Join the IDs into a single str separated by commas
+        import_list_id = ', '.join(sorted(used_ids))
+
+        # Replace the placeholder with the generated list of IDs
+        data = data.replace("__PAPER_USED_ID__", import_list_id)
+
+        # Write the modified content back to the file
+        with open(f"./generated/{paper}/{paper}.tex", 'w', encoding="utf-8") as f:
+            f.write(data)
+        self.compile_files(paper)
+        log.write(f"Generated paper file: ./generated/{paper}/{paper}.tex")
+
         return None
-    except PermissionError:
-        log.write(f"PermissionError: {file} is not accessible")
+
+    def generating_solution_paper(self, paper: str, information: list, paths_exercise: list,
+                                  paths_solution: list,
+                                  exerciseForProcessing: list[tuple[str, str, str, str, int]]) -> None:
+
+        path = "solution" + paper
+        self.copy_template(path)
+
+        # Read the template file as a single str
+        with open(f"./generated/{path}/{path}.tex", 'r', encoding="utf-8") as f:
+            data = f.read()
+
+        # Processing __PARAMETERS__ in the template
+        # [title, date, paper, description, version, revision, archive, doi, tags]
+        data = data.replace("__PAPER_TITLE__", "Solution: " + information[0])
+        data = data.replace("__PAPER_DATE__", information[1])
+        data = data.replace("__PAPER_ID__", information[2])
+        data = data.replace("__PAPER_DESCRIPTION__", information[3])
+        data = data.replace("__PAPER_VERSION__", information[4])
+        data = data.replace("__PAPER_REVISION__", information[5])
+        data = data.replace("__PAPER_ARCHIVE__", information[6])
+        data = data.replace("__PAPER_DOI__", information[7])
+        data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
+
+        data, import_list = self.exercise_and_times(data, exerciseForProcessing, paths_exercise)
+
+        previous_language = None
+        for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
+            if language != previous_language:
+                # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
+                import_list += f"\\section{{{self.translation_to_str('solution', language)}}}\n"
+                previous_language = language
+            import_list += f"\\input{{{paths_solution[i]}}}\\clearpage\n"
+
+        data = data.replace("__PAPER_IMPORTS__", import_list)
+
+        # Extract all unique IDs from the exerciseForProcessing list
+        used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
+
+        # Join the IDs into a single str separated by commas
+        import_list_id = ', '.join(sorted(used_ids))
+
+        # Replace the placeholder with the generated list of IDs
+        data = data.replace("__PAPER_USED_ID__", import_list_id)
+
+        # Write the modified content back to the file
+        with open(f"./generated/{path}/{path}.tex", 'w', encoding="utf-8") as f:
+            f.write(data)
+        self.compile_files(path)
+        log.write(f"Generated paper file: ./generated/{path}/{path}.tex")
+
         return None
-    except FileNotFoundError:
-        log.write(f"FileNotFoundError: {file} not found")
+
+    def clear_absolute(self):  # Not used for bucket creation
+        """
+        Remove everything in the 'generated' folder.
+        """
+        try:
+            if os.path.exists("./generated"):
+                shutil.rmtree("./generated")
+                log.write("Removed 'generated' directory and its contents.")
+            else:
+                log.write("No 'generated' directory to remove.")
+        except Exception as e:
+            log.write(f"Error while clearing 'generated' directory: {e}")
+
+    def clear_non_pdf(self):
+        # Check if the directory exists
+        if not os.path.exists("./generated"):
+            log.write("No 'generated' directory to clean.")
+            return
+
+        # Walk through the directory
+        for root, dirs, files in os.walk("./generated", topdown=False):
+            for file in files:
+                if not file.endswith(".pdf"):  # Keep only PDF files
+                    os.remove(os.path.join(root, file))
+                    log.write(f"Removed file: {os.path.join(root, file)}")
+            for dir_ in dirs:
+                dir_path = os.path.join(root, dir_)
+                # Remove directories if they are empty
+                if not os.listdir(dir_path):
+                    os.rmdir(dir_path)
+                    log.write(f"Removed empty directory: {dir_path}")
+
+        log.write("Cleaned 'generated' directory, keeping only PDF files.")
+
+    def main(self, file: str) -> typing.Optional[None]:
+
+        self.clear_non_pdf()
+        try:
+            with open(file, 'r', encoding="utf-8") as f:
+                data = json.load(f)
+        except json.JSONDecodeError:
+            log.write(f"JSONDecodeError: {file} is not a valid JSON file")
+            return None
+        except PermissionError:
+            log.write(f"PermissionError: {file} is not accessible")
+            return None
+        except FileNotFoundError:
+            log.write(f"FileNotFoundError: {file} not found")
+            return None
+
+        log.write("Generating paper from JSON file")
+
+        title = data["title"]
+        date = data["date"]
+        paper = data["paper"]
+        description = data["description"]
+        version = data["version"]
+        revision = data["revision"]
+        archive = data["archive"]
+        doi = data["doi"]
+        tags = data["tags"]
+        exercise = data["exercise"]
+
+        exerciseForProcessing: list[tuple[str, str, str, str]] = []
+
+        self.phrase_exercise(exercise, exerciseForProcessing)
+
+        updated_exerciseForProcessing: list[tuple[str, str, str, str, int]] = []
+        paths_exercise: list[str] = []
+        paths_solution: list[str] = []
+        for language, file, version, raw in exerciseForProcessing:
+            time, paths_exercise, paths_solution = self.generating_exercise(language, file, paper, version, raw,
+                                                                            paths_exercise,
+                                                                            paths_solution)
+            # Füge das aktualisierte Element zur neuen Liste hinzu
+            updated_exerciseForProcessing.append((language, file, version, raw, time))
+
+        self.generating_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags],
+                              paths_exercise, updated_exerciseForProcessing)
+        self.generating_solution_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags],
+                                       paths_exercise, paths_solution, updated_exerciseForProcessing)
+
+        self.clear_non_pdf()
+        log.create_log()
+
         return None
-
-    log.write("Generating paper from JSON file")
-
-    title = data["title"]
-    date = data["date"]
-    paper = data["paper"]
-    description = data["description"]
-    version = data["version"]
-    revision = data["revision"]
-    archive = data["archive"]
-    doi = data["doi"]
-    tags = data["tags"]
-    exercise = data["exercise"]
-
-    phrase_exercise(exercise)
-
-    updated_exerciseForProcessing = []
-
-    for language, file, version, raw in exerciseForProcessing:
-        time = generating_exercise(language, file, paper, version, raw)
-        # Füge das aktualisierte Element zur neuen Liste hinzu
-        updated_exerciseForProcessing.append((language, file, version, raw, time))
-
-    # Ersetze die ursprüngliche Liste durch die aktualisierte
-    exerciseForProcessing = updated_exerciseForProcessing
-
-    generating_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])
-    generating_solution_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])
-
-    clear_non_pdf()
-    log.create_log()
-
-    return None
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    if len(sys.argv) != 2:
+        print("Usage: python generation.py <json_file>")
+        sys.exit(1)
+
+    load_dotenv()
+
+    exercise_dir: str = os.getenv("EXERCISE") or ""
+    difficulty: str = os.getenv("DIFFICULTY") or ""  # Information about difficulty and translation
+    translation: str = os.getenv("TRANSLATION") or ""  # Information about translation
+
+    log.write("Exercise directory: " + exercise_dir + " Difficulty: " + difficulty + " Translation: " + translation)
+
+    gen = Generation(exercise_dir, difficulty, translation)
+
+    gen.main(sys.argv[1])
