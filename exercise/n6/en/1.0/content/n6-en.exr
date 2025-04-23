@@ -1,0 +1,41 @@
+Given a point set $P \subset \mathbb{R}^n$ with $|P| = kn$ for some $k \in \mathbb{N}_{\geq 2}$, where the points are in general position (i.e., no $n+1$ points lie in an $(n-1)$-dimensional hyperplane).
+
+A rotation traversal process works as follows:
+
+\begin{itemize}
+\item Choose a starting point $p_0 \in P$.
+
+\item Construct an $(n-1)$-hypersurface (a "surface of revolution") through this point.
+
+\item This hypersurface is continuously rotated in a fixed manner (e.g., according to a fixed orientation in space).
+
+\item As soon as another point $p_i \in P$ is "touched" by the surface (i.e., is located on the surface), $p_i$ becomes the new anchor point.
+
+\item The movement continues from there.
+
+\end{itemize}
+
+\subsubsection{Extension}
+
+\begin{itemize}
+
+\item Between each rotation, the orientation of the surface is changed using a given matrix of $SO(n)$ (i.e., each rotation is specified by a transition operator).
+
+\item Interpoint relationships are stored as a directed graph $G = (V, E)$, where a directed transition $p_i \to p_j$ exists if $p_j$ was reached by a feasible rotation of $p_i$.
+
+\end{itemize}
+
+\subsubsection{Exercises}
+
+\begin{enumerate}
+
+\item Prove or disprove: For certain point configurations (e.g., regular grids, random point clouds, points on spheres, or simplicial surfaces), the reachability graph is strongly connected.
+
+\item Find a general algorithm that, for any $n$ and point set $P$, decides whether complete reachability of all points is possible through the process.
+
+\item Investigate: How does reachability change when transition delays or random perturbations are introduced into the rotation?
+
+\item Formulate an optimization: Find a minimal rotation path through all points that respects the transition rules.
+
+\item Design a visualization (in 2D, 3D, or nD projections) that dynamically shows the process and graph.
+\end{enumerate}

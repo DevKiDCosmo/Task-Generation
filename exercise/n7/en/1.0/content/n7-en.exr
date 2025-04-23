@@ -1,0 +1,26 @@
+A curved space $\mathbb{R}^3$ with a smooth metric $g_{ij}(x, y, z)$, in which a wave function $\Psi(x, y, z, t)$ propagates. This satisfies the generalized wave equation:
+
+$$
+\square_g \Psi = \frac{1}{|g|} \partial_i \left( |g| g^{ij} \partial_j \Psi \right) - \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} = 0
+$
+
+with $|g| = \det(g_{ij})$ and $c$ as the local propagation velocity.
+
+Tasks:
+\begin{enumerate}
+\item Solve (symbolically or numerically) the wave equation in the special case of a spherically symmetric metric:
+
+\[ ds^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta \, d\phi^2\]
+
+with suitable boundary conditions (e.g., Dirichlet on a spherical surface $r = R$).
+
+\item Show that the solution $\Psi$ can be written as a superposition of eigenfunctions of the Laplace-Beltrami operators and explicitly calculate the first nontrivial modes.
+
+\item Calculate the total energy spectrum by integrating over space:
+\[
+E(t) = \int_{\Omega} \left[ \frac{1}{2} \left( \frac{\partial \Psi}{\partial t} \right)^2 + \frac{1}{2} g^{ij} \frac{\partial \Psi}{\partial x^i} \frac{\partial \Psi}{\partial x^j} \right] \sqrt{|g|} \, d^3x
+\]
+\item Investigate numerically or analytically how the energy is distributed over time – especially in the case of interference between two point sources with phase-shifted emission.
+
+\item Optional (Bonus): Model and visualize the effect of a time-dependent metric term, such as $g_{ij}(x, t)$, simulating a gravitational wave. Investigate how the interference structure and energy distribution change.
+\end{enumerate}

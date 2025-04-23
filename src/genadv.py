@@ -143,7 +143,7 @@ def translation_to_str(translation_key: str, language: str) -> str:
         return f"Unknown Translation for key: {translation_key}"
 
 
-def generating_exercise(language: string, file: string, paper: string, version: string, raw: string) -> None:
+def generating_exercise(language: string, file: string, paper: string, version: string, raw: string) -> typing.Optional[int]:
     global exerciseForProcessing
     with open(file, 'r', encoding="utf-8") as f:
         data = json.load(f)
@@ -153,7 +153,6 @@ def generating_exercise(language: string, file: string, paper: string, version: 
         category = data["category"]
         cid = data["cid"]
         time: int = data["time"]
-
         time: str = f"{time // 60} h {time % 60} min" if time >= 60 else f"{time} min"
 
         score = data["nam_score"]
@@ -165,13 +164,13 @@ def generating_exercise(language: string, file: string, paper: string, version: 
         tags = data["tags"]
     except KeyError as e:
         log.write(f"KeyError: {e} in {file}")
-        return None
+        return 0
     except json.JSONDecodeError:
         log.write(f"JSONDecodeError: {file} is not a valid JSON file")
-        return None
+        return 0
     except PermissionError:
         log.write(f"PermissionError: {file} is not accessible")
-        return None
+        return 0
 
     # Generate dir
     if not os.path.exists(f"./generated/exercise/{language}"):
@@ -258,7 +257,8 @@ def generating_exercise(language: string, file: string, paper: string, version: 
     paths_exercise.append(f"../exercise/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
     paths_solution.append(f"../solution/{language}/{id_exercise}/{paper}_{id_exercise}_{language}")
 
-    return None
+    return data["time"]
+
 
 def instruction_translation(language: str) -> str:
     instruction_path = "translation/instruction_translation.json"
@@ -355,19 +355,46 @@ def generating_paper(paper: string, information: list) -> None:
     data = data.replace("__PAPER_DOI__", information[7])
     data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
 
-
     import_list = ""
     previous_language = None
 
-    for i, (language, _, _, _) in enumerate(exerciseForProcessing):
+    previous_language_time = None
+    list_TotalTime = {}
+    for i, (language, _, _, _, time) in enumerate(exerciseForProcessing):
+        # Initialisiere die Liste oder den Wert für die Sprache, falls nicht vorhanden
+        if language not in list_TotalTime:
+            list_TotalTime[language] = 0  # Initialisiere mit 0 für die Summierung
+
+        # Addiere die Zeit für jede Sprache
+        if language != previous_language_time:
+            list_TotalTime[language] += time
+        else:
+            list_TotalTime[language] += time  # Zeit wird weiterhin addiert
+
+    # Convert the times (min) into hours and minutes
+    for language, time in list_TotalTime.items():
+        if time >= 60:
+            hours = time // 60
+            minutes = time % 60
+            list_TotalTime[language] = f"{hours} h {minutes} min"
+        else:
+            list_TotalTime[language] = f"{time} min"
+
+    for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
         if language != previous_language:
             # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
-            import_list += f"\\section{{{translation_to_str('language_instruction', language)}}}\n"
+            import_list += f"\\section{{{translation_to_str('language_instruction', language)}: {list_TotalTime[language]}}}\n"
             import_list += instruction_translation(language) + "\n\n"
             previous_language = language
         import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
 
     data = data.replace("__PAPER_IMPORTS__", import_list)
+
+    formatted_total_time = ", ".join(
+        f"{language.capitalize()}: {time}" for language, time in list_TotalTime.items()
+    )
+
+    data = data.replace("__PAPER_TOTAL_TIME__", formatted_total_time)
 
     # Extract all unique IDs from the exerciseForProcessing list
     used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
@@ -410,16 +437,47 @@ def generating_solution_paper(paper: string, information: list) -> None:
 
     import_list = ""
     previous_language = None
-    for i, (language, _, _, _) in enumerate(exerciseForProcessing):
+
+    previous_language_time = None
+    list_TotalTime = {}
+    for i, (language, _, _, _, time) in enumerate(exerciseForProcessing):
+        # Initialisiere die Liste oder den Wert für die Sprache, falls nicht vorhanden
+        if language not in list_TotalTime:
+            list_TotalTime[language] = 0  # Initialisiere mit 0 für die Summierung
+
+        # Addiere die Zeit für jede Sprache
+        if language != previous_language_time:
+            list_TotalTime[language] += time
+        else:
+            list_TotalTime[language] += time  # Zeit wird weiterhin addiert
+
+    # Convert the times (min) into hours and minutes
+    for language, time in list_TotalTime.items():
+        if time >= 60:
+            hours = time // 60
+            minutes = time % 60
+            list_TotalTime[language] = f"{hours} h {minutes} min"
+        else:
+            list_TotalTime[language] = f"{time} min"
+
+    for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
         if language != previous_language:
             # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
-            import_list += f"\\section{{{translation_to_str('language_instruction', language)}}}\n"
+            import_list += f"\\section{{{translation_to_str('language_instruction', language)}: {list_TotalTime[language]}}}\n"
             import_list += instruction_translation(language) + "\n\n"
             previous_language = language
         import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
 
+    data = data.replace("__PAPER_IMPORTS__", import_list)
+
+    formatted_total_time = ", ".join(
+        f"{language.capitalize()}: {time}" for language, time in list_TotalTime.items()
+    )
+
+    data = data.replace("__PAPER_TOTAL_TIME__", formatted_total_time)
+
     previous_language = None
-    for i, (language, _, _, _) in enumerate(exerciseForProcessing):
+    for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
         if language != previous_language:
             # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
             import_list += f"\\section{{{translation_to_str('solution', language)}}}\n"
@@ -483,6 +541,7 @@ def clear_non_pdf():
 
 
 def main(file: string) -> typing.Optional[None]:
+    global exerciseForProcessing  # Globale Variable deklarieren
     clear_non_pdf()
     try:
         with open(file, 'r', encoding="utf-8") as f:
@@ -512,8 +571,15 @@ def main(file: string) -> typing.Optional[None]:
 
     phrase_exercise(exercise)
 
+    updated_exerciseForProcessing = []
+
     for language, file, version, raw in exerciseForProcessing:
-        generating_exercise(language, file, paper, version, raw)
+        time = generating_exercise(language, file, paper, version, raw)
+        # Füge das aktualisierte Element zur neuen Liste hinzu
+        updated_exerciseForProcessing.append((language, file, version, raw, time))
+
+    # Ersetze die ursprüngliche Liste durch die aktualisierte
+    exerciseForProcessing = updated_exerciseForProcessing
 
     generating_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])
     generating_solution_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags])

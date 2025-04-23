@@ -1,0 +1,37 @@
+Investigate a spatiotemporally dependent wave phenomenon under the influence of stochastic noise. Let the wave function be given by:
+
+\[
+\Psi(x,t,\omega) = \psi(x,t) + N(x,t,\omega)
+\]
+
+where:
+\begin{itemize}
+\item $\psi(x,t) = A \sin(kx - \omega t)$ is a deterministic base wave,
+\item $N(x,t,\omega)$ is a Gaussian process with mean $0$ and stationary covariance function.
+\end{itemize}
+
+\textbf{Given:}
+
+A Gaussian process with a covariance function:
+
+\[
+K(x_1, x_2) = \sigma^2 \exp(-\lambda |x_1 - x_2|)
+\]
+
+and a known noise level $\sigma^2$ and scale parameter $\lambda > 0$.
+
+\subsubsection{Exercises}
+
+\begin{enumerate}
+\item \textbf{Modeling:} Formulate $N(x,t,\omega)$ as a Gaussian process with the above covariance function.
+
+\item \textbf{Simulation:} Simulate several realizations of $\Psi(x,t,\omega)$ on a grid $(x_i, t_j)$ for different parameters $\sigma^2$ and $k$.
+
+\item \textbf{Statistics:} Calculate the expected value $E[\Psi(x,t)]$ and the variance $Var[\Psi(x,t)]$ both analytically and from the simulated data.
+
+\item \textbf{Spectral Analysis:} Perform a Fourier decomposition of $\Psi(x,t,\omega)$ and calculate the spectral energy density.
+
+\item \textbf{Extreme Value Statistics:} Estimate the probability distribution of the maxima in the interval $[a, b]$ using maximum likelihood or Bayesian methods.
+
+\item[\textbf{(Bonus)}] \textbf{Reconstruction:} Train a neural network that reconstructs the base wave $\psi(x,t)$ from noisy observations $\Psi(x,t,\omega)$.
+\end{enumerate}

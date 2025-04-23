@@ -1,0 +1,25 @@
+{
+  "id": "No.7",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SH-3",
+  "time": 4430,
+  "nam_score": 8.2,
+  "author": "Original",
+  "date": "23.04.2025",
+  "UUID": "a2473154-ca61-44eb-a6f0-db200d780f39",
+  "GUID": "02398437-1073-4d3b-9f5c-2398579abc39",
+  "main": {
+    "title": "Analysis and classification of wave superpositions in curved space",
+    "content": "content/n7-en.exr",
+    "solution": "solution/n7-en.exr"
+  },
+  "difficulty": 8,
+  "tags": [
+    "Analysis",
+    "Classification",
+    "Waves",
+    "Curvature of space"
+  ]
+}
