@@ -7,8 +7,12 @@ import os
 import typing
 import log as lg
 # import mypy
+import asyncio
 from dotenv import load_dotenv
+import aiofiles
+
 log = lg.Log()
+
 
 class Generation():
     def __init__(self, exercideDIR: str, difficulty_: str, translation_: str):
@@ -143,7 +147,6 @@ class Generation():
 
         with open(file, 'r', encoding="utf-8") as f:
             data = json.load(f)
-            f.close()
         try:
             id_exercise = data["id"]
             category = data["category"]
@@ -297,32 +300,26 @@ class Generation():
             os.rename(template_path, new_path)
         log.write(f"Copied and renamed template files to {destination_dir}.")
 
-    def compile_files(self, paper: str) -> None:
-        # return None # -  Used only for testing - Compiling takes to long
-        # Change dir
+    async def compile_files(self, paper: str) -> None:
+        # Generiere den Dateinamen
         file = f"{paper}.tex"
         log.write(f"Generating PDF for file: {file}")
-        os.chdir("./generated/" + paper)
-        subprocess.run(
-            ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-        log.write("Finishing init PDF")
-        subprocess.run(
-            ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-        log.write("Finishing content")
-        subprocess.run(
-            ["xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-        log.write("Finishing references and alignments")
-        os.chdir("../..")
-        log.write("PDF generation finished for file: " + file)
+
+        # Setze den Arbeitsordner für die Kompilierung
+        working_dir = os.path.join("./generated", paper)
+
+        # Führe die Kompilierung mit dem angegebenen Arbeitsordner aus
+        for step in ["init PDF", "content", "references and alignments"]:
+            process = await asyncio.create_subprocess_exec(
+                "xelatex.exe", "--shell-escape", "-synctex=1", "-interaction=nonstopmode", file,
+                cwd=working_dir,
+                stdout=asyncio.subprocess.DEVNULL,
+                stderr=asyncio.subprocess.DEVNULL
+            )
+            await process.communicate()
+            log.write(f"Finishing {step} for file: {file}")
+
+        log.write(f"PDF generation finished for file: {file}")
 
     def exercise_and_times(self, data: str, exerciseForProcessing: list[tuple[str, str, str, str, int]],
                            paths_exercise: list[str]) -> tuple[str, str]:
@@ -371,14 +368,14 @@ class Generation():
 
         return data, import_list
 
-    def generating_paper(self, paper: str, information: list, paths_exercise: list,
-                         exerciseForProcessing: list[tuple[str, str, str, str, int]]) -> None:
+    async def generating_paper(self, paper: str, information: list, paths_exercise: list,
+                               exerciseForProcessing: list[tuple[str, str, str, str, int]]) -> None:
 
-        self.copy_template(paper)
+        await asyncio.to_thread(self.copy_template, paper)
 
         # Read the template file as a single str
-        with open(f"./generated/{paper}/{paper}.tex", 'r', encoding="utf-8") as f:
-            data = f.read()
+        async with aiofiles.open(f"./generated/{paper}/{paper}.tex", 'r', encoding="utf-8") as f:
+            data = await f.read()
 
         # Processing __PARAMETERS__ in the template
         # [title, date, paper, description, version, revision, archive, doi, tags]
@@ -404,23 +401,23 @@ class Generation():
         data = data.replace("__PAPER_USED_ID__", import_list_id)
 
         # Write the modified content back to the file
-        with open(f"./generated/{paper}/{paper}.tex", 'w', encoding="utf-8") as f:
-            f.write(data)
-        self.compile_files(paper)
+        async with aiofiles.open(f"./generated/{paper}/{paper}.tex", 'w', encoding="utf-8") as f:
+            await f.write(data)
+
         log.write(f"Generated paper file: ./generated/{paper}/{paper}.tex")
 
         return None
 
-    def generating_solution_paper(self, paper: str, information: list, paths_exercise: list,
-                                  paths_solution: list,
-                                  exerciseForProcessing: list[tuple[str, str, str, str, int]]) -> None:
+    async def generating_solution_paper(self, paper: str, information: list, paths_exercise: list,
+                                        paths_solution: list,
+                                        exerciseForProcessing: list[tuple[str, str, str, str, int]]) -> None:
 
         path = "solution" + paper
-        self.copy_template(path)
+        await asyncio.to_thread(self.copy_template, path)
 
         # Read the template file as a single str
-        with open(f"./generated/{path}/{path}.tex", 'r', encoding="utf-8") as f:
-            data = f.read()
+        async with aiofiles.open(f"./generated/{path}/{path}.tex", 'r', encoding="utf-8") as f:
+            data = await f.read()
 
         # Processing __PARAMETERS__ in the template
         # [title, date, paper, description, version, revision, archive, doi, tags]
@@ -456,9 +453,9 @@ class Generation():
         data = data.replace("__PAPER_USED_ID__", import_list_id)
 
         # Write the modified content back to the file
-        with open(f"./generated/{path}/{path}.tex", 'w', encoding="utf-8") as f:
-            f.write(data)
-        self.compile_files(path)
+        async with aiofiles.open(f"./generated/{path}/{path}.tex", 'w', encoding="utf-8") as f:
+            await f.write(data)
+
         log.write(f"Generated paper file: ./generated/{path}/{path}.tex")
 
         return None
@@ -478,27 +475,54 @@ class Generation():
 
     def clear_non_pdf(self):
         # Check if the directory exists
-        if not os.path.exists("./generated"):
-            log.write("No 'generated' directory to clean.")
-            return
+        try:
+            if not os.path.exists("./generated"):
+                log.write("No 'generated' directory to clean.")
+                return
 
-        # Walk through the directory
-        for root, dirs, files in os.walk("./generated", topdown=False):
-            for file in files:
-                if not file.endswith(".pdf"):  # Keep only PDF files
-                    os.remove(os.path.join(root, file))
-                    log.write(f"Removed file: {os.path.join(root, file)}")
-            for dir_ in dirs:
-                dir_path = os.path.join(root, dir_)
-                # Remove directories if they are empty
-                if not os.listdir(dir_path):
-                    os.rmdir(dir_path)
-                    log.write(f"Removed empty directory: {dir_path}")
+            # Walk through the directory
+            for root, dirs, files in os.walk("./generated", topdown=False):
+                for file in files:
+                    if not file.endswith(".pdf"):  # Keep only PDF files
+                        os.remove(os.path.join(root, file))
+                        log.write(f"Removed file: {os.path.join(root, file)}")
+                for dir_ in dirs:
+                    dir_path = os.path.join(root, dir_)
+                    # Remove directories if they are empty
+                    if not os.listdir(dir_path):
+                        os.rmdir(dir_path)
+                        log.write(f"Removed empty directory: {dir_path}")
 
-        log.write("Cleaned 'generated' directory, keeping only PDF files.")
+            log.write("Cleaned 'generated' directory, keeping only PDF files.")
+        except Exception as e:
+            log.write(f"Error while cleaning 'generated' directory: {e}")
 
-    def main(self, file: str) -> typing.Optional[None]:
+    async def async_compile(self, paper, title, date, description, version, revision, archive, doi, tags,
+                            paths_exercise, paths_solution, updated_exerciseForProcessing):
+        # Schritt 1: Warte, bis alle tex-Exercise-Dateien erstellt sind
+        for language, file, version, raw, time in updated_exerciseForProcessing:
+            await asyncio.to_thread(self.generating_exercise, language, file, paper, version, raw, paths_exercise,
+                                    paths_solution)
 
+        # Schritt 2: Generiere die Papers nacheinander
+        await asyncio.gather(
+            self.generating_paper(
+                paper, [title, date, paper, description, version, revision, archive, doi, tags],
+                paths_exercise, updated_exerciseForProcessing
+            ),
+            self.generating_solution_paper(
+                paper, [title, date, paper, description, version, revision, archive, doi, tags],
+                paths_exercise, paths_solution, updated_exerciseForProcessing
+            )
+        )
+
+        # Schritt 3: Kompiliere die PDFs gleichzeitig
+        await asyncio.gather(
+            self.compile_files(paper),
+            self.compile_files("solution" + paper)
+        )
+
+    async def main(self, file: str) -> typing.Optional[None]:
         self.clear_non_pdf()
         try:
             with open(file, 'r', encoding="utf-8") as f:
@@ -528,23 +552,26 @@ class Generation():
 
         exerciseForProcessing: list[tuple[str, str, str, str]] = []
 
+        # TODO: Process the exercise information faster by asyncio
         self.phrase_exercise(exercise, exerciseForProcessing)
 
         updated_exerciseForProcessing: list[tuple[str, str, str, str, int]] = []
         paths_exercise: list[str] = []
         paths_solution: list[str] = []
+
+        # TODO: Fasten the process by using asyncio.gather
+
         for language, file, version, raw in exerciseForProcessing:
             time, paths_exercise, paths_solution = self.generating_exercise(language, file, paper, version, raw,
                                                                             paths_exercise,
                                                                             paths_solution)
-            # Füge das aktualisierte Element zur neuen Liste hinzu
             updated_exerciseForProcessing.append((language, file, version, raw, time))
 
-        self.generating_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags],
-                              paths_exercise, updated_exerciseForProcessing)
-        self.generating_solution_paper(paper, [title, date, paper, description, version, revision, archive, doi, tags],
-                                       paths_exercise, paths_solution, updated_exerciseForProcessing)
+        # Warte auf die Fertigstellung der asynchronen Kompilierung
+        await self.async_compile(paper, title, date, description, version, revision, archive, doi, tags, paths_exercise,
+                                 paths_solution, updated_exerciseForProcessing)
 
+        # Aufräumen nach Abschluss aller Schritte
         self.clear_non_pdf()
         log.create_log()
 
@@ -558,12 +585,14 @@ if __name__ == "__main__":
 
     load_dotenv()
 
-    exercise_dir: str = os.getenv("EXERCISE") or ""
-    difficulty: str = os.getenv("DIFFICULTY") or ""  # Information about difficulty and translation
-    translation: str = os.getenv("TRANSLATION") or ""  # Information about translation
+    exercise_dir: str = os.getenv("EXERCISE") or "./exercise"  # Directory for exercises
+    difficulty: str = os.getenv(
+        "DIFFICULTY") or "translation/difficulty.json"  # Information about difficulty and translation
+    translation: str = os.getenv("TRANSLATION") or "translation/translation.json"  # Information about translation
 
     log.write("Exercise directory: " + exercise_dir + " Difficulty: " + difficulty + " Translation: " + translation)
 
     gen = Generation(exercise_dir, difficulty, translation)
 
-    gen.main(sys.argv[1])
+    # Starte die asynchrone Hauptmethode
+    asyncio.run(gen.main(sys.argv[1]))
