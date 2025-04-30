@@ -1,0 +1,3 @@
+Gegeben sei ein Kreis mit Mittelpunkt $O$ und Radius $r=10$. Ein Punkt $P$ liegt außerhalb des Kreises und hat einen Abstand von $OP=17$. Bestimmen Sie die Länge der Tangente von $P$ an den Kreis und erläutern Sie die Berechnung mithilfe des Satzes des Pythagoras.
+
+Erklären Sie, warum die Länge der Tangente nur von der Differenz zwischen den Abständen zwischen Punkt und Mittelpunkt und dem Radius des Kreises abhängt.

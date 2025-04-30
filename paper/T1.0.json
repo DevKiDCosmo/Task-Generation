@@ -1,0 +1,56 @@
+{
+  "title": "Competition",
+  "date": "29.04.2025",
+  "paper": "T1.0",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "198527-932",
+  "doi": "10.5281/zenodo.15305106",
+  "description": "Exercise Collection for a Competition",
+  "exercise": {
+    "t1": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "t2": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "t3": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
+  },
+  "tags": [
+    "problem solving"
+  ],
+  "UUID": "...",
+  "GUID": "..."
+}

@@ -1,0 +1,22 @@
+{
+  "id": "Test.1",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SH-5",
+  "time": 60,
+  "nam_score": 4.3,
+  "author": "Original",
+  "date": "29.04.2025",
+  "UUID": "02853973-ca61-44eb-a6f0-109298209174",
+  "GUID": "2c0a8372-1073-4d3b-9f5c-209385763737",
+  "main": {
+    "title": "Number theory – Diophantine equations",
+    "content": "content/t1-en.exr",
+    "solution": "solution/t1-en.exr"
+  },
+  "difficulty": 2,
+  "tags": [
+    "Number theory"
+  ]
+}
