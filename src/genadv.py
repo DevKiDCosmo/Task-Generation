@@ -1,9 +1,12 @@
+import datetime
 import shutil, sys, os
 import typing, json
 import log as lg
 # import mypy
 import asyncio, aiofiles
 from dotenv import load_dotenv
+from functools import lru_cache
+import datetime
 
 log = lg.Log()
 
@@ -14,8 +17,9 @@ class Generation():
         self.difficulty = difficulty_
         self.translation = translation_
 
-    def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> list[
-        tuple[str, str, str, str]]:
+    async def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> \
+            list[
+                tuple[str, str, str, str]]:
 
         # Collect keys to remove
         keys_to_remove = []
@@ -33,8 +37,9 @@ class Generation():
 
             # Reading JSON file
             try:
-                with open(f"./exercise/{information_access}.json", 'r', encoding="utf-8") as f:
-                    data = json.load(f)
+                async with aiofiles.open(f"./exercise/{information_access}.json", 'r', encoding="utf-8") as f:
+                    content = await f.read()  # Asynchrones Lesen der Datei
+                    data = json.loads(content)  # JSON-Daten parsen
             except json.JSONDecodeError:
                 log.write(f"JSONDecodeError: {information_access}.json is not a valid JSON file")
                 keys_to_remove.append(information_access)
@@ -104,11 +109,12 @@ class Generation():
         # log.write(exerciseForProcessing)
         return exerciseForProcessing
 
-    def validating_exercise(self, exercise: str, uuid: list[str], guid: list[str]) -> tuple[bool, str, str]:
+    async def validating_exercise(self, exercise: str, uuid: list[str], guid: list[str]) -> tuple[bool, str, str]:
         # Validate the JSON file
         try:
-            with open(exercise, 'r', encoding="utf-8") as f:
-                data = json.load(f)
+            async with aiofiles.open(exercise, 'r', encoding="utf-8") as f:
+                content = await f.read()  # Asynchrones Lesen der Datei
+                data_exercise = json.loads(content)  # JSON-Daten parsen
         except json.JSONDecodeError:
             log.write(f"JSONDecodeError: {exercise} is not a valid JSON file")
             return False, "", ""
@@ -119,50 +125,27 @@ class Generation():
             log.write(f"FileNotFoundError: {exercise} not found in exercise folder")
             return False, "", ""
 
-        # Search in exercise a json where the file is located
+        exercise_id = exercise.replace(self.exercise_dir, "").split("/")[0].replace(".json", "")
+        task_path = os.path.join(self.exercise_dir, exercise_id + ".json")
 
-        clean_path = exercise.replace(exercise_dir, "").replace(".json", "").lstrip("/")
-        found_json, found_path = "", ""
-        for root, _, files in os.walk(exercise_dir):
-            for file in files:
-                file_path = os.path.join(root, file)
-                try:
-                    with open(file_path, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                        if clean_path in content:
-                            log.write(f"Found in File: {file_path}")
-                            found_json = file_path
-                            found_path = file_path.replace(exercise_dir, "").replace(".json", "").lstrip("/")
-                except (FileNotFoundError, PermissionError, UnicodeDecodeError) as e:
-                    log.write(f"Error while reading file {file_path}: {e}")
-
-        # Read founded JSON after UUID
-        with open(found_json, 'r', encoding="utf-8") as f:
-            data = json.load(f)
-
-        with open(exercise, 'r', encoding="utf-8") as f:
-            data_exercise = json.load(f)
-
-        data = data["UUID"]
-        data_exercise_ = data_exercise["UUID"]
-
-        # Check if the UUIDs match
-        if data != data_exercise_:
-            log.write(f"UUID mismatch: {data} != {data_exercise_} in {exercise}")
+        # Read the task JSON file
+        try:
+            async with aiofiles.open(task_path, 'r', encoding="utf-8") as f:
+                task_content = await f.read()
+                data_task = json.loads(task_content)
+        except (FileNotFoundError, json.JSONDecodeError):
+            log.write(f"Error reading task file: {task_path}")
             return False, "", ""
 
-        # Check if UUID is unique
+        # Check if GUID is unique
         if data_exercise["GUID"] in guid:
-            log.write(f"GUID {data} is not unique in {exercise}")
+            log.write(f"GUID {data_exercise['GUID']} is not unique in {exercise}")
             return False, "", ""
 
-        # Replace everything after /
-        id = exercise.replace(exercise_dir, "").split("/")[0].replace(".json", "")
-
-        # Check UUID
+        # Check if UUID is unique to its task
         if data_exercise["UUID"] in uuid:
-            if found_path != id:
-                log.write("UUID is not unique in " + found_json)
+            if data_task["UUID"] != data_exercise["UUID"]:
+                log.write(f"UUID {data_exercise['UUID']} is not unique to its exercise in {task_path} and {exercise}")
                 return False, "", ""
 
         keys = ["id", "category", "cid", "time", "nam_score", "author", "date", "UUID", "GUID", "difficulty", "tags",
@@ -178,7 +161,7 @@ class Generation():
                 log.write(f"Key {key} not found in {exercise}")
                 return False, "", ""
 
-        return True, data, data_exercise["GUID"]
+        return True, data_exercise["UUID"], data_exercise["GUID"]
 
     def difficulty_to_str(self, difficulty_: int, language: str) -> str:
         with open(self.difficulty, 'r', encoding="utf-8") as f:
@@ -392,7 +375,7 @@ class Generation():
         log.write(f"PDF generation finished for file: {file}")
 
     def exercise_and_times(self, data: str, exerciseForProcessing: list[tuple[str, str, str, str, int]],
-                           paths_exercise: list[str]) -> tuple[str, str]:
+                           paths_exercise: list[str], solution: str = "") -> str:
         import_list = ""
         previous_language = None
 
@@ -428,6 +411,8 @@ class Generation():
                 previous_language = language
             import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
 
+        import_list += solution
+
         data = data.replace("__PAPER_IMPORTS__", import_list)
 
         formatted_total_time = ", ".join(
@@ -436,7 +421,7 @@ class Generation():
 
         data = data.replace("__PAPER_TOTAL_TIME__", formatted_total_time)
 
-        return data, import_list
+        return data
 
     async def generating_paper(self, paper: str, information: list, paths_exercise: list,
                                exerciseForProcessing: list[tuple[str, str, str, str, int]]) -> None:
@@ -459,7 +444,7 @@ class Generation():
         data = data.replace("__PAPER_DOI__", information[7])
         data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
 
-        data, _ = self.exercise_and_times(data, exerciseForProcessing, paths_exercise)
+        data = self.exercise_and_times(data, exerciseForProcessing, paths_exercise)
 
         # Extract all unique IDs from the exerciseForProcessing list
         used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
@@ -501,9 +486,9 @@ class Generation():
         data = data.replace("__PAPER_DOI__", information[7])
         data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
 
-        data, import_list = self.exercise_and_times(data, exerciseForProcessing, paths_exercise)
-
         previous_language = None
+        import_list = ""
+
         for i, (language, _, _, _, _) in enumerate(exerciseForProcessing):
             if language != previous_language:
                 # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
@@ -511,7 +496,7 @@ class Generation():
                 previous_language = language
             import_list += f"\\input{{{paths_solution[i]}}}\\clearpage\n"
 
-        data = data.replace("__PAPER_IMPORTS__", import_list)
+        data = self.exercise_and_times(data, exerciseForProcessing, paths_exercise, import_list)
 
         # Extract all unique IDs from the exerciseForProcessing list
         used_ids = {os.path.basename(path).split('_')[1] for path in paths_exercise}
@@ -569,13 +554,6 @@ class Generation():
 
     async def async_compile(self, paper, title, date, description, version, revision, archive, doi, tags,
                             paths_exercise, paths_solution, updated_exerciseForProcessing):
-        # Schritt 1: Warte, bis alle tex-Exercise-Dateien erstellt sind
-
-        for language, file, version, raw, time in updated_exerciseForProcessing:
-            await asyncio.to_thread(self.generating_exercise, language, file, paper, version, raw, paths_exercise,
-                                    paths_solution)
-
-        # Schritt 2: Generiere die Papers nacheinander
         await asyncio.gather(
             self.generating_paper(
                 paper, [title, date, paper, description, version, revision, archive, doi, tags],
@@ -587,13 +565,13 @@ class Generation():
             )
         )
 
-        # Schritt 3: Kompiliere die PDFs gleichzeitig
         await asyncio.gather(
             self.compile_files(paper),
             self.compile_files("solution" + paper)
         )
 
     async def main(self, file: str) -> typing.Optional[None]:
+        log.create_log()
         self.clear_non_pdf()
         try:
             with open(file, 'r', encoding="utf-8") as f:
@@ -626,23 +604,29 @@ class Generation():
         # TODO: Process the exercise information faster by asyncio
         # TODO: Checking for new version format.
         # TODO: Caching
-        exerciseForProcessing = self.phrase_exercise(exercise, exerciseForProcessing)
+        exerciseForProcessing = await self.phrase_exercise(exercise, exerciseForProcessing)
         uuid_list: list[str] = []
         guid_list: list[str] = []
         for i, (language, file, version, raw) in enumerate(exerciseForProcessing):
             log.write(f"Processing exercise: {file} {i + 1} / {len(exerciseForProcessing)}")
-            case, uuid, guid = self.validating_exercise(file, uuid_list, guid_list)
+            case, uuid, guid = await self.validating_exercise(file, uuid_list, guid_list)
+            log.write("Registred UUID: " + uuid + " GUID: " + guid)
             if not case:
                 log.write("Invalid exercise file: " + file)
                 exit(1)
             uuid_list.append(uuid)
             guid_list.append(guid)
 
-        # Check if every UUID and GUID are unique
-
         updated_exerciseForProcessing: list[tuple[str, str, str, str, int]] = []
         paths_exercise: list[str] = []
         paths_solution: list[str] = []
+
+        # ! Warning: DON'T REMOVE IT AGAIN
+        for language, file, version, raw in exerciseForProcessing:
+            time, paths_exercise, paths_solution = self.generating_exercise(language, file, paper, version, raw,
+                                                                            paths_exercise,
+                                                                            paths_solution)
+            updated_exerciseForProcessing.append((language, file, version, raw, time))
 
         # Warte auf die Fertigstellung der asynchronen Kompilierung
         await self.async_compile(paper, title, date, description, version, revision, archive, doi, tags, paths_exercise,
@@ -650,12 +634,15 @@ class Generation():
 
         # Aufräumen nach Abschluss aller Schritte
         self.clear_non_pdf()
-        log.create_log()
 
         return None
 
 
 if __name__ == "__main__":
+
+    # Starting Timer
+    start = datetime.datetime.now()
+
     if len(sys.argv) != 2:
         log.write("Usage: python generation.py <json_file>")
         sys.exit(1)
@@ -673,3 +660,6 @@ if __name__ == "__main__":
 
     # Starte die asynchrone Hauptmethode
     asyncio.run(gen.main(sys.argv[1]))
+
+    end = datetime.datetime.now()
+    log.write("Execution time: " + str(end - start))

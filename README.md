@@ -65,8 +65,12 @@ Generating PDFs with JSON Exercise
 }
 ```
 
-Struture of exercise files
+Structure of exercise files
 
 exercise/id/language/version/things you have
 
 Note: I use the themes Material Darker and at daytime Solarized Light (Material).
+
+
+TODO: Create USERS etc. Database and API, also a new type of section (Correction).
+TODO: Max Points

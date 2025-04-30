@@ -1,0 +1,443 @@
+language;text;level
+"en";"Hello";1
+"en";"Goodbye";1
+"en";"Thank you";1
+"en";"Please";1
+"en";"Yes";1
+"en";"This is a simple sentence.";1
+"en";"The cat is on the mat.";1
+"en";"The quick brown fox jumps over the lazy dog.";2
+"en";"She enjoys reading books in her free time.";2
+"en";"Complex sentences often include subordinate clauses.";3
+"en";"Complex sentences often include subordinate clauses.";3
+"en";"Learning a new language can be challenging but rewarding.";3
+"en";"Advanced texts use sophisticated vocabulary and structures.";4
+"en";"Understanding abstract concepts requires critical thinking.";4
+"en";"Philosophical discussions often involve nuanced arguments.";5
+"en";"Scientific papers demand precision and clarity in expression.";5
+"en";"Children love playing in the park.";1
+"en";"Apples and bananas are healthy snacks.";1
+"en";"The sun rises in the east and sets in the west.";2
+"en";"She is preparing for her upcoming exams.";2
+"en";"Writing essays helps improve critical thinking skills.";3
+"en";"Many students struggle with time management.";3
+"en";"Research papers require extensive background study.";4
+"en";"Analyzing data is a key skill in scientific research.";4
+"en";"Quantum mechanics explores the behavior of particles.";5
+"en";"Artificial intelligence is transforming industries.";5
+"en";"Birds build nests to protect their eggs.";1
+"en";"Rainbows appear after it rains and the sun shines.";1
+"en";"Mountains are formed by tectonic plate movements.";2
+"en";"She is learning to play the piano.";2
+"en";"Understanding grammar rules is essential for writing.";3
+"en";"Group discussions enhance collaborative learning.";3
+"en";"Advanced algorithms solve complex problems.";4
+"en";"Critical reviews help refine academic work.";4
+"en";"Philosophy examines the nature of existence.";5
+"en";"Space exploration expands human knowledge.";5
+"en";"Frogs live in ponds and eat insects.";1
+"en";"Books are a great source of knowledge.";1
+"en";"Plants need sunlight and water to grow.";2
+"en";"She enjoys painting landscapes in her free time.";2
+"en";"Learning history helps us understand the present.";3
+"en";"Debates encourage logical reasoning and articulation.";3
+"en";"Scientific journals publish peer-reviewed articles.";4
+"en";"Statistical analysis is crucial in research.";4
+"en";"Genetic engineering raises ethical questions.";5
+"en";"Climate change impacts ecosystems worldwide.";5
+"en";"Fish swim in water and breathe through gills.";1
+"en";"Stars twinkle in the night sky.";1
+"en";"Rivers flow from mountains to oceans.";2
+"en";"She is practicing yoga to stay healthy.";2
+"en";"Understanding poetry requires interpretation skills.";3
+"en";"Case studies provide real-world learning experiences.";3
+"en";"Advanced mathematics is used in engineering.";4
+"en";"Peer feedback improves the quality of work.";4
+"en";"Philosophical theories shape modern thought.";5
+"en";"Space telescopes capture distant galaxies.";5
+"en";"Bees collect nectar to make honey.";1
+"en";"Trees provide shade and oxygen.";1
+"en";"Volcanoes erupt when magma reaches the surface.";2
+"en";"She is learning to cook traditional recipes.";2
+"en";"Studying geography helps us understand the Earth.";3
+"en";"Workshops provide hands-on learning opportunities.";3
+"en";"Advanced chemistry explores molecular interactions.";4
+"en";"Editing drafts improves the final output.";4
+"en";"Artificial neural networks mimic the human brain.";5
+"en";"Renewable energy sources are vital for sustainability.";5
+"en";"Butterflies have colorful wings.";1
+"en";"Clouds are made of tiny water droplets.";1
+"en";"Deserts are dry and receive little rainfall.";2
+"en";"She is training for a marathon.";2
+"en";"Understanding literature enhances cultural awareness.";3
+"en";"Seminars provide insights into specialized topics.";3
+"en";"Advanced physics explains the laws of nature.";4
+"en";"Collaborative projects foster teamwork.";4
+"en";"Philosophical debates question fundamental beliefs.";5
+"en";"Scientific discoveries drive technological progress.";5
+"en";"Ants work together to build their colonies.";1
+"en";"Rain helps plants grow.";1
+"en";"Forests are home to many animals.";2
+"en";"She is learning to play chess.";2
+"en";"Understanding economics helps in decision-making.";3
+"en";"Presentations improve public speaking skills.";3
+"en";"Advanced biology studies cellular processes.";4
+"en";"Peer-reviewed research ensures credibility.";4
+"en";"Philosophical texts explore human consciousness.";5
+"en";"Space missions require precise calculations.";5
+"en";"Birds migrate to warmer regions in winter.";1
+"en";"Fruits are rich in vitamins.";1
+"en";"Earthquakes occur due to tectonic movements.";2
+"en";"She is practicing her dance routine.";2
+"en";"Learning languages broadens communication skills.";3
+"en";"Case studies analyze real-world scenarios.";3
+"en";"Advanced robotics integrates multiple disciplines.";4
+"en";"Critical thinking is essential in problem-solving.";4
+"en";"Philosophical inquiries address ethical dilemmas.";5
+"en";"Scientific advancements improve healthcare.";5
+"de"; "Das ist ein einfacher Satz.";1
+"de"; "Die Katze sitzt auf der Matte.";1
+"de"; "Der schnelle braune Fuchs springt über den faulen Hund.";2
+"de"; "Sie liest gerne Bücher in ihrer Freizeit.";2
+"de"; "Komplexe Sätze enthalten oft Nebensätze.";3
+"de"; "Eine neue Sprache zu lernen kann herausfordernd, aber lohnend sein.";3
+"de"; "Fortgeschrittene Texte verwenden anspruchsvokabular und komplexe Strukturen.";4
+"de"; "Abstrakte Konzepte zu verstehen erfordert kritisches Denken.";4
+"de"; "Philosophische Diskussionen beinhalten oft nuancierte Argumente.";5
+"de"; "Wissenschaftliche Arbeiten erfordern Präzision und Klarheit im Ausdruck.";5
+"de"; "Kinder spielen gerne im Park.";1
+"de"; "Äpfel und Bananen sind gesunde Snacks.";1
+"de"; "Die Sonne geht im Osten auf und im Westen unter.";2
+"de"; "Sie bereitet sich auf ihre bevorstehenden Prüfungen vor.";2
+"de"; "Das Schreiben von Aufsätzen verbessert das kritische Denken.";3
+"de"; "Viele Schüler haben Schwierigkeiten mit dem Zeitmanagement.";3
+"de"; "Forschungsarbeiten erfordern umfangreiche Hintergrundstudien.";4
+"de"; "Die Analyse von Daten ist eine Schlüsselkompetenz in der Forschung.";4
+"de"; "Die Quantenmechanik untersucht das Verhalten von Teilchen.";5
+"de"; "Künstliche Intelligenz verändert Industrien.";5
+"de"; "Vögel bauen Nester, um ihre Eier zu schützen.";1
+"de"; "Regenbögen erscheinen, wenn es regnet und die Sonne scheint.";1
+"de"; "Berge entstehen durch Bewegungen der tektonischen Platten.";2
+"de"; "Sie lernt, Klavier zu spielen.";2
+"de"; "Grammatikregeln zu verstehen ist essenziell für das Schreiben.";3
+"de"; "Gruppendiskussionen fördern kollaboratives Lernen.";3
+"de"; "Fortgeschrittene Algorithmen lösen komplexe Probleme.";4
+"de"; "Kritische Rezensionen helfen, akademische Arbeiten zu verfeinern.";4
+"de"; "Die Philosophie untersucht die Natur der Existenz.";5
+"de"; "Die Erforschung des Weltraums erweitert das menschliche Wissen.";5
+"de"; "Frösche leben in Teichen und fressen Insekten.";1
+"de"; "Bücher sind eine großartige Wissensquelle.";1
+"de"; "Pflanzen brauchen Sonnenlicht und Wasser, um zu wachsen.";2
+"de"; "Sie malt gerne Landschaften in ihrer Freizeit.";2
+"de"; "Geschichte zu lernen hilft uns, die Gegenwart zu verstehen.";3
+"de"; "Debatten fördern logisches Denken und Ausdrucksfähigkeit.";3
+"de"; "Wissenschaftliche Zeitschriften veröffentlichen begutachtete Artikel.";4
+"de"; "Statistische Analysen sind in der Forschung entscheidend.";4
+"de"; "Gentechnik wirft ethische Fragen auf.";5
+"de"; "Der Klimawandel beeinflusst Ökosysteme weltweit.";5
+"de"; "Fische schwimmen im Wasser und atmen durch Kiemen.";1
+"de"; "Sterne funkeln am Nachthimmel.";1
+"de"; "Flüsse fließen von den Bergen zu den Ozeanen.";2
+"de"; "Sie übt Yoga, um gesund zu bleiben.";2
+"de"; "Das Verständnis von Poesie erfordert Interpretationsfähigkeiten.";3
+"de"; "Fallstudien bieten praxisnahe Lernerfahrungen.";3
+"de"; "Fortgeschrittene Mathematik wird in der Technik verwendet.";4
+"de"; "Feedback von Kollegen verbessert die Qualität der Arbeit.";4
+"de"; "Philosophische Theorien prägen das moderne Denken.";5
+"de"; "Teleskope im Weltraum erfassen ferne Galaxien.";5
+"fr"; "C'est une phrase simple.";1
+"fr";"Le chat est sur le tapis.";1
+"fr";"Le renard brun rapide saute par-dessus le chien paresseux.";2
+"fr";"Elle aime lire des livres pendant son temps libre.";2
+"fr";"Les phrases complexes incluent souvent des propositions subordonnées.";3
+"fr";"Apprendre une nouvelle langue peut être difficile mais gratifiant.";3
+"fr";"Les textes avancés utilisent un vocabulaire sophistiqué et des structures complexes.";4
+"fr";"Comprendre des concepts abstraits nécessite une pensée critique.";4
+"fr";"Les discussions philosophiques impliquent souvent des arguments nuancés.";5
+"fr";"Les articles scientifiques exigent précision et clarté dans l'expression.";5
+"fr";"Les enfants aiment jouer dans le parc.";1
+"fr";"Les pommes et les bananes sont des collations saines.";1
+"fr";"Le soleil se lève à l'est et se couche à l'ouest.";2
+"fr";"Elle se prépare pour ses examens à venir.";2
+"fr";"Écrire des essais aide à améliorer les compétences en pensée critique.";3
+"fr";"De nombreux étudiants ont du mal à gérer leur temps.";3
+"fr";"Les travaux de recherche nécessitent une étude approfondie.";4
+"fr";"L'analyse des données est une compétence clé dans la recherche scientifique.";4
+"fr";"La mécanique quantique explore le comportement des particules.";5
+"fr";"L'intelligence artificielle transforme les industries.";5
+"fr";"Les oiseaux construisent des nids pour protéger leurs œufs.";1
+"fr";"Les arcs-en-ciel apparaissent après la pluie et le soleil.";1
+"fr";"Les montagnes se forment par les mouvements des plaques tectoniques.";2
+"fr";"Elle apprend à jouer du piano.";2
+"fr";"Comprendre les règles de grammaire est essentiel pour écrire.";3
+"fr";"Les discussions de groupe favorisent l'apprentissage collaboratif.";3
+"fr";"Les algorithmes avancés résolvent des problèmes complexes.";4
+"fr";"Les critiques constructives aident à affiner les travaux académiques.";4
+"fr";"La philosophie examine la nature de l'existence.";5
+"fr";"L'exploration spatiale élargit les connaissances humaines.";5
+"fr";"Les grenouilles vivent dans les étangs et mangent des insectes.";1
+"fr";"Les livres sont une excellente source de connaissances.";1
+"fr";"Les plantes ont besoin de lumière du soleil et d'eau pour pousser.";2
+"fr";"Elle aime peindre des paysages pendant son temps libre.";2
+"fr";"Apprendre l'histoire nous aide à comprendre le présent.";3
+"fr";"Les débats encouragent le raisonnement logique et l'articulation.";3
+"fr";"Les revues scientifiques publient des articles évalués par des pairs.";4
+"fr";"L'analyse statistique est cruciale dans la recherche.";4
+"fr";"L'ingénierie génétique soulève des questions éthiques.";5
+"fr";"Le changement climatique affecte les écosystèmes dans le monde entier.";5
+"fr";"Les poissons nagent dans l'eau et respirent par des branchies.";1
+"fr";"Les étoiles scintillent dans le ciel nocturne.";1
+"fr";"Les rivières coulent des montagnes vers les océans.";2
+"fr";"Elle pratique le yoga pour rester en bonne santé.";2
+"fr";"Comprendre la poésie nécessite des compétences d'interprétation.";3
+"fr";"Les études de cas offrent des expériences d'apprentissage pratiques.";3
+"fr";"Les mathématiques avancées sont utilisées en ingénierie.";4
+"fr";"Les retours des pairs améliorent la qualité du travail.";4
+"fr";"Les théories philosophiques façonnent la pensée moderne.";5
+"fr";"Les télescopes spatiaux capturent des galaxies lointaines.";5
+"de"; "Das ist ein einfacher Satz.";1
+"de";"Die Katze schläft auf dem Sofa.";1
+"de";"Der Hund bellt laut im Garten.";1
+"de";"Die Sonne scheint heute hell.";1
+"de";"Ich gehe gerne spazieren.";1
+"de";"Das Auto ist rot und schnell.";1
+"de";"Der Vogel singt ein Lied.";1
+"de";"Die Kinder spielen im Sandkasten.";1
+"de";"Das Wasser im See ist klar.";1
+"de";"Die Blumen blühen im Frühling.";1
+"de";"Der Mond leuchtet in der Nacht.";1
+"de";"Die Uhr zeigt zehn Uhr an.";1
+"de";"Das Buch liegt auf dem Tisch.";1
+"de";"Der Apfel ist rot und saftig.";1
+"de";"Die Wolken ziehen am Himmel vorbei.";1
+"de";"Der Baum ist groß und alt.";1
+"de";"Die Straße ist lang und gerade.";1
+"de";"Das Haus hat ein rotes Dach.";1
+"de";"Die Maus läuft schnell weg.";1
+"de";"Der Fisch schwimmt im Teich.";1
+"de";"Die Lampe leuchtet hell.";1
+"de";"Der Stuhl ist aus Holz.";1
+"de";"Die Tür ist offen.";1
+"de";"Das Fenster ist geschlossen.";1
+"de";"Der Schnee ist weiß und kalt.";1
+"de";"Die Milch steht im Kühlschrank.";1
+"de";"Der Ball rollt über den Boden.";1
+"de";"Die Katze jagt die Maus.";1
+"de";"Das Kind lacht laut.";1
+"de";"Der Zug fährt pünktlich ab.";2
+"de";"Die Brücke verbindet zwei Städte.";2
+"de";"Der Fluss fließt durch das Tal.";2
+"de";"Die Berge sind hoch und steil.";2
+"de";"Der Wind weht stark.";2
+"de";"Die Blätter fallen im Herbst.";2
+"de";"Der Regen prasselt auf das Dach.";2
+"de";"Die Straße ist nass und rutschig.";2
+"de";"Der Vogel baut ein Nest.";2
+"de";"Die Sonne geht im Westen unter.";2
+"de";"Der Hund bringt den Ball zurück.";2
+"de";"Die Kinder lernen in der Schule.";2
+"de";"Das Flugzeug fliegt über die Wolken.";2
+"de";"Der Lehrer erklärt die Aufgabe.";2
+"de";"Die Schüler schreiben einen Test.";2
+"de";"Das Fahrrad steht vor dem Haus.";2
+"de";"Die Ampel zeigt grün.";2
+"de";"Der Bus hält an der Haltestelle.";2
+"de";"Die Zeitung liegt auf dem Tisch.";2
+"de";"Das Brot ist frisch gebacken.";2
+"de";"Die Suppe ist heiß.";2
+"de";"Der Computer ist eingeschaltet.";3
+"de";"Die E-Mail wurde verschickt.";3
+"de";"Das Handy klingelt laut.";3
+"de";"Die Datei wurde gespeichert.";3
+"de";"Das Passwort ist sicher.";3
+"de";"Die Präsentation war interessant.";3
+"de";"Das Meeting beginnt um neun Uhr.";3
+"de";"Die Aufgabe wurde erfolgreich gelöst.";3
+"de";"Das Projekt ist abgeschlossen.";3
+"de";"Die Daten wurden analysiert.";3
+"de";"Die Ergebnisse sind vielversprechend.";3
+"de";"Die Forschung liefert neue Erkenntnisse.";4
+"de";"Die Theorie wurde bestätigt.";4
+"de";"Das Experiment war erfolgreich.";4
+"de";"Die Hypothese wurde widerlegt.";4
+"de";"Die Studie wurde veröffentlicht.";4
+"de";"Die Diskussion war produktiv.";4
+"de";"Die Analyse war detailliert.";4
+"de";"Die Methode wurde optimiert.";4
+"de";"Die Ergebnisse wurden präsentiert.";4
+"de";"Die Arbeit wurde begutachtet.";4
+"de";"Die Philosophie untersucht die Wahrheit.";5
+"de";"Die Wissenschaft sucht nach Antworten.";5
+"de";"Die Ethik stellt schwierige Fragen.";5
+"de";"Die Logik ist ein Teil der Philosophie.";5
+"de";"Die Mathematik ist eine exakte Wissenschaft.";5
+"de";"Die Astronomie erforscht das Universum.";5
+"de";"Die Biologie untersucht das Leben.";5
+"de";"Die Chemie analysiert Stoffe.";5
+"de";"Die Physik erklärt Naturgesetze.";5
+"de";"Die Geschichte lehrt uns die Vergangenheit.";5
+"de";"Die Literatur spiegelt die Kultur wider.";5
+"de";"Die Kunst inspiriert die Menschen.";5
+"de";"Die Musik berührt die Seele.";5
+"de";"Die Architektur prägt die Städte.";5
+"de";"Die Technik verändert die Welt.";5
+"de";"Die Medizin rettet Leben.";5
+"de";"Die Psychologie versteht den Geist.";5
+"de";"Die Soziologie untersucht die Gesellschaft.";5
+"de";"Die Ökologie schützt die Natur.";5
+"de";"Der Hund läuft schnell.";1
+"de";"Ich esse einen Apfel.";1
+"de";"Die Sonne scheint heute.";1
+"de";"Mein Bruder spielt Fußball.";1
+"de";"Wir gehen in den Park.";1
+"de";"Gestern haben wir ein spannendes Buch gelesen.";2
+"de";"Im Herbst fallen die Blätter von den Bäumen.";2
+"de";"Meine Schwester möchte später Ärztin werden.";2
+"de";"Wir lernen in Biologie etwas über Pflanzenzellen.";2
+"de";"Im Sportunterricht haben wir ein neues Spiel ausprobiert.";2
+"de";"Die Industrialisierung veränderte die Gesellschaft nachhaltig.";3
+"de";"Physikalische Gesetze beschreiben fundamentale Naturerscheinungen.";3
+"de";"Die Interpretation literarischer Werke erfordert kritisches Denken.";3
+"de";"Mathematische Beweise basieren auf logischer Deduktion.";3
+"de";"Die französische Revolution hatte weitreichende politische Konsequenzen.";3
+"de";"Die molekulare Genetik untersucht die Struktur und Funktion von Genen auf DNA-Ebene.";4
+"de";"Philosophische Argumentationen basieren auf präziser Begriffsanalyse und deduktiver Logik.";4
+"de";"Die Theorie der speziellen Relativität revolutionierte unser Verständnis von Raum und Zeit.";4
+"de";"In der Soziologie analysieren wir komplexe Wechselwirkungen zwischen Individuen und Institutionen.";4
+"de";"Mittels hochauflösender Kryo-Elektronenmikroskopie können die atomaren Strukturen von Biomolekülen visualisiert werden.";5
+"de";"Quantenfeldtheorien beschreiben die Wechselwirkungen subatomarer Teilchen durch virtuelle Austauschprozesse.";5
+"de";"Emergente Phänomene in komplexen adaptiven Systemen erfordern eine interdisziplinäre Analyse dynamischer Selbstorganisationsprozesse.";5
+"de";"Epigenetische Modifikationen regulieren die Genexpression unabhängig von der zugrunde liegenden DNA-Sequenz.";5
+"de";"Anna malt ein Bild.";1
+"de";"Ich trinke Wasser.";1
+"de";"Der Vogel singt schön.";1
+"de";"Wir fahren mit dem Bus.";1
+"de";"Papa kocht das Abendessen.";1
+"de";"Der Ball ist rot.";1
+"de";"Mein Freund hat ein neues Spielzeug.";1
+"de";"Die Katze schläft auf dem Sofa.";1
+"de";"Ich spiele draußen mit meinen Freunden.";1
+"de";"Sie liest ein Buch über Tiere.";1
+"de";"Am Wochenende besuchen wir Oma.";1
+"de";"Die Blume ist gelb.";1
+"de";"Mein Lieblingsessen ist Pizza.";1
+"de";"Im Garten wachsen viele Blumen.";1
+"de";"Das Auto ist sehr schnell.";1
+"de";"Wir machen ein Picknick im Park.";1
+"de";"Der Apfelbaum trägt viele Früchte.";1
+"de";"Mein kleiner Bruder lacht laut.";1
+"de";"Der Schnee ist ganz weiß.";1
+"de";"Die Lehrerin erklärt die Aufgabe.";1
+"de";"Im Sommer gehen wir schwimmen.";1
+"de";"Meine Schuhe sind neu.";1
+"de";"Ich bastle eine Karte für Mama.";1
+"de";"Der Frosch springt ins Wasser.";1
+"de";"Wir sammeln Kastanien im Herbst.";1
+"de";"Im Winter fahren wir Schlitten.";1
+"de";"Der Regenbogen ist bunt.";1
+"de";"Ich schreibe einen Brief.";1
+"de";"Mein Hund liebt es, zu rennen.";1
+"de";"Die Sonne geht unter.";1
+"de";"Wir machen eine Schneeballschlacht.";1
+"de";"Mein Opa erzählt Geschichten.";1
+"de";"Im Frühling blühen die Blumen.";1
+"de";"Ich pflanze eine Sonnenblume.";1
+"de";"Das Baby lächelt mich an.";1
+"de";"Wir feiern meinen Geburtstag.";1
+"de";"Die Giraffe hat einen langen Hals.";1
+"de";"Ich male ein Haus.";1
+"de";"Meine Schwester singt ein Lied.";1
+"de";"Die Bienen summen um die Blumen.";1
+"de";"Am Abend sehen wir Sterne.";1
+"de";"Wir essen Eis im Sommer.";1
+"de";"Der Mond scheint hell.";1
+"de";"Ich baue einen Turm aus Bauklötzen.";1
+"de";"Das Kätzchen jagt einen Ball.";1
+"de";"Mein Lieblingsfach ist Mathe.";1
+"de";"Wir fahren ans Meer.";1
+"de";"Ich lese eine spannende Geschichte.";1
+"de";"Am Wochenende gehen wir wandern.";2
+"de";"Wir lernen etwas über Planeten.";2
+"de";"In Geschichte sprechen wir über das Mittelalter.";2
+"de";"Ich möchte später Tierarzt werden.";2
+"de";"Wir schreiben ein Gedicht im Deutschunterricht.";2
+"de";"In Erdkunde lernen wir über verschiedene Kontinente.";2
+"de";"Die Lehrer erklären uns den Wasserkreislauf.";2
+"de";"Wir spielen Theater in der Schule.";2
+"de";"In Physik bauen wir einen einfachen Stromkreis.";2
+"de";"Im Kunstunterricht malen wir Porträts.";2
+"de";"Ich interessiere mich für alte Kulturen.";2
+"de";"In Chemie experimentieren wir mit Stoffen.";2
+"de";"Wir analysieren Gedichte im Deutschunterricht.";2
+"de";"Die Pflanzen benötigen Sonnenlicht zum Wachsen.";2
+"de";"Die Erde dreht sich um die Sonne.";2
+"de";"Ein Vulkan bricht aus, wenn Magma an die Oberfläche kommt.";2
+"de";"Wir untersuchen das Leben im Wasser.";2
+"de";"Im Musikunterricht lernen wir neue Instrumente kennen.";2
+"de";"Wir organisieren eine Projektwoche.";2
+"de";"In Sport üben wir Leichtathletik.";2
+"de";"Das Mittelalter war geprägt von Rittern und Burgen.";2
+"de";"Wir diskutieren über Umweltschutzmaßnahmen.";3
+"de";"Die Renaissance führte zu einem kulturellen Aufschwung.";3
+"de";"Goethes Faust behandelt den Pakt mit dem Teufel.";3
+"de";"Im Chemieunterricht analysieren wir komplexe Reaktionen.";3
+"de";"Die Gravitation beeinflusst alle Körper im Universum.";3
+"de";"Wir interpretieren politische Karikaturen.";3
+"de";"Literaturkritik erfordert differenzierte Analysen.";3
+"de";"Die globale Erwärmung bedroht viele Ökosysteme.";3
+"de";"Die Funktion des Immunsystems wird zunehmend erforscht.";3
+"de";"Demografischer Wandel verändert die Bevölkerungsstruktur.";3
+"de";"Religiöse Reformbewegungen prägten die Neuzeit.";3
+"de";"Technologische Innovationen fördern wirtschaftlichen Fortschritt.";3
+"de";"Wir diskutieren ethische Fragestellungen in der Medizin.";3
+"de";"Die Photosynthese ist Grundlage allen pflanzlichen Lebens.";3
+"de";"Quantenmechanik beschreibt Phänomene auf subatomarer Ebene.";3
+"de";"Die wirtschaftliche Globalisierung hat viele Facetten.";3
+"de";"Rhetorische Stilmittel verstärken die Wirkung eines Textes.";3
+"de";"Die Aufklärung forderte Vernunft und Wissenschaftlichkeit.";3
+"de";"Immunologische Prozesse sind hochkomplex und koordiniert.";3
+"de";"Die Thermodynamik untersucht Energieumwandlungen.";3
+"de";"Neuronale Netze sind Modelle biologischer Informationsverarbeitung.";4
+"de";"Die Stringtheorie strebt eine Vereinheitlichung der Naturkräfte an.";4
+"de";"In der Sprachwissenschaft erforschen wir Syntax und Semantik.";4
+"de";"Ökonomische Modelle simulieren Marktprozesse unter idealisierten Bedingungen.";4
+"de";"Die Chaostheorie analysiert dynamische, nicht-lineare Systeme.";4
+"de";"Interdisziplinäre Ansätze fördern neue wissenschaftliche Erkenntnisse.";4
+"de";"Computational Neuroscience verknüpft Biologie und Informatik.";4
+"de";"Die Systembiologie untersucht komplexe biologische Netzwerke.";4
+"de";"Empirische Sozialforschung erhebt quantitative und qualitative Daten.";4
+"de";"Die Relativitätstheorie widerspricht der klassischen Mechanik bei hohen Geschwindigkeiten.";4
+"de"; "Kognitive Psychologie erforscht Wahrnehmung, Denken und Erinnerung.";4
+"de";"In der Anthropologie vergleichen wir kulturelle Entwicklungen weltweit.";4
+"de";"Evolutionäre Prozesse basieren auf Mutation und Selektion.";4
+"de";"Stochastische Prozesse modellieren Zufallsphänomene.";4
+"de";"Astrophysikalische Theorien beschreiben kosmologische Strukturen.";4
+"de";"Neuronale Plastizität ist Grundlage für Lernprozesse.";4
+"de";"In der Molekularbiologie analysieren wir Genexpression und Proteinsynthese.";4
+"de";"Die Epigenetik untersucht Vererbung über DNA hinaus.";5
+"de";"Proteomik ermöglicht Einblicke in zelluläre Proteinzusammensetzung.";5
+"de";"Die Klimamodellierung integriert physikalische und chemische Prozesse.";5
+"de";"Topologische Quantenzustände revolutionieren Materialwissenschaften.";5
+"de";"Komplexe adaptive Systeme zeigen emergentes Verhalten.";5
+"de";"In der Kryo-EM werden Makromoleküle bei extrem niedrigen Temperaturen sichtbar gemacht.";5
+"de";"Präzisionsmedizin nutzt genetische Profile zur Therapieoptimierung.";5
+"de";"Photonik ermöglicht ultraschnelle Informationsverarbeitung.";5
+"de";"Adaptive Algorithmen verbessern künstliche Intelligenz.";5
+"de";"Proteinfaltung wird durch energetische Landschaften beschrieben.";5
+"de";"Die RNA-Interferenz steuert gezielt Genexpression.";5
+"de";"Supraleitung bei Raumtemperatur wäre eine technologische Revolution.";5
+"de";"In der Bioinformatik analysieren wir Sequenzdaten großer Genomprojekte.";5
+"de";"Entropie ist ein zentrales Konzept in der Thermodynamik und Informationstheorie.";5
+"de";"Zelluläre Signalwege koordinieren komplexe biologische Reaktionen.";5
+"de";"Antisense-Technologien ermöglichen gezielte Genregulation.";5
+"de";"Maschinelles Lernen basiert auf statistischen Lernmodellen.";5
+"de";"Optogenetik erlaubt neuronale Steuerung mit Licht.";5
+"de";"Epistemologische Analysen untersuchen die Struktur wissenschaftlicher Theorien.";5
+"de";"Die Erforschung dunkler Materie bleibt eine zentrale Herausforderung der Kosmologie.";5
+"de";"Die Entwicklung nachhaltiger Energien ist entscheidend für den Klimaschutz.";5
+"de";"Die Erforschung von Exoplaneten eröffnet neue Perspektiven für die Astrobiologie.";5
+"de";"Die Entwicklung von Quantencomputern könnte die Informatik revolutionieren.";5
+"de";"Die Analyse von Big Data erfordert neue Algorithmen und Technologien.";5
+"de";"Die Erforschung von Nanomaterialien eröffnet neue Anwendungen in der Technik.";5
+"de";"Die Entwicklung von Biokraftstoffen könnte fossile Brennstoffe ersetzen.";5
+"de";"Die Erforschung von Stammzellen könnte neue Therapien ermöglichen.";5

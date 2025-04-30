@@ -1,0 +1,22 @@
+{
+  "id": "Test.2",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SH-6",
+  "time": 60,
+  "nam_score": 3.1,
+  "author": "Original",
+  "date": "29.04.2025",
+  "UUID": "02853973-ca61-44eb-a6f0-102987519864",
+  "GUID": "2c0a8372-1073-4d3b-9f5c-120987561273",
+  "main": {
+    "title": "Kombinatorik – Anordnungen und Permutationen",
+    "content": "content/t2-de.exr",
+    "solution": "solution/t2-de.exr"
+  },
+  "difficulty": 3,
+  "tags": [
+    "Kombinatorik"
+  ]
+}

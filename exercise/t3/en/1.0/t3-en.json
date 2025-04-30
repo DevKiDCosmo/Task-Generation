@@ -1,0 +1,22 @@
+{
+  "id": "Test.3",
+  "category": [
+    "Shoemei"
+  ],
+  "cid": "SH-6",
+  "time": 60,
+  "nam_score": 3.1,
+  "author": "Original",
+  "date": "29.04.2025",
+  "UUID": "02853973-ca61-44eb-a6f0-129857262711",
+  "GUID": "12987462-1073-4d3b-9f5c-120987561273",
+  "main": {
+    "title": "Geometry – Circle geometry and tangents",
+    "content": "content/t3-en.exr",
+    "solution": "solution/t3-en.exr"
+  },
+  "difficulty": 3,
+  "tags": [
+    "Geometry"
+  ]
+}

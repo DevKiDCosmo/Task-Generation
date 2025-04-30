@@ -1,0 +1,5 @@
+Find all integer solutions to the following Diophantine equation:
+
+$$ x^2 + y^2 = 2025 $$
+
+Explain your solution and determine all possible values for $x$ and $y$ that satisfy this equation. Discuss how to approach this type of equation in general.
