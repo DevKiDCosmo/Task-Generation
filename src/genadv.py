@@ -594,7 +594,7 @@ class Generation():
             if key not in data:
                 log.write(f"Key '{key}' not found in the file.")
                 exit(1)
-            information.append(str(data[key]))
+            information.append(data[key])
             log.write(key + " : " + str(data[key]))
 
         return information, int(data["time"])
