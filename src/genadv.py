@@ -1,11 +1,9 @@
-import datetime
 import shutil, sys, os
 import typing, json
-import log as lg
+from util import log as lg
 # import mypy
 import asyncio, aiofiles
 from dotenv import load_dotenv
-from functools import lru_cache
 import datetime
 
 log = lg.Log()
@@ -16,6 +14,7 @@ class Generation():
         self.exercise_dir = exerciseDIR
         self.difficulty = difficulty_
         self.translation = translation_
+        self.exam = False
 
     async def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> \
             list[
@@ -353,6 +352,18 @@ class Generation():
             os.rename(template_path, new_path)
         log.write(f"Copied and renamed template files to {destination_dir}.")
 
+        if self.exam:
+            # Copy stamp files
+            stamp_dir = "./generated/stamp"
+            os.makedirs(stamp_dir, exist_ok=True)
+            for file_name in ["stamp.tex", "header.tex"]:
+                source_path = os.path.join("./template", file_name)
+                destination_path = os.path.join(stamp_dir, file_name)
+                if os.path.exists(source_path):
+                    shutil.copy2(source_path, destination_path)
+                else:
+                    log.write(f"File {file_name} not found in the template directory.")
+
     async def compile_files(self, paper: str) -> None:
         # Generiere den Dateinamen
         file = f"{paper}.tex"
@@ -570,6 +581,29 @@ class Generation():
             self.compile_files("solution" + paper)
         )
 
+    async def get_exam_data(self, file: str) -> list[str] | None:
+        try:
+            async with aiofiles.open(file, 'r', encoding="utf-8") as f:
+                content = await f.read()  # Dateiinhalt asynchron lesen
+                data = json.loads(content)  # JSON-Daten aus dem Inhalt laden
+        except FileNotFoundError:
+            log.write(f"File '{file}' not found.")
+            return None
+        except json.JSONDecodeError:
+            log.write(f"Error decoding JSON from file '{file}'.")
+            return None
+
+        keys = ["applicant", "reg-id", "institution", "issuing", "validator", "evaluator", "sdr-id", "protrack-id",
+                "pid", "of-id", "location", "language", "signature", "hash", "information"]
+        information = []
+        for key in keys:
+            if key not in data:
+                log.write(f"Key '{key}' not found in the file.")
+                return None
+            information.append(data[key])
+
+        return information
+
     async def main(self, file: str) -> typing.Optional[None]:
         log.create_log()
         self.clear_non_pdf()
@@ -585,6 +619,27 @@ class Generation():
         except FileNotFoundError:
             log.write(f"FileNotFoundError: {file} not found")
             return None
+
+        # Check if exam JSON
+        try:
+            if data["applicant"] != "":
+                log.write("This is an exam JSON file.")
+
+                # Creating stamps and Verification
+                # Creating Paper after verification
+
+                self.exam = True
+                information = self.get_exam_data(file)
+                if information is None:
+                    log.write("Error reading exam data.")
+                    return None
+
+                # Loading
+                with open("paper/" + data["pid"] + ".json", 'r', encoding="utf-8") as f:
+                    data = json.load(f)
+        except KeyError:
+            log.write("This is not an exam JSON file. Continue with normal paper generation.")
+            pass
 
         log.write("Generating paper from JSON file")
 

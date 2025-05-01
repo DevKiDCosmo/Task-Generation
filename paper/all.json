@@ -90,6 +90,45 @@
       "exercise": [
         1
       ]
+    },
+    "t1": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "t2": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "t3": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
     }
   },
   "tags": [

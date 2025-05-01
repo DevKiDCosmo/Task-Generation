@@ -70,5 +70,27 @@
     "jp": "解決策",
     "kr": "해결책",
     "zh": "解决方案"
+  },
+  "language": {
+    "de": "Deutsch",
+    "en": "English",
+    "fr": "Français",
+    "jp": "日本語",
+    "kr": "한국어",
+    "zh": "中文",
+    "es": "Español",
+    "it": "Italiano",
+    "pt": "Português",
+    "ru": "Русский",
+    "tr": "Türkçe",
+    "ar": "العربية",
+    "pl": "Polski",
+    "nl": "Nederlands",
+    "sv": "Svenska",
+    "da": "Dansk",
+    "fi": "Suomi",
+    "no": "Norsk",
+    "cs": "Čeština",
+    "hu": "Magyar"
   }
 }
