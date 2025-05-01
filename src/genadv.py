@@ -5,6 +5,8 @@ from util import log as lg
 import asyncio, aiofiles
 from dotenv import load_dotenv
 import datetime
+import code_gen.code_16 as c16
+import code_gen.code_256 as c256
 
 log = lg.Log()
 
@@ -352,18 +354,6 @@ class Generation():
             os.rename(template_path, new_path)
         log.write(f"Copied and renamed template files to {destination_dir}.")
 
-        if self.exam:
-            # Copy stamp files
-            stamp_dir = "./generated/stamp"
-            os.makedirs(stamp_dir, exist_ok=True)
-            for file_name in ["stamp.tex", "header.tex"]:
-                source_path = os.path.join("./template", file_name)
-                destination_path = os.path.join(stamp_dir, file_name)
-                if os.path.exists(source_path):
-                    shutil.copy2(source_path, destination_path)
-                else:
-                    log.write(f"File {file_name} not found in the template directory.")
-
     async def compile_files(self, paper: str) -> None:
         # Generiere den Dateinamen
         file = f"{paper}.tex"
@@ -389,6 +379,9 @@ class Generation():
                            paths_exercise: list[str], solution: str = "") -> str:
         import_list = ""
         previous_language = None
+
+        if self.exam:
+            import_list += "\\input{../stamp/stamp}\n\n"
 
         previous_language_time = None
         list_TotalTime = {}
@@ -418,9 +411,10 @@ class Generation():
             if language != previous_language:
                 # Füge eine Sprachanweisung hinzu, wenn sich die Sprache ändert
                 import_list += f"\\section{{{self.translation_to_str('language_instruction', language)}: {formatted_TotalTime[language]}}}\n"
-                import_list += self.instruction_translation(language) + "\n\n"
+                import_list += self.instruction_translation(language) + "\n\n\\clearpage\n\n"
                 previous_language = language
-            import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n"
+            import_list += f"\\input{{../stamp/header}}\n"
+            import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n\n"
 
         import_list += solution
 
@@ -594,7 +588,7 @@ class Generation():
             return None
 
         keys = ["applicant", "reg-id", "institution", "issuing", "validator", "evaluator", "sdr-id", "protrack-id",
-                "pid", "of-id", "location", "language", "signature", "hash", "information"]
+                "pid", "of-id", "location", "language", "signature", "hash", "information", "dates", "time"]
         information = []
         for key in keys:
             if key not in data:
@@ -603,6 +597,103 @@ class Generation():
             information.append(data[key])
 
         return information
+
+    async def generate_stamp(self, applicant: list[str]):
+        # Copy stamp files
+        stamp_dir = "./generated/stamp"
+        os.makedirs(stamp_dir, exist_ok=True)
+        for file_name in ["stamp.tex", "header.tex"]:
+            source_path = os.path.join("./template", file_name)
+            destination_path = os.path.join(stamp_dir, file_name)
+            if os.path.exists(source_path):
+                shutil.copy2(source_path, destination_path)
+            else:
+                log.write(f"File {file_name} not found in the template directory.")
+
+        async with aiofiles.open("./generated/stamp/stamp.tex", 'r', encoding="utf-8") as f:
+            template = await f.read()  # <-- await hinzufügen!
+
+        # Creating instances
+        code256_instance = c256.Code_256()
+        code16_instance = c16.Code_16()
+
+        template = template.replace("__OFFICIAL_APPLICANT__", applicant[0])
+
+        template = template.replace("__CODE_APPLICANT__", code256_instance.text_to_tikz_html(text=applicant[0]))
+
+        template = template.replace("__OFFICIAL_REGISTRATION_NUMBER__", applicant[1])
+        template = template.replace("__OFFICIAL_INSTITUTION__", applicant[2])
+        template = template.replace("__OFFICIAL_ISSUING__", applicant[3])
+        template = template.replace("__OFFICIAL_VALIDATOR__", applicant[4])
+        template = template.replace("__OFFICIAL_EVALUATOR__", applicant[5])
+        template = template.replace("__OFFICIAL_SDR_ID__", applicant[6])
+        template = template.replace("__OFFICIAL_COID__", applicant[7])
+        template = template.replace("__OFFICIAL_PAPER_ID__", applicant[8])
+        template = template.replace("__OFFICIAL_PAPER_REG_ID__", applicant[9])
+        template = template.replace("__OFFICIAL_SUBMISSION_LOCATION__", applicant[10])
+
+        template = template.replace("__CODE_LOCATION__", code256_instance.text_to_tikz_html(text=applicant[10]))
+
+        template = template.replace("__OFFICIAL_CODE__", str(applicant[11]).upper())
+
+        # Finding Language based on the translation file and code
+        template = template.replace("__OFFICIAL_LANGUAGE__", self.translation_to_str("language", applicant[11]))
+        template = template.replace("__OFFICIAL_SIGNATURE__", applicant[12])
+
+        template = template.replace("__CODE_AUTH__", code16_instance.hash_to_tikz(applicant[12]))
+
+        template = template.replace("__OFFICIAL_HASH__", applicant[13])
+
+        template = template.replace("__CODE_HASH__", code16_instance.hash_to_tikz(applicant[13]))
+
+        template = template.replace("__OFFICIAL_ADD_INFO__", applicant[14])
+
+        # Dates
+        template = template.replace("__OFFICIAL_ISSUING_DATE__", applicant[15][0])
+        template = template.replace("__OFFICIAL_APPROVAL_DATE__", applicant[15][1])
+        template = template.replace("__OFFICIAL_AVAILABILITY_DATE__", applicant[15][2])
+        template = template.replace("__OFFICIAL_DEADLINE__", applicant[15][3])
+        template = template.replace("__OFFICIAL_EXPIRY__", applicant[15][4])
+        template = template.replace("__OFFICIAL_SIGNATURE_DATE__", applicant[15][5])
+
+        # Format time (min) to hours and minutes
+        applicant[16] = f"{applicant[16] // 60} h {applicant[16] % 60} min" if applicant[16] >= 60 else f"{applicant[16]} min"
+
+        template = template.replace("__OFFICIAL_TIME__", applicant[16])
+
+        """
+        https://devkid.vinlancer.de/submission/{sdr-id}/registration/{reg-id}}/signature/{signature}/registry/{of-id}
+        """
+
+        link = "https://devkid.vinlancer.de/submission/" + applicant[6] + "/registration/" + applicant[
+            1] + "/signature/" + applicant[12] + "/registry/" + applicant[9]
+        template = template.replace("__OFFICIAL_LINK__", link)
+
+        template = template.replace("__CODE_ID__", code256_instance.text_to_tikz_html(text=link))
+
+        # Break the link into two parts. One from https to signature/ and the other from signature to end
+
+        link1 = "https://devkid.vinlancer.de/submission/" + applicant[6] + "/registration/" + applicant[
+            1] + "/signature/"
+        link2 = applicant[12] + "/registry/" + applicant[9]
+
+        template = template.replace("__OFFICIAL_LINK_1__", link1)
+        template = template.replace("__OFFICIAL_LINK_2__", link2)
+
+        async with aiofiles.open("./generated/stamp/stamp.tex", 'w', encoding="utf-8") as f:
+            await f.write(template)
+
+        async with aiofiles.open("./generated/stamp/header.tex", 'r', encoding="utf-8") as f:
+            template = await f.read()
+
+        template = template.replace("__OFFICIAL_APPLICANT__", applicant[0])
+        template = template.replace("__OFFICIAL_PAPER_REG_ID__", applicant[9])
+        template = template.replace("__OFFICIAL_SDR_ID__", applicant[6])
+        template = template.replace("__CODE_APPLICANT__", code256_instance.text_to_tikz_html(text=applicant[0]))
+        template = template.replace("__CODE_ID__", code256_instance.text_to_tikz_html(text=link))
+
+        async with aiofiles.open("./generated/stamp/header.tex", 'w', encoding="utf-8") as f:
+            await f.write(template)
 
     async def main(self, file: str) -> typing.Optional[None]:
         log.create_log()
@@ -625,18 +716,30 @@ class Generation():
             if data["applicant"] != "":
                 log.write("This is an exam JSON file.")
 
-                # Creating stamps and Verification
-                # Creating Paper after verification
+                # TODO: Verification through API
+                # TODO: Applying language
 
                 self.exam = True
-                information = self.get_exam_data(file)
+                information = await self.get_exam_data(file)
+                await self.generate_stamp(information)
                 if information is None:
                     log.write("Error reading exam data.")
                     return None
+                log.write(f"{information}")
 
                 # Loading
-                with open("paper/" + data["pid"] + ".json", 'r', encoding="utf-8") as f:
-                    data = json.load(f)
+                try:
+                    with open("paper/" + data["pid"] + ".json", 'r', encoding="utf-8") as f:
+                        data = json.load(f)
+                except json.JSONDecodeError:
+                    log.write(f"JSONDecodeError: {file} is not a valid JSON file")
+                    return None
+                except PermissionError:
+                    log.write(f"PermissionError: {file} is not accessible")
+                    return None
+                except FileNotFoundError:
+                    log.write(f"FileNotFoundError: {file} not found")
+                    return None
         except KeyError:
             log.write("This is not an exam JSON file. Continue with normal paper generation.")
             pass

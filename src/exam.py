@@ -39,75 +39,7 @@ class gen_exam():
         else:
             return f"Unknown Translation for key: {translation_key}"
 
-    async def generate_stamp(self, applicant: list[str]):
-        async with aiofiles.open("./template/stamp.tex", 'r', encoding="utf-8") as f:
-            template = await f.read()  # <-- await hinzufügen!
 
-        template = template.replace("__OFFICIAL_APPLICANT__", applicant[0])
-
-        code256_instance = c256.Code_256()
-        code_author = code256_instance.text_to_tikz_html(code256_instance, text=applicant[0])
-
-        template = template.replace("__OFFICIAL_REGISTRATION_NUMBER__", applicant[1])
-        template = template.replace("__OFFICIAL_INSTITUTION__", applicant[2])
-        template = template.replace("__OFFICIAL_ISSUING__", applicant[3])
-        template = template.replace("__OFFICIAL_VALIDATOR__", applicant[4])
-        template = template.replace("__OFFICIAL_EVALUATOR__", applicant[5])
-        template = template.replace("__OFFICIAL_SDR_ID__", applicant[6])
-        template = template.replace("__OFFICIAL_COID__", applicant[7])
-        template = template.replace("__OFFICIAL_PAPER_ID__", applicant[8])
-        template = template.replace("__OFFICIAL_PAPER_REG_ID__", applicant[9])
-        template = template.replace("__OFFICIAL__SUBMISSION_LOCATION__", applicant[10])
-
-        code_location = c256.Code_256.text_to_tikz_html(text=applicant[10])
-
-        template = template.replace("__OFFICIAL_CODE__", str(applicant[11]).upper())
-
-        # Finding Language based on the translation file and code
-        template = template.replace("__OFFICIAL_LANGUAGE__", await self.translation_to_str("language", applicant[11]))
-        template = template.replace("__OFFICIAL_SIGNATURE__", applicant[12])
-
-        signature = c16.Code_16.text_to_tikz_html(text=applicant[12])
-
-        template = template.replace("__OFFICIAL_HASH__", applicant[13])
-
-        hash = c16.Code_16.text_to_tikz_html(text=applicant[13])
-
-        template = template.replace("__OFFICIAL_ADD_INFO__", applicant[14])
-
-        """
-        https://devkid.vinlancer.de/submission/{sdr-id}/registration/{reg-id}}/signature/{signature}/registry/{of-id}
-        """
-
-        link = "https://devkid.vinlancer.de/submission/" + applicant[6] + "/registration/" + applicant[
-            1] + "/signature/" + applicant[12] + "/registry/" + applicant[9]
-        template = template.replace("__OFFICIAL_LINK__", link)
-
-        link = c256.Code_256.text_to_tikz_html(text=link)
-
-        # Break the link into two parts. One from https to signature/ and the other from signature to end
-
-        link1 = "https://devkid.vinlancer.de/submission/" + applicant[6] + "/registration/" + applicant[
-            1] + "/signature/"
-        link2 = applicant[12] + "/registry/" + applicant[9]
-
-        template = template.replace("__OFFICIAL_LINK_1__", link1)
-        template = template.replace("__OFFICIAL_LINK_2__", link2)
-
-        async with aiofiles.open("../generated/stamp/" + applicant[1] + ".tex", 'w', encoding="utf-8") as f:
-            f.write(template)
-
-        # Generate a tex file for every code of c256 and c16
-        async with aiofiles.open("../generated/stamp/" + applicant[1] + "_code_256.tex", 'w', encoding="utf-8") as f:
-            f.write(code_author)
-        async with aiofiles.open("../generated/stamp/" + applicant[1] + "_code_location.tex", 'w', encoding="utf-8") as f:
-            f.write(code_location)
-        async with aiofiles.open("../generated/stamp/" + applicant[1] + "_code_signature.tex", 'w', encoding="utf-8") as f:
-            f.write(signature)
-        async with aiofiles.open("../generated/stamp/" + applicant[1] + "_code_hash.tex", 'w', encoding="utf-8") as f:
-            f.write(hash)
-        async with aiofiles.open("../generated/stamp/" + applicant[1] + "_link.tex", 'w', encoding="utf-8") as f:
-            f.write(link)
 
 
 
