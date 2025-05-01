@@ -575,17 +575,17 @@ class Generation():
             self.compile_files("solution" + paper)
         )
 
-    async def get_exam_data(self, file: str) -> list[str] | None:
+    async def get_exam_data(self, file: str) -> tuple[list[str], int]:
         try:
             async with aiofiles.open(file, 'r', encoding="utf-8") as f:
                 content = await f.read()  # Dateiinhalt asynchron lesen
                 data = json.loads(content)  # JSON-Daten aus dem Inhalt laden
         except FileNotFoundError:
             log.write(f"File '{file}' not found.")
-            return None
+            exit(1)
         except json.JSONDecodeError:
             log.write(f"Error decoding JSON from file '{file}'.")
-            return None
+            exit(1)
 
         keys = ["applicant", "reg-id", "institution", "issuing", "validator", "evaluator", "sdr-id", "protrack-id",
                 "pid", "of-id", "location", "language", "signature", "hash", "information", "dates", "time"]
@@ -593,12 +593,13 @@ class Generation():
         for key in keys:
             if key not in data:
                 log.write(f"Key '{key}' not found in the file.")
-                return None
-            information.append(data[key])
+                exit(1)
+            information.append(str(data[key]))
+            log.write(key + " : " + str(data[key]))
 
-        return information
+        return information, int(data["time"])
 
-    async def generate_stamp(self, applicant: list[str]):
+    async def generate_stamp(self, applicant: list[str], time: int) -> None:
         # Copy stamp files
         stamp_dir = "./generated/stamp"
         os.makedirs(stamp_dir, exist_ok=True)
@@ -657,9 +658,9 @@ class Generation():
         template = template.replace("__OFFICIAL_SIGNATURE_DATE__", applicant[15][5])
 
         # Format time (min) to hours and minutes
-        applicant[16] = f"{applicant[16] // 60} h {applicant[16] % 60} min" if applicant[16] >= 60 else f"{applicant[16]} min"
 
-        template = template.replace("__OFFICIAL_TIME__", applicant[16])
+        template = template.replace("__OFFICIAL_TIME__",
+                                    f"{time // 60} h {time % 60} min" if time >= 60 else f"{time} min")
 
         """
         https://devkid.vinlancer.de/submission/{sdr-id}/registration/{reg-id}}/signature/{signature}/registry/{of-id}
@@ -695,6 +696,8 @@ class Generation():
         async with aiofiles.open("./generated/stamp/header.tex", 'w', encoding="utf-8") as f:
             await f.write(template)
 
+        return None
+
     async def main(self, file: str) -> typing.Optional[None]:
         log.create_log()
         self.clear_non_pdf()
@@ -720,12 +723,14 @@ class Generation():
                 # TODO: Applying language
 
                 self.exam = True
-                information = await self.get_exam_data(file)
-                await self.generate_stamp(information)
-                if information is None:
-                    log.write("Error reading exam data.")
-                    return None
-                log.write(f"{information}")
+                if await self.get_exam_data(file) != None:
+                    information, time = await self.get_exam_data(file)
+                    if information is None:
+                        log.write("Error reading exam data.")
+                        return None
+                    log.write(f"{information}")
+
+                    await self.generate_stamp(information, time)
 
                 # Loading
                 try:
