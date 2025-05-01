@@ -8,7 +8,7 @@ from conda.env.env import from_file
 
 # TODO: High priority changing everything since new version of exercise hirachic order.
 # WARNING: This is a work in progress and not all features are implemented yet.
-# Practical trash code
+# Practical trash code_gen
 
 
 # exercise/id/language/version/

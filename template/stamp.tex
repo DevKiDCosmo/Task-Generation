@@ -1,0 +1,61 @@
+\begin{tcolorbox}[colback=white, colframe=black, boxrule=0.5pt]
+
+{
+\textit{This is an official examination application form.} \hfill \input{id}
+}
+
+% Zweispaltiger Bereich
+\begin{multicols}{2}
+\textbf{Applicant:} __OFFICIAL_APPLICANT__ \hfill \input{author} \\
+\textbf{Registration Number:} __OFFICIAL_REGISTRATION_NUMBER__ \\
+\textbf{Institutional Affiliation:} __OFFICIAL_INSTITUTION__ \\
+\textbf{Issuing Authority:} __OFFICIAL_ISSUING__ \\
+\textbf{Validation Directive:} __OFFICIAL_VALIDATOR__ \\
+\textbf{Evaluator:} __OFFICIAL__EVALUATOR__ \\
+\textbf{Submitted Document Reference ID:} __OFFICIAL_SDR_ID__ \\
+
+\textbf{Process Tracking ID:} __OFFICIAL_COID__ \\
+\textbf{Paper ID:} __OFFICIAL_PAPER_ID__ \\
+\textbf{Official Registry ID of Paper:} __OFFICIAL_PAPER_REG_ID__ \\
+\textbf{Submission Location:} __OFFICIAL__SUBMISSION_LOCATION__ \hfill \input{place} \\
+\textbf{Language and Code:} __OFFICIAL_LANGUAGE__, __OFFICIAL_CODE__ \\
+\end{multicols}
+
+\vspace{0.3cm}
+
+% Einspaltiger Bereich für Hash und Link
+\noindent
+\textbf{Authorized Signature:} \\
+\footnotesize
+\texttt{__OFFICIAL_SIGNATURE__}%
+\hfill%
+\raisebox{-0.1\baselineskip}{\input{authsign.tex}}
+
+\vspace{0.3cm}
+
+\normalsize
+\textbf{Hashed Document:} \\
+\footnotesize
+\texttt{__OFFICIAL_HASH__}%
+\hfill%
+\raisebox{-0.1\baselineskip}{\input{hash.tex}}
+
+\vspace{0.3cm}
+\normalsize
+\textbf{Additional Information:} \\
+\footnotesize
+\textit{__OFFICIAL_ADD_INFO__}
+\vspace{0.5cm}
+
+\noindent
+\textbf{QR Code:} \\
+\qrcode[height=4cm]{__OFFICIAL_LINK__}
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{Link:} \\
+\texttt{__OFFICIAL_LINK_1__} \\
+\texttt{__OFFICIAL_LINK_2__} \\
+
+\end{tcolorbox}
