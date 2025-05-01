@@ -391,10 +391,10 @@ citestyle=numeric-comp
 
 % Format
 \RequirePackage[
-margin=2.5cm,
+margin=2cm, % 2.5cm in the original
 top=2.5cm,
 headsep=1cm,
-bottom=2.5cm
+bottom=2cm % 2.5cm in the original
 ]{geometry}
 
 % Section

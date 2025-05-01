@@ -1,0 +1,20 @@
+{
+  "applicant": "Rayan Briki",
+  "reg-id": "2-429841",
+  "institution": "Otto-Hahn-Schule Hanau im Auftrag durch ISAC Sciences",
+  "issuing": "AUT-09/2025-API*2-4",
+  "validator": "CRT-34/2025-API*3-4",
+  "evaluator": "1025891027482",
+  "sdr-id": "SUB-235.102938",
+  "protrack-id": "COID-235.20938751",
+  "pid": "T1.0",
+  "of-id": "T1.0-2093850297AC-329",
+  "location": "Otto-Hahn-Schule Hanau, Kastanienallee 69, 63454 Hanau, Deutschland",
+  "language": "de",
+
+  "signature": "e2f5ab0d9cf0057b7a18086c9062892e4088ec6235b6a22a701f52e7dbd99df1",
+  "hash": "2594ca004f85a6887456ce059e792dad3fa74479c8fc48a67dfc7bfcd7422fad",
+  "information": "Any use of electronic signatures must be in accordance with the applicable laws and regulations. The use of this document is subject to the terms and conditions set forth by the issuing institution. The use of electronic means for calculation or solving is prohibited.",
+  "dates": ["2025-05-01", "2025-05-01", "2025-05-02", "2025-05-10", "2045-05-01", "2025-05-01"],
+  "time": 150
+}
