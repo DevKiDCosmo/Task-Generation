@@ -1,0 +1,7 @@
+Given a $k$-uniform hypergraph $H = (V, E)$, i.e., each hyperedge $e \in E$ connects exactly $k$ vertices from the vertex set $V$. Define a \textbf{cut} as a partition of $V$ into two disjoint subsets $V_1 \cup V_2 = V$, where a hyperedge is \textbf{cut} if it contains vertices from both parts.
+
+Prove or disprove:
+
+For every $k \geq 2$, there exists a partition of $V$ into two sets such that at least $\left(1 - \frac{1}{2^{k-1}}\right)|E|$ hyperedges are intersected.
+
+\textbf{Addendum}: How does the lower bound change under random partitioning?

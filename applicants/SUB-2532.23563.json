@@ -1,0 +1,20 @@
+{
+  "applicant": "Duy Nam Schlitz",
+  "reg-id": "1",
+  "institution": "Hochschule für angewandte Wissenschaften Frankfurt im Auftrag der städtischen Ordnung durch ISAC Sciences",
+  "issuing": "AUT-09/2025-API*2-4",
+  "validator": "CRT-34/2025-API*3-4",
+  "evaluator": "018472105982",
+  "sdr-id": "SUB-2532.23563",
+  "protrack-id": "COID-2154.12512412",
+  "pid": "all",
+  "of-id": "P1.1-23987",
+  "location": "Hoschschule für angewandte Wissenschaften München, Lothstraße 34, 80335 München, Deutschland",
+  "language": "de",
+
+  "signature": "f28b17c428460d1ca9491000be9e03f75cc3e1af3e96c7ee9a81aefdf54b6720",
+  "hash": "115ffa17c9ead19e29d69b8fca50cec4a6bde038e2e04528dd5986993feed3ab",
+  "information": "Please note that the signature and hash are not part of the original JSON file. They are added here for demonstration purposes only.",
+  "dates": ["2025-05-01", "2025-05-01", "2025-05-02", "2025-05-03", "2035-05-01", "2025-05-01"],
+  "time": 300
+}

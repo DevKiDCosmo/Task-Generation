@@ -1,0 +1,22 @@
+{
+  "id": "No.10",
+  "category": [
+    "Shoemei", "Bunseki"
+  ],
+  "cid": "SHB-2",
+  "time": 2700,
+  "nam_score": 7.4,
+  "author": "Original",
+  "date": "03.05.2025",
+  "UUID": "34123421-ca61-44eb-a6f0-db200d780f10",
+  "GUID": "2c0a8372-1073-4d3b-9f5c-230587091872",
+  "main": {
+    "title": "Maximale Schnitte in k-uniformen Hypergraphen",
+    "content": "content/n10-de.exr",
+    "solution": "solution/n10-de.exr"
+  },
+  "difficulty": 7,
+  "tags": [
+    "Hypergraph"
+  ]
+}

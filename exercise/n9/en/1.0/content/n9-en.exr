@@ -1,0 +1,38 @@
+Let $f: \mathbb{R} \to \mathbb{C}$ be a smooth, rapidly decreasing function (i.e., $f \in \mathcal{S}(\mathbb{R})$) such that its Fourier transform
+
+$$
+\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi i x \xi} \, dx
+$$
+
+the following identity holds:
+
+$$
+\sum_{n=1}^\infty f(n) = \int_0^\infty f(x) \, dx + \sum_{k=1}^\infty \hat{f}(k)
+$$
+
+\begin{enumerate}
+\item Prove using Poisson's sum formula that the above equation satisfies under suitable conditions is.
+\item Show that with a suitable choice of $f(x) = x^{-s} e^{-x}$ for $\Re(s) > 1$, statements about the analytical continuation of the Riemann zeta function can be derived.
+\item Investigate how the relationship can be extended into higher dimensions (Fourier on $\mathbb{R}^n$) and what role the symmetric structure plays in zeta analysis.
+\item Consider the function
+
+$$
+\sum_{n=1}^\infty \frac{\cos(2\pi n x)}{n^s}
+$$
+\end{enumerate}
+
+and show that it can be interpreted as a kind of Fourier series of the zeta function. Derive a representation as a function of $\hat{f}$.
+
+\subsubsection{Notes}
+
+\begin{itemize}
+\item Use the Poisson sum formula:
+
+$$
+\sum_{n=-\infty}^{\infty} f(n) = \sum_{k=-\infty}^{\infty} \hat{f}(k)
+$$
+
+\item Use properties of the Mellin transform for subproblems on $f(x) = x^{-s}e^{-x}$.
+\item Note: This problem requires an understanding of complex analysis, distribution theory, Fourier transform, and special functions.
+
+\end{itemize}

@@ -1,12 +1,12 @@
 {
-  "title": "Gesammtsammlung",
+  "title": "The Namische /ˈnamɪʃə/ Collection as a whole",
   "date": "24.04.2025",
   "paper": "PALL",
   "version": "1.0",
   "revision": "1",
   "archive": "3891M-932",
   "doi": "10.5281/zenodo.15249602",
-  "description": "Aufgaben zur Beweisen mit Induktion, Summen und ungeraden Zahlen.",
+  "description": "This collection contains selected problems on the zeta function and related topics. It is aimed at advanced students and offers both classical and innovative problems with detailed solutions.",
   "exercise": {
     "n1": {
       "language": [
@@ -118,6 +118,32 @@
       ]
     },
     "t3": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n9": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n10": {
       "language": [
         "de",
         "en"

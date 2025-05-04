@@ -1,0 +1,24 @@
+{
+  "id": "No.9",
+  "category": [
+    "Shoemei", "Bunseki"
+  ],
+  "cid": "SHB-1",
+  "time": 1250,
+  "nam_score": 7.2,
+  "author": "Original",
+  "date": "03.05.2025",
+  "UUID": "02853973-ca61-44eb-a6f0-db200d780f10",
+  "GUID": "2c0a8372-1073-4d3b-9f5c-239238527383",
+  "main": {
+    "title": "Zeta-Kombination durch Fouriertransformationen",
+    "content": "content/n9-de.exr",
+    "solution": "solution/n9-de.exr"
+  },
+  "difficulty": 7,
+  "tags": [
+    "Zeta-Kombination",
+    "Fouriertransformationen",
+    "Zeta-Funktion"
+  ]
+}
