@@ -9,7 +9,7 @@ Additionally, $n$ and $k$ are unequal on every plane. The points are distributed
 \item no $k+1$ points lie in a common $(n-1)$-dimensional hyperplane (general position),
 \item never more than two points can be touched simultaneously during a hyper-surface rotation.
 \end{itemize}
-A windmill process starts at an arbitrary point from $P$ (i.e., from $A$ or $B$) with an $(n-1)$-dimensional hyper-surface (\wing\) through this point. This hyper-surface rotates continuously in the space clockwise (i.e., according to a fixed orientation in the space) until it touches exactly one other point.
+A windmill process starts at an arbitrary point from $P$ (i.e., from $A$ or $B$) with an $(n-1)$-dimensional hyper-surface wing through this point. This hyper-surface rotates continuously in the space clockwise (i.e., according to a fixed orientation in the space) until it touches exactly one other point.
 \subsubsection{Transition Rule}
 If a point from the other group (i.e., from $A$ if the current pivot point is in $B$, or vice versa) is hit, this point becomes the new pivot point, and the windmill process continues there with a new $(n-1)$-hyper-surface.
 \subsubsection{Goal}

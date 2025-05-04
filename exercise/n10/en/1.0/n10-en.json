@@ -1,0 +1,23 @@
+{
+  "id": "No.10",
+  "category": [
+    "Shoemei",
+    "Bunseki"
+  ],
+  "cid": "SHB-2",
+  "time": 2700,
+  "nam_score": 7.2,
+  "author": "Original",
+  "date": "03.05.2025",
+  "UUID": "34123421-ca61-44eb-a6f0-db200d780f10",
+  "GUID": "10047928-1073-4d3b-9f5c-172874618926",
+  "main": {
+    "title": "Maximal numbers of cuts in k-uniform hypergraphs",
+    "content": "content/n10-en.exr",
+    "solution": "solution/n10-en.exr"
+  },
+  "difficulty": 7,
+  "tags": [
+    "Hypergraph"
+  ]
+}

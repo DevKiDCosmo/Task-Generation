@@ -1,0 +1,38 @@
+Es sei $f: \mathbb{R} \to \mathbb{C}$ eine glatte, rasch fallende Funktion (d. h. $f \in \mathcal{S}(\mathbb{R})$), sodass für ihre Fouriertransformierte
+
+$$
+\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi i x \xi} \, dx
+$$
+
+folgende Identität gilt:
+
+$$
+\sum_{n=1}^\infty f(n) = \int_0^\infty f(x) \, dx + \sum_{k=1}^\infty \hat{f}(k)
+$$
+
+\begin{enumerate}
+\item Beweise mit Hilfe der Poissonschen Summenformel, dass die obige Gleichung unter geeigneten Bedingungen erfüllt ist.
+\item Zeige, dass mit geeigneter Wahl von $f(x) = x^{-s} e^{-x}$ für $\Re(s) > 1$, sich Aussagen über die analytische Fortsetzung der Riemannschen Zeta-Funktion ableiten lassen.
+\item Untersuche, wie die Beziehung in höhere Dimensionen erweitert werden kann (Fourier auf dem $\mathbb{R}^n$) und welche Rolle dabei die symmetrische Struktur in der Zeta-Analyse spielt.
+\item Betrachte die Funktion
+    
+    $$
+    \sum_{n=1}^\infty \frac{\cos(2\pi n x)}{n^s}
+    $$
+\end{enumerate}
+
+und zeige, dass sie sich als eine Art Fourierreihe der Zeta-Funktion interpretieren lässt. Leite eine Darstellung in Abhängigkeit von $\hat{f}$ her.
+
+\subsubsection{Hinweise}
+
+\begin{itemize}
+\item Verwende die Poisson-Summenformel:
+
+$$
+\sum_{n=-\infty}^{\infty} f(n) = \sum_{k=-\infty}^{\infty} \hat{f}(k)
+$$
+
+\item Nutze Eigenschaften der Mellin-Transformation für Teilaufgaben zu $f(x) = x^{-s}e^{-x}$.
+\item Beachte: Diese Aufgabe verlangt ein Verständnis für komplexe Analysis, Distributionentheorie, Fouriertransformation und spezielle Funktionen.
+
+\end{itemize}

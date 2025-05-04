@@ -2,6 +2,7 @@ import re
 import joblib
 import numpy as np
 
+
 class ExerciseScorer:
     def __init__(self, math_model_path, vectorizer_path):
         self.math_model = joblib.load(math_model_path)
@@ -22,9 +23,10 @@ class ExerciseScorer:
         min_level = min(levels)
         max_level = max(levels)
         median_level = np.median(levels)
-        final_degree = sum(level ** 3 for level in levels) / sum(levels * 2)
+        final_degree: float = sum(level ** 3 for level in levels) / sum(levels * 2)
         absolute_degree = (final_degree + median_level) / 2
         return levels, min_level, max_level, median_level, final_degree, absolute_degree
+
 
 if __name__ == "__main__":
     scorer = ExerciseScorer(

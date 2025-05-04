@@ -1,9 +1,23 @@
-# Task-Generation
-Generating PDFs with JSON Exercise
+# New: Matnam (old Task-Generation)
+A Python tool for generating PDF documents from structured JSON exercise data.
 
-# Structure of the JSON files
+## Overview
 
-## PAPER
+This project automates the creation of exam or paper PDFs using JSON files that describe papers, exercises, and their metadata. It supports asynchronous processing and customizable templates.
+
+## Features
+
+- Generate PDFs from JSON definitions
+- Support for multiple languages and exercise versions
+- Asynchronous processing for efficiency
+- Customizable LaTeX templates
+- Logging and error handling
+
+##  Structure of the JSON files
+
+### Paper Json
+
+Describes the overall paper or exam.
 
 ```JSON
 {
@@ -16,34 +30,26 @@ Generating PDFs with JSON Exercise
   "doi": "Your DOI (Optional)",
   "description": "The description of the paper in the abstract",
   "exercise": {
-    "n1": { "language": ["de", "en", "fr"], "version": ["1.0", "1.0", "1.0"], "exercise": [1] },
-    "n4": { "language": ["de", "en"], "version": ["1.0d", "1.1e"], "exercise": [1, 2, 3, 4] },
-    "n5": { "language": ["de", "en"], "version": ["1.0", "1.0"], "exercise": [1] }
+    "n1": { "language": ["de", "en", "fr"], "version": ["1.0", "1.0", "1.0"], "exercise": [1] }
   },
   "tags": ["tag1", "tag2", "tag3"]
 }
 ```
 
-## EXERCISE REGISTER
+###  Exercise Register JSON
+
+Maps languages and versions to exercise file paths.
 
 ```json
 {
-  "de": {
-    "1.0": ["n1/de/1.0/n1-de"]
-  },
-  "en": {
-    "1.0": ["n1/en/1.0/n1-en"]
-  },
-  "fr": {
-    "1.0": ["n1/fr/1.0/n1-fr"]
-  },
+  "de": { "1.0": ["n1/de/1.0/n1-de"] },
+  "en": { "1.0": ["n1/en/1.0/n1-en"] },
   "UUID": "e89de9cb-5ccc-4512-a077-38f7b983aef4"
 }
-
 ```
 
-## EXERCISE
-
+### Exercise JSON
+Defines a single exercise.
 ```JSON
 {
   "id": "No.1",
@@ -56,14 +62,25 @@ Generating PDFs with JSON Exercise
   "UUID": "e89de9cb-5ccc-4512-a077-38f7b983aef4",
   "GUID": "21c0f2a4-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
   "main": {
-    "title": "Beweise, dass $n^2 = \\sum^{{n}{2}}_{n = 1} = (2n - 1) = n^2$",
+    "title": "Prove that $n^2 = \\sum^{{n}{2}}_{n = 1} = (2n - 1) = n^2$",
     "content": "solution/n1-de",
     "solution": "solution/n1-de"
   },
   "difficulty": 1,
-  "tags": ["Induktion", "Summen", "Ungerade Zahlen", "Naturelle Zahlen"]
+  "tags": ["Induction", "Sums", "Odd Numbers", "Natural Numbers"]
 }
 ```
+
+## Usage
+1. Place your JSON files according to the described structure.
+2. Run the generator
+
+### Environment Variables
+- EXERCISE: Directory for exercises (default: ./exercise)
+- DIFFICULTY: Path to difficulty/translation info (default: translation/difficulty.json)
+- TRANSLATION: Path to translation info (default: translation/translation.json)
+
+# TODOS
 
 Structure of exercise files
 

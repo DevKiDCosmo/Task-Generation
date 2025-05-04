@@ -1,0 +1,7 @@
+Gegeben sei ein $k$-uniformer Hypergraph $H = (V, E)$, d. h. jeder Hyperrand $e \in E$ verbindet genau $k$ Knoten aus der Knotenmenge $V$. Definiere einen \textbf{Schnitt} als eine Partition von $V$ in zwei disjunkte Teilmengen $V_1 \cup V_2 = V$, wobei ein Hyperrand \textbf{geschnitten} ist, wenn er Knoten aus beiden Teilen enthält.
+
+Zeige oder widerlege:
+
+Für jedes $k \geq 2$ existiert eine Partition von $V$ in zwei Mengen, sodass mindestens $\left(1 - \frac{1}{2^{k-1}}\right)|E|$ Hyperkanten geschnitten werden.
+
+\textbf{Zusatz}: Wie ändert sich die untere Schranke bei zufälliger Partition?

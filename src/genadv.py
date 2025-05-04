@@ -1,4 +1,5 @@
 import shutil, sys, os
+import subprocess
 import typing, json
 from util import log as lg
 # import mypy
@@ -7,6 +8,9 @@ from dotenv import load_dotenv
 import datetime
 import code_gen.code_16 as c16
 import code_gen.code_256 as c256
+import re
+import tempfile
+import uuid
 
 log = lg.Log()
 
@@ -105,7 +109,12 @@ class Generation():
             del information[key]
 
         # Sort the exerciseForProcessing list by language
-        exerciseForProcessing.sort(key=lambda x: (x[0], x[1]))
+        def extract_number(s):
+            match = re.search(r'(?:No|Test)\.(\d+)', s)
+            return int(match.group(1)) if match else 0
+
+        # Fixing from No.10 No.9 to No.9 No.10.
+        exerciseForProcessing.sort(key=lambda x: (x[0], extract_number(x[1])))
 
         # log.write(exerciseForProcessing)
         return exerciseForProcessing
@@ -196,8 +205,117 @@ class Generation():
         else:
             return f"Unknown Translation for key: {translation_key}"
 
+    def markdown_to_latex(self, line: str) -> str:
+        # Fett und kursiv (***) → \textbf{\textit{...}}
+        line = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', line)
+        # Fett (**) → \textbf{...}
+        line = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', line)
+        # Kursiv (*) → \textit{...}
+        line = re.sub(r'\*(.+?)\*', r'\\textit{\1}', line)
+        # Unterstrichen (__) → \underline{...}
+        line = re.sub(r'__(.+?)__', r'\\underline{\1}', line)
+        # Durchgestrichen (~~) → \sout{...}
+        line = re.sub(r'~~(.+?)~~', r'\\sout{\1}', line)
+        # Inline-Code (`) → \texttt{...}
+        line = re.sub(r'`(.+?)`', r'\\texttt{\1}', line)
+        return line
+
+    async def checking_syntax(self, file: str) -> bool:
+        base_temp_dir = "./temp"
+        os.makedirs(base_temp_dir, exist_ok=True)
+        temp_dir = os.path.join(base_temp_dir, str(uuid.uuid4()))
+        os.makedirs(temp_dir, exist_ok=True)
+
+        temp_tex = os.path.join(temp_dir, "syntax_check.tex")
+        banko_src = os.path.join("./template", "banko.cls")
+        banko_dst = os.path.join(temp_dir, "banko.cls")
+
+        log.write("Checking LaTeX syntax for file: " + temp_tex + ". From " + file)
+
+        if not os.path.exists(banko_src):
+            log.write(f"FileNotFoundError: {banko_src} not found")
+            return False
+
+        shutil.copy2(banko_src, banko_dst)
+
+        try:
+            async with aiofiles.open(temp_tex, "w", encoding="utf-8") as f:
+                await f.write(r"\documentclass{banko}" "\n") # Banko is preferred - It has probably every package - Very powerful
+                await f.write(r"\begin{document}" "\n")
+                # Inhalt der Datei einfügen
+
+                if file.startswith("../exercise"):
+                    file = file.replace("../exercise", "./generated/exercise", 1)
+                elif file.startswith("../solution"):
+                    file = file.replace("../solution", "./generated/solution", 1)
+
+                file += ".tex"
+
+                async with aiofiles.open(file, "r", encoding="utf-8") as content_file:
+                    async for line in content_file:
+                        await f.write(line)
+
+                await f.write(r"\end{document}" "\n")
+
+            try:
+                result = subprocess.run(
+                    ["xelatex", "-no-pdf", "-file-line-error", "-interaction=nonstopmode",
+                     temp_tex.replace("\\", "/").split("/")[-1]],
+                    cwd=temp_dir,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    timeout=15
+                )
+            except subprocess.TimeoutExpired:
+                log.write(f"LaTeX syntax check timeout for file: {file}\n")
+                return False
+
+            try:
+                output = result.stdout.decode('utf-8') + result.stderr.decode('utf-8')
+            except UnicodeDecodeError:
+                output = result.stdout.decode('latin1') + result.stderr.decode('latin1')
+
+            CRITICAL_ERROR_PATTERNS = {
+                "E001": r"! LaTeX Error:",
+                "E002": r"! Undefined control sequence\.",
+                "E003": r"! Emergency stop\.",
+                "E004": r"! Missing .* inserted\.",
+                "E005": r"! File ended while scanning",
+                "E006": r"! Too many \}'s\.",
+                "E007": r"Fatal error occurred, no output PDF file produced!",
+                #"E008": r"Output written on .*\.pdf",
+                "E009": r"! I can't write on file",
+            }
+
+            found_errors = []
+
+            for code, pattern in CRITICAL_ERROR_PATTERNS.items():
+                if code == "E008":
+                    if not re.search(pattern, output):  # PDF output fehlt
+                        found_errors.append((code, "No PDF output produced"))
+                else:
+                    matches = re.findall(pattern, output)
+                    for match in matches:
+                        found_errors.append((code, match))
+
+            if found_errors:
+                log.write(f"LaTeX syntax check failed. Origin: {file}. Code: {result.returncode}. Errors:\n")
+                for code, msg in found_errors:
+                    log.write(f"  {code}: {msg}\n")
+                    print(f"{code}: {msg}")
+                return False
+            else:
+                log.write("Finished LaTeX syntax check for file: " + temp_tex)
+                return True
+
+        except Exception as e:
+            log.write(f"LaTeX-syntax checking went wrong: {e} from {file}")
+            return False
+
     def generating_exercise(self, language: str, file: str, paper: str, version: str, raw: str,
                             paths_exercise: list, paths_solution: list) -> tuple[int, list[str], list[str]]:
+
+        # Needs to be changed to async
 
         with open(file, 'r', encoding="utf-8") as f:
             data = json.load(f)
@@ -219,13 +337,13 @@ class Generation():
             tags = data["tags"]
         except KeyError as e:
             log.write(f"KeyError: {e} in {file}")
-            return (0, [""], [""])
+            return 0, [""], [""]
         except json.JSONDecodeError:
             log.write(f"JSONDecodeError: {file} is not a valid JSON file")
-            return (0, [""], [""])
+            return 0, [""], [""]
         except PermissionError:
             log.write(f"PermissionError: {file} is not accessible")
-            return (0, [""], [""])
+            return 0, [""], [""]
 
         # Generate dir
         if not os.path.exists(f"./generated/exercise/{language}"):
@@ -280,9 +398,9 @@ class Generation():
             f.write(author_info)
 
             for line in content_lines:
-                f.write(line + "\n")
+                f.write(self.markdown_to_latex(line) + "\n")
 
-            f.write("\\vspace{1em}\\hline\\vspace{1em}\n")
+            f.write("\\noindent\\rule{10cm}{0.4pt}\n")
             f.write("\\subsubsection{Solution}\n")
 
             try:
@@ -290,7 +408,7 @@ class Generation():
                           encoding="utf-8") as content_:  # Change to content_ because mypy
                     solution_file: list[str] = content_.read().splitlines()
                     for line in solution_file:
-                        f.write(line + "\n")
+                        f.write(self.markdown_to_latex(line) + "\n")
             except FileNotFoundError:
                 log.write(f"FileNotFoundError: {path} not found")
                 return (0, [""], [""])
@@ -413,7 +531,8 @@ class Generation():
                 import_list += f"\\section{{{self.translation_to_str('language_instruction', language)}: {formatted_TotalTime[language]}}}\n"
                 import_list += self.instruction_translation(language) + "\n\n\\clearpage\n\n"
                 previous_language = language
-            import_list += f"\\input{{../stamp/header}}\n"
+            if self.exam:
+                import_list += f"\\input{{../stamp/header}}\n"
             import_list += f"\\input{{{paths_exercise[i]}}}\\clearpage\n\n"
 
         import_list += solution
@@ -762,16 +881,16 @@ class Generation():
         tags = data["tags"]
         exercise = data["exercise"]
 
-        exerciseForProcessing: list[tuple[str, str, str, str]] = []
+        exercise_for_processing: list[tuple[str, str, str, str]] = []
 
         # TODO: Process the exercise information faster by asyncio
         # TODO: Checking for new version format.
         # TODO: Caching
-        exerciseForProcessing = await self.phrase_exercise(exercise, exerciseForProcessing)
+        exercise_for_processing = await self.phrase_exercise(exercise, exercise_for_processing)
         uuid_list: list[str] = []
         guid_list: list[str] = []
-        for i, (language, file, version, raw) in enumerate(exerciseForProcessing):
-            log.write(f"Processing exercise: {file} {i + 1} / {len(exerciseForProcessing)}")
+        for i, (language, file, version, raw) in enumerate(exercise_for_processing):
+            log.write(f"Processing exercise: {file} {i + 1} / {len(exercise_for_processing)}")
             case, uuid, guid = await self.validating_exercise(file, uuid_list, guid_list)
             log.write("Registred UUID: " + uuid + " GUID: " + guid)
             if not case:
@@ -785,11 +904,17 @@ class Generation():
         paths_solution: list[str] = []
 
         # ! Warning: DON'T REMOVE IT AGAIN
-        for language, file, version, raw in exerciseForProcessing:
+        for language, file, version, raw in exercise_for_processing:
             time, paths_exercise, paths_solution = self.generating_exercise(language, file, paper, version, raw,
                                                                             paths_exercise,
                                                                             paths_solution)
             updated_exerciseForProcessing.append((language, file, version, raw, time))
+
+        # TODO: Remove items from paths_exercise and paths_solution if they are not valid and fix list
+        #await asyncio.gather(
+        #    *[self.checking_syntax(path) for path in paths_exercise],
+        #    *[self.checking_syntax(path) for path in paths_solution]
+        #)
 
         # Warte auf die Fertigstellung der asynchronen Kompilierung
         await self.async_compile(paper, title, date, description, version, revision, archive, doi, tags, paths_exercise,

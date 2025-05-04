@@ -1,15 +1,15 @@
 Given a set of $2n$ randomly distributed points in general position in $\mathbb{R}^n$, where:
 \begin{itemize}
-\item a point set with $|A| = n + 1$,\n
-\item $B$ a point set with $|B| = n - 1$,\n
+\item a point set with $|A| = n + 1$,
+\item $B$ a point set with $|B| = n - 1$,
 \item $A \cap B = \emptyset$, $A \cup B = P$, with $|P| = 2n$.
 \end{itemize}
 The points are distributed in space such that:
 \begin{itemize}
-no $n+1$ points lie in a common $(n-1)$-dimensional hyperplane (general position),
-never more than two points can be touched at the same time during a hyper-surface rotation.
+\item no $n+1$ points lie in a common $(n-1)$-dimensional hyperplane (general position),
+\item never more than two points can be touched at the same time during a hyper-surface rotation.
 \end{itemize}
-A \textbf{windmill process} starts at an arbitrary point from $P$ (i.e., from $A$ or $B$) with an $(n-1)$-dimensional hyper-surface (\wing\) through this point. This hyper-surface rotates continuously in the space clockwise (i.e., according to a fixed orientation in the space) until it touches exactly one other point.
+A \textbf{windmill process} starts at an arbitrary point from $P$ (i.e., from $A$ or $B$) with an $(n-1)$-dimensional hyper-surface wing through this point. This hyper-surface rotates continuously in the space clockwise (i.e., according to a fixed orientation in the space) until it touches exactly one other point.
 \subsubsection{Transition rule}
 If a point from the other group (i.e., from $A$ if the current pivot point is in $B$, or vice versa) is hit, this point becomes the new pivot point, and the windmill process continues there with a new $(n-1)$-hyper-surface.
 \subsubsection{Goal}
