@@ -1,0 +1,17 @@
+Problemstellung
+
+Ein adaptiver Primalitätstest ist ein Algorithmus, der bei der Prüfung einer natürlichen Zahl $n \in \mathbb{N}$ auf Primzahl-Eigenschaft schrittweise zwischen probabilistischen und deterministischen Verfahren entscheidet. Beispiele sind Miller-Rabin, Baillie-PSW oder AKS.
+
+Entwickle und analysiere ein adaptives Primalitätsverfahren mit folgender Eigenschaft:
+
+- Der Algorithmus startet mit einem probabilistischen Test (z. B. Miller-Rabin).
+- Falls dieser Test mehrfach „bestanden“ wird, führt das System bei Grenzfällen einen deterministischen Subtest durch (z. B. Lucas, ECPP, oder reduzierte AKS-Stufe).
+- Die Gesamtkomplexität des Verfahrens ist abhängig von der Größe von $n$ sowie von der angenommenen Fehlerwahrscheinlichkeit $\varepsilon$.
+
+Aufgabe: Finde eine asymptotisch optimale Kombination solcher Verfahren (mit Beweis) und berechne die minimale erwartete Laufzeit für die Entscheidung „prim“ vs. „nicht prim“ unter Annahme realistischer Verteilungen zufällig gewählter Zahlen $n \in [1, N]$.
+
+**Ziel:**
+
+- Analysiere das Modell der **Fehlerkontrollierten adaptiven Komplexität**.
+- Entwickle eine Funktionsklasse $T(n, \varepsilon)$, die die Laufzeit (im Erwartungswert) des optimalen Verfahrens beschreibt.
+- Vergleiche deine Lösung mit bekannten Verfahren wie Miller-Rabin (mehrfach), Baillie-PSW und deterministischem AKS.

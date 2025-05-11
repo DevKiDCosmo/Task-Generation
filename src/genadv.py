@@ -16,10 +16,12 @@ log = lg.Log()
 
 
 class Generation():
-    def __init__(self, exerciseDIR: str, difficulty_: str, translation_: str):
+    def __init__(self, exerciseDIR: str, difficulty_: str, translation_: str, category_: str):
         self.exercise_dir = exerciseDIR
         self.difficulty = difficulty_
         self.translation = translation_
+        self.category = category_
+        self.language = ""
         self.exam = False
 
     async def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> \
@@ -187,6 +189,19 @@ class Generation():
         else:
             return "Unknown Language"
 
+    def category_to_str(self, category_: int, language: str) -> str:
+        with open(self.category, 'r', encoding="utf-8") as f:
+            data = json.load(f)
+
+        if language in data:
+            key = str(category_)
+            if key in data[language]:
+                return data[language][key]
+            else:
+                return "Unknown Difficulty"
+        else:
+            return "Unknown Language"
+
     def translation_to_str(self, translation_key: str, language: str) -> str:
         try:
             with open(self.translation, 'r', encoding="utf-8") as f:
@@ -205,20 +220,63 @@ class Generation():
         else:
             return f"Unknown Translation for key: {translation_key}"
 
-    def markdown_to_latex(self, line: str) -> str:
-        # Fett und kursiv (***) → \textbf{\textit{...}}
-        line = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', line)
-        # Fett (**) → \textbf{...}
-        line = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', line)
-        # Kursiv (*) → \textit{...}
-        line = re.sub(r'\*(.+?)\*', r'\\textit{\1}', line)
-        # Unterstrichen (__) → \underline{...}
-        line = re.sub(r'__(.+?)__', r'\\underline{\1}', line)
-        # Durchgestrichen (~~) → \sout{...}
-        line = re.sub(r'~~(.+?)~~', r'\\sout{\1}', line)
-        # Inline-Code (`) → \texttt{...}
-        line = re.sub(r'`(.+?)`', r'\\texttt{\1}', line)
-        return line
+    def markdown_to_latex(self, lines: list[str]) -> list[str]:
+        output = []
+        in_itemize = False
+        in_enumerate = False
+
+        for line in lines:
+            original_line = line  # für spätere Referenz
+            line = line.rstrip()
+
+            # Prüfe Listenart
+            is_item = re.match(r'^\s*-\s+', line)
+            is_enum = re.match(r'^\s*\d+\.\s+', line)
+
+            # Öffne Umgebungen bei Bedarf
+            if is_item and not in_itemize:
+                if in_enumerate:
+                    output.append(r'\end{enumerate}')
+                    in_enumerate = False
+                output.append(r'\begin{itemize}')
+                in_itemize = True
+            elif is_enum and not in_enumerate:
+                if in_itemize:
+                    output.append(r'\end{itemize}')
+                    in_itemize = False
+                output.append(r'\begin{enumerate}')
+                in_enumerate = True
+            elif not is_item and not is_enum:
+                if in_itemize:
+                    output.append(r'\end{itemize}')
+                    in_itemize = False
+                if in_enumerate:
+                    output.append(r'\end{enumerate}')
+                    in_enumerate = False
+
+            # Formatierungen anwenden
+            line = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', line)
+            line = re.sub(r'\*\*(?!\*)(.+?)\*\*', r'\\textbf{\1}', line)
+            line = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'\\textit{\1}', line)
+            line = re.sub(r'__(.+?)__', r'\\underline{\1}', line)
+            line = re.sub(r'~~(.+?)~~', r'\\sout{\1}', line)
+            line = re.sub(r'`(.+?)`', r'\\texttt{\1}', line)
+
+            # Listenpunkte ersetzen
+            if is_item:
+                line = re.sub(r'^\s*-\s+', r'\\item ', line)
+            elif is_enum:
+                line = re.sub(r'^\s*\d+\.\s+', r'\\item ', line)
+
+            output.append(line)
+
+        # Am Ende offene Umgebung schließen
+        if in_itemize:
+            output.append(r'\end{itemize}')
+        if in_enumerate:
+            output.append(r'\end{enumerate}')
+
+        return output
 
     async def checking_syntax(self, file: str) -> bool:
         base_temp_dir = "./temp"
@@ -240,7 +298,8 @@ class Generation():
 
         try:
             async with aiofiles.open(temp_tex, "w", encoding="utf-8") as f:
-                await f.write(r"\documentclass{banko}" "\n") # Banko is preferred - It has probably every package - Very powerful
+                await f.write(
+                    r"\documentclass{banko}" "\n")  # Banko is preferred - It has probably every package - Very powerful
                 await f.write(r"\begin{document}" "\n")
                 # Inhalt der Datei einfügen
 
@@ -283,7 +342,6 @@ class Generation():
                 "E005": r"! File ended while scanning",
                 "E006": r"! Too many \}'s\.",
                 "E007": r"Fatal error occurred, no output PDF file produced!",
-                #"E008": r"Output written on .*\.pdf",
                 "E009": r"! I can't write on file",
             }
 
@@ -321,7 +379,8 @@ class Generation():
             data = json.load(f)
         try:
             id_exercise = data["id"]
-            category = data["category"]
+            category = [self.category_to_str(i, language) for i in data["category"]]
+
             cid = data["cid"]
             time: int = data["time"]
 
@@ -380,6 +439,7 @@ class Generation():
             f.write(header_information)
             f.write(author_info)
 
+            content_lines = self.markdown_to_latex(content_lines)
             for line in content_lines:
                 f.write(line + "\n")
 
@@ -397,18 +457,22 @@ class Generation():
             f.write(header_information)
             f.write(author_info)
 
+            content_lines = self.markdown_to_latex(content_lines)
             for line in content_lines:
-                f.write(self.markdown_to_latex(line) + "\n")
+                f.write(line + "\n")
 
-            f.write("\\noindent\\rule{10cm}{0.4pt}\n")
+            # f.write("\\noindent\\rule{10cm}{0.4pt}\n")
+            f.write("\\vspace{1cm}\n")
             f.write("\\subsubsection{Solution}\n")
 
             try:
                 with open(path := raw + "/" + os.path.join(language, version, solution), 'r',
                           encoding="utf-8") as content_:  # Change to content_ because mypy
                     solution_file: list[str] = content_.read().splitlines()
-                    for line in solution_file:
-                        f.write(self.markdown_to_latex(line) + "\n")
+
+                    solution_lines = self.markdown_to_latex(solution_file)
+                    for line in solution_lines:
+                        f.write(line + "\n")
             except FileNotFoundError:
                 log.write(f"FileNotFoundError: {path} not found")
                 return (0, [""], [""])
@@ -464,6 +528,13 @@ class Generation():
                 shutil.copy2(source_path, destination_path)
             else:
                 log.write(f"File {file_name} not found in the template directory.")
+
+        # Copy fonts
+
+        fonts_dir = os.path.join("./template", "fonts")
+        if os.path.exists(fonts_dir):
+            destination_fonts_dir = os.path.join(destination_dir, "fonts")
+            shutil.copytree(fonts_dir, destination_fonts_dir, dirs_exist_ok=True)
 
         # Rename template.tex to paper.tex
         template_path = os.path.join(destination_dir, "template.tex")
@@ -849,7 +920,10 @@ class Generation():
                         return None
                     log.write(f"{information}")
 
+                    self.language = information[11]
+
                     await self.generate_stamp(information, time)
+
 
                 # Loading
                 try:
@@ -910,11 +984,20 @@ class Generation():
                                                                             paths_solution)
             updated_exerciseForProcessing.append((language, file, version, raw, time))
 
+        # Remove every item not in the applied language for exam
+        #if self.exam:
+        #    for i, (language, file, version, raw, time) in enumerate(updated_exerciseForProcessing):
+        #        if language != self.language:
+        #            updated_exerciseForProcessing.pop(i)
+        #            paths_exercise.pop(i)
+        #            paths_solution.pop(i)
+
         # TODO: Remove items from paths_exercise and paths_solution if they are not valid and fix list
-        #await asyncio.gather(
+        # TODO: Fixing finding errors etc. in the output of xelatex
+        # await asyncio.gather(
         #    *[self.checking_syntax(path) for path in paths_exercise],
         #    *[self.checking_syntax(path) for path in paths_solution]
-        #)
+        # )
 
         # Warte auf die Fertigstellung der asynchronen Kompilierung
         await self.async_compile(paper, title, date, description, version, revision, archive, doi, tags, paths_exercise,
@@ -941,10 +1024,10 @@ if __name__ == "__main__":
     difficulty: str = os.getenv(
         "DIFFICULTY") or "translation/difficulty.json"  # Information about difficulty and translation
     translation: str = os.getenv("TRANSLATION") or "translation/translation.json"  # Information about translation
-
+    category: str = os.getenv("CATEGORY") or "translation/category.json"  # Information about category
     log.write("Exercise directory: " + exercise_dir + " Difficulty: " + difficulty + " Translation: " + translation)
 
-    gen = Generation(exercise_dir, difficulty, translation)
+    gen = Generation(exercise_dir, difficulty, translation, category)
 
     # Starte die asynchrone Hauptmethode
     asyncio.run(gen.main(sys.argv[1]))

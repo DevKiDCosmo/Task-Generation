@@ -1,6 +1,6 @@
 {
   "id": "No.4-1",
-  "category": ["Shoemei", "Keisan", "Kaishaku"],
+  "category": [1, 4, 2],
   "cid": "SKK-1",
   "time": 240,
   "nam_score": 4.0,
