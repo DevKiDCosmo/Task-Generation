@@ -1,0 +1,34 @@
+{
+  "de": {
+    "1": "Shoemei",
+    "2": "Kaiketsu und Toku",
+    "3": "Bunseki",
+    "4": "Keisan",
+    "5": "Kōchiku und Sekkei",
+    "6": "Kaishaku"
+  },
+  "en": {
+    "1": "Shoemei",
+    "2": "Kaiketsu and Toku",
+    "3": "Bunseki",
+    "4": "Keisan",
+    "5": "Kōchiku and Sekkei",
+    "6": "Kaishaku"
+  },
+  "jp": {
+    "1": "証明",
+    "2": "解決と解く",
+    "3": "分析",
+    "4": "計算",
+    "5": "構築と設計",
+    "6": "解釈"
+  },
+  "kr": {
+    "1": "증명",
+    "2": "해결과 풀기",
+    "3": "분석",
+    "4": "계산",
+    "5": "구축과 설계",
+    "6": "해석"
+  }
+}

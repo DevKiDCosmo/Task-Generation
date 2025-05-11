@@ -1,0 +1,14 @@
+{
+  "title": "The Namische /ˈnamɪʃə/ Collection",
+  "date": "11.05.2025",
+  "paper": "P1.2-2",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "238357-932",
+  "doi": "10.5281/zenodo.15334504",
+  "description": "Part two of two (P1.2/1 and P1.2/2)",
+  "exercise": {
+    "n14": { "language": ["de","en","jp"], "version": ["1.0","1.0","1.0"], "exercise": [1] }
+  },
+  "tags": ["induction"]
+}

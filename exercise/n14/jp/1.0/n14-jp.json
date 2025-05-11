@@ -1,0 +1,25 @@
+{
+  "id": "No.14",
+  "category": [
+    2,
+    3,
+    1,
+    5
+  ],
+  "cid": "KTB-1",
+  "time": 2700,
+  "nam_score": 7.5,
+  "author": "Original",
+  "date": "05月11日2025年",
+  "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10",
+  "GUID": "10047928-1073-4d3b-9f5c-624352343133",
+  "main": {
+    "title": "適応型素数判定の最適複雑度",
+    "content": "content/n14-jp.exr",
+    "solution": "solution/n14-jp.exr"
+  },
+  "difficulty": 6,
+  "tags": [
+    ""
+  ]
+}

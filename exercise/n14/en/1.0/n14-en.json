@@ -1,0 +1,25 @@
+{
+  "id": "No.14",
+  "category": [
+    2,
+    3,
+    1,
+    5
+  ],
+  "cid": "KTB-1",
+  "time": 2700,
+  "nam_score": 7.5,
+  "author": "Original",
+  "date": "11.05.2025",
+  "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10",
+  "GUID": "10047928-1073-4d3b-9f5c-624352343132",
+  "main": {
+    "title": "Optimal Complexity of an Adaptive Primality Test",
+    "content": "content/n14-en.exr",
+    "solution": "solution/n14-en.exr"
+  },
+  "difficulty": 6,
+  "tags": [
+    ""
+  ]
+}

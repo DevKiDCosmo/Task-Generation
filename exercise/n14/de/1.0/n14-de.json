@@ -1,0 +1,25 @@
+{
+  "id": "No.14",
+  "category": [
+    2,
+    3,
+    1,
+    5
+  ],
+  "cid": "KTB-1",
+  "time": 2700,
+  "nam_score": 7.5,
+  "author": "Original",
+  "date": "11.05.2025",
+  "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10",
+  "GUID": "2c0a8372-1073-4d3b-9f5c-209843782653",
+  "main": {
+    "title": "Optimale Komplexität eines adaptiven Primalitätsverfahrens",
+    "content": "content/n14-de.exr",
+    "solution": "solution/n14-de.exr"
+  },
+  "difficulty": 6,
+  "tags": [
+    ""
+  ]
+}

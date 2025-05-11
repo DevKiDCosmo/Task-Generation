@@ -24,7 +24,7 @@
 
 
 % Load required packages
-\RequirePackage{xcolor}           % Color
+\RequirePackage[table,svgnames]{xcolor}           % Color
 \RequirePackage{fontspec}         % Font
 \RequirePackage[bottom]{footmisc} % Footnotes
 \RequirePackage{lastpage}         % Last page
@@ -50,13 +50,14 @@ compact,
 \RequirePackage{amstext}
 \RequirePackage{amsfonts}
 \RequirePackage{bm}
-\RequirePackage{tcolorbox}
+\RequirePackage[most]{tcolorbox}
 
 % Math structures
 \RequirePackage{array}                                  % Arrays
 \RequirePackage{empheq}                                 % Grouped equations
 \RequirePackage{amsthm}                                 % Theorems
 \RequirePackage{thmtools}                               % List of theorems
+
 
 % Math and scientific symbols and utilities
 \RequirePackage{siunitx}                                % Units
@@ -83,6 +84,7 @@ unicode    = true
 \RequirePackage{lipsum}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{contour}                                % Underlines
 \RequirePackage[                                        % Underlines: normalem to avoid underlining all \emph'sized words (bibliography entries)
 normalem
 ]{ulem}
@@ -104,27 +106,52 @@ citestyle=numeric-comp
 
 \RequirePackage{booktabs}
 
-\RequirePackage{hyphenat}
+%\RequirePackage[htt]{hyphenat}
+\RequirePackage{caption}                                % Captions
+\RequirePackage{fmtcount}  
 
 \RequirePackage{xeCJK}
 
-% Automatic font setup for Japanese, Chinese, and Korean
-%\setCJKmainfont{Noto Serif KR}[  % Set default to Korean
-%Script=Hangul,
-%Language=Korean
-%]
-%\setCJKfallbackfamilyfont{\CJKrmdefault}{Noto Serif JP}[  % Fallback for Japanese
-%Script=Kana,
-%Language=Japanese
-%]
-%\setCJKfallbackfamilyfont{\CJKrmdefault}{SimSun}[  % Fallback for Chinese
-%Script=Han,
-%Language=Chinese
-%]
+% Hauptschriftart für CJK: Koreanisch
+\setCJKfallbackfamilyfont{\CJKrmdefault}{NotoSerifJP}[
+	Path = ./fonts/,
+	Extension = .ttf,
+	UprightFont = *-Regular
+]
 
-% Sans-serif and monospace font setup
-%\setCJKsansfont{Noto Serif KR}[Script=Hangul]
-%\setCJKmonofont{Noto Serif KR}[Script=Hangul]
+\setCJKfallbackfamilyfont{}{NotoSerifKR}[
+	Path = ./fonts/,
+	Extension = .ttf,
+	UprightFont = *-Regular
+]
+
+
+% Fallback für Chinesisch
+\setCJKfallbackfamilyfont{}{NotoSerifTC}[
+	Path = ./fonts/,
+	Extension = .ttf,
+	UprightFont = *-Regular
+]
+
+\setCJKfallbackfamilyfont{}{NotoSerifSC}[
+Path = ./fonts/,
+Extension = .ttf,
+UprightFont = *-Regular
+]
+
+% Sans-serif und Monospace Schriftarten
+%\setCJKsansfont[
+%	Path = ./fonts/,
+%	Extension = .ttf,
+%	UprightFont = *-Regular
+%]{NotoSansKR}
+
+%\setCJKmonofont[
+%	Path = ./fonts/,
+%	Extension = .ttf,
+%	UprightFont = *-Regular
+%]{NotoSansMonoKR}
+
 
 % Line spacing and compatibility
 \linespread{1.1} % Adjust spacing for CJK text
@@ -220,7 +247,8 @@ citestyle=numeric-comp
 		\setlength{\parindent}{0.5cm} % Indent the first line of text
 		\setlength{\parskip}{0pt} % Single spacing        
 		\raggedright
-		\quad#1
+%		\quad#1
+		#1
 	}
 }
 
@@ -234,10 +262,12 @@ citestyle=numeric-comp
 	\IfBooleanT{#1}{\setcounter{contactauthor}{\theauthcount}}%
 }
 
+\def\version{1.5.5 Beta}
+
 % Define a custom title page style
 \fancypagestyle{titlepage}{
 	\fancyhf{} % Clear all header and footer fields
-	\fancyhead[C]{{\footnotesize\color{gray} Banko Version: 1.5.4 Beta \BPN@copyright}} % Custom header
+	\fancyhead[C]{{\footnotesize\color{gray} Banko Version: \version~\BPN@copyright}} % Custom header
 	\renewcommand{\headrulewidth}{0pt} % Header line thickness
 	\renewcommand{\footrulewidth}{0pt} % No footer line
 	
@@ -317,7 +347,7 @@ citestyle=numeric-comp
 \pagestyle{fancy}
 
 % Define custom header
-\fancyhead[L]{{\footnotesize\color{gray} Banko Version: 1.5.4 Beta \BPN@copyright}}
+\fancyhead[L]{{\footnotesize\color{gray} Banko Version: \version~\BPN@copyright}}
 \fancyhead[R]{{\footnotesize\color{gray}\BPN@dates}} % Right-aligned header
 
 % Define custom footer
@@ -346,21 +376,6 @@ citestyle=numeric-comp
 
 % Define custom fonts
 \setmainfont{Times New Roman}%[Scale= 1.1] % Times New Roman, Scale = 1
-
-%\setmainfont[
-%	Path = ./fonts/funnelsans/, % Directory where the font files are located
-%	UprightFont = *-Regular.ttf,
-%	BoldFont = *-Bold.ttf,
-%	ItalicFont = *-Italic.ttf,
-%	BoldItalicFont = *-BoldItalic.ttf,
-%	Ligatures = TeX, % Enables TeX-style ligatures
-%	Numbers = Lining, % Uses lining numbers (default)
-%	Scale = 1.0, % Adjust font size if needed
-%	LetterSpace = 1.5, % Adds letter spacing for readability
-%	SmallCapsFeatures = {LetterSpace=2.0}, % Small caps spacing
-%	BoldFeatures = {LetterSpace=1.0}, % Letter spacing for bold
-%	ItalicFeatures = {Contextuals=Swash}
-%]{FunnelSans}
 
 
 %MATH
@@ -391,11 +406,13 @@ citestyle=numeric-comp
 
 % Format
 \RequirePackage[
-margin=2cm, % 2.5cm in the original
+margin=2cm,
 top=2.5cm,
 headsep=1cm,
-bottom=2cm % 2.5cm in the original
+bottom=2.5cm
 ]{geometry}
+
+\RequirePackage{calc}
 
 % Section
 \newcommand{\sectionfont}{\normalfont}
@@ -728,6 +745,99 @@ bottom=2cm % 2.5cm in the original
 	\end{twocolboxN}
 	\fi
 }
+
+\definecolor{codered}{RGB}{220, 50, 47}
+
+\definecolor{codebg}{RGB}{245, 245, 245}
+
+\tcbset{
+	mycodebox/.style={
+		colback=codebg,
+		colframe=black!30,
+		boxrule=0.5pt,
+		arc=2pt,
+		outer arc=2pt,
+		boxsep=5pt,
+		left=5pt,
+		right=5pt,
+		top=5pt,
+		bottom=5pt,
+		enhanced,
+		breakable,
+		sharp corners,
+	}
+}
+
+\newcommand{\code}[1]{%
+	\begin{tcolorbox}[mycodebox]
+		\textcolor{codered}{\texttt{#1}}
+	\end{tcolorbox}
+}
+
+\definecolor{codered}{RGB}{220, 50, 47}
+\definecolor{codebg}{RGB}{245, 245, 245}
+
+\tcbset{highlight code inline/.style={
+		enhanced,
+		boxsep=0pt,
+		sharp corners,
+		colback=codebg,
+		colframe=codebg,
+		boxrule=0pt,
+		borderline west={0pt}{0pt}{codebg},
+		borderline east={0pt}{0pt}{codebg},
+		frame empty,
+		interior style={fill=codebg},
+		overlay={},
+		before upper={\let\item\@item},
+		breakable,
+		size=fbox,
+		box align=base,
+		halign=left,
+		valign=center,
+}}
+
+% Makro für inline-Code mit Umbruch
+\newtcbox{\codeIN}{highlight code inline,
+	on line,
+	left=2pt, right=2pt, top=1pt, bottom=1pt,
+	nobeforeafter,
+	coltext=codered,
+	fontupper=\ttfamily\footnotesize,
+}
+
+\newfloat{scheme}{htbp}{los}
+\floatname{scheme}{Scheme}
+\newfloat{chart}{htbp}{loc}
+\floatname{chart}{Chart}
+\newfloat{graph}{htbp}{loh}
+\floatname{graph}{Graph}
+%\newcommand*\schemename{Scheme}
+%\newcommand*\chartname{Chart}
+%\newcommand*\graphname{Graph}
+\floatplacement{table}{htbp}
+\floatplacement{figure}{htbp}
+\floatstyle{plaintop}
+\restylefloat{table}
+
+%\colorlet{structure@color}{black}
+%
+%\AtEndOfClass{%
+%	\colorlet{tbrowcolor}{structure@color!10}
+%	\colorlet{tbheadcolor}{structure@color!30}
+%	\arrayrulecolor{structure@color}
+%}
+%
+%
+%\newcommand{\patchCUPtables}{%
+%	\rowcolors*{1}{tbrowcolor}{tbrowcolor}%
+%	\setlength{\aboverulesep}{0pt}%
+%	\setlength{\belowrulesep}{0pt}%
+%	\setlength{\extrarowheight}{.75ex}%
+%}
+%\AtBeginEnvironment{table}{\patchCUPtables}
+%\AtBeginEnvironment{table*}{\patchCUPtables}
+
 
 
 \makeatother

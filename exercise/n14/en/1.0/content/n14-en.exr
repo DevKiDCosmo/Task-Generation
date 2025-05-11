@@ -1,0 +1,17 @@
+Problem
+
+An adaptive primality test is an algorithm that, when testing a natural number $n \in \mathbb{N}$ for prime property, gradually decides between probabilistic and deterministic methods. Examples are Miller-Rabin, Baillie-PSW, or AKS.
+
+Develop and analyze an adaptive primality method with the following property:
+
+- The algorithm starts with a probabilistic test (e.g., Miller-Rabin).
+- If this test is passed multiple times, the system performs a deterministic subtest (e.g., Lucas, ECPP, or reduced AKS level) for borderline cases.
+- The overall complexity of the method depends on the size of $n$ and the assumed error probability $\varepsilon$.
+
+Task: Find an asymptotically optimal combination of such methods (with proof) and calculate the minimum expected running time for the "prime" vs. "not prime" decision, assuming realistic distributions of randomly chosen numbers $n \in [1, N]$.
+
+**Goal:**
+
+- Analyze the **error-controlled adaptive complexity** model.
+- Develop a function class $T(n, \varepsilon)$ that describes the running time (in the expected value) of the optimal method.
+- Compare your solution with well-known methods such as Miller-Rabin (multiple), Baillie-PSW, and deterministic AKS.

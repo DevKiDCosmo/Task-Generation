@@ -1,6 +1,10 @@
 {
   "id": "No.4-4",
-  "category": ["Proof", "Calculation", "Interpretation"],
+  "category": [
+    1,
+    4,
+    2
+  ],
   "cid": "SKK-1/4",
   "time": 10,
   "nam_score": 4.0,
