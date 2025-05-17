@@ -1,0 +1,23 @@
+{
+    "id": "No.14",
+    "category": [
+        2,
+        3,
+        1,
+        5
+    ],
+    "cid": "KAB-1",
+    "time": 2700,
+    "nam_score": 7.5,
+    "author": "Original",
+    "date": "11.05.2025",
+    "main": {
+        "title": "Complexité optimale d'une méthode de primalité adaptative",
+        "content": "content/n14-fr.exr",
+        "solution": "solution/n14-fr.exr"
+    },
+    "difficulty": 6,
+    "tags": [],
+    "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10",
+    "GUID": "b6ff31f3-7845-47a3-803d-792690b52f48"
+}

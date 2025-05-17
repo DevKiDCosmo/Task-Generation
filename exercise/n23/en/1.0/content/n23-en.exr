@@ -1,0 +1,26 @@
+Given is the untyped lambda calculus with complete $\beta$-reduction. The Church encodings for natural numbers, "iszero", "pred", and "mult", are considered known.
+
+Let the fixed-point combinator \( Y = \lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) \) be given, as well as the function:
+
+\[
+F := \lambda f.\lambda n.\text{iszero}\ n\ 1\ (\text{mult}\ n\ (f\ (\text{pred}\ n)))
+\]
+
+**Task:**
+
+Prove formally and completely that \( Y\ F \) is a correct recursive procedure for calculating factorials according to the Church encoding. The following points must be demonstrated in detail:
+
+1. **Reduction for a fixed argument:** Perform a complete $\beta$-reduction of the term \( (Y\ F)\ 3 \). State all reduction steps up to the final Church encoding.
+
+2. **Proof of correctness by induction:** Perform a structural induction proof on the Church numbers that for all \( n \in \mathbb{N} \) the following holds:
+\[
+(Y\ F)\ n \rightarrow_{\beta}^{*} \text{fac}_n
+\]
+where \( \text{fac}_n \) is the Church encoding of \( n! \).
+3. **Fixed-Point Property:** Prove formally that \(Y\ F = F\ (Y\ F) \), and show why this expression enables recursive computation.
+4. **Comparison with the Z-Combinator:**
+- Define the \(Z \)-combinator.
+- Compare the reduction length of \((Y\ F)\ 3 \) and \((Z\ F)\ 3 \).
+- Discuss in which contexts \(Z \) should be preferred.
+
+**Note:** For all reduction steps, the intermediate terms must be stated explicitly. Do not use simplifications or jumps without justification.

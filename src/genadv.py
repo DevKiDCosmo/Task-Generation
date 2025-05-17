@@ -226,51 +226,73 @@ class Generation():
         in_enumerate = False
 
         for line in lines:
-            original_line = line  # für spätere Referenz
             line = line.rstrip()
 
-            # Prüfe Listenart
             is_item = re.match(r'^\s*-\s+', line)
-            is_enum = re.match(r'^\s*\d+\.\s+', line)
+            is_enum = re.match(r'^\s*(\d+)\.\s*$', line)  # Nur Zahl + Punkt
+            is_enum_full = re.match(r'^\s*(\d+)\.\s+(.+)', line)  # Zahl + Punkt + Text
 
-            # Öffne Umgebungen bei Bedarf
-            if is_item and not in_itemize:
-                if in_enumerate:
-                    output.append(r'\end{enumerate}')
-                    in_enumerate = False
-                output.append(r'\begin{itemize}')
-                in_itemize = True
-            elif is_enum and not in_enumerate:
-                if in_itemize:
-                    output.append(r'\end{itemize}')
-                    in_itemize = False
-                output.append(r'\begin{enumerate}')
-                in_enumerate = True
-            elif not is_item and not is_enum:
-                if in_itemize:
-                    output.append(r'\end{itemize}')
-                    in_itemize = False
+            # LISTENUMGEBUNG ENTSCHIEDEN
+            if is_enum or is_enum_full:
+                if not in_enumerate:
+                    if in_itemize:
+                        output.append(r'\end{itemize}')
+                        in_itemize = False
+                    output.append(r'\begin{enumerate}')
+                    in_enumerate = True
+            else:
                 if in_enumerate:
                     output.append(r'\end{enumerate}')
                     in_enumerate = False
 
-            # Formatierungen anwenden
-            line = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', line)
-            line = re.sub(r'\*\*(?!\*)(.+?)\*\*', r'\\textbf{\1}', line)
-            line = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'\\textit{\1}', line)
-            line = re.sub(r'__(.+?)__', r'\\underline{\1}', line)
-            line = re.sub(r'~~(.+?)~~', r'\\sout{\1}', line)
-            line = re.sub(r'`(.+?)`', r'\\texttt{\1}', line)
+            if is_item:
+                if not in_itemize:
+                    if in_enumerate:
+                        output.append(r'\end{enumerate}')
+                        in_enumerate = False
+                    output.append(r'\begin{itemize}')
+                    in_itemize = True
+            else:
+                if in_itemize and not is_item:
+                    output.append(r'\end{itemize}')
+                    in_itemize = False
 
-            # Listenpunkte ersetzen
+            # LISTENELEMENTE
             if is_item:
                 line = re.sub(r'^\s*-\s+', r'\\item ', line)
             elif is_enum:
-                line = re.sub(r'^\s*\d+\.\s+', r'\\item ', line)
+                num = is_enum.group(1)
+                line = rf'\item[{num}.]'
+            elif is_enum_full:
+                num, content = is_enum_full.groups()
+                line = rf'\item[{num}.] {content}'
+
+            # FORMATIERUNGEN
+            # Fett-Kursiv: ***Text***
+            line = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', line)
+
+            # Fett: **Text**
+            line = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', line)
+
+            # Kursiv: *Text*
+            line = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'\\textit{\1}', line)
+
+            # Unterstrichen: __Text__
+            line = re.sub(r'__(.+?)__', r'\\underline{\1}', line)
+
+            # Durchgestrichen: ~~Text~~
+            line = re.sub(r'~~(.+?)~~', r'\\sout{\1}', line)
+
+            # Monospace: `Text`
+            line = re.sub(r'`([^`]+?)`', r'\\texttt{\1}', line)
+
+            # SECTION
+            line = re.sub(r'^\s*#+\s+(.*)', r'\\subsubsection{\1}', line)
+
 
             output.append(line)
 
-        # Am Ende offene Umgebung schließen
+        # AM ENDE ALLES SCHLIEßEN
         if in_itemize:
             output.append(r'\end{itemize}')
         if in_enumerate:
@@ -326,8 +348,10 @@ class Generation():
                     timeout=15
                 )
             except subprocess.TimeoutExpired:
-                log.write(f"LaTeX syntax check timeout for file: {file}\n")
-                return False
+                process.kill()
+                return None, None, "Timeout expired"
+            except Exception as e:
+                return None, None, str(e)
 
             try:
                 output = result.stdout.decode('utf-8') + result.stderr.decode('utf-8')
@@ -994,10 +1018,12 @@ class Generation():
 
         # TODO: Remove items from paths_exercise and paths_solution if they are not valid and fix list
         # TODO: Fixing finding errors etc. in the output of xelatex
-        # await asyncio.gather(
-        #    *[self.checking_syntax(path) for path in paths_exercise],
-        #    *[self.checking_syntax(path) for path in paths_solution]
-        # )
+        #await asyncio.gather(
+        #   *[self.checking_syntax(path) for path in paths_exercise],
+        #   *[self.checking_syntax(path) for path in paths_solution]
+        #)
+
+        # TODO: Rmeove temporary
 
         # Warte auf die Fertigstellung der asynchronen Kompilierung
         await self.async_compile(paper, title, date, description, version, revision, archive, doi, tags, paths_exercise,

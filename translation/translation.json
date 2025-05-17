@@ -92,5 +92,21 @@
     "no": "Norsk",
     "cs": "Čeština",
     "hu": "Magyar"
+  },
+  "h": {
+    "de": "Stunden",
+    "en": "Hours",
+    "fr": "Heures",
+    "jp": "時間",
+    "kr": "시간",
+    "zh": "小时"
+  },
+  "m": {
+    "de": "Minuten",
+    "en": "Minutes",
+    "fr": "Minutes",
+    "jp": "分",
+    "kr": "분",
+    "zh": "分钟"
   }
 }

@@ -1,0 +1,21 @@
+{
+    "id": "No.16",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "SHKS-1",
+    "time": 600,
+    "nam_score": 7.6,
+    "author": "Original",
+    "date": "11.05.2025",
+    "main": {
+        "title": "Turing-Maschine mit beschränktem Gedächtnis – Korrektheitsbeweis",
+        "content": "content/n16-de.exr",
+        "solution": "solution/n16-de.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "cff283f9-7344-4d48-acf2-0f7bf709276f",
+    "GUID": "7cf1fbfd-0b70-48ef-9d18-bb5fc8419a55"
+}

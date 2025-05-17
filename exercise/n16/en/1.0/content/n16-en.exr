@@ -1,0 +1,54 @@
+Given a Turing machine $M_b$ whose working tape is limited to $O(\log n)$ memory cells. Show that $M_b$ correctly decides a certain language $L$, e.g.:
+
+$$
+L = \{ w \in \{a, b\}^* \mid \#a(w) = \#b(w) \}
+$$
+
+or another specific language where memory constraints are relevant.
+
+# Additional Information
+
+- Definitions of Turing machines (TM) and bounded memory (e.g., logarithmic space)
+- Formal models such as LBA (Linear Bounded Automata)
+- Comparison with regular or context-free languages
+- Boolean logic \& invariant methods
+- Standard logic proofs (e.g., induction, contradiction)
+- Sketches on paper or notepad
+
+# Requirements
+
+### **1. Formal Specification**
+
+- Formally define the bounded TM $M_b$:
+- $M_b = (Q, \Sigma, \Gamma, \delta, q_0, q_{acc}, q_{rej})$
+- Boundary: Working tape size $\leq c \cdot \log n$
+
+### **2. Describe the language $L$**
+
+- Prove that $L \in \mathsf{L}$ (decidable with logarithmic space)
+- Examples:
+- Balanced number of symbols (e.g., equal number of $a$ and $b$)
+- Recognition of simple regular patterns with space optimization
+
+### **3. Construction/Simulation**
+
+- Describe the TM's low-memory strategy:
+- Bookmarks (pointer technique)
+- Two-pass method
+- Counter in binary representation on the working tape
+
+### **4. Correctness**
+
+- Use invariance or simulation:
+- At each step, the invariant is preserved (e.g., counting equality)
+- Show: If TM accepts, then $w \in L$; if $w \in L$, then TM accepts
+
+### **5. Prove space complexity**
+
+- Analysis: All steps require only $O(\log n)$ memory cells
+- Argue that no illegal storage occurs
+
+### **6. Conclusion**
+
+- Conclude with a complete proof (e.g., by complete induction on the length of $w$)
+- Show that the bounded memory **is sufficient and works correctly**

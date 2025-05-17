@@ -2,11 +2,11 @@
   "title": "The Namische /ˈnamɪʃə/ Collection as a whole",
   "date": "24.04.2025",
   "paper": "PALL",
-  "version": "1.0",
-  "revision": "1",
+  "version": "1.5",
+  "revision": "5",
   "archive": "3891M-932",
-  "doi": "10.5281/zenodo.15249602",
-  "description": "This collection contains selected problems on the zeta function and related topics. It is aimed at advanced students and offers both classical and innovative problems with detailed solutions.",
+  "doi": "11.NOT.AVAILABLE",
+  "description": "This collection presents a diverse set of mathematical problems spanning various fields, including number theory, combinatorics, computational logic, and high-dimensional geometry. Designed for advanced learners, the exercises explore fundamental and complex concepts such as recursive polynomial structures, hypergraph theory, quantum field interference models, and formal computability through Turing machines. Additionally, the collection integrates practical applications like Fourier analysis, stochastic wave phenomena, and optimization techniques. Each problem offers an opportunity for theoretical inquiry and applied problem-solving, ensuring a comprehensive exploration of mathematical principles.",
   "exercise": {
     "n1": {
       "language": [
@@ -156,7 +156,97 @@
         1
       ]
     },
-    "n14": { "language": ["de","en","jp"], "version": ["1.0","1.0","1.0"], "exercise": [1] }
+    "n14": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n15": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n16": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n17": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr",
+        "kr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n23": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
   },
   "tags": [
     "induction",

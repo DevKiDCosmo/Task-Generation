@@ -112,46 +112,15 @@ citestyle=numeric-comp
 
 \RequirePackage{xeCJK}
 
-% Hauptschriftart für CJK: Koreanisch
-\setCJKfallbackfamilyfont{\CJKrmdefault}{NotoSerifJP}[
-	Path = ./fonts/,
-	Extension = .ttf,
-	UprightFont = *-Regular
+
+\setCJKmainfont{NotoSerifCJK}[
+Path=./fonts/,
+Extension=.ttc,
+UprightFont=*,
+BoldFont=*,
+UprightFeatures	= {FontIndex=10},
+BoldFeatures    = {FontIndex=30}
 ]
-
-\setCJKfallbackfamilyfont{}{NotoSerifKR}[
-	Path = ./fonts/,
-	Extension = .ttf,
-	UprightFont = *-Regular
-]
-
-
-% Fallback für Chinesisch
-\setCJKfallbackfamilyfont{}{NotoSerifTC}[
-	Path = ./fonts/,
-	Extension = .ttf,
-	UprightFont = *-Regular
-]
-
-\setCJKfallbackfamilyfont{}{NotoSerifSC}[
-Path = ./fonts/,
-Extension = .ttf,
-UprightFont = *-Regular
-]
-
-% Sans-serif und Monospace Schriftarten
-%\setCJKsansfont[
-%	Path = ./fonts/,
-%	Extension = .ttf,
-%	UprightFont = *-Regular
-%]{NotoSansKR}
-
-%\setCJKmonofont[
-%	Path = ./fonts/,
-%	Extension = .ttf,
-%	UprightFont = *-Regular
-%]{NotoSansMonoKR}
-
 
 % Line spacing and compatibility
 \linespread{1.1} % Adjust spacing for CJK text
@@ -377,6 +346,22 @@ UprightFont = *-Regular
 % Define custom fonts
 \setmainfont{Times New Roman}%[Scale= 1.1] % Times New Roman, Scale = 1
 
+
+%\setmainfont{EBGaramond}[
+%Path=./fonts/EBGaramond/static/,
+%Extension=.ttf,
+%UprightFont=*-Regular,
+%ItalicFont=*-Italic,
+%BoldFont=*-SemiBold,
+%BoldItalicFont=*-BoldItalic
+%]
+
+\newfontfamily{\DMSerifDisplay}{DMSerifDisplay}[
+Path=./fonts/DMSerifDisplay/,
+Extension=.ttf,
+UprightFont=*-Regular,
+ItalicFont  = *-Italic
+]
 
 %MATH
 % Symbols

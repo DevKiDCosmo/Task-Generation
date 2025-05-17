@@ -1,0 +1,53 @@
+Une définition récursive est donnée :
+
+$$
+P_n(x) = a_1(x)P_{n-1}(x) + a_2(x)P_{n-2}(x) + \dots + a_k(x)P_{n-k}(x),
+$$
+
+avec les valeurs initiales $P_0(x), \dots, P_{k-1}(x)$ et $a_i(x) \in \mathbb{Q}[x]$
+
+Analyser:
+
+- Conditions pour la forme fermée
+- Structure des zéros
+- Lien avec les polynômes classiques (par exemple les polynômes de Tchebychev, Legendre, Hermite)
+
+# Structure de la solution (étapes générales)
+
+### 1. **Analyse de la récursivité**
+
+- Déterminer le degré de récursivité $k$
+- Classer les coefficients $a_i(x)$
+- Constante? Linéaire? Polynôme général ?
+
+### 2. **Polynôme caractéristique**
+
+- Introduire une transformation analogue à la récursivité linéaire :
+- Considérons l'indépendance linéaire de la base $P_0, \dots, P_k$
+- Trouver une solution via un polynôme caractéristique (avec constante $a_i$)
+
+### 3. **Représentation à l'aide de méthodes matricielles**
+
+- Écrire la récursivité sous forme de système matriciel :
+
+$$
+\mathbf{P}_n = A(x) \mathbf{P}_{n-1},
+$$
+
+avec le vecteur $\mathbf{P}_n = [P_n, P_{n-1}, ..., P_{n-k+1}]^T$
+
+- Étudier les valeurs propres et les vecteurs propres de $A(x)$
+
+### 4. **Comparaison avec des familles connues**
+
+- Vérifier si le polynôme peut être classé dans une classe connue (orthogonale, symétrique, etc.).
+
+### 5. **Structure zéro**
+
+- Utiliser des méthodes numériques pour analyser les zéros
+- Étudier le comportement de convergence (par exemple pour $n \to \infty$)
+
+### 6. **Solution symbolique (si possible)**
+
+- Recherche de formes fermées (par exemple par génération de fonctions, transformation en équations différentielles)
+- Trouver une représentation explicite via des fonctions de base ou des structures combinatoires

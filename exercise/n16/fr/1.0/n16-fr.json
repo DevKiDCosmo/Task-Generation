@@ -1,0 +1,21 @@
+{
+    "id": "No.16",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "SHKS-1",
+    "time": 600,
+    "nam_score": 7.6,
+    "author": "Original",
+    "date": "11.05.2025",
+    "main": {
+        "title": "Machine de Turing à mémoire limitée – preuve de correction",
+        "content": "content/n16-fr.exr",
+        "solution": "solution/n16-fr.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "cff283f9-7344-4d48-acf2-0f7bf709276f",
+    "GUID": "1ae5432b-08b9-464d-a7d7-b20048523913"
+}

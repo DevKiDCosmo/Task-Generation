@@ -1,0 +1,25 @@
+Le calcul lambda non typé avec réduction $\beta$ complète est donné. Les codages de l'Église pour les nombres naturels, « iszero », « pred » et « mult » sont considérés comme bien connus.
+
+Soit le combinateur à point fixe \( Y = \lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) \) donné ainsi que la fonction :
+
+\[
+F := \lambda f.\lambda n.\text{iszero}\ n\ 1\ (\text{mult}\ n\ (f\ (\text{pred}\ n)))
+\]
+
+**Tâche:**
+
+Démontrer formellement et complètement que \( Y\ F \) est une procédure récursive correcte pour calculer les factorielles selon le codage de Church. Les points suivants doivent être détaillés :
+
+1. **Réduction pour argument fixe :** Effectuer une réduction $\beta$ complète du terme \( (Y\ F)\ 3 \). Spécifiez toutes les étapes de réduction jusqu'au codage final de l'Église.
+2. **Preuve de correction par récurrence :** Effectuez une preuve par récurrence structurelle sur les nombres de Church selon laquelle pour tout \( n \in \mathbb{N} \) la condition suivante est remplie :
+\[
+(Y\ F)\ n \rightarrow_{\beta}^{*} \text{fac}_n
+\]
+où \( \text{fac}_n \) est l'encodage de l'Église de \( n! \).
+3. **Propriété du point fixe :** Démontrer formellement que \( Y\ F = F\ (Y\ F) \), et montrer pourquoi cette expression permet un calcul récursif.
+4. **Comparaison avec le Z-Combinator :**
+- Définir le combinateur \( Z \). 
+- Comparer la longueur de réduction de \( (Y\ F)\ 3 \) et \( (Z\ F)\ 3 \). 
+- Discutez dans quels contextes \( Z \) devraient être préférés.
+
+**Remarque :** pour toutes les étapes de réduction, les termes intermédiaires doivent être spécifiés explicitement. N'utilisez pas de simplifications ou de sauts sans justification.

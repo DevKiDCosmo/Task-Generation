@@ -1,0 +1,25 @@
+Gegeben sei der untypisierte Lambda-Kalkül mit vollständiger $\beta$-Reduktion. Die Church-Kodierungen für natürliche Zahlen, "iszero", "pred" und "mult" gelten als bekannt.
+
+Es sei der Fixpunktkombinator \( Y = \lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ x)) \) gegeben sowie die Funktion:
+
+\[
+F := \lambda f.\lambda n.\text{iszero}\ n\ 1\ (\text{mult}\ n\ (f\ (\text{pred}\ n)))
+\]
+
+**Aufgabe:**
+
+Beweisen Sie formal und vollständig, dass \( Y\ F \) ein korrektes rekursives Verfahren zur Fakultätsberechnung gemäß Church-Kodierung darstellt. Im Detail sind folgende Punkte zu zeigen:
+
+1. **Reduktion für festes Argument:** Führen Sie eine vollständige $\beta$-Reduktion des Terms \( (Y\ F)\ 3 \) durch. Geben Sie alle Reduktionsschritte bis zur finalen Church-Kodierung an.
+2. **Korrektheitsbeweis durch Induktion:** Führen Sie einen strukturellen Induktionsbeweis über die Church-Zahlen, dass für alle \( n \in \mathbb{N} \) gilt:  
+   \[
+   (Y\ F)\ n \rightarrow_{\beta}^{*} \text{fac}_n
+   \]
+   wobei \( \text{fac}_n \) die Church-Kodierung von \( n! \) ist.
+3. **Fixpunkteigenschaft:** Beweisen Sie formal, dass \( Y\ F = F\ (Y\ F) \), und zeigen Sie, weshalb dieser Ausdruck die rekursive Berechnung ermöglicht.
+4. **Vergleich mit dem Z-Kombinator:**  
+   - Definieren Sie den \( Z \)-Kombinator.
+   - Vergleichen Sie die Reduktionslänge von \( (Y\ F)\ 3 \) und \( (Z\ F)\ 3 \).
+   - Diskutieren Sie, in welchen Kontexten \( Z \) bevorzugt werden sollte.
+
+**Hinweis:** Für alle Reduktionsschritte sind die Zwischenterme explizit anzugeben. Nutzen Sie keine Vereinfachung oder Sprünge ohne Begründung.

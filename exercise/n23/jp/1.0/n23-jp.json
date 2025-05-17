@@ -1,0 +1,22 @@
+{
+    "id": "No.23",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-1",
+    "time": 600,
+    "nam_score": 6.0,
+    "author": "Original",
+    "date": "17.05.2025",
+    "main": {
+        "title": "型なしラムダ計算における再帰性と固定小数点コンビネータ",
+        "content": "content/n23-jp.exr",
+        "solution": "solution/n23-jp.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "ecc49ab8-1937-4d4a-8436-bea255df9c9b",
+    "GUID": "27bbd441-79cc-47ec-8e15-375050f07157"
+}

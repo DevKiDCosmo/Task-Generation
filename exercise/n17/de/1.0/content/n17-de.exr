@@ -1,0 +1,42 @@
+Gegeben ist ein quantenfeldtheoretisches Modell zur Beschreibung der Interferenz zweier sich bewegender Wellenpakete im skalaren Feld. Entwickeln Sie ein vollständiges theoretisches und numerisches Modell, das die Konstruktion, Entwicklung und Interferenz der Wellenpakete innerhalb der Quantenfeldtheorie beschreibt und analysiert.
+
+Bearbeiten Sie folgende Teilaufgaben:
+
+1. **Theoretische Grundlagen**
+   - Erläutern Sie die Quantisierung eines freien skalaren Feldes.
+   - Leiten Sie den Feldoperator \( \hat{\phi}(x, t) \) her.
+   - Stellen Sie das Kommutatorverhalten von \( \hat{a}_k \), \( \hat{a}^\dagger_k \) dar.
+
+2. **Konstruktion der Wellenpaketzustände**
+   - Definieren Sie zwei orthogonale Gausssche Impulsverteilungen \( f_1(k) \), \( f_2(k) \).
+   - Leiten Sie den Zustand
+     \[
+     |\Psi\rangle = \left(\int f_1(k) \hat{a}_k^\dagger\, dk + \int f_2(k) \hat{a}_k^\dagger\, dk \right)|0\rangle
+     \]
+     her und normalisieren Sie ihn.
+
+3. **Erwartungswert und Interferenz**
+   - Berechnen Sie den Erwartungswert \( \langle \Psi|\hat{\phi}(x,t)|\Psi\rangle \).
+   - Identifizieren Sie Kreuzterme und deren Beitrag zur Interferenz.
+   - Visualisieren Sie das Interferenzmuster in Abhängigkeit von \( x \), \( t \), \( \delta \).
+
+4. **Zeitentwicklung und Wellenpaketverbreitung**
+   - Simulieren Sie die Ausbreitung der Wellenpakete in Raum und Zeit.
+   - Analysieren Sie den Einfluss von Gruppen- und Phasengeschwindigkeit auf die Interferenzstruktur.
+   - Diskutieren Sie auftretende Dispersionsphänomene.
+
+5. **Erweiterung auf Feldoperatorprodukte**
+   - Berechnen Sie die Zwei-Punkt-Funktion \( \langle \Psi|\hat{\phi}(x,t)\hat{\phi}(x',t)|\Psi\rangle \).
+   - Analysieren Sie deren Raum-Zeit-Struktur.
+   - Diskutieren Sie Implikationen für mögliche Messungen.
+
+6. **Experimentelle Interpretation und Modellvalidierung**
+   - Vergleichen Sie Ihr Modell mit einem quantenoptischen Interferometer (z. B. Mach-Zehnder).
+   - Diskutieren Sie Messoperatoren, Zustandskollaps und Interferenzsichtbarkeit.
+
+7. **Reflexion, Komplexitätsanalyse und Modellgrenzen**
+   - Schätzen Sie die algorithmische Komplexität Ihrer numerischen Verfahren.
+   - Diskutieren Sie mögliche Erweiterungen (z. B. Spinorfelder, QED).
+   - Reflektieren Sie über die Aussagekraft und Grenzen der Skalarfeldtheorie.
+
+Die Ausarbeitung soll mathematisch fundiert, physikalisch interpretiert und durch numerische Simulationen ergänzt sein.

@@ -1,0 +1,22 @@
+{
+    "id": "No.23",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-1",
+    "time": 600,
+    "nam_score": 6.0,
+    "author": "Original",
+    "date": "17.05.2025",
+    "main": {
+        "title": "유형이 지정되지 않은 람다 계산법의 재귀성과 고정 소수점 조합자",
+        "content": "content/n23-kr.exr",
+        "solution": "solution/n23-kr.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "ecc49ab8-1937-4d4a-8436-bea255df9c9b",
+    "GUID": "14d934cc-2e6e-4211-9ebb-bdb997a9b657"
+}

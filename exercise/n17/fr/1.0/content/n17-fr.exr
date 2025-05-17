@@ -1,0 +1,42 @@
+Un modèle de théorie quantique des champs est donné pour décrire l'interférence de deux paquets d'ondes en mouvement dans un champ scalaire. Développer un modèle théorique et numérique complet qui décrit et analyse la construction, l’évolution et l’interférence des paquets d’ondes dans la théorie quantique des champs.
+
+Effectuez les sous-tâches suivantes :
+
+1. **Fondements théoriques**
+- Expliquer la quantification d'un champ scalaire libre. 
+- Dériver l'opérateur de champ \( \hat{\phi}(x, t) \). 
+- Décrivez le comportement du commutateur de \( \hat{a}_k \), \( \hat{a}^\dagger_k \).
+
+2. **Construction des états de paquets d'ondes**
+- Définir deux distributions d'impulsion gaussiennes orthogonales \( f_1(k) \), \( f_2(k) \). 
+- Gérer la condition
+\[
+|\Psi\rangle = \left(\int f_1(k) \hat{a}_k^\dagger\, dk + \int f_2(k) \hat{a}_k^\dagger\, dk \right)|0\rangle
+\]
+et le normaliser.
+
+3. **Valeur attendue et interférence**
+- Calculer l'espérance mathématique \( \langle \Psi|\hat{\phi}(x,t)|\Psi\rangle \). 
+- Identifier les termes croisés et leur contribution aux interférences. 
+- Visualiser le motif d'interférence en fonction de \( x \), \( t \), \( \delta \).
+
+4. **Évolution temporelle et propagation des paquets d'ondes**
+- Simuler la propagation de paquets d'ondes dans l'espace et dans le temps. 
+- Analyser l'influence de la vitesse de groupe et de phase sur la structure d'interférence. 
+- Discutez de tout phénomène de dispersion qui pourrait se produire.
+
+5. **Extension aux produits pour opérateurs de terrain**
+- Calculer la fonction à deux points \( \langle \Psi|\hat{\phi}(x,t)\hat{\phi}(x',t)|\Psi\rangle \). 
+- Analyser leur structure spatio-temporelle. 
+- Discuter des implications pour les mesures possibles.
+
+6. **Interprétation expérimentale et validation du modèle**
+- Comparez votre modèle avec un interféromètre optique quantique (par exemple Mach-Zehnder). 
+- Discuter des opérateurs de mesure, de l'effondrement de l'état et de la visibilité des interférences.
+
+7. **Réflexion, analyse de la complexité et limites du modèle**
+- Estimez la complexité algorithmique de vos procédures numériques. 
+- Discuter des extensions possibles (par exemple, champs de spineurs, QED). 
+- Réfléchir à l’importance et aux limites de la théorie des champs scalaires.
+
+Le travail doit être mathématiquement solide, interprété physiquement et complété par des simulations numériques.

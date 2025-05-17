@@ -1,0 +1,21 @@
+{
+    "id": "No.17",
+    "category": [
+        3,
+        4
+    ],
+    "cid": "BUK-1",
+    "time": 3120,
+    "nam_score": 7.9,
+    "author": "Original",
+    "date": "11.05.2025",
+    "main": {
+        "title": "Quantenfeldmodell einer Wellenpaketinterferenz",
+        "content": "content/n17-de.exr",
+        "solution": "solution/n17-de.exr"
+    },
+    "difficulty": 8,
+    "tags": [],
+    "UUID": "f916e747-b91d-47ec-83ba-3037cebeebcb",
+    "GUID": "5ed4f53b-aec7-472c-a733-c1b3b3cf6a18"
+}

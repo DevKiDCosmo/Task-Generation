@@ -1,0 +1,21 @@
+{
+    "id": "No.17",
+    "category": [
+        3,
+        4
+    ],
+    "cid": "BUK-1",
+    "time": 3120,
+    "nam_score": 7.9,
+    "author": "Original",
+    "date": "11.05.2025",
+    "main": {
+        "title": "波束干渉の量子場モデル",
+        "content": "content/n17-jp.exr",
+        "solution": "solution/n17-jp.exr"
+    },
+    "difficulty": 8,
+    "tags": [],
+    "UUID": "f916e747-b91d-47ec-83ba-3037cebeebcb",
+    "GUID": "fb2cb262-d694-4a23-a1a6-5a20b512ebea"
+}

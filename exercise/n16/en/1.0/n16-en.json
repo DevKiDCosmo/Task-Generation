@@ -1,0 +1,21 @@
+{
+    "id": "No.16",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "SHKS-1",
+    "time": 600,
+    "nam_score": 7.6,
+    "author": "Original",
+    "date": "11.05.2025",
+    "main": {
+        "title": "Turing machine with limited memory – proof of correctness",
+        "content": "content/n16-en.exr",
+        "solution": "solution/n16-en.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "cff283f9-7344-4d48-acf2-0f7bf709276f",
+    "GUID": "76026e70-8f1d-4319-a13e-7f5c8955fc83"
+}

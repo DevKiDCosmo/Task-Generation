@@ -1,0 +1,53 @@
+Gegeben ist eine rekursive Definition:
+
+$$
+P_n(x) = a_1(x)P_{n-1}(x) + a_2(x)P_{n-2}(x) + \dots + a_k(x)P_{n-k}(x),
+$$
+
+mit Startwerten $P_0(x), \dots, P_{k-1}(x)$ und $a_i(x) \in \mathbb{Q}[x]$
+
+Analysiere:
+
+- Bedingungen für geschlossene Form
+- Struktur der Nullstellen
+- Zusammenhang mit klassischen Polynomen (z. B. Tschebyscheff-, Legendre-, Hermite-Polynome)
+
+# Lösungsstruktur (Allgemeine Schritte)
+
+### 1. **Analyse der Rekursion**
+
+- Bestimme den Rekursionsgrad $k$
+- Klassifiziere die Koeffizienten $a_i(x)$
+    - Konstant? Linear? Allgemeines Polynom?
+
+### 2. **Charakteristisches Polynom**
+
+- Führe eine Transformation analog zur linearen Rekursion ein:
+    - Betrachte ggf. lineare Unabhängigkeit der Basis $P_0, \dots, P_k$
+    - Finde Lösung über charakteristisches Polynom (bei konstanten $a_i$)
+
+### 3. **Darstellung über Matrixmethoden**
+
+- Schreibe die Rekursion als Matrixsystem:
+
+$$
+\mathbf{P}_n = A(x) \mathbf{P}_{n-1},
+$$
+
+mit Vektor $\mathbf{P}_n = [P_n, P_{n-1}, ..., P_{n-k+1}]^T$
+
+- Untersuche Eigenwerte und Eigenvektoren von $A(x)$
+
+### 4. **Vergleich mit bekannten Familien**
+
+- Überprüfe, ob sich das Polynom in einer bekannten Klasse (orthogonal, symmetrisch etc.) einordnen lässt.
+
+### 5. **Nullstellenstruktur**
+
+- Verwende numerische Verfahren zur Analyse der Nullstellen
+- Untersuche Konvergenzverhalten (z. B. bei $n \to \infty$)
+
+### 6. **Symbolische Lösung (falls möglich)**
+
+- Suche geschlossene Formen (z. B. durch Generating Functions, Umformung zu Differentialgleichungen)
+- Finde explizite Darstellung über Basisfunktionen oder kombinatorische Strukturen

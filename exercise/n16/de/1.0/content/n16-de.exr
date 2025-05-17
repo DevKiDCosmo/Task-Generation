@@ -1,0 +1,54 @@
+Gegeben sei eine Turing-Maschine $M_b$, deren Arbeitsband auf $O(\log n)$ Speicherzellen beschränkt ist. Zeige, dass $M_b$ korrekt eine bestimmte Sprache $L$ entscheidet, z. B.:
+
+$$
+L = \{ w \in \{a, b\}^* \mid \#a(w) = \#b(w) \}
+$$
+
+oder eine andere spezifische Sprache, bei der Speicherbeschränkung relevant ist.
+
+# Additionale Information
+
+- Definitionen von Turingmaschinen (TM) und beschränkter Speicher (z. B. logarithmischer Platz)
+- Formale Modelle wie LBA (Linear Bounded Automata)
+- Vergleich mit regulären oder kontextfreien Sprachen
+- Boolesche Logik \& Invariantenmethoden
+- Standard-Logikbeweise (z. B. Induktion, Widerspruch)
+- Skizzen auf Papier oder Notizzettel
+
+# Anforderungen
+
+### **1. Formale Spezifikation**
+
+- Definiere die beschränkte TM $M_b$ formal:
+    - $M_b = (Q, \Sigma, \Gamma, \delta, q_0, q_{acc}, q_{rej})$
+    - Begrenzung: Arbeitsbandgröße $\leq c \cdot \log n$
+
+### **2. Sprache $L$ beschreiben**
+
+- Beweise, dass $L \in \mathsf{L}$ (entscheidbar mit logarithmischem Platz)
+- Beispiele:
+    - Ausgewogene Anzahl von Symbolen (z. B. gleiche Anzahl $a$ und $b$)
+    - Erkennung einfacher regulärer Muster mit Platzoptimierung
+
+### **3. Konstruktion/Simulation**
+
+- Beschreibe die Strategie der TM mit wenig Speicher:
+    - Lesezeichen (Pointer-Technik)
+    - Zwei-Pass-Verfahren
+    - Zähler in Binärdarstellung auf Arbeitsband
+
+### **4. Korrektheit**
+
+- Verwende Invarianz oder Simulation:
+    - Bei jedem Schritt bleibt die Invariante erhalten (z. B. Zählgleichheit)
+    - Zeige: Wenn TM akzeptiert, dann $w \in L$; wenn $w \in L$, dann akzeptiert TM
+
+### **5. Platzkomplexität nachweisen**
+
+- Analyse: Alle Arbeitsschritte benötigen nur $O(\log n)$ Speicherzellen
+- Argumentiere, dass keine unzulässige Speicherung erfolgt
+
+### **6. Abschluss**
+
+- Beende mit einem vollständigen Beweis (z. B. durch vollständige Induktion über die Länge von $w$)
+- Zeige, dass der beschränkte Speicher **ausreicht und korrekt arbeitet**

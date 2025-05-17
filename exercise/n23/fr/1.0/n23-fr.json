@@ -1,0 +1,22 @@
+{
+    "id": "No.23",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-1",
+    "time": 600,
+    "nam_score": 6.0,
+    "author": "Original",
+    "date": "17.05.2025",
+    "main": {
+        "title": "Récursivité et combinateurs à virgule fixe dans le calcul lambda non typé",
+        "content": "content/n23-fr.exr",
+        "solution": "solution/n23-fr.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "ecc49ab8-1937-4d4a-8436-bea255df9c9b",
+    "GUID": "118ed990-622b-42c5-85ff-c2c3252befcd"
+}

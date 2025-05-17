@@ -1,0 +1,17 @@
+Problème
+
+Un test de primalité adaptatif est un algorithme qui, lorsqu'il teste la propriété de premier d'un entier naturel $n \in \mathbb{N}$, choisit progressivement entre les méthodes probabilistes et déterministes. Parmi les exemples, on peut citer Miller-Rabin, Baillie-PSW ou AKS.
+
+Développer et analyser une méthode de primalité adaptative présentant la propriété suivante :
+
+- L'algorithme commence par un test probabiliste (par exemple, Miller-Rabin).
+- Si ce test est réussi plusieurs fois, le système effectue un sous-test déterministe (par exemple, Lucas, ECPP ou niveau AKS réduit) pour les cas limites.
+- La complexité globale de la méthode dépend de la taille de $n$ et de la probabilité d'erreur supposée $\varepsilon$.
+
+Tâche : Trouver une combinaison asymptotiquement optimale de ces méthodes (avec preuve) et calculer le temps d’exécution minimum attendu pour la décision « premier » ou « non premier », en supposant des distributions réalistes de nombres $n \in [1, N]$ choisis aléatoirement.
+
+**Objectif :**
+
+- Analyser le **modèle de complexité adaptative à erreur contrôlée**.
+- Développer une classe de fonctions $T(n, \varepsilon)$ décrivant le temps d’exécution (en valeur attendue) de la méthode optimale.
+- Comparer votre solution à des méthodes connues telles que Miller-Rabin (multiple), Baillie-PSW et AKS déterministe.

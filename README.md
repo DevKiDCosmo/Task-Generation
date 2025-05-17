@@ -80,6 +80,11 @@ Defines a single exercise.
 - DIFFICULTY: Path to difficulty/translation info (default: translation/difficulty.json)
 - TRANSLATION: Path to translation info (default: translation/translation.json)
 
+From Version Exr 1.1 onwards. The version must be in the exercise register file.
+- Resources like img. etc.: Also resources are now in the exercise register file. The version must be in the exercise register file.
+- Correction File for Submisisons: A Seperate folder called `correction`
+- Point table: A Seperate json called `points.json` in the exercise folder. The file must be registred in the exercise file.
+
 # TODOS
 
 Structure of exercise files

@@ -30,5 +30,21 @@
     "4": "계산",
     "5": "구축과 설계",
     "6": "해석"
+  },
+  "fr": {
+    "1": "Preuve",
+    "2": "Résolution et Résoudre",
+    "3": "Analyse",
+    "4": "Calcul",
+    "5": "Construction et Conception",
+    "6": "Interprétation"
+  },
+  "zh": {
+    "1": "证明",
+    "2": "解决和解答",
+    "3": "分析",
+    "4": "计算",
+    "5": "构建和设计",
+    "6": "解释"
   }
 }

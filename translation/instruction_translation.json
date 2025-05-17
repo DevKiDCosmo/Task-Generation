@@ -2,5 +2,7 @@
   "de": "instruction/de.tlr",
   "en": "instruction/en.tlr",
   "fr": "instruction/fr.tlr",
-  "jp": "instruction/jp.tlr"
+  "jp": "instruction/jp.tlr",
+  "kr": "instruction/kr.tlr",
+  "zh": "instruction/zh.tlr"
 }

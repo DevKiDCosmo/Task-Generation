@@ -1,0 +1,53 @@
+A recursive definition is given:
+
+$$
+P_n(x) = a_1(x)P_{n-1}(x) + a_2(x)P_{n-2}(x) + \dots + a_k(x)P_{n-k}(x),
+$$
+
+with initial values $P_0(x), \dots, P_{k-1}(x)$ and $a_i(x) \in \mathbb{Q}[x]$
+
+Analyze:
+
+- Conditions for closed form
+- Structure of the zeros
+- Connection with classical polynomials (e.g., Chebyshev, Legendre, Hermite polynomials)
+
+# Solution structure (General steps)
+
+### 1. **Analysis of the recursion**
+
+- Determine the degree of recursion $k$
+- Classify the coefficients $a_i(x)$
+- Constant? Linear? General polynomial?
+
+### 2. **Characteristic polynomial**
+
+- Introduce a transformation analogous to linear recursion:
+- Consider linear independence of the basis $P_0, \dots, P_k$
+- Find a solution using a characteristic polynomial (for constant $a_i$)
+
+### 3. **Representation using matrix methods**
+
+- Write the recursion as a matrix system:
+
+$$
+\mathbf{P}_n = A(x) \mathbf{P}_{n-1},
+$$
+
+with vector $\mathbf{P}_n = [P_n, P_{n-1}, ..., P_{n-k+1}]^T$
+
+- Examine the eigenvalues and eigenvectors of $A(x)$
+
+### 4. **Comparison with known families**
+
+- Check whether the polynomial belongs to a known class (orthogonal, symmetric, etc.).
+
+### 5. **Root Structure**
+
+- Use numerical methods to analyze the roots
+- Investigate convergence behavior (e.g., for $n \to \infty$)
+
+### 6. **Symbolic Solution (if possible)**
+
+- Search for closed forms (e.g., using generating functions, transforming into differential equations)
+- Find explicit representations using basis functions or combinatorial structures

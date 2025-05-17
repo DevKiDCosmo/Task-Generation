@@ -1,0 +1,54 @@
+Étant donné une machine de Turing $M_b$ dont la bande de travail est limitée à $O(\log n)$ cellules mémoire. Montrer que $M_b$ décide correctement d'une certaine langue $L$, par exemple Par exemple :
+
+$$
+L = \{ l \in \{a, b\}^* \mid \#a(l) = \#b(l) \}
+$$
+
+ou tout autre langage spécifique où les contraintes de mémoire sont pertinentes.
+
+# Informations Complémentaires
+
+- Définitions des machines de Turing (MT) et de la mémoire limitée (par exemple, espace logarithmique)
+- Modèles formels tels que LBA (Linear Bounded Automata)
+- Comparaison avec des langages réguliers ou sans contexte
+- Logique booléenne et méthodes invariantes
+- Preuves logiques standard (par exemple, induction, contradiction)
+- Croquis sur papier ou notes
+
+# Exigences
+
+### **1. Spécification formelle**
+
+- Définir formellement la TM bornée $M_b$ :
+- $M_b = (Q, \Sigma, \Gamma, \delta, q_0, q_{acc}, q_{rej})$
+- Limitation : Taille de la bande de travail $\leq c \cdot \log n$
+
+### **2. Décrivez la langue $L$**
+
+- Démontrer que $L \in \mathsf{L}$ (décidable avec l'espace logarithmique)
+- Exemples :
+- Nombre équilibré de symboles (par exemple, nombre égal de $a$ et $b$)
+- Reconnaissance de motifs réguliers simples avec optimisation de l'espace
+
+### **3. Construction/Simulation**
+
+- Décrivez la stratégie TM avec peu de mémoire :
+- Signets (technique du pointeur)
+- Procédure en deux passes
+- Compteur en représentation binaire sur bande de travail
+
+### **4. Exactitude**
+
+- Utiliser l'invariance ou la simulation :
+- À chaque étape, l'invariant est préservé (par exemple, l'égalité de comptage)
+- Afficher : Si TM accepte, alors $w \in L$; si $w \in L$, alors TM accepte
+
+### **5. Prouver la complexité spatiale**
+
+- Analyse : Toutes les étapes ne nécessitent que $O(\log n)$ cellules mémoire
+- Prétendre qu'aucun stockage non autorisé n'a lieu
+
+### **6. Diplôme**
+
+- Terminer par une preuve complète (par exemple par induction complète sur la longueur de $w$)
+- Montrer que la mémoire limitée est **suffisante et fonctionne correctement**

@@ -1,0 +1,22 @@
+{
+    "id": "No.23",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-1",
+    "time": 600,
+    "nam_score": 6.0,
+    "author": "Original",
+    "date": "17.05.2025",
+    "main": {
+        "title": "Recursivity and fixed-point combinators in the untyped lambda calculus",
+        "content": "content/n23-en.exr",
+        "solution": "solution/n23-en.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "ecc49ab8-1937-4d4a-8436-bea255df9c9b",
+    "GUID": "887d0eeb-752d-454c-98be-4211f1b14647"
+}

@@ -1,0 +1,22 @@
+{
+    "id": "No.23",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-1",
+    "time": 600,
+    "nam_score": 6.0,
+    "author": "Original",
+    "date": "17.05.2025",
+    "main": {
+        "title": "Rekursivität und Fixpunktkombinatoren im untypisierten Lambda-Kalkül",
+        "content": "content/n23-de.exr",
+        "solution": "solution/n23-de.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "ecc49ab8-1937-4d4a-8436-bea255df9c9b",
+    "GUID": "8092f0bf-7bf5-4082-ab2c-92e9403967f0"
+}

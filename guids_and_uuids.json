@@ -1,0 +1,232 @@
+[
+    {
+        "file": "./exercise\\n1\\de\\1.0\\n1-de.json",
+        "GUID": "21c0f2a4-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+        "UUID": "e89de9cb-5ccc-4512-a077-38f7b983aef4"
+    },
+    {
+        "file": "./exercise\\n1\\en\\1.0\\n1-en.json",
+        "GUID": "429b0f2a5-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+        "UUID": "e89de9cb-5ccc-4512-a077-38f7b983aef4"
+    },
+    {
+        "file": "./exercise\\n1\\fr\\1.0\\n1-fr.json",
+        "GUID": "12387420-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+        "UUID": "e89de9cb-5ccc-4512-a077-38f7b983aef4"
+    },
+    {
+        "file": "./exercise\\n4\\de\\1.0d\\n4-1-de.json",
+        "GUID": "05b0f2a4-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n4\\de\\1.0d\\n4-2-de.json",
+        "GUID": "05b0f2a4-1b8e-4d3b-9f5c-23a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n4\\de\\1.0d\\n4-3-de.json",
+        "GUID": "21ac39df-1b8e-4d3b-9f5c-23a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n4\\de\\1.0d\\n4-4-de.json",
+        "GUID": "12098273-1b8e-4d3b-9f5c-23a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n4\\en\\1.1e\\n4-1-en.json",
+        "GUID": "1092a837-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n4\\en\\1.1e\\n4-2-en.json",
+        "GUID": "05b002a4-1b8e-4d3b-9f5c-7a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n4\\en\\1.1e\\n4-3-en.json",
+        "GUID": "21ac32df-1b8e-4d3b-9f5c-23a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n4\\en\\1.1e\\n4-4-en.json",
+        "GUID": "20397583-1b8e-4d3b-9f5c-23a6d1e0f3a2b",
+        "UUID": "048d25c1-ea62-4ee5-b78f-342798a9da82"
+    },
+    {
+        "file": "./exercise\\n5\\de\\1.0\\n5-de.json",
+        "GUID": "05b002a4-1b8e-4d3b-9f5c-7a6d1e0f3a2f",
+        "UUID": "f4273154-ca61-44eb-a6f0-db200d780f38"
+    },
+    {
+        "file": "./exercise\\n5\\en\\1.0\\n5-en.json",
+        "GUID": "05b002a4-1b8e-4d3b-9f5c-7a6d1e0f312f",
+        "UUID": "f4273154-ca61-44eb-a6f0-db200d780f38"
+    },
+    {
+        "file": "./exercise\\n6\\de\\1.0\\n6-de.json",
+        "GUID": "05b002a4-1b8e-4d3b-9f5c-2398579abc39",
+        "UUID": "f4273154-ca61-44eb-a6f0-db200d780f39"
+    },
+    {
+        "file": "./exercise\\n6\\en\\1.0\\n6-en.json",
+        "GUID": "19999942-1b8e-4d3b-9f5c-2398579abc39",
+        "UUID": "f4273154-ca61-44eb-a6f0-db200d780f39"
+    },
+    {
+        "file": "./exercise\\n7\\de\\1.0\\n7-de.json",
+        "GUID": "023cf134-1073-4d3b-9f5c-2398579abc39",
+        "UUID": "a2473154-ca61-44eb-a6f0-db200d780f39"
+    },
+    {
+        "file": "./exercise\\n7\\en\\1.0\\n7-en.json",
+        "GUID": "02398437-1073-4d3b-9f5c-2398579abc39",
+        "UUID": "a2473154-ca61-44eb-a6f0-db200d780f39"
+    },
+    {
+        "file": "./exercise\\n8\\de\\1.0\\n8-de.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-2398579abc39",
+        "UUID": "02853973-ca61-44eb-a6f0-db200d780f39"
+    },
+    {
+        "file": "./exercise\\n8\\en\\1.0\\n8-en.json",
+        "GUID": "10047928-1073-4d3b-9f5c-2398579abc39",
+        "UUID": "02853973-ca61-44eb-a6f0-db200d780f39"
+    },
+    {
+        "file": "./exercise\\t1\\de\\1.0\\t1-de.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-209385763736",
+        "UUID": "02853973-ca61-44eb-a6f0-109298209174"
+    },
+    {
+        "file": "./exercise\\t1\\en\\1.0\\t1-en.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-209385763737",
+        "UUID": "02853973-ca61-44eb-a6f0-109298209174"
+    },
+    {
+        "file": "./exercise\\t2\\de\\1.0\\t2-de.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-120987561273",
+        "UUID": "02853973-ca61-44eb-a6f0-102987519864"
+    },
+    {
+        "file": "./exercise\\t2\\en\\1.0\\t2-en.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-120987561223",
+        "UUID": "02853973-ca61-44eb-a6f0-102987519864"
+    },
+    {
+        "file": "./exercise\\t3\\de\\1.0\\t3-de.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-198257198275",
+        "UUID": "02853973-ca61-44eb-a6f0-129857262711"
+    },
+    {
+        "file": "./exercise\\t3\\en\\1.0\\t3-en.json",
+        "GUID": "12987462-1073-4d3b-9f5c-120987561273",
+        "UUID": "02853973-ca61-44eb-a6f0-129857262711"
+    },
+    {
+        "file": "./exercise\\n9\\de\\1.0\\n9-de.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-239238527383",
+        "UUID": "02853973-ca61-44eb-a6f0-db200d780f10"
+    },
+    {
+        "file": "./exercise\\n9\\en\\1.0\\n9-en.json",
+        "GUID": "10047928-1073-4d3b-9f5c-198427198265",
+        "UUID": "02853973-ca61-44eb-a6f0-db200d780f10"
+    },
+    {
+        "file": "./exercise\\n10\\de\\1.0\\n10-de.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-230587091872",
+        "UUID": "34123421-ca61-44eb-a6f0-db200d780f10"
+    },
+    {
+        "file": "./exercise\\n10\\en\\1.0\\n10-en.json",
+        "GUID": "10047928-1073-4d3b-9f5c-172874618926",
+        "UUID": "34123421-ca61-44eb-a6f0-db200d780f10"
+    },
+    {
+        "file": "./exercise\\n14\\de\\1.0\\n14-de.json",
+        "GUID": "2c0a8372-1073-4d3b-9f5c-209843782653",
+        "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10"
+    },
+    {
+        "file": "./exercise\\n14\\en\\1.0\\n14-en.json",
+        "GUID": "10047928-1073-4d3b-9f5c-624352343132",
+        "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10"
+    },
+    {
+        "file": "./exercise\\n14\\jp\\1.0\\n14-jp.json",
+        "GUID": "10047928-1073-4d3b-9f5c-624352343133",
+        "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10"
+    },
+    {
+        "file": "./exercise\\n14\\fr\\1.0\\n14-fr.json",
+        "GUID": "b6ff31f3-7845-47a3-803d-792690b52f48",
+        "UUID": "34123421-ca61-44eb-a6f0-fb200d780f10"
+    },
+    {
+        "file": "./exercise\\n15\\de\\1.0\\n15-de.json",
+        "GUID": "02d58e48-ddcb-4401-869a-c8e8a463a653",
+        "UUID": "1aa60701-6939-4ba7-9f1c-53fbfed2686b"
+    },
+    {
+        "file": "./exercise\\n15\\en\\1.0\\n15-en.json",
+        "GUID": "0163d8ec-b771-44db-9f6f-6546b4733395",
+        "UUID": "1aa60701-6939-4ba7-9f1c-53fbfed2686b"
+    },
+    {
+        "file": "./exercise\\n15\\jp\\1.0\\n15-jp.json",
+        "GUID": "0a989e7c-66a7-4a60-9a4a-b345009f7913",
+        "UUID": "1aa60701-6939-4ba7-9f1c-53fbfed2686b"
+    },
+    {
+        "file": "./exercise\\n15\\fr\\1.0\\n15-fr.json",
+        "GUID": "731c2ede-a852-4e70-90bf-cec748f09bf2",
+        "UUID": "1aa60701-6939-4ba7-9f1c-53fbfed2686b"
+    },
+    {
+        "file": "./exercise\\n16\\de\\1.0\\n16-de.json",
+        "GUID": "7cf1fbfd-0b70-48ef-9d18-bb5fc8419a55",
+        "UUID": "cff283f9-7344-4d48-acf2-0f7bf709276f"
+    },
+    {
+        "file": "./exercise\\n16\\en\\1.0\\n16-en.json",
+        "GUID": "76026e70-8f1d-4319-a13e-7f5c8955fc83",
+        "UUID": "cff283f9-7344-4d48-acf2-0f7bf709276f"
+    },
+    {
+        "file": "./exercise\\n16\\fr\\1.0\\n16-fr.json",
+        "GUID": "1ae5432b-08b9-464d-a7d7-b20048523913",
+        "UUID": "cff283f9-7344-4d48-acf2-0f7bf709276f"
+    },
+    {
+        "file": "./exercise\\n16\\jp\\1.0\\n16-jp.json",
+        "GUID": "1fd4436b-f494-4cb6-a919-8784410bc93c",
+        "UUID": "cff283f9-7344-4d48-acf2-0f7bf709276f"
+    },
+    {
+        "file": "./exercise\\n17\\de\\1.0\\n17-de.json",
+        "GUID": "5ed4f53b-aec7-472c-a733-c1b3b3cf6a18",
+        "UUID": "f916e747-b91d-47ec-83ba-3037cebeebcb"
+    },
+    {
+        "file": "./exercise\\n17\\en\\1.0\\n17-en.json",
+        "GUID": "5f69f358-a92b-4593-ac73-5aaf0fcb5f33",
+        "UUID": "f916e747-b91d-47ec-83ba-3037cebeebcb"
+    },
+    {
+        "file": "./exercise\\n17\\jp\\1.0\\n17-jp.json",
+        "GUID": "fb2cb262-d694-4a23-a1a6-5a20b512ebea",
+        "UUID": "f916e747-b91d-47ec-83ba-3037cebeebcb"
+    },
+    {
+        "file": "./exercise\\n17\\fr\\1.0\\n17-fr.json",
+        "GUID": "b30962b2-bc30-497d-bb98-ee335aeacd7f",
+        "UUID": "f916e747-b91d-47ec-83ba-3037cebeebcb"
+    },
+    {
+        "file": "./exercise\\n17\\kr\\1.0\\n17-kr.json",
+        "GUID": "9f422ceb-8266-4e27-8cfd-82c209652be8",
+        "UUID": "f916e747-b91d-47ec-83ba-3037cebeebcb"
+    }
+]

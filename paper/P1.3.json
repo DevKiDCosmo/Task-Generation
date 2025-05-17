@@ -1,0 +1,38 @@
+{
+  "title": "Lambda-Calculus and The Namische /ˈnamɪʃə/ Collection",
+  "date": "17.05.2025",
+  "paper": "P1.3",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "23513-932",
+  "doi": "10.5281/zenodo.15451382",
+  "description": "Exercise Collection Theme: Lambda-Calculus",
+  "exercise": {
+    "n23": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
+  },
+  "tags": [
+    "problem solving"
+  ],
+  "UUID": "...",
+  "GUID": "..."
+}

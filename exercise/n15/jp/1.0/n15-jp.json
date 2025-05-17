@@ -1,0 +1,21 @@
+{
+    "id": "No.15",
+    "category": [
+        1,
+        3
+    ],
+    "cid": "SHB-3",
+    "time": 1200,
+    "nam_score": 7.4,
+    "author": "Original",
+    "date": "11.05.2025",
+    "main": {
+        "title": "一般化再帰多項式の解の構造",
+        "content": "content/n15-jp.exr",
+        "solution": "solution/n15-jp.exr"
+    },
+    "difficulty": 6,
+    "tags": [],
+    "UUID": "1aa60701-6939-4ba7-9f1c-53fbfed2686b",
+    "GUID": "0a989e7c-66a7-4a60-9a4a-b345009f7913"
+}

@@ -1,0 +1,22 @@
+{
+    "id": "No.23",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-1",
+    "time": 600,
+    "nam_score": 6.0,
+    "author": "Original",
+    "date": "17.05.2025",
+    "main": {
+        "title": "無型 lambda 演算中的遞歸與不動點組合器",
+        "content": "content/n23-zh.exr",
+        "solution": "solution/n23-zh.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "ecc49ab8-1937-4d4a-8436-bea255df9c9b",
+    "GUID": "a94a62e4-a6bf-4386-8c65-5e294ef85c8d"
+}
