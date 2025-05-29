@@ -1,0 +1,51 @@
+## Task: Momentum-space representation of a Gaussian wave packet
+
+Given a one-dimensional quantum mechanical particle with the wave function in position space:
+
+\[
+\psi(x) = A \cdot e^{-\frac{x^2}{2a^2}}, \quad A \in \mathbb{R}, \quad a > 0
+\]
+
+This function describes a stationary, freely moving particle with a Gaussian spatial distribution.
+
+### **Subtasks**
+
+### Normalization of the wave function
+
+Determine the normalization constant \( A \) such that the wave function is normalized, i.e. i.e.:
+
+\[
+\int_{-\infty}^{\infty} |\psi(x)|^2 \, dx = 1
+\]
+
+### Fourier Transformation into Momentum Space
+
+Calculate the momentum space representation \( \phi(p) \) of the wave function using the Fourier transformation according to:
+
+\[
+\phi(p) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} \psi(x) \cdot e^{-\frac{i}{\hbar}px} \, dx
+\]
+
+Complete the integration and state the resulting function \( \phi(p) \) explicitly.
+
+### Heisenberg's Uncertainty Principle
+
+Determine the standard deviations \( \sigma_x \) and \( \sigma_p \) of the position and momentum distributions, respectively:
+
+\[
+\sigma_x^2 = \langle x^2 \rangle - \langle x \rangle^2, \quad \sigma_p^2 = \langle p^2 ​​\rangle - \langle p \rangle^2
+\]
+
+and show that the product of these dispersions satisfies the Heisenberg uncertainty principle:
+
+\[
+\sigma_x \cdot \sigma_p \geq \frac{\hbar}{2}
+\]
+
+### Physical Interpretation of the Limiting Cases
+
+Discuss qualitatively the physical limiting case \( a \to 0 \). What happens to the momentum space representation \( \phi(p) \) and how should this limiting case be interpreted physically? Refer to the concepts of localization and momentum uncertainty.
+
+### **Note:**
+
+This exercise is also suitable for numerical evaluation and graphical representation in Python or MATLAB. Optionally, the Fourier transform can also be verified symbolically using suitable software tools (e.g., SymPy or Mathematica).

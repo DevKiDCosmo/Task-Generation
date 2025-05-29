@@ -1,0 +1,32 @@
+Investigate and prove the role of zeta and gamma functions in quantum field theory regularization and thermodynamics, especially in the context of partition functions and vacuum energy.
+
+### Task
+
+Given a scalar quantum field on a compact spacetime with periodicity \(\beta\) in the time dimension (corresponding to a temperature \(T = 1/\beta \)) and a spatial dimension \(L\). The natural frequencies of the field are:
+\[
+\omega_{n,m} = \sqrt{\left(\frac{2\pi n}{\beta}\right)^2 + \left(\frac{2\pi m}{L}\right)^2 + m_0^2}, \quad n,m \in \mathbb{Z}
+\]
+
+Using zeta regularization, show that the thermodynamic partition function
+\[
+Z(\beta) = \prod_{n,m} \left(1 - e^{-\beta \omega_{n,m}} \right)^{-1}
+\]
+can be regularly calculated using the analytic extension of the Riemann zeta function and the gamma function.
+
+### Subtasks
+
+1. **Derivation of the Regulated Vacuum Energy**
+Derive the expression for the regulated vacuum energy \( E_0 = \frac{1}{2} \sum_{n,m} \omega_{n,m} \) using the **zeta function**. Show that:
+\[
+E_0(s) = \frac{\mu^{2s}}{2} \sum_{n,m} \omega_{n,m}^{-s}, \quad \text{and} \quad E_0 = \lim_{s \to -1} E_0(s)
+\]
+and convert the expression to a gamma function form using the Mellin transform.
+
+2. **Reduction to an Epstein zeta function**
+Show that the double sum over n and m can be represented as an Epstein zeta function. Analyze its analytical properties.
+
+3. **Temperature Dependence and Thermodynamic Functions**
+Use the regularized expression to derive the free energy F(beta), internal energy U(beta), and entropy S(beta). Show how the gamma function appears in the asymptotic expansion for high and low temperatures.
+
+4. **Comparison with Casimir Energy**
+Prove that the zero-temperature limit of the partition function transforms into the Casimir energy, and that the regularization yields exactly the same form as the classical zeta-Casimir method.

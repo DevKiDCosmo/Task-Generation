@@ -1,0 +1,32 @@
+Étudier et démontrer le rôle des fonctions zêta et gamma dans la régularisation de la théorie quantique des champs et la thermodynamique, notamment dans le contexte des fonctions de partition et de l'énergie du vide.
+
+### Tâche
+
+Soit un champ quantique scalaire sur un espace-temps compact de périodicité \(\beta\) dans la dimension temporelle (correspondant à une température \(T = 1/\beta \)) et une dimension spatiale \(L\). Les fréquences propres du champ sont :
+\[
+\omega_{n,m} = \sqrt{\left(\frac{2\pi n}{\beta}\right)^2 + \left(\frac{2\pi m}{L}\right)^2 + m_0^2}, \quad n,m \in \mathbb{Z}
+\]
+
+En utilisant la régularisation zêta, montrer que la fonction de partition thermodynamique
+\[
+Z(\beta) = \prod_{n,m} \left(1 - e^{-\beta \omega_{n,m}} \right)^{-1}
+\]
+peut être calculée régulièrement à l’aide de l’extension analytique de la fonction zêta de Riemann et de la fonction gamma.
+
+### Sous-tâches
+
+1. **Dérivation de l'énergie régulée du vide**
+Déduire l'expression de l'énergie régulée du vide \( E_0 = \frac{1}{2} \sum_{n,m} \omega_{n,m} \) à l'aide de la **fonction zêta**. Montrer que :
+\[
+E_0(s) = \frac{\mu^{2s}}{2} \sum_{n,m} \omega_{n,m}^{-s}, \quad \text{et} \quad E_0 = \lim_{s \to -1} E_0(s)
+\]
+et convertir l'expression en fonction gamma à l'aide de la transformée de Mellin.
+
+2. **Réduction à une fonction zêta d'Epstein**
+Montrer que la double somme sur n et m peut être représentée par une fonction zêta d'Epstein. Analyser ses propriétés analytiques.
+
+3. **Dépendance à la température et fonctions thermodynamiques**
+Utiliser l'expression régularisée pour déduire l'énergie libre F(bêta), l'énergie interne U(bêta) et l'entropie S(bêta). Montrer comment la fonction gamma apparaît dans le développement asymptotique pour les températures élevées et basses.
+
+4. **Comparaison avec l'énergie de Casimir**
+Démontrer que la limite à température nulle de la fonction de partition se transforme en énergie de Casimir et que la régularisation donne exactement la même forme que la méthode zêta-Casimir classique.

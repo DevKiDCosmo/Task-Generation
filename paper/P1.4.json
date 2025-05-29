@@ -1,0 +1,59 @@
+{
+  "title": "The Namische /ˈnamɪʃə/ Collection",
+  "date": "24.05.2025",
+  "paper": "P1.4",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "33513-9323",
+  "doi": "10.5281/zenodo.15507262\n",
+  "description": "Exercise Collection Theme: ",
+  "exercise": {
+    "n24": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n25": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
+  },
+  "tags": [
+    "problem solving"
+  ],
+  "UUID": "...",
+  "GUID": "..."
+}

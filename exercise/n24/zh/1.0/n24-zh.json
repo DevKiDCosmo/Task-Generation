@@ -1,0 +1,22 @@
+{
+    "id": "No.24",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-2",
+    "time": 860,
+    "nam_score": 8.7,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "zeta 函數和 gamma 函數在量子場論的配分函數和真空能量中的作用",
+        "content": "content/n24-zh.exr",
+        "solution": "solution/n24-zh.exr"
+    },
+    "difficulty": 9,
+    "tags": [],
+    "UUID": "7315621c-f5d3-43cc-af4f-805ea3816c8b",
+    "GUID": "b14eff42-fdc0-4ebc-880f-05167a978cbe"
+}

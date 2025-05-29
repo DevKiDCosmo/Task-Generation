@@ -1,1 +1,231 @@
-Solution for n23 in de
+### {Aufgabe: Auswertung und Beweis der Fakultätsfunktion mittels $Y$-Kombinator}
+
+### {Ziel der Aufgabe}
+
+Gegeben ist die Anwendung des $Y$-Kombinators auf eine rekursiv definierte Fakultätsfunktion $F$ und deren Anwendung auf die Church-Zahl $c_3$:
+
+\[
+(Y\,F)\,c_3
+\]
+
+Ziel ist es, den Ausdruck vollständig auszuwerten und zu zeigen, dass er äquivalent zur Church-Zahl $c_6$ ist. Dies geschieht durch sprachliche und rechnerische Begründung in mehreren Teilschritten.
+
+### {Definitionen der beteiligten Terme}
+
+Zunächst seien die verwendeten Terme beschrieben:
+
+\begin{itemize}
+  \item Der $Y$-Kombinator ist definiert als:
+  \[
+  Y := \lambda f.\, (\lambda x.\, f(x\,x))\, (\lambda x.\, f(x\,x))
+  \]
+  \item Die Funktion $F$ definiert die Fakultätsfunktion:
+  \[
+  F := \lambda f.\, \lambda n.\, \text{iszero}\ n\ c_1\ (\text{mult}\ n\ (f\, (\text{pred}\ n)))
+  \]
+  Sie ist als rekursive Funktion aufgebaut, jedoch ohne explizite Selbstreferenz. Diese wird durch Anwendung von $Y$ erzeugt.
+  \item Die Church-Zahl $c_3$ ist:
+  \[
+  c_3 := \lambda f.\, \lambda x.\, f(f(f\,x))
+  \]
+\end{itemize}
+
+### {Beweisidee: $YF$ ist Fixpunkt von $F$}
+
+Ziel ist es, $F$ rekursiv aufzubauen, ohne dass $F$ sich direkt referenziert. Der $Y$-Kombinator erzeugt einen Fixpunkt, d.h. einen Wert $YF$, der die Gleichung
+\[
+YF = F(YF)
+\]
+erfüllt. Dies zeigt man wie folgt:
+
+\begin{align*}
+YF &= (\lambda f.\, (\lambda x.\, f(x\,x))\, (\lambda x.\, f(x\,x)))\,F \\
+   &= (\lambda x.\, F(x\,x))\, (\lambda x.\, F(x\,x)) \\
+   &= F((\lambda x.\, F(x\,x))\, (\lambda x.\, F(x\,x))) \\
+   &= F(YF)
+\end{align*}
+
+Somit ist $YF$ die rekursive Fakultätsfunktion.
+
+### {Auswertung von $(YF)\, c_3$}
+
+Nun wenden wir $YF$ auf $c_3$ an:
+
+\[
+(YF)\, c_3 = F(YF)\, c_3
+\]
+
+Da $F = \lambda f.\, \lambda n.\, \text{iszero}\ n\ c_1\ (\text{mult}\ n\ (f(\text{pred}\ n)))$, ergibt sich durch Anwendung auf $YF$ und $c_3$:
+
+\begin{align*}
+F(YF)\, c_3 &= \text{iszero}(c_3)\, c_1\, (\text{mult}\ c_3\, ((YF)\, (\text{pred}(c_3)))) \\
+            &= \text{false}\, c_1\, (\text{mult}\ c_3\, ((YF)\, c_2)) \\
+            &= \text{mult}(c_3)\, ((YF)\, c_2)
+\end{align*}
+
+Nun wenden wir denselben Vorgang rekursiv an:
+
+\begin{align*}
+(YF)\, c_2 &= \text{mult}(c_2)\, ((YF)\, c_1) \\
+(YF)\, c_1 &= \text{mult}(c_1)\, ((YF)\, c_0) \\
+(YF)\, c_0 &= \text{iszero}(c_0)\, c_1\, (\ldots) = c_1
+\end{align*}
+
+### {Rückwärtsauswertung: Schrittweise Berechnung}
+
+Nun ergibt sich die rekursive Berechnung der Fakultät:
+
+\begin{align*}
+(YF)\, c_0 &= c_1 \\
+(YF)\, c_1 &= \text{mult}(c_1)\, c_1 = c_1 \cdot c_1 = c_1 \\
+(YF)\, c_2 &= \text{mult}(c_2)\, c_1 = c_2 \cdot c_1 = c_2 \\
+(YF)\, c_3 &= \text{mult}(c_3)\, c_2 = c_3 \cdot c_2 = c_6
+\end{align*}
+
+### {Ergebnis}
+
+Damit ergibt sich:
+
+\[
+(YF)\, c_3 = c_6
+\]
+
+Die Fakultätsfunktion liefert also korrekt das Ergebnis \( 3! = 6 \) als Church-Zahl \( c_6 \).
+
+### {Punktevergabe (15 Punkte)}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{4.5cm}|p{5.5cm}|c|p{4.2cm}|}
+\hline
+\textbf{Schritt} & \textbf{Beschreibung} & \textbf{Punkte} & \textbf{Begründung} \\
+\hline
+1 & Definition von $Y$ korrekt erkannt & 2 & Fixpunktkombinator mit Selbstanwendung \\
+2 & Substitution $F$ in $Y$ & 2 & Richtige Einsetzung und Reduktion \\
+3 & Anwendung auf $c_3$ & 2 & Beginn der rekursiven Berechnung \\
+4 & korrekte Ableitung von $c_2$, $c_1$, $c_0$ & 3 & Vollständige Reduktion der Fakultät \\
+5 & korrektes Endergebnis $c_6$ & 2 & Richtige Anwendung der Multiplikation \\
+6 & De Bruijn-Notation korrekt & 2 & Richtige Umformung aller Terme \\
+7 & Klarheit, Struktur & 2 & Verständlicher Aufbau \\
+\hline
+\textbf{Gesamt} &  & \textbf{15/15} & \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+### {Aufgabe: Fakultätsfunktion mit $Y$-Kombinator in De-Bruijn-Notation}
+
+### {Ziel der Aufgabe}
+
+Es soll gezeigt werden, dass durch Anwendung des Fixpunktkombinators \( Y \) auf die rekursive Funktion \( F \) eine korrekt arbeitende Fakultätsfunktion entsteht. Die Auswertung erfolgt in **De-Bruijn-Notation**, wodurch Namenskonflikte vermieden werden und Bindungen präzise verfolgt werden können.
+
+### {Ausgangslage: Definition der Terme}
+
+Die benannten Terme lauten:
+
+\begin{align*}
+Y &= \lambda f.\ (\lambda x.\ f(x\,x))(\lambda x.\ f(x\,x)) \\
+F &= \lambda f.\ \lambda n.\ \text{iszero}\ n\ c_1\ (\text{mult}\ n\ (f(\text{pred}\ n)))
+\end{align*}
+
+Die Church-Zahl drei:
+
+\[
+c_3 := \lambda f.\, \lambda x.\, f(f(f\,x))
+\]
+
+### {Übersetzung in De-Bruijn-Notation}
+
+Wir benennen alle gebundenen Variablen durch natürliche Zahlen (je näher an der Bindung, desto kleiner):
+
+\begin{itemize}
+  \item \( Y = \lambda.\, (\lambda.\, 1\ (0\ 0))\, (\lambda.\, 1\ (0\ 0)) \)
+  \item \( F = \lambda.\, \lambda.\, \text{iszero}\ 0\ c_1\ (\text{mult}\ 0\ (1\ (\text{pred}\ 0))) \)
+\end{itemize}
+
+Zur Erklärung:
+- In \( Y \) wird \( f \) durch 1 referenziert (da \( x \) näher gebunden ist, ist \( x = 0 \), \( f = 1 \)).
+- In \( F \) ist \( n = 0 \), \( f = 1 \), also \( f(\text{pred}(n)) = 1 (\text{pred}\ 0) \).
+
+### {Bildung des Fixpunkts}
+
+Nun setzen wir:
+
+\[
+YF = (\lambda.\, (\lambda.\, 1\ (0\ 0))\, (\lambda.\, 1\ (0\ 0)))\,F
+\]
+
+Wende Auswertungsschritte an:
+
+\begin{align*}
+YF &= (\lambda.\, (\lambda.\, 1\ (0\ 0))\, (\lambda.\, 1\ (0\ 0)))\,F \\
+   &\rightarrow (\lambda.\, F\ (0\ 0))\, (\lambda.\, F\ (0\ 0)) \\
+   &\rightarrow F\ ((\lambda.\, F\ (0\ 0))\, (\lambda.\, F\ (0\ 0))) \\
+   &\rightarrow F(YF)
+\end{align*}
+
+Damit ist formal gezeigt:
+\[
+YF = F(YF)
+\]
+
+Die erzeugte Funktion \( YF \) erfüllt also die gewünschte Rekursionseigenschaft.
+
+### {Anwendung auf Church-Zahl 3 (ebenfalls in De-Bruijn)}
+
+Die Church-Zahl 3 in De-Bruijn:
+
+\[
+c_3 = \lambda.\, \lambda.\, 1\ (1\ (1\ 0))
+\]
+
+Wir wenden \( YF \) auf \( c_3 \) an:
+
+\[
+YF\, c_3 = F(YF)\, c_3
+\]
+
+Einsetzen in die Definition von \( F \) in De-Bruijn:
+
+\[
+F = \lambda.\, \lambda.\, \text{iszero}\ 0\ c_1\ (\text{mult}\ 0\ (1 (\text{pred}\ 0)))
+\]
+
+Daraus folgt:
+
+\begin{align*}
+F(YF)\, c_3 &= (\lambda.\, \lambda.\, \text{iszero}\ 0\ c_1\ (\text{mult}\ 0\ (1 (\text{pred}\ 0))))\, YF\, c_3 \\
+            &\rightarrow \text{iszero}\ c_3\ c_1\ (\text{mult}\ c_3\ (YF\, (\text{pred}\ c_3)))
+\end{align*}
+
+Dies ergibt durch rekursive Anwendung:
+
+\begin{align*}
+(YF)\, c_3 &= \text{mult}(c_3)\, ((YF)\, c_2) \\
+(YF)\, c_2 &= \text{mult}(c_2)\, ((YF)\, c_1) \\
+(YF)\, c_1 &= \text{mult}(c_1)\, ((YF)\, c_0) \\
+(YF)\, c_0 &= \text{iszero}(c_0)\, c_1\, (\ldots) = c_1
+\end{align*}
+
+### {Rückberechnung}
+
+\begin{align*}
+(YF)\, c_0 &= c_1 \\
+(YF)\, c_1 &= \text{mult}(c_1, c_1) = c_1 \\
+(YF)\, c_2 &= \text{mult}(c_2, c_1) = c_2 \\
+(YF)\, c_3 &= \text{mult}(c_3, c_2) = c_6
+\end{align*}
+
+### {Schlussfolgerung}
+
+Der rekursive Aufruf endet bei \( c_0 \) mit dem Wert \( c_1 \) (entspricht 1). Die Rückrechnung liefert:
+
+\[
+(YF)\, c_3 = c_6
+\]
+
+Somit funktioniert die rekursive Definition korrekt. Der Ausdruck ist in De-Bruijn-Notation vollständig nachvollzogen, die Bindungsstruktur ist korrekt, und der Beweis der semantischen Korrektheit erbracht.
+
+\hfill\qedsymbol

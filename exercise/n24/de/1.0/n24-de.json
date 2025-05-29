@@ -1,0 +1,22 @@
+{
+    "id": "No.24",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-2",
+    "time": 840,
+    "nam_score": 8.7,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "Rolle der Zeta- und Gammafunktionen in Zustandssummen und Vakuumenergien der Quantenfeldtheorie",
+        "content": "content/n24-de.exr",
+        "solution": "solution/n24-de.exr"
+    },
+    "difficulty": 9,
+    "tags": [],
+    "UUID": "7315621c-f5d3-43cc-af4f-805ea3816c8b",
+    "GUID": "cc85e4ff-ce95-4192-9b9c-07372f6d7fdb"
+}

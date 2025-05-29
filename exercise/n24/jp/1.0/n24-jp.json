@@ -1,0 +1,22 @@
+{
+    "id": "No.24",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-2",
+    "time": 860,
+    "nam_score": 8.7,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "量子場の理論における分配関数と真空エネルギーにおけるゼータ関数とガンマ関数の役割",
+        "content": "content/n24-jp.exr",
+        "solution": "solution/n24-jp.exr"
+    },
+    "difficulty": 6,
+    "tags": [],
+    "UUID": "7315621c-f5d3-43cc-af4f-805ea3816c8b",
+    "GUID": "fa54f474-2db5-47ee-a259-b74482490238"
+}

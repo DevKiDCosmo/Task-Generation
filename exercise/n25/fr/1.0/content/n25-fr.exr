@@ -1,0 +1,53 @@
+## Tâche : Représentation spatiale de l'impulsion d'un paquet d'ondes gaussiennes
+
+Étant donné une particule mécanique quantique unidimensionnelle avec la fonction d'onde dans l'espace de position :
+
+\[
+\psi(x) = A \cdot e^{-\frac{x^2}{2a^2}}, \quad A \in \mathbb{R}, \quad a > 0
+\]
+
+Cette fonction décrit une particule stationnaire et en mouvement libre avec une distribution spatiale gaussienne.
+
+
+### **Sous-tâches**
+
+### Normalisation de la fonction d'onde
+
+Déterminer la constante de normalisation \( A \) telle que la fonction d'onde soit normalisée, c'est-à-dire :
+
+\[
+\int_{-\infty}^{\infty} |\psi(x)|^2 \, dx = 1
+\]
+
+### Transformation de Fourier dans l'espace des impulsions
+
+Calculer la représentation spatiale de l'impulsion \( \phi(p) \) de la fonction d'onde en utilisant la transformation de Fourier selon :
+
+\[
+\phi(p) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} \psi(x) \cdot e^{-\frac{i}{\hbar}px} \, dx
+\]
+
+Complétez l'intégration et indiquez la fonction résultante \( \phi(p) \) sous forme explicite.
+
+### Le principe d'incertitude de Heisenberg
+
+Déterminer les écarts types \( \sigma_x \) et \( \sigma_p \) des distributions de position et d'impulsion, respectivement :
+
+\[
+\sigma_x^2 = \langle x^2 \rangle - \langle x \rangle^2, \quad \sigma_p^2 = \langle p^2 ​​​​\rangle - \langle p \rangle^2
+\]
+
+et montrer que le produit de ces diffusions satisfait le principe d'incertitude de Heisenberg :
+
+\[
+\sigma_x \cdot \sigma_p \geq \frac{\hbar}{2}
+\]
+
+### Interprétation physique des cas limites
+
+Discutez qualitativement du cas limite physique \( a \to 0 \). Qu'arrive-t-il à la représentation de l'espace d'impulsion \( \phi(p) \) et comment ce cas limite doit-il être interprété physiquement ? Se référer aux concepts de localisation et d’incertitude d’impulsion.
+
+
+### **Un avis :**
+
+Cette tâche convient également à l’évaluation numérique et à la représentation graphique en Python ou MATLAB. En option, la transformée de Fourier peut également être vérifiée symboliquement à l'aide d'outils logiciels appropriés (par exemple, SymPy ou Mathematica).

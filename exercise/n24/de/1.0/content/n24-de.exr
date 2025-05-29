@@ -1,0 +1,32 @@
+Untersuchen und beweisen Sie die Rolle der Zeta- und Gammafunktionen in der quantenfeldtheoretischen Regularisierung und Thermodynamik, speziell im Kontext der Zustandssummen und Vakuumenergie.
+
+### Aufgabenstellung
+
+Gegeben sei ein skalares Quantenfeld auf einer kompakten Raumzeit mit Periodizität \(\beta\) in der Zeitdimension (entsprechend einer Temperatur \( T = 1/\beta \)) und einer Raumdimension \(L\). Die Eigenfrequenzen des Feldes lauten:
+\[
+\omega_{n,m} = \sqrt{\left(\frac{2\pi n}{\beta}\right)^2 + \left(\frac{2\pi m}{L}\right)^2 + m_0^2}, \quad n,m \in \mathbb{Z}
+\]
+
+Zeigen Sie durch Anwendung der **Zeta-Regularisierung**, dass die thermodynamische Zustandssumme
+\[
+Z(\beta) = \prod_{n,m} \left(1 - e^{-\beta \omega_{n,m}} \right)^{-1}
+\]
+mit Hilfe der analytischen Fortsetzung der Riemannschen Zetafunktion und der Gammafunktion regulär berechnet werden kann.
+
+### Teilaufgaben
+
+1. **Herleitung der regulierten Vakuumenergie**
+    Leiten Sie den Ausdruck für die regulierte Vakuumenergie \( E_0 = \frac{1}{2} \sum_{n,m} \omega_{n,m} \) unter Verwendung der **Zeta-Funktion** her. Zeigen Sie, dass:
+    \[
+    E_0(s) = \frac{\mu^{2s}}{2} \sum_{n,m} \omega_{n,m}^{-s}, \quad \text{und} \quad E_0 = \lim_{s \to -1} E_0(s)
+    \]
+    und bringen Sie den Ausdruck auf eine Form mit Gammafunktionen via Mellin-Transformation.
+    
+2. **Reduktion zu einer Epstein-Zeta-Funktion**
+    Zeigen Sie, dass die doppelte Summe über \( n \) und \( m \) als **Epstein-Zeta-Funktion** darstellbar ist. Analysieren Sie deren analytische Eigenschaften.
+    
+3. **Temperaturabhängigkeit und thermodynamische Funktionen**
+    Verwenden Sie den regulierten Ausdruck zur Ableitung der freien Energie \( F(\beta) \), inneren Energie \( U(\beta) \) und Entropie \( S(\beta) \). Zeigen Sie, wie die Gammafunktion in der asymptotischen Entwicklung für hohe und niedrige Temperaturen erscheint.
+
+4. **Vergleich mit Casimir-Energie**
+    Beweisen Sie, dass die Nulltemperatur-Grenze der Zustandssumme zur **Casimir-Energie** übergeht, und dass die Regularisierung exakt dieselbe Form liefert wie bei der klassischen Zeta-Casimir-Methode.

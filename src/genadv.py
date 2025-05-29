@@ -1,6 +1,8 @@
 import shutil, sys, os
 import subprocess
 import typing, json
+from typing import Any, Coroutine
+
 from util import log as lg
 # import mypy
 import asyncio, aiofiles
@@ -222,85 +224,66 @@ class Generation():
 
     def markdown_to_latex(self, lines: list[str]) -> list[str]:
         output = []
-        in_itemize = False
-        in_enumerate = False
+        stack: list[typing.Any] = []  # Stack für ('itemize' oder 'enumerate', indent_level)
+        current_indent: int = 0
+
+        def close_to_indent(target_indent):
+            while stack and stack[-1][1] >= target_indent:
+                env, _ = stack.pop()
+                output.append(f'\\end{{{env}}}')
+
+        def apply_formatting(text: str) -> str:
+            text = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', text)
+            text = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', text)
+            text = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'\\textit{\1}', text)
+            text = re.sub(r'__(.+?)__', r'\\underline{\1}', text)
+            text = re.sub(r'~~(.+?)~~', r'\\sout{\1}', text)
+            text = re.sub(r'`([^`]+?)`', r'\\texttt{\1}', text)
+            text = re.sub(r'^\s*#+\s+(.*)', r'\\subsubsection{\1}', text)
+            return text
 
         for line in lines:
+            raw_line = line
             line = line.rstrip()
+            indent = len(raw_line) - len(raw_line.lstrip(' '))
+            content = line.strip()
 
-            is_item = re.match(r'^\s*-\s+', line)
-            is_enum = re.match(r'^\s*(\d+)\.\s*$', line)  # Nur Zahl + Punkt
-            is_enum_full = re.match(r'^\s*(\d+)\.\s+(.+)', line)  # Zahl + Punkt + Text
+            is_item = re.match(r'^-\s+', content)
+            is_enum = re.match(r'^(\d+)\.\s+(.*)', content)
 
-            # LISTENUMGEBUNG ENTSCHIEDEN
-            if is_enum or is_enum_full:
-                if not in_enumerate:
-                    if in_itemize:
-                        output.append(r'\end{itemize}')
-                        in_itemize = False
-                    output.append(r'\begin{enumerate}')
-                    in_enumerate = True
+            # Entscheide, ob neuer Level begonnen wird
+            if is_item or is_enum:
+                if is_enum:
+                    kind = 'enumerate'
+                else:
+                    kind = 'itemize'
+
+                if not stack or indent > stack[-1][1]:
+                    output.append(f'\\begin{{{kind}}}')
+                    stack.append((kind, indent))
+                else:
+                    close_to_indent(indent)
+                    if not stack or stack[-1][0] != kind:
+                        output.append(f'\\begin{{{kind}}}')
+                        stack.append((kind, indent))
+
+                if is_enum:
+                    num, text = is_enum.groups()
+                    output.append(rf'\item[{num}.] {apply_formatting(text)}')
+                else:
+                    text = re.sub(r'^-\s+', '', content)
+                    output.append(rf'\item {apply_formatting(text)}')
             else:
-                if in_enumerate:
-                    output.append(r'\end{enumerate}')
-                    in_enumerate = False
+                # Text innerhalb eines Items
+                if stack:
+                    output[-1] += ' ' + apply_formatting(content)
+                else:
+                    output.append(apply_formatting(content))
 
-            if is_item:
-                if not in_itemize:
-                    if in_enumerate:
-                        output.append(r'\end{enumerate}')
-                        in_enumerate = False
-                    output.append(r'\begin{itemize}')
-                    in_itemize = True
-            else:
-                if in_itemize and not is_item:
-                    output.append(r'\end{itemize}')
-                    in_itemize = False
-
-            # LISTENELEMENTE
-            if is_item:
-                line = re.sub(r'^\s*-\s+', r'\\item ', line)
-            elif is_enum:
-                num = is_enum.group(1)
-                line = rf'\item[{num}.]'
-            elif is_enum_full:
-                num, content = is_enum_full.groups()
-                line = rf'\item[{num}.] {content}'
-
-            # FORMATIERUNGEN
-            # Fett-Kursiv: ***Text***
-            line = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', line)
-
-            # Fett: **Text**
-            line = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', line)
-
-            # Kursiv: *Text*
-            line = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'\\textit{\1}', line)
-
-            # Unterstrichen: __Text__
-            line = re.sub(r'__(.+?)__', r'\\underline{\1}', line)
-
-            # Durchgestrichen: ~~Text~~
-            line = re.sub(r'~~(.+?)~~', r'\\sout{\1}', line)
-
-            # Monospace: `Text`
-            line = re.sub(r'`([^`]+?)`', r'\\texttt{\1}', line)
-
-            # SECTION
-            line = re.sub(r'^\s*#+\s+(.*)', r'\\subsubsection{\1}', line)
-
-
-            output.append(line)
-
-        # AM ENDE ALLES SCHLIEßEN
-        if in_itemize:
-            output.append(r'\end{itemize}')
-        if in_enumerate:
-            output.append(r'\end{enumerate}')
-
+        close_to_indent(0)
         return output
 
-    async def checking_syntax(self, file: str) -> bool:
+    async def checking_syntax(self, file: str) -> bool | tuple[None, None, str]:
         base_temp_dir = "./temp"
         os.makedirs(base_temp_dir, exist_ok=True)
         temp_dir = os.path.join(base_temp_dir, str(uuid.uuid4()))
@@ -348,7 +331,7 @@ class Generation():
                     timeout=15
                 )
             except subprocess.TimeoutExpired:
-                process.kill()
+                #subprocess.kill()
                 return None, None, "Timeout expired"
             except Exception as e:
                 return None, None, str(e)
@@ -487,7 +470,7 @@ class Generation():
 
             # f.write("\\noindent\\rule{10cm}{0.4pt}\n")
             f.write("\\vspace{1cm}\n")
-            f.write("\\subsubsection{Solution}\n")
+            f.write(f"\\subsubsection{{{self.translation_to_str("solution", language)}}}\n")
 
             try:
                 with open(path := raw + "/" + os.path.join(language, version, solution), 'r',

@@ -108,5 +108,13 @@
     "jp": "分",
     "kr": "분",
     "zh": "分钟"
+  },
+  "solution": {
+    "de": "Lösung",
+    "en": "Solution",
+    "fr": "Solution",
+    "jp": "解決策",
+    "kr": "해결책",
+    "zh": "解决方案"
   }
 }

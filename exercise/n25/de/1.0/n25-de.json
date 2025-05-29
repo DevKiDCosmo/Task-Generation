@@ -1,0 +1,22 @@
+{
+    "id": "No.25",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-3",
+    "time": 1000,
+    "nam_score": 6.4,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "Impulsraumdarstellung eines gaußschen Wellenpakets",
+        "content": "content/n25-de.exr",
+        "solution": "solution/n25-de.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "8ca34bf7-741d-4ee3-b51a-06865305af9a",
+    "GUID": "04e72fe3-a112-4eee-9352-964ca9fa0a13"
+}

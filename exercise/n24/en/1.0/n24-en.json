@@ -1,0 +1,22 @@
+{
+    "id": "No.24",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-2",
+    "time": 840,
+    "nam_score": 8.7,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "Role of zeta and gamma functions in partition functions and vacuum energies of quantum field theory",
+        "content": "content/n24-en.exr",
+        "solution": "solution/n24-en.exr"
+    },
+    "difficulty": 9,
+    "tags": [],
+    "UUID": "7315621c-f5d3-43cc-af4f-805ea3816c8b",
+    "GUID": "ad5daf78-d753-4dd9-b3c5-8d62f9acd212"
+}

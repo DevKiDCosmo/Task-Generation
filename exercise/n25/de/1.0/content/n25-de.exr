@@ -1,0 +1,53 @@
+## Aufgabe: Impulsraumdarstellung eines gaußschen Wellenpakets
+
+Gegeben sei ein eindimensionales quantenmechanisches Teilchen mit der Wellenfunktion im Ortsraum:
+
+\[
+\psi(x) = A \cdot e^{-\frac{x^2}{2a^2}}, \quad A \in \mathbb{R}, \quad a > 0
+\]
+
+Diese Funktion beschreibt ein stationäres, frei bewegliches Teilchen mit gaußscher Ortsverteilung.
+
+
+### **Teilaufgaben**
+
+### Normierung der Wellenfunktion
+
+Bestimmen Sie die Normierungskonstante \( A \) so, dass die Wellenfunktion normiert ist, d. h.:
+
+\[
+\int_{-\infty}^{\infty} |\psi(x)|^2 \, dx = 1
+\]
+
+### Fourier-Transformation in den Impulsraum
+
+Berechnen Sie die Impulsraumdarstellung \( \phi(p) \) der Wellenfunktion mittels Fourier-Transformation gemäß:
+
+\[
+\phi(p) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} \psi(x) \cdot e^{-\frac{i}{\hbar}px} \, dx
+\]
+
+Führen Sie die Integration vollständig durch und geben Sie die resultierende Funktion \( \phi(p) \) in expliziter Form an.
+
+### Heisenbergsche Unschärferelation
+
+Bestimmen Sie die Standardabweichungen \( \sigma_x \) und \( \sigma_p \) der Orts- bzw. Impulsverteilung:
+
+\[
+\sigma_x^2 = \langle x^2 \rangle - \langle x \rangle^2, \quad \sigma_p^2 = \langle p^2 \rangle - \langle p \rangle^2
+\]
+
+und zeigen Sie, dass das Produkt dieser Streuungen die Heisenbergsche Unschärferelation erfüllt:
+
+\[
+\sigma_x \cdot \sigma_p \geq \frac{\hbar}{2}
+\]
+
+### Physikalische Interpretation der Grenzfälle
+
+Diskutieren Sie qualitativ den physikalischen Grenzfall \( a \to 0 \). Was geschieht mit der Impulsraumdarstellung \( \phi(p) \) und wie ist dieser Grenzfall physikalisch zu interpretieren? Beziehen Sie sich dabei auf die Konzepte der Lokalisierung und Impulsunschärfe.
+
+
+### **Hinweis:**
+
+Diese Aufgabe eignet sich auch zur numerischen Auswertung und grafischen Darstellung in Python oder MATLAB. Optional kann die Fourier-Transformation auch symbolisch mit geeigneten Softwaretools (z. B. SymPy oder Mathematica) verifiziert werden.

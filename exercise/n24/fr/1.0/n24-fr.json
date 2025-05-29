@@ -1,0 +1,22 @@
+{
+    "id": "No.24",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-2",
+    "time": 860,
+    "nam_score": 8.7,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "Rôle des fonctions zêta et gamma dans les fonctions de partition et les énergies du vide de la théorie quantique des champs",
+        "content": "content/n24-fr.exr",
+        "solution": "solution/n24-fr.exr"
+    },
+    "difficulty": 9,
+    "tags": [],
+    "UUID": "7315621c-f5d3-43cc-af4f-805ea3816c8b",
+    "GUID": "5377267d-9aaa-4a14-86dc-4182c4a66fca"
+}

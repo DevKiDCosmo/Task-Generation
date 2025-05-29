@@ -1,0 +1,22 @@
+{
+    "id": "No.25",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-3",
+    "time": 1000,
+    "nam_score": 6.4,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "Momentum space representation of a Gaussian wave packet",
+        "content": "content/n25-en.exr",
+        "solution": "solution/n25-en.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "8ca34bf7-741d-4ee3-b51a-06865305af9a",
+    "GUID": "006fe438-4c31-4b38-a199-f0b4144a2e00"
+}

@@ -1,0 +1,22 @@
+{
+    "id": "No.25",
+    "category": [
+        1,
+        2,
+        3
+    ],
+    "cid": "SHK-3",
+    "time": 1000,
+    "nam_score": 6.4,
+    "author": "Original",
+    "date": "24.05.2025",
+    "main": {
+        "title": "ガウス波束の運動量空間表現",
+        "content": "content/n25-jp.exr",
+        "solution": "solution/n25-jp.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "8ca34bf7-741d-4ee3-b51a-06865305af9a",
+    "GUID": "572ebf6c-38dd-4582-ae7a-cb1aa9c89bc6"
+}
