@@ -1006,7 +1006,7 @@ class Generation():
         #   *[self.checking_syntax(path) for path in paths_solution]
         #)
 
-        # TODO: Rmeove temporary
+        # TODO: Remove temporary
 
         # Warte auf die Fertigstellung der asynchronen Kompilierung
         await self.async_compile(paper, title, date, description, version, revision, archive, doi, tags, paths_exercise,

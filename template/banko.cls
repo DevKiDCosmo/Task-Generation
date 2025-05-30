@@ -347,22 +347,6 @@ BoldFeatures    = {FontIndex=30}
 \setmainfont{Times New Roman}%[Scale= 1.1] % Times New Roman, Scale = 1
 
 
-%\setmainfont{EBGaramond}[
-%Path=./fonts/EBGaramond/static/,
-%Extension=.ttf,
-%UprightFont=*-Regular,
-%ItalicFont=*-Italic,
-%BoldFont=*-SemiBold,
-%BoldItalicFont=*-BoldItalic
-%]
-
-\newfontfamily{\DMSerifDisplay}{DMSerifDisplay}[
-Path=./fonts/DMSerifDisplay/,
-Extension=.ttf,
-UprightFont=*-Regular,
-ItalicFont  = *-Italic
-]
-
 %MATH
 % Symbols
 \let\@forall\forall
