@@ -13,6 +13,10 @@ This project automates the creation of exam or paper PDFs using JSON files that 
 - Customizable LaTeX templates
 - Logging and error handling
 
+## Exercise
+
+Exercise are in zip files.
+
 ##  Structure of the JSON files
 
 ### Paper Json
