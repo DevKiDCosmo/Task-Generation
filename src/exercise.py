@@ -22,7 +22,12 @@ def create_or_update_register_file(base_dir, exercise_id, language, version, sha
     if version not in existing_data[language]:
         existing_data[language][version] = []
 
-    path = f"{exercise_id}/{language}/{version}/{exercise_id}-{language}"
+    if parent_id is not None:
+        exercise_id_ = f"{exercise_id}-{parent_id}"
+    else:
+        exercise_id_ = exercise_id
+
+    path = f"{exercise_id}/{language}/{version}/{exercise_id_}-{language}"
     if path not in existing_data[language][version]:
         existing_data[language][version].append(path)
 
@@ -54,7 +59,7 @@ def create_or_update_register_file(base_dir, exercise_id, language, version, sha
             print(f"Teilaufgabe '{exercise_id}' wurde in der Hauptaufgabe '{parent_id}' registriert.")
 
 
-def create_exercise_structure(base_dir, exercise_id, language, version, metadata, shared_uuid):
+def create_exercise_structure(base_dir, exercise_id, language, version, metadata, shared_uuid, parent_id):
     exercise_path = os.path.join(base_dir, exercise_id, language, version)
     os.makedirs(exercise_path, exist_ok=True)
 
@@ -63,6 +68,9 @@ def create_exercise_structure(base_dir, exercise_id, language, version, metadata
 
     metadata["UUID"] = shared_uuid
     metadata["GUID"] = str(uuid.uuid4())
+
+    if parent_id is not None:
+        exercise_id += "-" + parent_id
 
     metadata_file = f"{exercise_id}-{language}.json"
     with open(os.path.join(exercise_path, metadata_file), "w", encoding="utf-8") as f:
@@ -130,10 +138,16 @@ def main():
         shared_uuid = str(uuid.uuid4())
 
     is_subtask = input("Ist dies eine Teilaufgabe? (ja/nein) [Standard: 'nein']: ").strip().lower() == "ja"
-    parent_id = input("ID der Hauptaufgabe: ").strip() if is_subtask else None
+    parent_id = input("ID der Teilaufgabe (e.g. 1): ").strip() if is_subtask else None
 
     # Remove from exercise_id the first char
     id_ = exercise_id[1:]
+
+    if parent_id is not None:
+        id_ += "-" + parent_id
+        exercise_id_ = f"{exercise_id}-{parent_id}-{language}"
+    else:
+        exercise_id_ = f"{exercise_id}-{language}"
 
     metadata = {
         "id": f"No.{id_}",
@@ -145,14 +159,14 @@ def main():
         "date": date,
         "main": {
             "title": title,
-            "content": f'content/{exercise_id}-{language}.exr',
-            "solution": f'solution/{exercise_id}-{language}.exr'
+            "content": f'content/{exercise_id_}-{language}.exr',
+            "solution": f'solution/{exercise_id_}-{language}.exr'
         },
         "difficulty": int(difficulty),
         "tags": tags.split(",") if tags else []
     }
 
-    create_exercise_structure(base_dir, exercise_id, language, version, metadata, shared_uuid)
+    create_exercise_structure(base_dir, exercise_id, language, version, metadata, shared_uuid, parent_id)
     create_or_update_register_file(base_dir, exercise_id, language, version, shared_uuid, parent_id)
 
 

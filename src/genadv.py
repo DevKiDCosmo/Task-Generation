@@ -25,6 +25,7 @@ class Generation():
         self.category = category_
         self.language = ""
         self.exam = False
+        self.version = "1.5.4-MDLS Release - with Markdown Compilation 1.3.2-Prerelease and LaTeX Syntax Checking 0.5Beta"
 
     async def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> \
             list[
@@ -248,8 +249,8 @@ class Generation():
             indent = len(raw_line) - len(raw_line.lstrip(' '))
             content = line.strip()
 
-            is_item = re.match(r'^-\s+', content)
-            is_enum = re.match(r'^(\d+)\.\s+(.*)', content)
+            is_item = re.match(r'^(?<!#)-\s+', content)
+            is_enum = re.match(r'^(?<!#)(\d+)\.\s+(.*)', content)
 
             # Entscheide, ob neuer Level begonnen wird
             if is_item or is_enum:
@@ -283,6 +284,7 @@ class Generation():
         close_to_indent(0)
         return output
 
+    # TODO: Absolute bad.
     async def checking_syntax(self, file: str) -> bool | tuple[None, None, str]:
         base_temp_dir = "./temp"
         os.makedirs(base_temp_dir, exist_ok=True)
@@ -645,6 +647,7 @@ class Generation():
         data = data.replace("__PAPER_ARCHIVE__", information[6])
         data = data.replace("__PAPER_DOI__", information[7])
         data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
+        data = data.replace("__PAPER_MATNAM_VERSION__", self.version)
 
         data = self.exercise_and_times(data, exerciseForProcessing, paths_exercise)
 
@@ -687,6 +690,7 @@ class Generation():
         data = data.replace("__PAPER_ARCHIVE__", information[6])
         data = data.replace("__PAPER_DOI__", information[7])
         data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
+        data = data.replace("__PAPER_MATNAM_VERSION__", self.version)
 
         previous_language = None
         import_list = ""
@@ -897,6 +901,9 @@ class Generation():
 
     async def main(self, file: str) -> typing.Optional[None]:
         log.create_log()
+
+        log.write("Version: " + self.version)
+
         self.clear_non_pdf()
         try:
             with open(file, 'r', encoding="utf-8") as f:
