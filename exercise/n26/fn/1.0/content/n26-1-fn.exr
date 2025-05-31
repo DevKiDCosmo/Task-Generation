@@ -1,0 +1,23 @@
+Kuvauksesta \( f : \mathbb{R}^n \to \mathbb{R}^n \) sanotaan, että se on **isometria**, jos se säilyttää euklidisen etäisyyden kahden pisteen välillä, eli kaikilla \( x, y \in \mathbb{R}^n \) pätee:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### Tehtävät:
+
+1. **Lineaariset isometriat:**  
+   Osoita, että jokainen lineaarinen isometria \( T: \mathbb{R}^n \to \mathbb{R}^n \) voidaan esittää ortogonaalisella matriisilla \( A \in \mathbb{R}^{n \times n} \), eli \( T(x) = Ax \) ja \( A^\top A = I \).
+
+2. **Affiinit isometriat:**  
+   Määritä kaikki isometriat \( f: \mathbb{R}^n \to \mathbb{R}^n \), jotka lisäksi ovat **affiineja**, eli muotoa \( f(x) = Ax + b \), missä \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), ja \( A \) on ortogonaalinen.
+
+3. **Skalaaritulon säilyminen:**  
+   Olkoot \( u, v \in \mathbb{R}^n \) yksikkövektoreita. Osoita, että jokainen isometria \( f \), joka on myös lineaarinen, säilyttää skalaaritulon:
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **Esimerkki erityisestä isometriasta:**  
+   Anna esimerkki epälineaarisesta isometriasta \( f: \mathbb{R}^n \to \mathbb{R}^n \), joka ei ole lineaarinen, mutta säilyttää etäisyydet. Osoita, että \( f \) on todellakin isometria.

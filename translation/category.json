@@ -46,5 +46,61 @@
     "4": "计算",
     "5": "构建和设计",
     "6": "解释"
+  },
+  "es": {
+    "1": "Demostración",
+    "2": "Resolución y Resolver",
+    "3": "Análisis",
+    "4": "Cálculo",
+    "5": "Construcción y Diseño",
+    "6": "Interpretación"
+  },
+  "vn": {
+    "1": "Chứng minh",
+    "2": "Giải quyết và Giải",
+    "3": "Phân tích",
+    "4": "Tính toán",
+    "5": "Xây dựng và Thiết kế",
+    "6": "Diễn giải"
+  },
+  "ru": {
+    "1": "Доказательство",
+    "2": "Решение и Решать",
+    "3": "Анализ",
+    "4": "Вычисление",
+    "5": "Построение и Проектирование",
+    "6": "Интерпретация"
+  },
+  "ab": {
+    "1": "إثبات",
+    "2": "حل و حل",
+    "3": "تحليل",
+    "4": "حساب",
+    "5": "بناء وتصميم",
+    "6": "تفسير"
+  },
+  "it": {
+    "1": "Dimostrazione",
+    "2": "Risoluzione e Risolvere",
+    "3": "Analisi",
+    "4": "Calcolo",
+    "5": "Costruzione e Progettazione",
+    "6": "Interpretazione"
+  },
+  "pt": {
+    "1": "Demonstração",
+    "2": "Resolução e Resolver",
+    "3": "Análise",
+    "4": "Cálculo",
+    "5": "Construção e Design",
+    "6": "Interpretação"
+  },
+  "fn": {
+    "1": "Todistus",
+    "2": "Ratkaisu ja Ratkaista",
+    "3": "Analyysi",
+    "4": "Laskenta",
+    "5": "Rakentaminen ja Suunnittelu",
+    "6": "Tulkitseminen"
   }
 }

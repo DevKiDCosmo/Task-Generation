@@ -1,0 +1,23 @@
+{
+    "id": "No.26-1",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "SHK-1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "Isometries in \\( n \\)-dimensional Euclidean space",
+        "content": "content/n26-1-en.exr",
+        "solution": "solution/n26-1-en.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "1b8ff4e1-05b9-4cf8-b0ef-d3c1eef100f1",
+    "GUID": "279441ee-c787-4429-9a05-1b35c79ef998"
+}

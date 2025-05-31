@@ -1,0 +1,23 @@
+{
+    "id": "No.26-2",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "SHK-1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "Proof task: Characterization of isometric mappings in \\( \\mathbb{R}^n \\)",
+        "content": "content/n26-2-en.exr",
+        "solution": "solution/n26-2-en.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "1b8ff4e1-05b9-4cf8-b0ef-d3c1eef100f1",
+    "GUID": "920ac3eb-4f5f-40ee-9485-9426674da59a"
+}

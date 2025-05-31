@@ -5,7 +5,18 @@
     "fr": "Temps estimé pour résoudre",
     "jp": "解決までの推定時間",
     "kr": "해결 예상 시간",
-    "zh": "解决的预计时间"
+    "zh": "解决的预计时间",
+    "es": "Tiempo estimado para resolver",
+    "it": "Tempo stimato per la risoluzione",
+    "pt": "Tempo estimado para resolver",
+    "ru": "Оценочное время решения",
+    "tr": "Çözüm için tahmini süre",
+    "ar": "الوقت المقدر للحل",
+    "pl": "Szacowany czas rozwiązania",
+    "nl": "Geschatte tijd om op te lossen",
+    "sv": "Uppskattad tid för att lösa",
+    "fn": "Ratkaisuun arvioitu aika",
+    "vn": "Thời gian ước tính để giải quyết"
   },
   "difficulty": {
     "de": "Schwierigkeitsgrad",
@@ -13,7 +24,19 @@
     "fr": "Difficulté",
     "jp": "難易度",
     "kr": "난이도",
-    "zh": "难度"
+    "zh": "难度",
+    "es": "Dificultad",
+    "it": "Difficoltà",
+    "pt": "Dificuldade",
+    "ru": "Сложность",
+    "tr": "Zorluk",
+    "ar": "الصعوبة",
+    "pl": "Trudność",
+    "nl": "Moeilijkheidsgraad",
+    "sv": "Svårighetsgrad",
+    "fn": "Vaikeustaso",
+    "da": "Sværhedsgrad",
+    "vn": "Độ khó"
   },
   "tags": {
     "de": "Stichwörter",
@@ -21,7 +44,19 @@
     "fr": "Étiquettes",
     "jp": "タグ",
     "kr": "태그",
-    "zh": "标签"
+    "zh": "标签",
+    "es": "Etiquetas",
+    "it": "Etichette",
+    "pt": "Etiquetas",
+    "ru": "Теги",
+    "tr": "Etiketler",
+    "ar": "العلامات",
+    "pl": "Tagi",
+    "nl": "Labels",
+    "sv": "Taggar",
+    "fn": "Tunnisteet",
+    "da": "Tags",
+    "vn": "Thẻ"
   },
   "on_date": {
     "de": "am",
@@ -29,7 +64,19 @@
     "fr": "le",
     "jp": "日付",
     "kr": "날짜",
-    "zh": "日期"
+    "zh": "日期",
+    "es": "el",
+    "it": "il",
+    "pt": "em",
+    "ru": "на",
+    "tr": "tarihinde",
+    "ar": "في",
+    "pl": "w",
+    "nl": "op",
+    "sv": "den",
+    "fn": "päivämäärä",
+    "da": "den",
+    "vn": "vào"
   },
   "author": {
     "de": "Autor",
@@ -37,7 +84,19 @@
     "fr": "Auteur",
     "jp": "著者",
     "kr": "저자",
-    "zh": "作者"
+    "zh": "作者",
+    "es": "Autor",
+    "it": "Autore",
+    "pt": "Autor",
+    "ru": "Автор",
+    "tr": "Yazar",
+    "ar": "المؤلف",
+    "pl": "Autor",
+    "nl": "Auteur",
+    "sv": "Författare",
+    "fn": "Kirjoittaja",
+    "da": "Forfatter",
+    "vn": "Tác giả"
   },
   "original": {
     "de": "Ein Original",
@@ -45,7 +104,19 @@
     "fr": "Un Original",
     "jp": "オリジナル",
     "kr": "원본",
-    "zh": "原创"
+    "zh": "原创",
+    "es": "Un Original",
+    "it": "Un Originale",
+    "pt": "Um Original",
+    "ru": "Оригинал",
+    "tr": "Bir Orijinal",
+    "ar": "أصلي",
+    "pl": "Oryginał",
+    "nl": "Een Origineel",
+    "sv": "Ett Original",
+    "fn": "Alkuperäinen",
+    "da": "Et Original",
+    "vn": "Một Bản Gốc"
   },
   "category": {
     "de": "Kategorie",
@@ -53,7 +124,19 @@
     "fr": "Catégorie",
     "jp": "カテゴリー",
     "kr": "카테고리",
-    "zh": "类别"
+    "zh": "类别",
+    "es": "Categoría",
+    "it": "Categoria",
+    "pt": "Categoria",
+    "ru": "Категория",
+    "tr": "Kategori",
+    "ar": "الفئة",
+    "pl": "Kategoria",
+    "nl": "Categorie",
+    "sv": "Kategori",
+    "fn": "Kategoria",
+    "da": "Kategori",
+    "vn": "Danh mục"
   },
   "language_instruction": {
     "de": "Einführung und Informationen",
@@ -61,7 +144,19 @@
     "fr": "Introduction et informations",
     "jp": "導入と情報",
     "kr": "소개 및 정보",
-    "zh": "介绍和信息"
+    "zh": "介绍和信息",
+    "es": "Introducción e Información",
+    "it": "Introduzione e Informazioni",
+    "pt": "Introdução e Informações",
+    "ru": "Введение и информация",
+    "tr": "Giriş ve Bilgiler",
+    "ar": "مقدمة ومعلومات",
+    "pl": "Wprowadzenie i Informacje",
+    "nl": "Inleiding en Informatie",
+    "sv": "Introduktion och Information",
+    "fn": "Johdanto ja Tiedot",
+    "da": "Introduktion og Information",
+    "vn": "Giới thiệu và Thông tin"
   },
   "solution": {
     "de": "Lösung",
@@ -69,7 +164,20 @@
     "fr": "Solution",
     "jp": "解決策",
     "kr": "해결책",
-    "zh": "解决方案"
+    "zh": "解决方案",
+    "es": "Solución",
+    "it": "Soluzione",
+    "pt": "Solução",
+    "ru": "Решение",
+    "tr": "Çözüm",
+    "ar": "الحل",
+    "pl": "Rozwiązanie",
+    "nl": "Oplossing",
+    "sv": "Lösning",
+    "fn": "Ratkaisu",
+    "da": "Løsning",
+    "fi": "Ratkaisu",
+    "vn": "Giải pháp"
   },
   "language": {
     "de": "Deutsch",
@@ -91,7 +199,9 @@
     "fi": "Suomi",
     "no": "Norsk",
     "cs": "Čeština",
-    "hu": "Magyar"
+    "hu": "Magyar",
+    "ro": "Română",
+    "vi": "Tiếng Việt"
   },
   "h": {
     "de": "Stunden",
@@ -99,7 +209,19 @@
     "fr": "Heures",
     "jp": "時間",
     "kr": "시간",
-    "zh": "小时"
+    "zh": "小时",
+    "es": "Horas",
+    "it": "Ore",
+    "pt": "Horas",
+    "ru": "Часы",
+    "tr": "Saat",
+    "ar": "ساعات",
+    "pl": "Godziny",
+    "nl": "Uren",
+    "sv": "Timmar",
+    "fn": "Tunnit",
+    "da": "Timer",
+    "vn": "Giờ"
   },
   "m": {
     "de": "Minuten",
@@ -107,14 +229,18 @@
     "fr": "Minutes",
     "jp": "分",
     "kr": "분",
-    "zh": "分钟"
-  },
-  "solution": {
-    "de": "Lösung",
-    "en": "Solution",
-    "fr": "Solution",
-    "jp": "解決策",
-    "kr": "해결책",
-    "zh": "解决方案"
+    "zh": "分钟",
+    "es": "Minutos",
+    "it": "Minuti",
+    "pt": "Minutos",
+    "ru": "Минуты",
+    "tr": "Dakika",
+    "ar": "دقائق",
+    "pl": "Minuty",
+    "nl": "Minuten",
+    "sv": "Minuter",
+    "fn": "Minuutit",
+    "da": "Minutter",
+    "vn": "Phút"
   }
 }

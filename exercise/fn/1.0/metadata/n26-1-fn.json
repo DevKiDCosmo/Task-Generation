@@ -1,0 +1,21 @@
+{
+    "id": "No.n26-1",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "Isometriat $n$-ulotteisessa euklidisessa avaruudessa",
+        "content": "content/n26-1-fn.exr",
+        "solution": "solution/n26-1-fn.exr"
+    },
+    "difficulty": 4,
+    "tags": []
+}

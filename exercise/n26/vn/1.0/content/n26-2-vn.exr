@@ -1,0 +1,13 @@
+Cho \( f: \mathbb{R}^n \to \mathbb{R}^n \) là một ánh xạ đẳng cấu, tức là:
+
+\[
+\vert f(x) - f(y)\vert = \vert x - y\vert \quad \text{với mọi } x, y \in \mathbb{R}^n.
+\]
+
+\textbf{Cần chứng minh:}
+
+Mọi ánh xạ đẳng cấu \( f \) trên \( \mathbb{R}^n \) đều là ánh xạ affine dạng \( f(x) = Ax + b \) với \( A \) là ma trận trực giao, hoặc có thể được biểu diễn như một tổ hợp của các ánh xạ như vậy với các phép phản xạ hoặc tịnh tiến.
+
+\textbf{Gợi ý nâng cao (tùy chọn):}
+
+Chứng minh rằng tập hợp tất cả các ánh xạ đẳng cấu trên \( \mathbb{R}^n \) tạo thành một nhóm với phép hợp thành — gọi là \emph{nhóm Euclid \( \mathrm{E}(n) \)}.

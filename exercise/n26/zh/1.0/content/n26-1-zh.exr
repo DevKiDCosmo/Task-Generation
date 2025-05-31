@@ -1,0 +1,23 @@
+若映射 \( f : \mathbb{R}^n \to \mathbb{R}^n \) 保持兩點間的歐幾里得距離，則稱其為**等距映射（Isometry）**，即對於所有 \( x, y \in \mathbb{R}^n \)：
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### 題目：
+
+1. **線性等距映射：**  
+   證明每個線性等距映射 \( T: \mathbb{R}^n \to \mathbb{R}^n \) 可由正交矩陣 \( A \in \mathbb{R}^{n \times n} \) 表示，即 \( T(x) = Ax \) 且 \( A^\top A = I \)。
+
+2. **仿射等距映射：**  
+   找出所有形式為 \( f(x) = Ax + b \) 的等距映射，其中 \( A \) 為正交矩陣，\( b \in \mathbb{R}^n \)。
+
+3. **內積保持性：**  
+   設 \( u, v \in \mathbb{R}^n \) 為單位向量，證明線性等距映射 \( f \) 保持內積：
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **非線性等距映射的構造：**  
+   給出一個非線性但仍保距的等距映射例子，並證明該映射確實是等距的。

@@ -1,0 +1,23 @@
+{
+    "id": "No.n26-2",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "Bài toán chứng minh: đặc trưng của ánh xạ đồng nhất trong \\( \\mathbb{R}^n \\)",
+        "content": "content/n26-2-vn.exr",
+        "solution": "solution/n26-2-vn.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "1b8ff4e1-05b9-4cf8-b0ef-d3c1eef100f1",
+    "GUID": "bb34f908-3f65-4add-8596-5d9bb5e1b3bb"
+}

@@ -1,0 +1,13 @@
+Sia \( f: \mathbb{R}^n \to \mathbb{R}^n \) un'isometria, cioè:
+
+\[
+\vert f(x) - f(y)\vert = \vert x - y\vert \quad \text{per tutti } x, y \in \mathbb{R}^n.
+\]
+
+\textbf{Da dimostrare:}
+
+Ogni isometria \( f \) in \( \mathbb{R}^n \) è una trasformazione affine della forma \( f(x) = Ax + b \), dove \( A \) è una matrice ortogonale, oppure può essere scritta come composizione di tali trasformazioni con riflessioni o traslazioni.
+
+\textbf{Suggerimento per approfondimento (opzionale):}
+
+Mostra che l’insieme di tutte le isometrie in \( \mathbb{R}^n \) forma un gruppo rispetto alla composizione — il cosiddetto \emph{gruppo euclideo \( \mathrm{E}(n) \)}.

@@ -1,0 +1,23 @@
+Một ánh xạ \( f : \mathbb{R}^n \to \mathbb{R}^n \) được gọi là **đẳng cự** nếu nó bảo toàn khoảng cách Euclid giữa hai điểm, tức là với mọi \( x, y \in \mathbb{R}^n \):
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### Bài tập:
+
+1. **Đẳng cự tuyến tính:**  
+   Chứng minh rằng mọi ánh xạ đẳng cự tuyến tính \( T: \mathbb{R}^n \to \mathbb{R}^n \) có thể biểu diễn bằng một ma trận trực giao \( A \in \mathbb{R}^{n \times n} \), tức là \( T(x) = Ax \), \( A^\top A = I \).
+
+2. **Đẳng cự affine:**  
+   Xác định tất cả ánh xạ đẳng cự \( f \) có dạng affine \( f(x) = Ax + b \), trong đó \( A \) là ma trận trực giao, \( b \in \mathbb{R}^n \).
+
+3. **Bảo toàn tích vô hướng:**  
+   Với hai vector đơn vị \( u, v \in \mathbb{R}^n \), chứng minh rằng ánh xạ tuyến tính đẳng cự \( f \) bảo toàn tích vô hướng:
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **Ví dụ ánh xạ không tuyến tính:**  
+   Đưa ra một ví dụ về ánh xạ không tuyến tính nhưng vẫn bảo toàn khoảng cách. Chứng minh rằng \( f \) là ánh xạ đẳng cự.

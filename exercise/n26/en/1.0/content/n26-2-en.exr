@@ -1,0 +1,13 @@
+Let \( f: \mathbb{R}^n \to \mathbb{R}^n \) be an isometry, i.e.:
+
+\[
+\vert f(x) - f(y)\vert = \vert x - y\vert \quad \text{for all } x, y \in \mathbb{R}^n.
+\]
+
+\textbf{To show:}
+
+Every isometry \( f \) in \( \mathbb{R}^n \) is either an affine transformation of the form \( f(x) = Ax + b \), where \( A \) is an orthogonal matrix, or can be written as a composition of such maps with reflections or translations.
+
+\textbf{Hint for further study (optional):}
+
+Show that the set of all isometries in \( \mathbb{R}^n \) forms a group under composition — the so-called \emph{Euclidean group \( \mathrm{E}(n) \)}.

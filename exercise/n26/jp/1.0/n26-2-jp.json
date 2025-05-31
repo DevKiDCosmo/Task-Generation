@@ -1,0 +1,23 @@
+{
+    "id": "No.n26-2",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "証明課題: \\( \\mathbb{R}^n \\) における等長写像の特徴づけ",
+        "content": "content/n26-2-jp.exr",
+        "solution": "solution/n26-2-jp.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "1b8ff4e1-05b9-4cf8-b0ef-d3c1eef100f1",
+    "GUID": "0650ce4c-c61a-42f3-b6fb-b67d7e1cb72e"
+}

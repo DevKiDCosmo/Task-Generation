@@ -1,0 +1,13 @@
+Soit \( f: \mathbb{R}^n \to \mathbb{R}^n \) une isométrie, c’est-à-dire :
+
+\[
+\vert f(x) - f(y)\vert = \vert x - y\vert \quad \text{pour tous } x, y \in \mathbb{R}^n.
+\]
+
+\textbf{À montrer :}
+
+Toute isométrie \( f \) de \( \mathbb{R}^n \) est soit une application affine de la forme \( f(x) = Ax + b \), où \( A \) est une matrice orthogonale, soit elle peut être obtenue par composition de telles applications avec des réflexions ou des translations.
+
+\textbf{Remarque pour approfondir (facultatif) :}
+
+Montrez que l’ensemble des isométries de \( \mathbb{R}^n \) forme un groupe pour la composition — le \emph{groupe euclidien \( \mathrm{E}(n) \)}.

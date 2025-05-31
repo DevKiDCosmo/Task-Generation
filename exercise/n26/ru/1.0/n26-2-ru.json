@@ -1,0 +1,23 @@
+{
+    "id": "No.n26-2",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "Задача доказательства: характеристика изометрий в \\( \\mathbb{R}^n \\)",
+        "content": "content/n26-2-ru.exr",
+        "solution": "solution/n26-2-ru.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "1b8ff4e1-05b9-4cf8-b0ef-d3c1eef100f1",
+    "GUID": "d7b65282-5963-4d3d-91b2-7ea7b5180cd4"
+}

@@ -1,0 +1,75 @@
+{
+  "Base": "./exercise",
+  "ID": "n26",
+  "Version": [
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0"
+  ],
+  "Category": [
+    1,
+    2,
+    4,
+    5
+  ],
+  "CID": "1",
+  "Time": [
+    60,
+    60
+  ],
+  "NAM-Score": 3,
+  "Author": "Original",
+  "Date": "31.05.2025",
+  "Difficulty": 4,
+  "Tags": [],
+  "Partial": true,
+  "ID_partial": [
+    1,
+    2
+  ],
+  "Language": [
+    "jp",
+    "kr",
+    "zh",
+    "es",
+    "vn",
+    "ru",
+    "ab",
+    "it",
+    "pt",
+    "fn"
+  ],
+  "Title": {
+    "1": [
+      "\\(n\\)次元ユークリッド空間における等長変換",
+      "\\( n \\)차원 유클리드 공간의 등거리 변환",
+      "\\(n\\)維歐氏空間中的等距",
+      "Isometrías en el espacio euclidiano de dimensión $n$",
+      "Biến đổi đồng nhất trong không gian Euclid $n$ chiều",
+      "Изометрии в $n$-мерном евклидова пространстве",
+      "التماثلات في الفضاء الإقليدي ذي الأبعاد $n$",
+      "Isometrie nello spazio euclideo di dimensione $n$",
+      "Isometrias no espaço euclidiano $n$-dimensional",
+      "Isometriat $n$-ulotteisessa euklidisessa avaruudessa"
+    ],
+    "2": [
+      "証明課題: \\( \\mathbb{R}^n \\) における等長写像の特徴づけ",
+      "증명 문제: \\( \\mathbb{R}^n \\)에서 등거리 사상의 특징",
+      "證明題目：\\( \\mathbb{R}^n \\) 中等距映射的特徵",
+      "Problema de demostración: caracterización de las isometrías en \\( \\mathbb{R}^n \\)",
+      "Bài toán chứng minh: đặc trưng của ánh xạ đồng nhất trong \\( \\mathbb{R}^n \\)",
+      "Задача доказательства: характеристика изометрий в \\( \\mathbb{R}^n \\)",
+      "مشكلة إثبات: تمييز التماثلات في \\( \\mathbb{R}^n \\)",
+      "Problema di dimostrazione: caratterizzazione delle isometrie in \\( \\mathbb{R}^n \\)",
+      "Problema de demonstração: caracterização das isometrias em \\( \\mathbb{R}^n \\)",
+      "Todistustehtävä: \\( \\mathbb{R}^n \\) -avaruuden isometrioiden ominaisuus"
+    ]
+  }
+}

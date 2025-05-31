@@ -1,0 +1,23 @@
+Una funzione \( f : \mathbb{R}^n \to \mathbb{R}^n \) si dice una **isometria** se conserva la distanza euclidea tra due punti, cioè per tutti \( x, y \in \mathbb{R}^n \) vale:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### Esercizi:
+
+1. **Isometrie lineari:**  
+   Mostra che ogni isometria lineare \( T: \mathbb{R}^n \to \mathbb{R}^n \) può essere rappresentata da una matrice ortogonale \( A \in \mathbb{R}^{n \times n} \), cioè \( T(x) = Ax \) con \( A^\top A = I \).
+
+2. **Isometrie affini:**  
+   Determina tutte le isometrie \( f: \mathbb{R}^n \to \mathbb{R}^n \) che sono anche **affini**, cioè della forma \( f(x) = Ax + b \), con \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), e \( A \) ortogonale.
+
+3. **Conservazione del prodotto scalare:**  
+   Siano \( u, v \in \mathbb{R}^n \) due vettori unitari. Mostra che ogni isometria \( f \) lineare conserva il prodotto scalare:
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **Costruzione di un’isometria speciale:**  
+   Fornisci un esempio di un’isometria non lineare \( f: \mathbb{R}^n \to \mathbb{R}^n \) che non è una trasformazione lineare ma che conserva comunque le distanze. Mostra che \( f \) è effettivamente isometrica.

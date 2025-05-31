@@ -1,0 +1,23 @@
+Uma função \( f : \mathbb{R}^n \to \mathbb{R}^n \) é chamada de **isometria** se preserva a distância euclidiana entre dois pontos, ou seja, para todos \( x, y \in \mathbb{R}^n \):
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### Exercícios:
+
+1. **Isometrias lineares:**  
+   Mostre que toda isometria linear \( T: \mathbb{R}^n \to \mathbb{R}^n \) pode ser representada por uma matriz ortogonal \( A \in \mathbb{R}^{n \times n} \), ou seja, \( T(x) = Ax \) com \( A^\top A = I \).
+
+2. **Isometrias afins:**  
+   Determine todas as isometrias \( f: \mathbb{R}^n \to \mathbb{R}^n \) que são também **afins**, ou seja, da forma \( f(x) = Ax + b \), com \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), e \( A \) ortogonal.
+
+3. **Preservação do produto escalar:**  
+   Sejam \( u, v \in \mathbb{R}^n \) vetores unitários. Mostre que toda isometria linear \( f \) preserva o produto escalar:
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **Exemplo de isometria não linear:**  
+   Dê um exemplo de isometria não linear \( f: \mathbb{R}^n \to \mathbb{R}^n \) que não é linear mas preserva distâncias. Mostre que \( f \) é de fato uma isometria.

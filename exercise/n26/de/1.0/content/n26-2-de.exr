@@ -1,0 +1,13 @@
+Sei \( f: \mathbb{R}^n \to \mathbb{R}^n \) eine Isometrie, d. h.:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert  \quad \text{für alle } x, y \in \mathbb{R}^n.
+\]
+
+#### Zu zeigen:
+
+Jede Isometrie \( f \) in \( \mathbb{R}^n \) ist entweder eine affine Abbildung der Form \( f(x) = Ax + b \), wobei \( A \) eine orthogonale Matrix ist, oder sie lässt sich durch Verkettung solcher mit Spiegelungen oder Translationen darstellen.
+
+#### Hinweis zur Vertiefung (optional):
+
+Zeigen Sie, dass die Menge aller Isometrien in \( \mathbb{R}^n \) eine Gruppe unter Komposition bildet – die sogenannte **euklidische Gruppe \( \mathrm{E}(n) \)**.

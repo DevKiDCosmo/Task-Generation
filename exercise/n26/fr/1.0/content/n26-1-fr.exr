@@ -1,0 +1,23 @@
+Une application \( f : \mathbb{R}^n \to \mathbb{R}^n \) est appelée une **isométrie** si elle conserve la distance euclidienne entre deux points, c’est-à-dire que pour tous \( x, y \in \mathbb{R}^n \), on a :
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### Exercices :
+
+1. **Isométries linéaires :**  
+   Montrez que toute isométrie linéaire \( T: \mathbb{R}^n \to \mathbb{R}^n \) peut être représentée par une matrice orthogonale \( A \in \mathbb{R}^{n \times n} \), c’est-à-dire \( T(x) = Ax \) avec \( A^\top A = I \).
+
+2. **Isométries affines :**  
+   Déterminez toutes les isométries \( f: \mathbb{R}^n \to \mathbb{R}^n \) qui sont également **affines**, donc de la forme \( f(x) = Ax + b \), où \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), et \( A \) est orthogonale.
+
+3. **Conservation du produit scalaire :**  
+   Soient \( u, v \in \mathbb{R}^n \) deux vecteurs unitaires. Montrez que toute isométrie \( f \), qui est aussi linéaire, conserve le produit scalaire :
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **Construction d’une isométrie particulière :**  
+   Donnez un exemple d’une isométrie non linéaire \( f: \mathbb{R}^n \to \mathbb{R}^n \) qui n’est pas une transformation linéaire mais qui conserve néanmoins les distances. Montrez que \( f \) est bien isométrique.

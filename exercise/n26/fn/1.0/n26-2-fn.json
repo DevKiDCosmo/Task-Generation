@@ -1,0 +1,23 @@
+{
+    "id": "No.n26-2",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "Todistustehtävä: \\( \\mathbb{R}^n \\) -avaruuden isometrioiden ominaisuus",
+        "content": "content/n26-2-fn.exr",
+        "solution": "solution/n26-2-fn.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "1b8ff4e1-05b9-4cf8-b0ef-d3c1eef100f1",
+    "GUID": "7e1b0a60-c236-4804-a837-dc31db3746a1"
+}

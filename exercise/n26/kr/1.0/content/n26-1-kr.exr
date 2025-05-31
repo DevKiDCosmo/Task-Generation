@@ -1,0 +1,23 @@
+함수 \( f : \mathbb{R}^n \to \mathbb{R}^n \) 가 두 점 사이의 유클리드 거리를 보존하면 **등거리 변환 (Isometry)** 라고 합니다. 즉, 모든 \( x, y \in \mathbb{R}^n \) 에 대해 다음을 만족합니다:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### 과제:
+
+1. **선형 등거리 변환:**  
+   모든 선형 등거리 변환 \( T: \mathbb{R}^n \to \mathbb{R}^n \) 은 정사각형 직교 행렬 \( A \in \mathbb{R}^{n \times n} \) 로 표현될 수 있음을 보여라. 즉, \( T(x) = Ax \), \( A^\top A = I \) 이다.
+
+2. **아핀 등거리 변환:**  
+   \( f(x) = Ax + b \) 형식의 모든 등거리 변환을 구하라. 여기서 \( A \) 는 직교행렬이고 \( b \in \mathbb{R}^n \) 이다.
+
+3. **내적 보존:**  
+   단위 벡터 \( u, v \in \mathbb{R}^n \) 에 대해 선형 등거리 변환 \( f \) 는 내적을 보존함을 증명하라:
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **비선형 등거리 변환의 예시:**  
+   선형이 아닌 거리 보존 함수 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 의 예시를 제시하고, 그것이 등거리 변환임을 증명하라.

@@ -1,0 +1,23 @@
+{
+    "id": "No.n26-1",
+    "category": [
+        1,
+        2,
+        4,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "31.05.2025",
+    "main": {
+        "title": "Biến đổi đồng nhất trong không gian Euclid $n$ chiều",
+        "content": "content/n26-1-vn.exr",
+        "solution": "solution/n26-1-vn.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "1b8ff4e1-05b9-4cf8-b0ef-d3c1eef100f1",
+    "GUID": "e98a587c-c2b7-4363-9eda-4d7453bb5809"
+}

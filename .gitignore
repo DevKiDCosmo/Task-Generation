@@ -1,3 +1,4 @@
 *.ttc
 *.ttf
 ./generated
+./template/fonts

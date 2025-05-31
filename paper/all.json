@@ -1,8 +1,8 @@
 {
-  "title": "The Namische /ˈnamɪʃə/ Collection as a whole",
+  "title": "The enormous collection of the Namische /ˈnamɪʃə/ World",
   "date": "24.04.2025",
   "paper": "PALL",
-  "version": "1.5",
+  "version": "1.9",
   "revision": "5",
   "archive": "3891M-932",
   "doi": "11.NOT.AVAILABLE",
@@ -287,6 +287,40 @@
       ],
       "exercise": [
         1
+      ]
+    },
+    "n26": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh",
+        "es",
+        "vn",
+        "ru",
+        "it",
+        "pt",
+        "fn"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1,
+        2
       ]
     }
   },

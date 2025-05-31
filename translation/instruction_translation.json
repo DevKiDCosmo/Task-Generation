@@ -4,5 +4,12 @@
   "fr": "instruction/fr.tlr",
   "jp": "instruction/jp.tlr",
   "kr": "instruction/kr.tlr",
-  "zh": "instruction/zh.tlr"
+  "zh": "instruction/zh.tlr",
+  "es": "instruction/es.tlr",
+  "vn": "instruction/vn.tlr",
+  "ru": "instruction/ru.tlr",
+  "ar": "instruction/ar.tlr",
+  "it": "instruction/it.tlr",
+  "pt": "instruction/pt.tlr",
+  "fn": "instruction/fn.tlr"
 }

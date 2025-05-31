@@ -1,0 +1,13 @@
+Sea \( f: \mathbb{R}^n \to \mathbb{R}^n \) una isometría, es decir:
+
+\[
+\vert f(x) - f(y)\vert = \vert x - y\vert \quad \text{para todo } x, y \in \mathbb{R}^n.
+\]
+
+\textbf{A demostrar:}
+
+Toda isometría \( f \) en \( \mathbb{R}^n \) es una transformación afín de la forma \( f(x) = Ax + b \), donde \( A \) es una matriz ortogonal, o puede escribirse como una composición de tales transformaciones con reflexiones o traslaciones.
+
+\textbf{Nota para profundizar (opcional):}
+
+Demuestre que el conjunto de todas las isometrías en \( \mathbb{R}^n \) forma un grupo bajo composición — el llamado \emph{grupo euclídeo \( \mathrm{E}(n) \)}.

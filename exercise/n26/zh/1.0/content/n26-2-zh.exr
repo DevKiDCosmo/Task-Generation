@@ -1,0 +1,13 @@
+設 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 為一個等距映射，也就是說：
+
+\[
+\vert f(x) - f(y)\vert = \vert x - y\vert \quad \text{對所有 } x, y \in \mathbb{R}^n.
+\]
+
+\textbf{需證明：}
+
+任何等距映射 \( f \) 皆為一個仿射映射，其形式為 \( f(x) = Ax + b \)，其中 \( A \) 為正交矩陣，或可表示為此類映射與反射或平移的組合。
+
+\textbf{進階補充（可選）：}
+
+證明所有 \( \mathbb{R}^n \) 上的等距映射在合成下形成一個群，即所謂的 \emph{歐幾里得群 \( \mathrm{E}(n) \)}。

@@ -1,0 +1,50 @@
+{
+  "title": "The Namische /ˈnamɪʃə/ Collection",
+  "date": "31.05.2025",
+  "paper": "P1.5",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "33513-9323",
+  "doi": "10.5281/zenodo.15566005",
+  "description": "These exercises deal with isometries in n-dimensional Euclidean space. They offer both theoretical and practical challenges related to the conservation of distances in maps in $\\mathbb{R}^n$",
+  "exercise": {
+    "n26": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh",
+        "es",
+        "vn",
+        "ru",
+        "it",
+        "pt",
+        "fn"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1, 2
+      ]
+    }
+  },
+  "tags": [
+    "problem solving"
+  ],
+  "UUID": "...",
+  "GUID": "..."
+}

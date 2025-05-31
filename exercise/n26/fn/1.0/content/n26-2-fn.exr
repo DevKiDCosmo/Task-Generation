@@ -1,0 +1,13 @@
+Olkoon \( f: \mathbb{R}^n \to \mathbb{R}^n \) isometria, eli:
+
+\[
+\vert f(x) - f(y)\vert = \vert x - y\vert \quad \text{kaikille } x, y \in \mathbb{R}^n.
+\]
+
+\textbf{Todistettava:}
+
+Jokainen isometria \( f \) avaruudessa \( \mathbb{R}^n \) on joko affiini muunnos muotoa \( f(x) = Ax + b \), missä \( A \) on ortogonaalimatriisi, tai koostuu tällaisten muunnosten ja peilausten tai siirtojen yhdistelmästä.
+
+\textbf{Lisätehtävä (valinnainen):}
+
+Näytä, että kaikkien \( \mathbb{R}^n \):n isometristen kuvausten joukko muodostaa ryhmän komposition suhteen — niin sanottu \emph{Euklidinen ryhmä \( \mathrm{E}(n) \)}.

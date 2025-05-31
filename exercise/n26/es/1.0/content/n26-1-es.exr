@@ -1,0 +1,23 @@
+Una aplicación \( f : \mathbb{R}^n \to \mathbb{R}^n \) se llama una **isometría** si conserva la distancia euclidiana entre dos puntos, es decir, para todos \( x, y \in \mathbb{R}^n \), se cumple:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+#### Ejercicios:
+
+1. **Isometrías lineales:**  
+   Demuestre que toda isometría lineal \( T: \mathbb{R}^n \to \mathbb{R}^n \) puede representarse mediante una matriz ortogonal \( A \in \mathbb{R}^{n \times n} \), es decir, \( T(x) = Ax \) con \( A^\top A = I \).
+
+2. **Isometrías afines:**  
+   Determine todas las isometrías \( f: \mathbb{R}^n \to \mathbb{R}^n \) que además sean **afines**, es decir, de la forma \( f(x) = Ax + b \), donde \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), y \( A \) es ortogonal.
+
+3. **Conservación del producto escalar:**  
+   Sean \( u, v \in \mathbb{R}^n \) dos vectores unitarios. Demuestre que toda isometría \( f \), que además es lineal, conserva el producto escalar, es decir:
+
+   \[
+   \langle f(u), f(v) \rangle = \langle u, v \rangle
+   \]
+
+4. **Construcción de una isometría especial:**  
+   Dé un ejemplo de una isometría no lineal \( f: \mathbb{R}^n \to \mathbb{R}^n \) que no sea una transformación lineal pero que conserve las distancias. Demuestre que \( f \) es realmente una isometría.
