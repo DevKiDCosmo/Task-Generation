@@ -26,6 +26,7 @@ class Generation():
         self.language = ""
         self.exam = False
         self.version = "1.5.4-MDLS Release - with Markdown Compilation 1.3.2-Prerelease and LaTeX Syntax Checking 0.5Beta"
+        self.sorted = True
 
     async def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> \
             list[
@@ -119,7 +120,8 @@ class Generation():
             return int(match.group(1)) if match else 0
 
         # Fixing from No.10 No.9 to No.9 No.10.
-        exerciseForProcessing.sort(key=lambda x: (x[0], extract_number(x[1])))
+        if self.sorted:
+            exerciseForProcessing.sort(key=lambda x: (x[0], extract_number(x[1])))
 
         # log.write(exerciseForProcessing)
         return exerciseForProcessing
@@ -225,10 +227,11 @@ class Generation():
 
     def markdown_to_latex(self, lines: list[str]) -> list[str]:
         output = []
-        stack: list[typing.Any] = []  # Stack für ('itemize' oder 'enumerate', indent_level)
-        current_indent: int = 0
+        stack: list[tuple[str, int]] = []
+        previous_indent = 0
+        last_was_list = False
 
-        def close_to_indent(target_indent):
+        def close_to_indent(target_indent: int):
             while stack and stack[-1][1] >= target_indent:
                 env, _ = stack.pop()
                 output.append(f'\\end{{{env}}}')
@@ -243,26 +246,30 @@ class Generation():
             text = re.sub(r'^\s*#+\s+(.*)', r'\\subsubsection{\1}', text)
             return text
 
-        for line in lines:
-            raw_line = line
-            line = line.rstrip()
+        i = 0
+        while i < len(lines):
+            raw_line = lines[i]
+            line = raw_line.rstrip()
             indent = len(raw_line) - len(raw_line.lstrip(' '))
             content = line.strip()
 
-            is_item = re.match(r'^(?<!#)-\s+', content)
+            next_indent = 0
+            if i + 1 < len(lines):
+                next_line = lines[i + 1]
+                next_indent = len(next_line) - len(next_line.lstrip(' '))
+
+            is_item = re.match(r'^(?<!#)-\s*(.*)', content)
             is_enum = re.match(r'^(?<!#)(\d+)\.\s+(.*)', content)
 
-            # Entscheide, ob neuer Level begonnen wird
             if is_item or is_enum:
-                if is_enum:
-                    kind = 'enumerate'
-                else:
-                    kind = 'itemize'
+                kind = 'enumerate' if is_enum else 'itemize'
 
+                # Neue verschachtelte Liste?
                 if not stack or indent > stack[-1][1]:
                     output.append(f'\\begin{{{kind}}}')
                     stack.append((kind, indent))
                 else:
+                    # Vorherige schließen
                     close_to_indent(indent)
                     if not stack or stack[-1][0] != kind:
                         output.append(f'\\begin{{{kind}}}')
@@ -272,14 +279,22 @@ class Generation():
                     num, text = is_enum.groups()
                     output.append(rf'\item[{num}.] {apply_formatting(text)}')
                 else:
-                    text = re.sub(r'^-\s+', '', content)
+                    text = is_item.group(1)
                     output.append(rf'\item {apply_formatting(text)}')
+                last_was_list = True
+
+            elif content == '' and last_was_list and next_indent > indent:
+                # Leere Listenzeile, nächste ist eingerückt → neue geschachtelte Liste erwartet
+                pass
             else:
-                # Text innerhalb eines Items
-                if stack:
-                    output[-1] += ' ' + apply_formatting(content)
-                else:
+                # Normaler Text oder leer
+                close_to_indent(0)
+                if content:
                     output.append(apply_formatting(content))
+                last_was_list = False
+
+            previous_indent = indent
+            i += 1
 
         close_to_indent(0)
         return output
@@ -968,6 +983,7 @@ class Generation():
         doi = data["doi"]
         tags = data["tags"]
         exercise = data["exercise"]
+        self.sorted = data["sorted"] if data["sorted"] is not None else True
 
         exercise_for_processing: list[tuple[str, str, str, str]] = []
 
@@ -1014,6 +1030,7 @@ class Generation():
         #)
 
         # TODO: Remove temporary
+        # TODO: Adding formatting with latexident?
 
         # Warte auf die Fertigstellung der asynchronen Kompilierung
         await self.async_compile(paper, title, date, description, version, revision, archive, doi, tags, paths_exercise,
@@ -1026,12 +1043,10 @@ class Generation():
 
 
 if __name__ == "__main__":
-
-    # Starting Timer
     start = datetime.datetime.now()
 
     if len(sys.argv) != 2:
-        log.write("Usage: python generation.py <json_file>")
+        log.write("Usage: python matnam.py <json_file>")
         sys.exit(1)
 
     load_dotenv()
