@@ -1,0 +1,63 @@
+Một ánh xạ \( f : \mathbb{R}^n \to \mathbb{R}^n \) được gọi là **đẳng cấu** (isometry) nếu nó bảo toàn khoảng cách Euclid giữa hai điểm, tức là với mọi \( x, y \in \mathbb{R}^n \) ta có:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert
+\]
+
+### Bài tập:
+
+1. **Đẳng cấu tuyến tính:**
+
+    Chứng minh rằng mọi đẳng cấu tuyến tính \( T: \mathbb{R}^n \to \mathbb{R}^n \) có thể được biểu diễn bởi một ma trận trực giao \( A \in \mathbb{R}^{n \times n} \), tức là:
+
+    \[
+    T(x) = Ax \quad \text{với} \quad A^\top A = I.
+    \]
+
+2. **Đẳng cấu affine:**
+
+    Xác định tất cả các đẳng cấu \( f: \mathbb{R}^n \to \mathbb{R}^n \) đồng thời là ánh xạ affine, tức là có dạng:
+
+    \[
+    f(x) = Ax + b,
+    \]
+
+    trong đó \( A \in \mathbb{R}^{n \times n} \) là ma trận trực giao và \( b \in \mathbb{R}^n \).
+
+3. **Bảo toàn tích vô hướng:**
+
+    Cho \( u, v \in \mathbb{R}^n \) là hai vectơ đơn vị. Chứng minh rằng mọi đẳng cấu tuyến tính \( f \) bảo toàn tích vô hướng, tức là:
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle.
+    \]
+
+4. **Xây dựng một đẳng cấu đặc biệt:**
+
+    Cho ví dụ về một đẳng cấu không tuyến tính \( f: \mathbb{R}^n \to \mathbb{R}^n \) không phải là ánh xạ tuyến tính nhưng vẫn bảo toàn khoảng cách. Chứng minh rằng \( f \) thực sự là đẳng cấu.
+
+---
+
+### Bài toán chứng minh: Đặc trưng các ánh xạ đẳng cấu trên \( \mathbb{R}^n \)
+
+Giả sử \( f: \mathbb{R}^n \to \mathbb{R}^n \) là một đẳng cấu, tức là:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{với mọi } x, y \in \mathbb{R}^n.
+\]
+
+### Cần chứng minh:
+
+Mọi đẳng cấu \( f \) trên \( \mathbb{R}^n \) là ánh xạ affine có dạng
+
+\[
+f(x) = Ax + b,
+\]
+
+trong đó \( A \) là ma trận trực giao, hoặc có thể được biểu diễn dưới dạng kết hợp của các ánh xạ affine này với phép phản chiếu hoặc phép tịnh tiến.
+
+---
+
+### Mở rộng (tùy chọn):
+
+Chứng minh rằng tập hợp tất cả các đẳng cấu trên \( \mathbb{R}^n \) tạo thành một nhóm theo phép hợp thành, gọi là **nhóm Euclid \( \mathrm{E}(n) \)**.

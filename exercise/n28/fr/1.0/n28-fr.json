@@ -1,0 +1,21 @@
+{
+    "id": "No.n28",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "2",
+    "time": 300,
+    "nam_score": 4.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Théorie de Noether - lien entre symétrie et loi de conservation",
+        "content": "content/n28-fr.exr",
+        "solution": "solution/n28-fr.exr"
+    },
+    "difficulty": 6,
+    "tags": [],
+    "UUID": "323b41c3-b47d-45d4-810a-17cc9851bb5e",
+    "GUID": "16cadf6a-711d-4a48-8255-fbf365eb2aec"
+}

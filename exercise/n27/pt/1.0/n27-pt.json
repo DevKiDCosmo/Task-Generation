@@ -1,0 +1,21 @@
+{
+    "id": "No.n27",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Isometria no espaço euclidiano de dimensão n e tarefa de prova: caracterização das aplicações isométricas em \\( \\mathbb{R}^n \\)",
+        "content": "content/n27-pt.exr",
+        "solution": "solution/n27-pt.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "c9de10ae-0ca7-42e9-ab22-dcb21defed24",
+    "GUID": "d0cb68cc-1e4f-40e0-a277-77695f08a86c"
+}

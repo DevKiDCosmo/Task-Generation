@@ -154,5 +154,17 @@
     "8": "Pimeä Puoli",
     "9": "NUM",
     "10": "NAM"
+  },
+  "se": {
+    "1": "Lätt",
+    "2": "Hög Lätt",
+    "3": "Medium",
+    "4": "Hög Medium",
+    "5": "Svår",
+    "6": "Hög Svår",
+    "7": "Hård",
+    "8": "Mörk Sida",
+    "9": "NUM",
+    "10": "NAM"
   }
 }

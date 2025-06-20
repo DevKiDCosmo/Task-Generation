@@ -1,0 +1,66 @@
+{
+  "Base": "./exercise",
+  "ID": "n28",
+  "Version": [
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0"
+  ],
+  "Category": [
+    1,
+    5
+  ],
+  "CID": "2",
+  "Time": [
+    300
+  ],
+  "NAM-Score": 4,
+  "Author": "Original",
+  "Date": "07.06.2025",
+  "Difficulty": 6,
+  "Tags": [],
+  "Partial": false,
+  "Language": [
+    "de",
+    "fr",
+    "en",
+    "jp",
+    "kr",
+    "zh",
+    "es",
+    "vn",
+    "ru",
+    "it",
+    "pt",
+    "fn",
+    "se"
+  ],
+  "Title": {
+    "1": [
+      "Noether-Theorie – Zusammenhang zwischen Symmetrie und Erhaltungssatz",
+      "Théorie de Noether - lien entre symétrie et loi de conservation",
+      "Noether's theorem - connection between symmetry and conservation law",
+      "ノーザーの定理 - 対称性と保存則の関係",
+      "노터의 정리 - 대칭성과 보존 법칙 사이의 연결",
+      "诺特定理 - 对称性与守恒定律之间的联系",
+      "Teorema de Noether: conexión entre simetría y ley de conservación",
+      "Định lý Noether - mối liên hệ giữa đối xứng và định luật bảo toàn",
+      "Теорема Нётер - связь между симметрией и законом сохранения",
+      "Teorema di Noether - connessione tra simmetria e legge di conservazione",
+      "Teorema de Noether - conexão entre simetria e lei de conservação",
+      "Noether-teoria – symmetrian ja säilymislain yhteys",
+      "Noetherteorin – sambandet mellan symmetri och bevarandelagen"
+    ]
+  }
+}

@@ -1,5 +1,11 @@
-Beweise, dass für jede natürliche Zahl $n$ die Summe der ersten $n$ ungeraden Zahlen gleich $n^2$ ist. $$ 1 + 3 + 5+ \dots + (2n-1) = n^2 $$
-Oder auch: $$ \sum^{n}_{k = 1} = (2k - 1) = n^2 = n^2 \vert n \in \mathbb{N} $$
+Beweise, dass für jede natürliche Zahl $n$ die Summe der ersten $n$ ungeraden Zahlen gleich $n^2$ ist.
+\[
+1 + 3 + 5+ \dots + (2n-1) = n^2
+\]
+Oder auch:
+\[
+\sum^{n}_{k = 1} = (2k - 1) = n^2 = n^2 \vert n \in \mathbb{N}
+\]
 
 Hinweis:
 \begin{itemize}

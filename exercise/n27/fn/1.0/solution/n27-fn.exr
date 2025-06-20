@@ -1,0 +1,120 @@
+# Isometriat avaruudessa \( \mathbb{R}^n \)
+
+Kuvaus \( f: \mathbb{R}^n \to \mathbb{R}^n \) on **isometria**, jos se säilyttää euklidisen etäisyyden, eli:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert \quad \text{kaikilla } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Lineaariset isometriat
+
+**Väittämä:**  
+Lineaarinen isometria \( T: \mathbb{R}^n \to \mathbb{R}^n \) voidaan kirjoittaa muodossa \( T(x) = Ax \), missä \( A \in \mathbb{R}^{n \times n} \) on **ortogonaalinen matriisi**, eli \( A^\top A = I \).
+
+**Todistus:**
+
+Koska \( T \) on lineaarinen, riittää näyttää että \( \vert T(x)\vert  = \vert x\vert \) kaikilla \( x \).
+
+\[
+\vert T(x)\vert ^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+Koska \( \vert T(x)\vert = \vert x\vert \), seuraa että:
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Affiinit isometriat
+
+**Väittämä:**  
+Affiini isometria on muotoa
+
+\[
+f(x) = Ax + b \quad \text{missä } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Perustelu:**
+
+Jos \( f \) on affiini eli \( f(x) = Ax + b \), niin:
+
+\[
+\vert f(x) - f(y)\vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Skalaaritulon säilyminen
+
+**Väittämä:**  
+Jos \( f \) on lineaarinen ja isometrinen, niin:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+kaikille yksikkövektoreille \( u, v \in \mathbb{R}^n \).
+
+**Todistus:**
+
+Koska \( f(x) = Ax \) ja \( A \) on ortogonaalinen, saadaan:
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v = \langle u, v \rangle
+\]
+
+---
+
+## 4. Ovatko olemassa epälineaarisia isometrioita?
+
+**Vastaus:**  
+Avaruudessa \( \mathbb{R}^n \) **kaikki isometriat ovat affiineja**, joten **epälineaarisia isometrioita ei ole olemassa**.
+
+---
+
+## Kaikkien isometrioiden karakterisointi
+
+**Lause:**  
+Kaikki etäisyyttä säilyttävät isometriat \( f: \mathbb{R}^n \to \mathbb{R}^n \) ovat muotoa:
+
+\[
+f(x) = Ax + b
+\]
+
+missä \( A \in \mathrm{O}(n) \), \( b \in \mathbb{R}^n \).
+
+**Todistuksen idea:**
+
+1. Määritä \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. \( \vert g(x) - g(y)\vert = \vert x - y \vert \Rightarrow \vert g(x) \vert = \vert x \vert \)
+3. Näytetään että \( g \) on lineaarinen ja muotoa \( g(x) = Ax \), missä \( A \) on ortogonaalinen
+4. Tällöin: \( f(x) = Ax + f(0) \)
+
+---
+
+## Euklidinen ryhmä \( \mathrm{E}(n) \)
+
+Kaikkien \( \mathbb{R}^n \):n isometrioiden joukko muodostaa ryhmän koosteen suhteen:
+
+\[
+\mathrm{E}(n) := \{f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Ominaisuuksia:**
+
+- **Suljettu:** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Käänteisfunktio:** \( f^{-1}(x) = A^\top (x - b) \)
+- **Identiteetti:** \( \text{id}(x) = x \)
+
+---
+
+## Yhteenveto
+
+- Lineaariset isometriat $\leftrightarrow$ ortogonaaliset matriisit  
+- Affiinit isometriat $\leftrightarrow$ ortogonaalinen matriisi + siirtymä  
+- Kaikki isometriat \( \mathbb{R}^n \):ssä ovat affiineja  
+- Isometrioiden joukko muodostaa **euklidisen ryhmän** \( \mathrm{E}(n) \)

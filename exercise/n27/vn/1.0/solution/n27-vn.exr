@@ -1,0 +1,121 @@
+# Ánh xạ đẳng cấu trong \( \mathbb{R}^n \)
+
+Một hàm \( f: \mathbb{R}^n \to \mathbb{R}^n \) được gọi là **đẳng cấu** nếu nó bảo toàn khoảng cách:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{với mọi } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Ánh xạ tuyến tính đẳng cấu
+
+**Định lý:**  
+Nếu \( T: \mathbb{R}^n \to \mathbb{R}^n \) là ánh xạ tuyến tính đẳng cấu, thì:
+
+\[
+T(x) = Ax \quad \text{với } A^\top A = I
+\]
+
+**Chứng minh:**
+
+Vì \( T \) là tuyến tính:
+
+\[
+\vert T(x) \vert^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+Do \( \vert T(x) \vert^2 = \vert x \vert^2 \), nên:
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Ánh xạ affine đẳng cấu
+
+**Định lý:**  
+Mọi ánh xạ affine đẳng cấu đều có dạng:
+
+\[
+f(x) = Ax + b \quad \text{với } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Giải thích:**
+
+Vì:
+
+\[
+\vert f(x) - f(y) \vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Bảo toàn tích vô hướng
+
+**Định lý:**  
+Nếu \( f \) là ánh xạ tuyến tính đẳng cấu, thì:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+**Chứng minh:**
+
+Với \( f(x) = Ax \):
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v
+\]
+
+---
+
+## 4. Có tồn tại đẳng cấu không phải affine?
+
+**Trả lời:**  
+Không. Trong \( \mathbb{R}^n \), **mọi ánh xạ đẳng cấu đều là affine**.  
+Không tồn tại đẳng cấu nào không phải affine.
+
+---
+
+## Đặc trưng của ánh xạ đẳng cấu
+
+**Định lý:**  
+Mọi ánh xạ đẳng cấu \( f: \mathbb{R}^n \to \mathbb{R}^n \) có thể viết dưới dạng:
+
+\[
+f(x) = Ax + b \quad \text{với } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Chứng minh ngắn gọn:**
+
+1. Đặt \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. Vì \( \vert g(x) - g(y) \vert = \vert x - y \vert \), nên \( g \) là ánh xạ tuyến tính đẳng cấu
+3. Suy ra: \( g(x) = Ax \) với \( A \) là ma trận trực giao
+4. Vậy: \( f(x) = Ax + f(0) \)
+
+---
+
+## Nhóm Euclid \( \mathrm{E}(n) \)
+
+Tập hợp các ánh xạ đẳng cấu tạo thành một **nhóm** dưới phép hợp thành:
+
+\[
+\mathrm{E}(n) := \{ f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Tính chất:**
+
+- **Đóng:** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Nghịch đảo:** \( f^{-1}(x) = A^\top(x - b) \)
+- **Đồng nhất:** \( \text{id}(x) = x \)
+
+---
+
+## Tóm tắt
+
+- Ánh xạ tuyến tính đẳng cấu $\leftrightarrow$ ma trận trực giao  
+- Ánh xạ affine đẳng cấu $\leftrightarrow$ ma trận trực giao + tịnh tiến  
+- Mọi ánh xạ đẳng cấu trong \( \mathbb{R}^n \) đều là affine  
+- Các ánh xạ đẳng cấu tạo thành **nhóm Euclid** \( \mathrm{E}(n) \)

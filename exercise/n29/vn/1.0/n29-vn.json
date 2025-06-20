@@ -1,0 +1,22 @@
+{
+    "id": "No.n29",
+    "category": [
+        1,
+        2,
+        5
+    ],
+    "cid": "3",
+    "time": 600,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Định lý Noether cho lý thuyết trường",
+        "content": "content/n29-vn.exr",
+        "solution": "solution/n29-vn.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "523ec459-116b-4793-9769-9dadc029ac55",
+    "GUID": "57f1be57-18da-4dac-b51f-4be74584ad12"
+}

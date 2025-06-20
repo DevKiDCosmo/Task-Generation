@@ -1,0 +1,371 @@
+{
+  "title": "The enormous collection of the Namische /ˈnamɪʃə/ World",
+  "subundertitle": "The Art of Sciences",
+  "date": "24.04.2025",
+  "paper": "PALL",
+  "version": "1.9",
+  "revision": "5",
+  "archive": "3891M-932",
+  "doi": "11.NOT.AVAILABLE",
+  "description": "This collection presents a diverse set of mathematical problems spanning various fields, including number theory, combinatorics, computational logic, and high-dimensional geometry. Designed for advanced learners, the exercises explore fundamental and complex concepts such as recursive polynomial structures, hypergraph theory, quantum field interference models, and formal computability through Turing machines. Additionally, the collection integrates practical applications like Fourier analysis, stochastic wave phenomena, and optimization techniques. Each problem offers an opportunity for theoretical inquiry and applied problem-solving, ensuring a comprehensive exploration of mathematical principles.",
+  "exercise": {
+    "n1": {
+      "language": [
+        "de",
+        "en",
+        "fr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n4": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0d",
+        "1.1e"
+      ],
+      "exercise": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "n5": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n6": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n7": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n8": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "t1": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "t2": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "t3": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n9": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n10": {
+      "language": [
+        "de",
+        "en"
+      ],
+      "version": [
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n14": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n15": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n16": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n17": {
+      "language": [
+        "de",
+        "en",
+        "jp",
+        "fr",
+        "kr"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n23": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n24": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n25": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    },
+    "n26": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh",
+        "es",
+        "vn",
+        "ru",
+        "it",
+        "pt",
+        "fn"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1,
+        2
+      ]
+    },
+    "n27": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh",
+        "es",
+        "vn",
+        "ru",
+        "it",
+        "pt",
+        "fn",
+        "se"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
+  },
+  "tags": [
+    "induction",
+    "sum",
+    "odd numbers",
+    "natural numbers"
+  ],
+  "UUID": "...",
+  "GUID": "..."
+}

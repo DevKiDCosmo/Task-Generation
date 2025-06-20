@@ -1,0 +1,21 @@
+{
+    "id": "No.n27",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "n次元ユークリッド空間の等距離写像と証明課題：\\( \\mathbb{R}^n \\)における等距離写像の特徴付け",
+        "content": "content/n27-jp.exr",
+        "solution": "solution/n27-jp.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "c9de10ae-0ca7-42e9-ab22-dcb21defed24",
+    "GUID": "5678f8f1-aed6-4876-b87d-259766b2ddcc"
+}

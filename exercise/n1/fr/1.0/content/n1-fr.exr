@@ -1,5 +1,11 @@
-Prouver que pour tout nombre naturel $n$, la somme des $n$ premiers nombres impairs est égale à $n^2$. $$ 1 + 3 + 5+ \dots + (2n-1) = n^2 $$
-Ou encore : $$ \sum^{n}_{k = 1} = (2k - 1) = n^2 = n^2 \vert n \in \mathbb{N} $$
+Prouver que pour tout nombre naturel $n$, la somme des $n$ premiers nombres impairs est égale à $n^2$.
+\[
+1 + 3 + 5+ \dots + (2n-1) = n^2
+\]
+Ou encore :
+\[
+\sum^{n}_{k = 1} (2k - 1) = n^2 \vert n \in \mathbb{N}
+\]
 
 Indication :
 \begin{itemize}

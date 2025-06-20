@@ -1,0 +1,121 @@
+# Isometriska avbildningar i \( \mathbb{R}^n \)
+
+En funktion \( f: \mathbb{R}^n \to \mathbb{R}^n \) sägs vara en **isometri** om den bevarar avståndet:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{för alla } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Linjära isometrier
+
+**Sats:**  
+Om \( T: \mathbb{R}^n \to \mathbb{R}^n \) är en linjär isometri, då gäller:
+
+\[
+T(x) = Ax \quad \text{där } A^\top A = I
+\]
+
+**Bevis:**
+
+Eftersom \( T \) är linjär:
+
+\[
+\vert T(x) \vert^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+Men \( \vert T(x) \vert^2 = \vert x \vert^2 \), så:
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Affina isometrier
+
+**Sats:**  
+Varje affin isometri är av formen:
+
+\[
+f(x) = Ax + b \quad \text{där } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Förklaring:**
+
+Eftersom:
+
+\[
+\vert f(x) - f(y) \vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Bevarande av skalärprodukt
+
+**Sats:**  
+Om \( f \) är en linjär isometri, då:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+**Bevis:**
+
+Skriv \( f(x) = Ax \):
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v
+\]
+
+---
+
+## 4. Finns det icke-affina isometrier?
+
+**Svar:**  
+Nej. I \( \mathbb{R}^n \) är **alla isometrier affina**.  
+Det finns alltså **inga icke-affina isometrier**.
+
+---
+
+## Karakterisering av isometrier
+
+**Sats:**  
+Varje isometri \( f: \mathbb{R}^n \to \mathbb{R}^n \) kan skrivas som:
+
+\[
+f(x) = Ax + b \quad \text{där } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Kort bevis:**
+
+1. Definiera \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. \( \vert g(x) - g(y) \vert = \vert x - y \vert \Rightarrow g \) är linjär isometri
+3. \( g(x) = Ax \) där \( A \) är ortogonal
+4. Alltså: \( f(x) = Ax + f(0) \)
+
+---
+
+## Euklidiska gruppen \( \mathrm{E}(n) \)
+
+Mängden av alla isometrier bildar en **grupp under sammansättning**:
+
+\[
+\mathrm{E}(n) := \{ f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Egenskaper:**
+
+- **Slutenhet:** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Invers:** \( f^{-1}(x) = A^\top(x - b) \)
+- **Identitet:** \( \text{id}(x) = x \)
+
+---
+
+## Sammanfattning
+
+- Linjära isometrier $\leftrightarrow$ ortogonala matriser  
+- Affina isometrier $\leftrightarrow$ ortogonal + translation  
+- Alla isometrier i \( \mathbb{R}^n \) är affina  
+- Isometrierna bildar **den euklidiska gruppen** \( \mathrm{E}(n) \)

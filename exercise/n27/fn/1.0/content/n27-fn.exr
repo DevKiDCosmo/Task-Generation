@@ -1,0 +1,47 @@
+Funktio \( f : \mathbb{R}^n \to \mathbb{R}^n \) on **isometria**, jos se säilyttää kahden pisteen euklidisen etäisyyden, eli kaikille \( x, y \in \mathbb{R}^n \) pätee:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+### Tehtävät:
+
+1. **Lineaariset isometriset:**
+
+    Todista, että jokainen lineaarinen isometria \( T: \mathbb{R}^n \to \mathbb{R}^n \) voidaan esittää ortogonaalisella matriisilla \( A \in \mathbb{R}^{n \times n} \), eli \( T(x) = Ax \) ja \( A^\top A = I \).
+
+2. **Affiiniset isometriat:**
+
+    Määritä kaikki isometriat \( f: \mathbb{R}^n \to \mathbb{R}^n \), jotka ovat lisäksi **affiineja**, eli muotoa \( f(x) = Ax + b \), missä \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \) ja \( A \) on ortogonaalinen.
+
+3. **Sisätulon säilyminen:**
+
+    Olkoot \( u, v \in \mathbb{R}^n \) yksikkövektorit. Näytä, että jokainen lineaarinen isometria \( f \) säilyttää sisätulon, eli
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle
+    \]
+
+4. **Erityisen isometrian rakentaminen:**
+
+    Anna esimerkki epälineaarisesta isometriasta \( f: \mathbb{R}^n \to \mathbb{R}^n \), joka ei ole lineaarinen mutta säilyttää etäisyydet. Todista, että \( f \) on todellakin isometria.
+
+---
+
+### Todistustehtävä: Isometristen kuvausten karakterisointi \( \mathbb{R}^n \):ssä
+
+Olkoon \( f: \mathbb{R}^n \to \mathbb{R}^n \) isometria, eli pätee
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert  \quad \text{kaikille } x, y \in \mathbb{R}^n.
+\]
+
+### Näytettävä:
+
+Jokainen isometria \( f \) on joko affiininen kuvaus muodossa \( f(x) = Ax + b \), missä \( A \) on ortogonaalinen matriisi, tai se voidaan esittää tällaisen kuvausten yhdistelmänä, johon sisältyy peilaus tai siirto.
+
+---
+
+### Syventävä huomautus (valinnainen):
+
+Näytä, että kaikkien isometrioiden joukko \( \mathbb{R}^n \):ssä muodostaa ryhmän yhdistämällä eli kompositiolla – tätä ryhmää kutsutaan **euklidiseksi ryhmäksi \( \mathrm{E}(n) \)**.

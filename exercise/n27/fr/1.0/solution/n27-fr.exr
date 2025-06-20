@@ -1,0 +1,120 @@
+# Isométries dans l’espace \( \mathbb{R}^n \)
+
+Une application \( f: \mathbb{R}^n \to \mathbb{R}^n \) est une **isométrie** si elle préserve la distance euclidienne, c’est-à-dire :
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert \quad \text{pour tout } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Isométries linéaires
+
+**Proposition :**  
+Une isométrie linéaire \( T: \mathbb{R}^n \to \mathbb{R}^n \) s’écrit sous la forme \( T(x) = Ax \), avec \( A \in \mathbb{R}^{n \times n} \) une **matrice orthogonale**, c’est-à-dire \( A^\top A = I \).
+
+**Démonstration :**
+
+Comme \( T \) est linéaire, il suffit de montrer que \( \vert T(x)\vert  = \vert x\vert \) pour tout \( x \).
+
+\[
+\vert T(x)\vert ^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+Comme \( \vert T(x)\vert = \vert x\vert \), on en déduit :
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Isométries affines
+
+**Proposition :**  
+Une isométrie affine est de la forme
+
+\[
+f(x) = Ax + b \quad \text{avec } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Justification :**
+
+Si \( f \) est affine, soit \( f(x) = Ax + b \), alors :
+
+\[
+\vert f(x) - f(y)\vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Préservation du produit scalaire
+
+**Proposition :**  
+Si \( f \) est linéaire et isométrique, alors :
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+pour tous vecteurs \( u, v \in \mathbb{R}^n \).
+
+**Démonstration :**
+
+Si \( f(x) = Ax \) avec \( A \) orthogonale, alors :
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v = \langle u, v \rangle
+\]
+
+---
+
+## 4. Existe-t-il des isométries non affines ?
+
+**Réponse :**  
+Dans l’espace \( \mathbb{R}^n \), **toutes les isométries sont affines**, donc **il n’existe pas d’isométries non affines**.
+
+---
+
+## Caractérisation des isométries
+
+**Théorème :**  
+Toute isométrie \( f: \mathbb{R}^n \to \mathbb{R}^n \) s’écrit sous la forme :
+
+\[
+f(x) = Ax + b
+\]
+
+avec \( A \in \mathrm{O}(n) \), \( b \in \mathbb{R}^n \).
+
+**Idée de la démonstration :**
+
+1. Définir \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. \( \vert g(x) - g(y)\vert = \vert x - y \vert \Rightarrow \vert g(x) \vert = \vert x \vert \)
+3. Montrer que \( g \) est linéaire : \( g(x) = Ax \) avec \( A \) orthogonale
+4. Donc \( f(x) = Ax + f(0) \)
+
+---
+
+## Le groupe euclidien \( \mathrm{E}(n) \)
+
+L’ensemble de toutes les isométries de \( \mathbb{R}^n \) forme un **groupe** pour la composition :
+
+\[
+\mathrm{E}(n) := \{f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Propriétés :**
+
+- **Fermé :** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Inverse :** \( f^{-1}(x) = A^\top (x - b) \)
+- **Identité :** \( \text{id}(x) = x \)
+
+---
+
+## Résumé
+
+- Isométries linéaires $\leftrightarrow$ matrices orthogonales  
+- Isométries affines $\leftrightarrow$ matrice orthogonale + translation  
+- Toutes les isométries de \( \mathbb{R}^n \) sont affines  
+- L’ensemble des isométries forme le **groupe euclidien** \( \mathrm{E}(n) \)

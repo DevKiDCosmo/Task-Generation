@@ -1,0 +1,47 @@
+Una mappa \( f : \mathbb{R}^n \to \mathbb{R}^n \) si chiama **isometria** se preserva la distanza euclidea tra due punti, cioè per tutti \( x, y \in \mathbb{R}^n \) vale:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert
+\]
+
+### Esercizi:
+
+1. **Isometrie lineari:**
+
+    Dimostrare che ogni isometria lineare \( T: \mathbb{R}^n \to \mathbb{R}^n \) può essere rappresentata da una matrice ortogonale \( A \in \mathbb{R}^{n \times n} \), cioè \( T(x) = Ax \) con \( A^\top A = I \).
+
+2. **Isometrie affini:**
+
+    Determinare tutte le isometrie \( f: \mathbb{R}^n \to \mathbb{R}^n \) che sono anche **affini**, cioè della forma \( f(x) = Ax + b \), dove \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), e \( A \) è ortogonale.
+
+3. **Conservazione del prodotto scalare:**
+
+    Siano \( u, v \in \mathbb{R}^n \) due vettori unitari. Dimostrare che ogni isometria \( f \), che è anche lineare, conserva il prodotto scalare, cioè:
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle
+    \]
+
+4. **Costruzione di un’isometria speciale:**
+
+    Fornire un esempio di isometria \( f: \mathbb{R}^n \to \mathbb{R}^n \) non lineare che non sia un'applicazione lineare ma che comunque preservi le distanze. Mostrare che \( f \) è effettivamente un’isometria.
+
+---
+
+### Esercizio di dimostrazione: caratterizzazione delle applicazioni isometriche in \( \mathbb{R}^n \)
+
+Sia \( f: \mathbb{R}^n \to \mathbb{R}^n \) un’isometria, cioè:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{per ogni } x, y \in \mathbb{R}^n.
+\]
+
+### Da dimostrare:
+
+Ogni isometria \( f \) in \( \mathbb{R}^n \) è o un’applicazione affine della forma \( f(x) = Ax + b \), dove \( A \) è una matrice ortogonale, oppure può essere rappresentata come composizione di tali applicazioni con riflessioni o traslazioni.
+
+---
+
+### Nota per approfondimento (opzionale):
+
+Dimostrare che l’insieme di tutte le isometrie in \( \mathbb{R}^n \) forma un gruppo rispetto alla composizione — il cosiddetto **gruppo euclideo \( \mathrm{E}(n) \)**.

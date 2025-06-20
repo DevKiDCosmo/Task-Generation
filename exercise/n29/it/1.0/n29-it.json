@@ -1,0 +1,22 @@
+{
+    "id": "No.n29",
+    "category": [
+        1,
+        2,
+        5
+    ],
+    "cid": "3",
+    "time": 600,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Teorema di Noether per le teorie dei campi",
+        "content": "content/n29-it.exr",
+        "solution": "solution/n29-it.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "523ec459-116b-4793-9769-9dadc029ac55",
+    "GUID": "972fbff1-3276-4418-ad09-d82d43c655c0"
+}

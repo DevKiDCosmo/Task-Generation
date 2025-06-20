@@ -1,0 +1,22 @@
+{
+    "id": "Masterclass Exercise. 2",
+    "category": [
+        1,
+        2,
+        5
+    ],
+    "cid": "3",
+    "time": 600,
+    "nam_score": 7.0,
+    "author": "Original",
+    "date": "20.06.2025",
+    "main": {
+        "title": "Théorème de Noether pour les théories des champs",
+        "content": "content/m2-fr.exr",
+        "solution": "solution/m2-fr.exr"
+    },
+    "difficulty": 8,
+    "tags": [],
+    "UUID": "347a471e-316e-44df-a4e2-87c614f1bcee",
+    "GUID": "9cc1acad-5d12-40c7-bcf3-33c2369d0987"
+}

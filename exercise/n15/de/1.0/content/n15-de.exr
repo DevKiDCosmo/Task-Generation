@@ -1,8 +1,8 @@
 Gegeben ist eine rekursive Definition:
 
-$$
+\[
 P_n(x) = a_1(x)P_{n-1}(x) + a_2(x)P_{n-2}(x) + \dots + a_k(x)P_{n-k}(x),
-$$
+\]
 
 mit Startwerten $P_0(x), \dots, P_{k-1}(x)$ und $a_i(x) \in \mathbb{Q}[x]$
 
@@ -30,9 +30,9 @@ Analysiere:
 
 - Schreibe die Rekursion als Matrixsystem:
 
-$$
+\[
 \mathbf{P}_n = A(x) \mathbf{P}_{n-1},
-$$
+\]
 
 mit Vektor $\mathbf{P}_n = [P_n, P_{n-1}, ..., P_{n-k+1}]^T$
 

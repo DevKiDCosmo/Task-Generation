@@ -1,0 +1,63 @@
+En avbildning \( f : \mathbb{R}^n \to \mathbb{R}^n \) kallas **isometri** om den bevarar det euklidiska avståndet mellan två punkter, alltså för alla \( x, y \in \mathbb{R}^n \) gäller:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert
+\]
+
+### Uppgifter:
+
+1. **Linjära isometrier:**
+
+    Visa att varje linjär isometri \( T: \mathbb{R}^n \to \mathbb{R}^n \) kan representeras genom en ortogonal matris \( A \in \mathbb{R}^{n \times n} \), det vill säga
+
+    \[
+    T(x) = Ax \quad \text{med} \quad A^\top A = I.
+    \]
+
+2. **Affina isometrier:**
+
+    Bestäm alla isometrier \( f: \mathbb{R}^n \to \mathbb{R}^n \) som dessutom är **affina**, det vill säga av formen
+
+    \[
+    f(x) = Ax + b,
+    \]
+
+    där \( A \in \mathbb{R}^{n \times n} \) är ortogonal och \( b \in \mathbb{R}^n \).
+
+3. **Bevarande av skalärprodukt:**
+
+    Låt \( u, v \in \mathbb{R}^n \) vara två enhetsvektorer. Visa att varje linjär isometri \( f \) bevarar skalärprodukten, alltså:
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle.
+    \]
+
+4. **Konstruktion av en speciell isometri:**
+
+    Ge ett exempel på en icke-linjär isometri \( f: \mathbb{R}^n \to \mathbb{R}^n \) som inte är en linjär avbildning, men ändå bevarar avstånd. Visa att \( f \) verkligen är isometrisk.
+
+---
+
+### Bevisuppgift: Karaktärisering av isometriska avbildningar i \( \mathbb{R}^n \)
+
+Anta att \( f: \mathbb{R}^n \to \mathbb{R}^n \) är en isometri, det vill säga
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{för alla } x, y \in \mathbb{R}^n.
+\]
+
+### Att visa:
+
+Varje isometri \( f \) i \( \mathbb{R}^n \) är antingen en affin avbildning av formen
+
+\[
+f(x) = Ax + b,
+\]
+
+där \( A \) är en ortogonal matris, eller kan representeras som en sammansättning av sådana tillsammans med speglingar eller translationer.
+
+---
+
+### Fördjupning (frivillig):
+
+Visa att mängden av alla isometrier i \( \mathbb{R}^n \) bildar en grupp under komposition, kallad **den euklidiska gruppen \( \mathrm{E}(n) \)**.

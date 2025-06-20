@@ -89,6 +89,13 @@ From Version Exr 1.1 onwards. The version must be in the exercise register file.
 - Correction File for Submisisons: A Seperate folder called `correction`
 - Point table: A Seperate json called `points.json` in the exercise folder. The file must be registred in the exercise file.
 
+# Creating Exercise Stack
+
+Use `exerfile.py` and enter then the json file's path.
+
+
+
+
 # TODOS
 
 Structure of exercise files

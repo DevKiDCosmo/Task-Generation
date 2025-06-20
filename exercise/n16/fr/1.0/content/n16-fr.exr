@@ -1,8 +1,8 @@
 Étant donné une machine de Turing $M_b$ dont la bande de travail est limitée à $O(\log n)$ cellules mémoire. Montrer que $M_b$ décide correctement d'une certaine langue $L$, par exemple Par exemple :
 
-$$
+\[
 L = \{ l \in \{a, b\}^* \mid \#a(l) = \#b(l) \}
-$$
+\]
 
 ou tout autre langage spécifique où les contraintes de mémoire sont pertinentes.
 

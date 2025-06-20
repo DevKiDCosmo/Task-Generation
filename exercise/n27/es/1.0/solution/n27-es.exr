@@ -1,0 +1,120 @@
+# Isometrías en \( \mathbb{R}^n \)
+
+Una aplicación \( f: \mathbb{R}^n \to \mathbb{R}^n \) se llama **isometría** si preserva la distancia euclidiana, es decir:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert \quad \text{para todo } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Isometrías lineales
+
+**Afirmación:**  
+Una isometría lineal \( T: \mathbb{R}^n \to \mathbb{R}^n \) puede escribirse como \( T(x) = Ax \), donde \( A \in \mathbb{R}^{n \times n} \) es una **matriz ortogonal**, es decir, \( A^\top A = I \).
+
+**Demostración:**
+
+Dado que \( T \) es lineal, basta con mostrar que \( \vert T(x)\vert  = \vert x\vert \) para todo \( x \).
+
+\[
+\vert T(x)\vert ^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+Como \( \vert T(x)\vert = \vert x\vert \), se deduce que:
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Isometrías afines
+
+**Afirmación:**  
+Una isometría afín tiene la forma
+
+\[
+f(x) = Ax + b \quad \text{con } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Justificación:**
+
+Si \( f \) es afín, es decir, \( f(x) = Ax + b \), entonces:
+
+\[
+\vert f(x) - f(y)\vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Conservación del producto escalar
+
+**Afirmación:**  
+Si \( f \) es lineal e isométrica, entonces:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+para todos los vectores unitarios \( u, v \in \mathbb{R}^n \).
+
+**Demostración:**
+
+Como \( f(x) = Ax \) con \( A \) ortogonal, se tiene:
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v = \langle u, v \rangle
+\]
+
+---
+
+## 4. ¿Existen isometrías no lineales?
+
+**Respuesta:**  
+En \( \mathbb{R}^n \), **toda isometría es afín**, por lo que **no existen isometrías no afines** que conserven la distancia.
+
+---
+
+## Caracterización de todas las isometrías
+
+**Teorema:**  
+Toda isometría \( f: \mathbb{R}^n \to \mathbb{R}^n \) que preserva la distancia euclidiana es una transformación afín de la forma:
+
+\[
+f(x) = Ax + b
+\]
+
+con \( A \in \mathrm{O}(n) \), \( b \in \mathbb{R}^n \).
+
+**Idea de la demostración:**
+
+1. Definir \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. \( \vert g(x) - g(y)\vert = \vert x - y \vert \Rightarrow \vert g(x) \vert = \vert x \vert \)
+3. Se muestra que \( g \) es lineal y de la forma \( g(x) = Ax \), con \( A \) ortogonal.
+4. Entonces: \( f(x) = Ax + f(0) \)
+
+---
+
+## El grupo euclidiano \( \mathrm{E}(n) \)
+
+El conjunto de todas las isometrías de \( \mathbb{R}^n \) forma un grupo bajo composición:
+
+\[
+\mathrm{E}(n) := \{f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Propiedades:**
+
+- **Cerrado:** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Inverso:** \( f^{-1}(x) = A^\top (x - b) \)
+- **Neutro:** \( \text{id}(x) = x \)
+
+---
+
+## Resumen
+
+- Isometrías lineales $\leftrightarrow$ matrices ortogonales  
+- Isometrías afines $\leftrightarrow$ matrices ortogonales + traslación  
+- Toda isometría en \( \mathbb{R}^n \) es afín  
+- El conjunto de todas las isometrías forma el **grupo euclidiano** \( \mathrm{E}(n) \)

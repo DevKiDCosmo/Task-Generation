@@ -11,5 +11,6 @@
   "ar": "instruction/ar.tlr",
   "it": "instruction/it.tlr",
   "pt": "instruction/pt.tlr",
-  "fn": "instruction/fn.tlr"
+  "fn": "instruction/fn.tlr",
+  "se": "instruction/se.tlr"
 }

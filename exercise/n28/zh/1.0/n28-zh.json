@@ -1,0 +1,21 @@
+{
+    "id": "No.n28",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "2",
+    "time": 300,
+    "nam_score": 4.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "诺特定理 - 对称性与守恒定律之间的联系",
+        "content": "content/n28-zh.exr",
+        "solution": "solution/n28-zh.exr"
+    },
+    "difficulty": 6,
+    "tags": [],
+    "UUID": "323b41c3-b47d-45d4-810a-17cc9851bb5e",
+    "GUID": "e2399544-e3c1-44f7-a731-acf7695eb54b"
+}

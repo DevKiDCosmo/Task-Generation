@@ -1,0 +1,120 @@
+# Isometrie nello spazio \( \mathbb{R}^n \)
+
+Un'applicazione \( f: \mathbb{R}^n \to \mathbb{R}^n \) è un'**isometria** se preserva la distanza euclidea, cioè:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{per ogni } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Isometrie lineari
+
+**Proposizione:**  
+Un'isometria lineare \( T: \mathbb{R}^n \to \mathbb{R}^n \) è della forma \( T(x) = Ax \), dove \( A \in \mathbb{R}^{n \times n} \) è una **matrice ortogonale**, ovvero \( A^\top A = I \).
+
+**Dimostrazione:**
+
+Poiché \( T \) è lineare, basta mostrare che \( \vert T(x) \vert = \vert x \vert \) per ogni \( x \).
+
+\[
+\vert T(x) \vert^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+Poiché \( \vert T(x) \vert = \vert x \vert \), si ottiene:
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Isometrie affini
+
+**Proposizione:**  
+Un'isometria affine è della forma
+
+\[
+f(x) = Ax + b \quad \text{con } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Giustificazione:**
+
+Se \( f \) è affine, ovvero \( f(x) = Ax + b \), allora:
+
+\[
+\vert f(x) - f(y) \vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Preservazione del prodotto scalare
+
+**Proposizione:**  
+Se \( f \) è lineare e isometrica, allora:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+per ogni \( u, v \in \mathbb{R}^n \).
+
+**Dimostrazione:**
+
+Se \( f(x) = Ax \) con \( A \) ortogonale, allora:
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v = \langle u, v \rangle
+\]
+
+---
+
+## 4. Esistono isometrie non affini?
+
+**Risposta:**  
+Nello spazio \( \mathbb{R}^n \), **tutte le isometrie sono affini**, quindi **non esistono isometrie non affini**.
+
+---
+
+## Caratterizzazione delle isometrie
+
+**Teorema:**  
+Ogni isometria \( f: \mathbb{R}^n \to \mathbb{R}^n \) si può scrivere nella forma:
+
+\[
+f(x) = Ax + b
+\]
+
+con \( A \in \mathrm{O}(n) \), \( b \in \mathbb{R}^n \).
+
+**Idea della dimostrazione:**
+
+1. Definire \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. \( \vert g(x) - g(y) \vert = \vert x - y \vert \Rightarrow \vert g(x) \vert = \vert x \vert \)
+3. Mostrare che \( g \) è lineare: \( g(x) = Ax \) con \( A \) ortogonale
+4. Quindi \( f(x) = Ax + f(0) \)
+
+---
+
+## Il gruppo euclideo \( \mathrm{E}(n) \)
+
+L'insieme di tutte le isometrie di \( \mathbb{R}^n \) forma un **gruppo** rispetto alla composizione:
+
+\[
+\mathrm{E}(n) := \{ f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Proprietà:**
+
+- **Chiusura:** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Inverso:** \( f^{-1}(x) = A^\top (x - b) \)
+- **Identità:** \( \text{id}(x) = x \)
+
+---
+
+## Riepilogo
+
+- Isometrie lineari $\leftrightarrow$ matrici ortogonali  
+- Isometrie affini $\leftrightarrow$ matrice ortogonale + traslazione  
+- Tutte le isometrie in \( \mathbb{R}^n \) sono affini  
+- L’insieme delle isometrie forma il **gruppo euclideo** \( \mathrm{E}(n) \)

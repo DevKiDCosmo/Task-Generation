@@ -1,0 +1,21 @@
+{
+    "id": "No.n28",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "2",
+    "time": 300,
+    "nam_score": 4.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "노터의 정리 - 대칭성과 보존 법칙 사이의 연결",
+        "content": "content/n28-kr.exr",
+        "solution": "solution/n28-kr.exr"
+    },
+    "difficulty": 6,
+    "tags": [],
+    "UUID": "323b41c3-b47d-45d4-810a-17cc9851bb5e",
+    "GUID": "6fcf1f6b-337f-4649-9bf2-85f7aaa9ea6e"
+}

@@ -1,0 +1,121 @@
+# Transformações Isométricas em \( \mathbb{R}^n \)
+
+Uma função \( f: \mathbb{R}^n \to \mathbb{R}^n \) é chamada de **isometria** se preservar distâncias, ou seja:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{para todos } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Transformações Lineares Isométricas
+
+**Teorema:**  
+Se \( T: \mathbb{R}^n \to \mathbb{R}^n \) é linear e isométrica, então \( T(x) = Ax \), onde \( A \in \mathbb{R}^{n \times n} \) é uma **matriz ortogonal**:
+
+\[
+A^\top A = I
+\]
+
+**Demonstração:**
+
+Como \( T \) é linear, temos:
+
+\[
+\vert T(x) \vert^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+Para preservar norma:
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Transformações Afinas Isométricas
+
+**Teorema:**  
+Toda transformação afim isométrica é da forma:
+
+\[
+f(x) = Ax + b \quad (A \in \mathrm{O}(n),\ b \in \mathbb{R}^n)
+\]
+
+**Explicação:**
+
+Para \( f(x) = Ax + b \):
+
+\[
+\vert f(x) - f(y) \vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Preservação do Produto Interno
+
+**Teorema:**  
+Se \( f \) é linear e isométrica, então:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+**Demonstração:**
+
+Se \( f(x) = Ax \):
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v
+\]
+
+---
+
+## 4. Existem Isometrias que Não São Afins?
+
+**Resposta:**  
+Não. Em \( \mathbb{R}^n \), **toda isometria é afim**.  
+Ou seja, **não existem isometrias que não sejam afins**.
+
+---
+
+## Caracterização das Isometrias
+
+**Teorema:**  
+Toda isometria \( f: \mathbb{R}^n \to \mathbb{R}^n \) é da forma:
+
+\[
+f(x) = Ax + b \quad \text{com } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Resumo da demonstração:**
+
+1. Defina \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. \( \vert g(x) - g(y) \vert = \vert x - y \vert \Rightarrow g \) é linear e isométrica
+3. \( g(x) = Ax \), com \( A \) ortogonal
+4. Portanto, \( f(x) = Ax + f(0) \)
+
+---
+
+## O Grupo Euclidiano \( \mathrm{E}(n) \)
+
+O conjunto de todas as isometrias forma um **grupo sob composição**:
+
+\[
+\mathrm{E}(n) := \{ f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Propriedades:**
+
+- **Fecho:** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Inverso:** \( f^{-1}(x) = A^\top(x - b) \)
+- **Identidade:** \( \text{id}(x) = x \)
+
+---
+
+## Resumo
+
+- Isometrias lineares $\leftrightarrow$ matrizes ortogonais  
+- Isometrias afins $\leftrightarrow$ ortogonais + translações  
+- Toda isometria em \( \mathbb{R}^n \) é afim  
+- O conjunto das isometrias forma o **grupo euclidiano** \( \mathrm{E}(n) \)

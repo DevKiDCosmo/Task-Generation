@@ -27,6 +27,7 @@ class Generation():
         self.exam = False
         self.version = "1.5.4-MDLS Release - with Markdown Compilation 1.3.2-Prerelease and LaTeX Syntax Checking 0.5Beta"
         self.sorted = True
+        self.subundertitle = ""
 
     async def phrase_exercise(self, information: typing.Dict, exerciseForProcessing: list[tuple[str, str, str, str]]) -> \
             list[
@@ -225,11 +226,27 @@ class Generation():
         else:
             return f"Unknown Translation for key: {translation_key}"
 
+    def finalLastObjectUpdate(self, lines: list[str]) -> list[str]:
+        """
+        Update old LaTeX commands to new ones.
+        """
+        output = []
+        for line in lines:
+            #line = re.sub(r'\\oldsection{(.+?)}', r'\\section{\1}', line)
+            line = line.replace('\\|', "\\vert")
+            line = line.replace("->", "\\rightarrow")          # Better code style
+            line = line.replace("<-", "\\leftarrow")           # Better code style
+            output.append(line)
+        return output
+
     def markdown_to_latex(self, lines: list[str]) -> list[str]:
         output = []
         stack: list[tuple[str, int]] = []
         previous_indent = 0
         last_was_list = False
+
+        for i in range(len(lines)):
+            lines[i] = lines[i].replace("---", "")
 
         def close_to_indent(target_indent: int):
             while stack and stack[-1][1] >= target_indent:
@@ -464,6 +481,7 @@ class Generation():
             f.write(author_info)
 
             content_lines = self.markdown_to_latex(content_lines)
+            content_lines = self.finalLastObjectUpdate(content_lines)
             for line in content_lines:
                 f.write(line + "\n")
 
@@ -482,6 +500,7 @@ class Generation():
             f.write(author_info)
 
             content_lines = self.markdown_to_latex(content_lines)
+            content_lines = self.finalLastObjectUpdate(content_lines)
             for line in content_lines:
                 f.write(line + "\n")
 
@@ -495,6 +514,7 @@ class Generation():
                     solution_file: list[str] = content_.read().splitlines()
 
                     solution_lines = self.markdown_to_latex(solution_file)
+                    solution_lines = self.finalLastObjectUpdate(solution_lines)
                     for line in solution_lines:
                         f.write(line + "\n")
             except FileNotFoundError:
@@ -663,6 +683,10 @@ class Generation():
         data = data.replace("__PAPER_DOI__", information[7])
         data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
         data = data.replace("__PAPER_MATNAM_VERSION__", self.version)
+        if self.subundertitle is not None:
+            data = data.replace("__PAPER_UNDERTITLE__", f"\\BPNsubundertitle{{{self.subundertitle}}}")
+        else:
+            data = data.replace("__PAPER_UNDERTITLE__", "")
 
         data = self.exercise_and_times(data, exerciseForProcessing, paths_exercise)
 
@@ -706,6 +730,10 @@ class Generation():
         data = data.replace("__PAPER_DOI__", information[7])
         data = data.replace("__PAPER_TAGS__", ' '.join(information[8]))
         data = data.replace("__PAPER_MATNAM_VERSION__", self.version)
+        if self.subundertitle is not None:
+            data = data.replace("__PAPER_UNDERTITLE__", f"\\BPNsubundertitle{{{self.subundertitle}}}")
+        else:
+            data = data.replace("__PAPER_UNDERTITLE__", "")
 
         previous_language = None
         import_list = ""
@@ -983,7 +1011,12 @@ class Generation():
         doi = data["doi"]
         tags = data["tags"]
         exercise = data["exercise"]
-        self.sorted = data["sorted"] if data["sorted"] is not None else True
+        self.sorted = data.get("sorted", True)
+
+        if "subundertitle" in data:
+            self.subundertitle = data["subundertitle"]
+            log.write("Subundertitle: " + self.subundertitle)
+
 
         exercise_for_processing: list[tuple[str, str, str, str]] = []
 

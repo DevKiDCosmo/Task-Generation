@@ -1,0 +1,47 @@
+Una función \( f : \mathbb{R}^n \to \mathbb{R}^n \) se llama **isometría** si preserva la distancia euclidiana entre dos puntos, es decir, para todos \( x, y \in \mathbb{R}^n \) se cumple:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert
+\]
+
+### Ejercicios:
+
+1. **Isometrías lineales:**
+
+    Demuestre que toda isometría lineal \( T: \mathbb{R}^n \to \mathbb{R}^n \) puede ser representada por una matriz ortogonal \( A \in \mathbb{R}^{n \times n} \), es decir, \( T(x) = Ax \) con \( A^\top A = I \).
+
+2. **Isometrías afines:**
+
+    Determine todas las isometrías \( f: \mathbb{R}^n \to \mathbb{R}^n \) que además sean **afines**, es decir, de la forma \( f(x) = Ax + b \), donde \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), y \( A \) es ortogonal.
+
+3. **Preservación del producto escalar:**
+
+    Sean \( u, v \in \mathbb{R}^n \) dos vectores unitarios. Demuestre que toda isometría \( f \), que además es lineal, preserva el producto escalar, es decir:
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle
+    \]
+
+4. **Construcción de una isometría especial:**
+
+    Dé un ejemplo de una isometría no lineal \( f: \mathbb{R}^n \to \mathbb{R}^n \) que no sea una aplicación lineal pero que conserve las distancias. Demuestre que \( f \) es realmente una isometría.
+
+---
+
+### Tarea de demostración: Caracterización de las aplicaciones isométricas en \( \mathbb{R}^n \)
+
+Sea \( f: \mathbb{R}^n \to \mathbb{R}^n \) una isometría, es decir:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert  \quad \text{para todos } x, y \in \mathbb{R}^n.
+\]
+
+### A demostrar:
+
+Toda isometría \( f \) en \( \mathbb{R}^n \) es o bien una aplicación afín de la forma \( f(x) = Ax + b \), donde \( A \) es una matriz ortogonal, o se puede representar como una composición de tales aplicaciones con reflexiones o traslaciones.
+
+---
+
+### Profundización opcional:
+
+Demuestre que el conjunto de todas las isometrías en \( \mathbb{R}^n \) forma un grupo bajo la composición – llamado el **grupo euclidiano \( \mathrm{E}(n) \)**.

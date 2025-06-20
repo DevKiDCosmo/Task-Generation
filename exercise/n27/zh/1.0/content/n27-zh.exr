@@ -1,0 +1,63 @@
+一个映射 \( f : \mathbb{R}^n \to \mathbb{R}^n \) 称为**等距映射**（Isometry），如果它保持两个点之间的欧几里得距离不变，即对所有 \( x, y \in \mathbb{R}^n \) 有：
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert
+\]
+
+### 练习：
+
+1. **线性等距映射：**
+
+    证明每个线性等距映射 \( T: \mathbb{R}^n \to \mathbb{R}^n \) 可以用一个正交矩阵 \( A \in \mathbb{R}^{n \times n} \) 表示，即：
+
+    \[
+    T(x) = Ax \quad \text{且} \quad A^\top A = I.
+    \]
+
+2. **仿射等距映射：**
+
+    确定所有同时是仿射映射的等距映射 \( f: \mathbb{R}^n \to \mathbb{R}^n \)，即形如：
+
+    \[
+    f(x) = Ax + b,
+    \]
+
+    其中 \( A \in \mathbb{R}^{n \times n} \) 为正交矩阵，\( b \in \mathbb{R}^n \)。
+
+3. **内积保持性：**
+
+    设 \( u, v \in \mathbb{R}^n \) 是单位向量。证明任一线性等距映射 \( f \) 保持内积不变，即：
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle.
+    \]
+
+4. **构造特殊等距映射：**
+
+    给出一个非线性等距映射 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 的例子，该映射不是线性的，但仍保持距离。证明 \( f \) 确实是等距映射。
+
+---
+
+### 证明题：\( \mathbb{R}^n \) 中等距映射的特征
+
+设 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 是一个等距映射，即满足：
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert, \quad \forall x, y \in \mathbb{R}^n.
+\]
+
+### 需证明：
+
+所有的等距映射 \( f \) 要么是仿射映射，形如
+
+\[
+f(x) = Ax + b,
+\]
+
+其中 \( A \) 是正交矩阵；或者可以通过这些仿射映射与反射、平移的组合来表示。
+
+---
+
+### 拓展（可选）：
+
+证明所有等距映射构成一个在合成下的群，称为**欧几里得群 \( \mathrm{E}(n) \)**。

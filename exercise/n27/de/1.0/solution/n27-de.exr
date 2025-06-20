@@ -1,0 +1,140 @@
+# Isometrien in \( \mathbb{R}^n \)
+
+Eine Abbildung \( f: \mathbb{R}^n \to \mathbb{R}^n \) heißt **Isometrie**, wenn sie den euklidischen Abstand erhält, d.h.:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert  \quad \text{für alle } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Lineare Isometrien
+
+**Behauptung:**
+Eine lineare Isometrie \( T: \mathbb{R}^n \to \mathbb{R}^n \) lässt sich als \( T(x) = Ax \) mit einer **orthogonalen Matrix** \( A \in \mathbb{R}^{n \times n} \) darstellen, d.h. \( A^\top A = I \).
+
+**Beweis:**
+
+Da \( T \) linear ist, genügt es zu zeigen, dass \( \vert Tx\vert  = \vert x\vert  \) für alle \( x \in \mathbb{R}^n \) gilt.
+
+\[
+\vert T(x)\vert ^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+\[
+\text{Da } \vert T(x)\vert  = \vert x\vert  \text{ für alle } x, \text{ folgt: } x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Affine Isometrien
+
+**Behauptung:**
+Eine affine Isometrie ist von der Form
+
+\[
+f(x) = Ax + b \quad \text{mit } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Begründung:**
+
+Ist \( f \) affin, also \( f(x) = Ax + b \), dann gilt:
+
+\[
+\vert f(x) - f(y)\vert  = \vert Ax + b - (Ay + b)\vert  = \vert A(x - y)\vert  = \vert x - y\vert
+\]
+
+\[
+\Rightarrow \vert A(x - y)\vert  = \vert x - y\vert  \quad \forall x, y \in \mathbb{R}^n \Rightarrow \vert Ax\vert  = \vert x\vert  \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Erhaltung des Skalarprodukts
+
+**Behauptung:**
+Ist \( f \) linear und isometrisch, so gilt:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+für alle Einheitsvektoren \( u, v \in \mathbb{R}^n \).
+
+**Beweis:**
+
+Da \( f \) linear und isometrisch ist, existiert eine orthogonale Matrix \( A \), sodass \( f(x) = Ax \). Dann:
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top Iv = \langle u, v \rangle
+\]
+
+---
+
+## 4. Nichtlineare Isometrien?
+
+**Frage:** Gibt es nichtlineare Isometrien?
+
+**Antwort:**
+Im euklidischen Raum \( \mathbb{R}^n \) ist jede Isometrie automatisch **affin**, d.h. es gibt **keine nichtaffinen (nichtlinearen) Isometrien**, die den Abstand erhalten.
+
+---
+
+## Charakterisierung aller Isometrien
+
+**Satz:**
+Jede Isometrie \( f: \mathbb{R}^n \to \mathbb{R}^n \), die den euklidischen Abstand erhält, ist eine affine Abbildung der Form:
+
+\[
+f(x) = Ax + b
+\]
+
+mit \( A \in \mathrm{O}(n) \) und \( b \in \mathbb{R}^n \).
+
+**Beweisidee:**
+
+1. Sei \( f \) Isometrie. Dann gilt:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert
+\]
+
+2. Definiere \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \). Dann gilt:
+
+\[
+\vert g(x) - g(y)\vert  = \vert x - y\vert  \Rightarrow \vert g(x)\vert  = \vert x\vert
+\]
+
+3. Man zeigt: solche Abbildungen sind linear, also \( g(x) = Ax \) mit \( A \in \mathrm{O}(n) \)
+
+4. Daraus folgt:
+
+\[
+f(x) = Ax + f(0)
+\]
+
+---
+
+## Die Euklidische Gruppe \( \mathrm{E}(n) \)
+
+Die Menge aller Isometrien in \( \mathbb{R}^n \) bildet eine Gruppe unter Komposition:
+
+\[
+\mathrm{E}(n) := \{f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Eigenschaften:**
+
+- **Abgeschlossenheit:** \( f \circ g(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Inverses:** \( f^{-1}(x) = A^\top(x - b) \)
+- **Neutral:** \( \text{id}(x) = x \)
+
+---
+
+## Zusammenfassung
+
+- Lineare Isometrien $\leftrightarrow$ orthogonale Matrizen
+- Affine Isometrien $\leftrightarrow$ orthogonale Matrizen + Translation
+- Jede Isometrie in \( \mathbb{R}^n \) ist affin
+- Die Menge aller Isometrien bildet die **euklidische Gruppe** \( \mathrm{E}(n) \)
+

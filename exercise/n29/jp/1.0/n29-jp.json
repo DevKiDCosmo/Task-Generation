@@ -1,0 +1,22 @@
+{
+    "id": "No.n29",
+    "category": [
+        1,
+        2,
+        5
+    ],
+    "cid": "3",
+    "time": 600,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "ノイターの定理（場の理論）",
+        "content": "content/n29-jp.exr",
+        "solution": "solution/n29-jp.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "523ec459-116b-4793-9769-9dadc029ac55",
+    "GUID": "e491baeb-5cab-4deb-b1d4-64d5b7eabbd1"
+}

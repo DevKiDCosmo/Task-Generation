@@ -126,8 +126,20 @@ def prepare_metadata_items(data):
                     title = titles.get(str(pid), ["Default Title"] * len(languages))[i] if str(
                         pid) in titles else "Default Title"
                     time = times[pid % len(times)] if times else 60
+
+                    # Remove any alphabetic characters from exercise_id
+                    exercise_id_cleaned = ''.join(filter(str.isdigit, exercise_id_))
+
+                    # Entferne alle numerischen Zeichen aus exercise_id
+                    type_of_exercise = ''.join(filter(str.isalpha, exercise_id_)).lower()
+
+                    if type_of_exercise == "n":
+                        type_of_exercise = "No."
+                    elif type_of_exercise == "m":
+                        type_of_exercise = "Masterclass Exercise."
+
                     metadata = {
-                        "id": f"No.{exercise_id_}",
+                        "id": f"{type_of_exercise} {exercise_id_cleaned}",
                         "category": categories,
                         "cid": cid,
                         "time": time,
@@ -146,8 +158,20 @@ def prepare_metadata_items(data):
             else:
                 title = titles.get("1", ["Default Title"] * len(languages))[i] if "1" in titles else "Default Title"
                 time = times[0] if times else 60
+
+                # Remove any alphabetic characters from exercise_id
+                exercise_id_cleaned = ''.join(filter(str.isdigit, exercise_id))
+
+                # Entferne alle numerischen Zeichen aus exercise_id
+                type_of_exercise = ''.join(filter(str.isalpha, exercise_id)).lower()
+
+                if type_of_exercise == "n":
+                    type_of_exercise = "No."
+                elif type_of_exercise == "m":
+                    type_of_exercise = "Masterclass Exercise."
+
                 metadata = {
-                    "id": f"No.{exercise_id}",
+                    "id": f"{type_of_exercise} {exercise_id_cleaned}",
                     "category": categories,
                     "cid": cid,
                     "time": time,

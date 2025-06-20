@@ -1,5 +1,7 @@
 *.ttc
 *.ttf
-./generated
-./template/fonts
+generated/
+!generated/**/*.pdf
+template/fonts/
 *.log
+*.tex

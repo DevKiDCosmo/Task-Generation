@@ -1,0 +1,21 @@
+{
+    "id": "No.n27",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Isométries dans l'espace euclidien de dimension n et tâche de preuve : caractérisation des applications isométriques dans \\( \\mathbb{R}^n \\)",
+        "content": "content/n27-fr.exr",
+        "solution": "solution/n27-fr.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "c9de10ae-0ca7-42e9-ab22-dcb21defed24",
+    "GUID": "918081ce-1154-48cd-8b4c-9f6b81fd8296"
+}

@@ -1,0 +1,47 @@
+Une application \( f : \mathbb{R}^n \to \mathbb{R}^n \) est une **isométrie** si elle préserve la distance euclidienne entre deux points, c’est-à-dire que pour tous \( x, y \in \mathbb{R}^n \) :
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert
+\]
+
+### Exercices :
+
+1. **Isométries linéaires :**
+
+    Montrez que toute isométrie linéaire \( T: \mathbb{R}^n \to \mathbb{R}^n \) peut être représentée par une matrice orthogonale \( A \in \mathbb{R}^{n \times n} \), c’est-à-dire que \( T(x) = Ax \) avec \( A^\top A = I \).
+
+2. **Isométries affines :**
+
+    Déterminez toutes les isométries \( f: \mathbb{R}^n \to \mathbb{R}^n \) qui sont également **affines**, c’est-à-dire de la forme \( f(x) = Ax + b \), où \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \) et \( A \) est orthogonale.
+
+3. **Préservation du produit scalaire :**
+
+    Soient \( u, v \in \mathbb{R}^n \) deux vecteurs unitaires. Montrez que toute isométrie \( f \) linéaire préserve le produit scalaire, c’est-à-dire :
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle
+    \]
+
+4. **Construction d’une isométrie particulière :**
+
+    Donnez un exemple d’isométrie \( f: \mathbb{R}^n \to \mathbb{R}^n \) non linéaire, qui ne soit pas une application linéaire mais qui préserve néanmoins les distances. Montrez que \( f \) est bien une isométrie.
+
+---
+
+### Exercice de preuve : caractérisation des isométries dans \( \mathbb{R}^n \)
+
+Soit \( f: \mathbb{R}^n \to \mathbb{R}^n \) une isométrie, c’est-à-dire :
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{pour tous } x, y \in \mathbb{R}^n.
+\]
+
+### À montrer :
+
+Toute isométrie \( f \) dans \( \mathbb{R}^n \) est soit une application affine de la forme \( f(x) = Ax + b \), où \( A \) est une matrice orthogonale, soit elle peut se décomposer en composition d’applications de ce type avec des réflexions ou des translations.
+
+---
+
+### Remarque pour approfondissement (optionnel) :
+
+Montrez que l’ensemble de toutes les isométries dans \( \mathbb{R}^n \) forme un groupe pour la composition — appelé **groupe euclidien \( \mathrm{E}(n) \)**.

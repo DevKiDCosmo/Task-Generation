@@ -1,8 +1,8 @@
 A curved space $\mathbb{R}^3$ with a smooth metric $g_{ij}(x, y, z)$, in which a wave function $\Psi(x, y, z, t)$ propagates. This satisfies the generalized wave equation:
 
-$$
+\[
 \square_g \Psi = \frac{1}{|g|} \partial_i \left( |g| g^{ij} \partial_j \Psi \right) - \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} = 0
-$$
+\]
 
 with $|g| = \det(g_{ij})$ and $c$ as the local propagation velocity.
 

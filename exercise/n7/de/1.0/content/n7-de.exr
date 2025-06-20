@@ -1,8 +1,8 @@
 Ein gekrümmter Raum $\mathbb{R}^3$ mit einer glatten Metrik $g_{ij}(x, y, z)$, in dem sich eine Wellenfunktion $\Psi(x, y, z, t)$ ausbreitet. Diese erfüllt die verallgemeinerte Wellengleichung:
 
-$$
+\[
 \square_g \Psi = \frac{1}{|g|} \partial_i \left( |g| g^{ij} \partial_j \Psi \right) - \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} = 0
-$$
+\]
 
 mit $|g| = \det(g_{ij})$ und $c$ als lokale Ausbreitungsgeschwindigkeit.
 

@@ -1,0 +1,44 @@
+Eine Abbildung \( f : \mathbb{R}^n \to \mathbb{R}^n \) heißt **Isometrie**, wenn sie den euklidischen Abstand zwischen zwei Punkten erhält, also für alle \( x, y \in \mathbb{R}^n \) gilt:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert 
+\]
+
+### Aufgaben:
+
+1. **Lineare Isometrien:**
+
+    Zeigen Sie, dass jede lineare Isometrie \( T: \mathbb{R}^n \to \mathbb{R}^n \) durch eine orthogonale Matrix \( A \in \mathbb{R}^{n \times n} \) dargestellt werden kann, d. h. es gilt \( T(x) = Ax \) mit \( A^\top A = I \).
+
+2. **Affine Isometrien:**
+
+    Bestimmen Sie alle Isometrien \( f: \mathbb{R}^n \to \mathbb{R}^n \), die zusätzlich **affin** sind, also von der Form \( f(x) = Ax + b \), wobei \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), und \( A \) orthogonal ist.
+
+3. **Erhaltung des Skalarprodukts:**
+
+    Seien \( u, v \in \mathbb{R}^n \) zwei Einheitsvektoren. Zeigen Sie, dass jede Isometrie \( f \), die zusätzlich linear ist, das Skalarprodukt erhält, d. h.:
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle
+    \]
+
+4. **Konstruktion einer speziellen Isometrie:**
+
+    Geben Sie ein Beispiel einer nichtlinearen Isometrie \( f: \mathbb{R}^n \to \mathbb{R}^n \) an, die keine lineare Abbildung ist, aber dennoch Distanzen erhält. Zeigen Sie, dass \( f \) tatsächlich isometrisch ist.
+
+
+### Beweisaufgabe: Charakterisierung isometrischer Abbildungen in \( \mathbb{R}^n \)
+
+Sei \( f: \mathbb{R}^n \to \mathbb{R}^n \) eine Isometrie, d. h.:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert  \quad \text{für alle } x, y \in \mathbb{R}^n.
+\]
+
+### Zu zeigen:
+
+Jede Isometrie \( f \) in \( \mathbb{R}^n \) ist entweder eine affine Abbildung der Form \( f(x) = Ax + b \), wobei \( A \) eine orthogonale Matrix ist, oder sie lässt sich durch Verkettung solcher mit Spiegelungen oder Translationen darstellen.
+
+### Hinweis zur Vertiefung (optional):
+
+Zeigen Sie, dass die Menge aller Isometrien in \( \mathbb{R}^n \) eine Gruppe unter Komposition bildet – die sogenannte **euklidische Gruppe \( \mathrm{E}(n) \)**.

@@ -1,0 +1,67 @@
+{
+  "Base": "./exercise",
+  "ID": "m2",
+  "Version": [
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0"
+  ],
+  "Category": [
+    1,
+    2,
+    5
+  ],
+  "CID": "3",
+  "Time": [
+    600
+  ],
+  "NAM-Score": 7,
+  "Author": "Original",
+  "Date": "20.06.2025",
+  "Difficulty": 8,
+  "Tags": [],
+  "Partial": false,
+  "Language": [
+    "de",
+    "fr",
+    "en",
+    "jp",
+    "kr",
+    "zh",
+    "es",
+    "vn",
+    "ru",
+    "it",
+    "pt",
+    "fn",
+    "se"
+  ],
+  "Title": {
+    "1": [
+      "Noether-Theorem für Feldtheorien",
+      "Théorème de Noether pour les théories des champs",
+      "Noether's Theorem for Field Theories",
+      "ノイターの定理（場の理論）",
+      "노터의 정리 (장 이론)",
+      "诺特定理（场论）",
+      "Teorema de Noether para teorías de campos",
+      "Định lý Noether cho lý thuyết trường",
+      "Теорема Нётер для полевых теорий",
+      "Teorema di Noether per le teorie dei campi",
+      "Teorema de Noether para teorias de campos",
+      "Noetherin lause kenttäteorioille",
+      "Noethers sats för fältteorier"
+    ]
+  }
+}

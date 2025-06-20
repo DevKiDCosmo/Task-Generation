@@ -1,0 +1,21 @@
+{
+    "id": "No.n27",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Изометрии в n-мерном евклидовой пространстве и задача доказательства: характеристика изометрических отображений в \\( \\mathbb{R}^n \\)",
+        "content": "content/n27-ru.exr",
+        "solution": "solution/n27-ru.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "c9de10ae-0ca7-42e9-ab22-dcb21defed24",
+    "GUID": "691bfe4c-f46c-41fb-8aed-02b560223d0a"
+}

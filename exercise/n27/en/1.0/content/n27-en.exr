@@ -1,0 +1,47 @@
+A mapping \( f : \mathbb{R}^n \to \mathbb{R}^n \) is called an **isometry** if it preserves the Euclidean distance between two points, i.e., for all \( x, y \in \mathbb{R}^n \), we have:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert
+\]
+
+### Exercises:
+
+1. **Linear Isometries:**
+
+    Show that every linear isometry \( T: \mathbb{R}^n \to \mathbb{R}^n \) can be represented by an orthogonal matrix \( A \in \mathbb{R}^{n \times n} \), i.e., \( T(x) = Ax \) with \( A^\top A = I \).
+
+2. **Affine Isometries:**
+
+    Determine all isometries \( f: \mathbb{R}^n \to \mathbb{R}^n \) that are additionally **affine**, i.e., of the form \( f(x) = Ax + b \), where \( A \in \mathbb{R}^{n \times n} \), \( b \in \mathbb{R}^n \), and \( A \) is orthogonal.
+
+3. **Preservation of the Inner Product:**
+
+    Let \( u, v \in \mathbb{R}^n \) be two unit vectors. Show that every isometry \( f \), which is also linear, preserves the inner product, i.e.:
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle
+    \]
+
+4. **Construction of a Special Isometry:**
+
+    Provide an example of a nonlinear isometry \( f: \mathbb{R}^n \to \mathbb{R}^n \) which is not a linear map but still preserves distances. Show that \( f \) is indeed an isometry.
+
+---
+
+### Proof Task: Characterization of Isometric Mappings in \( \mathbb{R}^n \)
+
+Let \( f: \mathbb{R}^n \to \mathbb{R}^n \) be an isometry, i.e.:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert  \quad \text{for all } x, y \in \mathbb{R}^n.
+\]
+
+### To show:
+
+Every isometry \( f \) in \( \mathbb{R}^n \) is either an affine mapping of the form \( f(x) = Ax + b \), where \( A \) is an orthogonal matrix, or it can be represented as a composition of such mappings with reflections or translations.
+
+---
+
+### Optional deeper insight:
+
+Show that the set of all isometries in \( \mathbb{R}^n \) forms a group under composition – called the **Euclidean group \( \mathrm{E}(n) \)**.

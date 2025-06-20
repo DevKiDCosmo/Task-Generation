@@ -1,0 +1,22 @@
+{
+    "id": "No.n29",
+    "category": [
+        1,
+        2,
+        5
+    ],
+    "cid": "3",
+    "time": 600,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Noether-Theorem für Feldtheorien",
+        "content": "content/n29-de.exr",
+        "solution": "solution/n29-de.exr"
+    },
+    "difficulty": 7,
+    "tags": [],
+    "UUID": "523ec459-116b-4793-9769-9dadc029ac55",
+    "GUID": "3135cf1e-39a5-4d24-b27d-1de87e0aba24"
+}

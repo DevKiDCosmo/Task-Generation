@@ -1,0 +1,21 @@
+{
+    "id": "No.n28",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "2",
+    "time": 300,
+    "nam_score": 4.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "Teorema di Noether - connessione tra simmetria e legge di conservazione",
+        "content": "content/n28-it.exr",
+        "solution": "solution/n28-it.exr"
+    },
+    "difficulty": 6,
+    "tags": [],
+    "UUID": "323b41c3-b47d-45d4-810a-17cc9851bb5e",
+    "GUID": "e9fcbe83-6983-4e57-96cc-d306f4d93891"
+}

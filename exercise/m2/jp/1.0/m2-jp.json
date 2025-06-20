@@ -1,0 +1,22 @@
+{
+    "id": "Masterclass Exercise. 2",
+    "category": [
+        1,
+        2,
+        5
+    ],
+    "cid": "3",
+    "time": 600,
+    "nam_score": 7.0,
+    "author": "Original",
+    "date": "20.06.2025",
+    "main": {
+        "title": "ノイターの定理（場の理論）",
+        "content": "content/m2-jp.exr",
+        "solution": "solution/m2-jp.exr"
+    },
+    "difficulty": 8,
+    "tags": [],
+    "UUID": "347a471e-316e-44df-a4e2-87c614f1bcee",
+    "GUID": "46fec66f-0202-4199-b188-c3ad7a23239b"
+}

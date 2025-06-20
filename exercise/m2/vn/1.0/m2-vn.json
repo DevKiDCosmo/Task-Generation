@@ -1,0 +1,22 @@
+{
+    "id": "Masterclass Exercise. 2",
+    "category": [
+        1,
+        2,
+        5
+    ],
+    "cid": "3",
+    "time": 600,
+    "nam_score": 7.0,
+    "author": "Original",
+    "date": "20.06.2025",
+    "main": {
+        "title": "Định lý Noether cho lý thuyết trường",
+        "content": "content/m2-vn.exr",
+        "solution": "solution/m2-vn.exr"
+    },
+    "difficulty": 8,
+    "tags": [],
+    "UUID": "347a471e-316e-44df-a4e2-87c614f1bcee",
+    "GUID": "d22d7495-0bc2-43b4-ade0-5ef548c2e97a"
+}

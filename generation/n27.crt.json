@@ -1,0 +1,66 @@
+{
+  "Base": "./exercise",
+  "ID": "n27",
+  "Version": [
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0"
+  ],
+  "Category": [
+    1,
+    5
+  ],
+  "CID": "1",
+  "Time": [
+    120
+  ],
+  "NAM-Score": 3,
+  "Author": "Original",
+  "Date": "07.06.2025",
+  "Difficulty": 4,
+  "Tags": [],
+  "Partial": false,
+  "Language": [
+    "de",
+    "fr",
+    "en",
+    "jp",
+    "kr",
+    "zh",
+    "es",
+    "vn",
+    "ru",
+    "it",
+    "pt",
+    "fn",
+    "se"
+  ],
+  "Title": {
+    "1": [
+      "Isometrien im \\( n \\)-dimensionalen euklidischen Raum und Beweisaufgabe: Charakterisierung isometrischer Abbildungen in \\( \\mathbb{R}^n \\)",
+      "Isométries dans l'espace euclidien de dimension n et tâche de preuve : caractérisation des applications isométriques dans \\( \\mathbb{R}^n \\)",
+      "Isometries in the \\( n \\)-dimensional Euclidean space and proof task: Characterization of isometric mappings in \\( \\mathbb{R}^n \\)",
+      "n次元ユークリッド空間の等距離写像と証明課題：\\( \\mathbb{R}^n \\)における等距離写像の特徴付け",
+      "n차원 유클리드 공간의 등거리 사상과 증명 과제: \\( \\mathbb{R}^n \\)에서의 등거리 사상의 특성화",
+      "n维欧几里得空间的等距映射和证明任务：\\( \\mathbb{R}^n \\)中的等距映射特征化",
+      "Isometrías en el espacio euclidiano de dimensión n y tarea de prueba: caracterización de las aplicaciones isométricas en \\( \\mathbb{R}^n \\)",
+      "Phép đẳng cự trong không gian Euclidean \\( n \\) chiều và nhiệm vụ chứng minh: Đặc tính của phép ánh xạ đẳng cự trong \\( \\mathbb{R}^n \\)",
+      "Изометрии в n-мерном евклидовой пространстве и задача доказательства: характеристика изометрических отображений в \\( \\mathbb{R}^n \\)",
+      "Isometrie nello spazio euclideo di dimensione n e compito di prova: caratterizzazione delle applicazioni isometriche in \\( \\mathbb{R}^n \\)",
+      "Isometria no espaço euclidiano de dimensão n e tarefa de prova: caracterização das aplicações isométricas em \\( \\mathbb{R}^n \\)",
+      "Isometria i n-dimensjonalt euklidsk rom og bevisoppgave: Karakterisering av isometriske avbildninger i \\( \\mathbb{R}^n \\)",
+      "Isometrier i \\(n \\)-dimensionellt euklidiskt rum och bevisuppgift: Karakterisering av isometriska avbildningar i \\( \\mathbb{R}^n \\)"
+    ]
+  }
+}

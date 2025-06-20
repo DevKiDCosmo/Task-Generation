@@ -1,0 +1,117 @@
+# \( \mathbb{R}^n \) 공간에서의 등거리 변환(Isometry)
+
+함수 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 가 **등거리 변환**이라는 것은, 다음 조건을 만족하는 것을 의미합니다:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{모든 } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. 선형 등거리 변환
+
+**명제:**  
+선형 함수 \( T: \mathbb{R}^n \to \mathbb{R}^n \) 이 등거리라면, \( T(x) = Ax \) 의 형태로 나타낼 수 있으며, 행렬 \( A \in \mathbb{R}^{n \times n} \) 는 **직교 행렬**입니다. 즉, \( A^\top A = I \) 입니다.
+
+**증명:**
+
+\( T \) 가 선형이므로, \( \vert T(x) \vert = \vert x \vert \) 을 증명하면 충분합니다:
+
+\[
+\vert T(x) \vert^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+이때,
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. 아핀 등거리 변환
+
+**명제:**  
+모든 아핀 등거리 변환은 다음과 같은 형태입니다:
+
+\[
+f(x) = Ax + b \quad (A \in \mathrm{O}(n),\ b \in \mathbb{R}^n)
+\]
+
+**설명:**
+
+아핀 함수 \( f(x) = Ax + b \) 에 대해서,
+
+\[
+\vert f(x) - f(y) \vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. 내적 보존
+
+**명제:**  
+선형 등거리 함수 \( f \) 에 대해서는 다음이 성립합니다:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+**증명:**
+
+\( f(x) = Ax \) 라고 하면,
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v = \langle u, v \rangle
+\]
+
+---
+
+## 4. 아핀이 아닌 등거리 변환이 존재하는가?
+
+**정답:**  
+유클리드 공간 \( \mathbb{R}^n \) 에서 **모든 등거리 변환은 아핀 변환**입니다.  
+즉, **아핀이 아닌 등거리 변환은 존재하지 않습니다.**
+
+---
+
+## 등거리 변환의 특성
+
+**정리:**  
+임의의 등거리 변환 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 은 다음의 형태를 가집니다:
+
+\[
+f(x) = Ax + b \quad (A \in \mathrm{O}(n),\ b \in \mathbb{R}^n)
+\]
+
+**증명 요약:**
+
+1. \( g(x) := f(x) - f(0) \) 라고 정의 (\( g(0) = 0 \))
+2. \( \vert g(x) - g(y) \vert = \vert x - y \vert \Rightarrow \vert g(x) \vert = \vert x \vert \)
+3. \( g \) 는 선형, 따라서 \( g(x) = Ax \)
+4. 따라서 \( f(x) = Ax + f(0) \)
+
+---
+
+## 유클리드 군 \( \mathrm{E}(n) \)
+
+모든 등거리 변환들의 집합은 **합성 연산에 대해 군을 이룹니다**:
+
+\[
+\mathrm{E}(n) := \{ f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**특징:**
+
+- **폐쇄성:** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **역원:** \( f^{-1}(x) = A^\top(x - b) \)
+- **항등원:** \( \text{id}(x) = x \)
+
+---
+
+## 요약
+
+- 선형 등거리 변환 $\leftrightarrow$ 직교 행렬
+- 아핀 등거리 변환 $\leftrightarrow$ 직교 행렬 + 평행 이동
+- \( \mathbb{R}^n \) 의 모든 등거리 변환은 아핀 변환  
+- 모든 등거리 변환의 집합은 **유클리드 군** \( \mathrm{E}(n) \) 을 이룸

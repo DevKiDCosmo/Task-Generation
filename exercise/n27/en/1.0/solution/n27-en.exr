@@ -1,0 +1,139 @@
+# Isometries in \( \mathbb{R}^n \)
+
+A mapping \( f: \mathbb{R}^n \to \mathbb{R}^n \) is called an **isometry** if it preserves the Euclidean distance, i.e.:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert  \quad \text{for all } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. Linear Isometries
+
+**Claim:**
+A linear isometry \( T: \mathbb{R}^n \to \mathbb{R}^n \) can be written as \( T(x) = Ax \) for an **orthogonal matrix** \( A \in \mathbb{R}^{n \times n} \), i.e., \( A^\top A = I \).
+
+**Proof:**
+
+Since \( T \) is linear, it suffices to show that \( \vert Tx\vert  = \vert x\vert  \) for all \( x \in \mathbb{R}^n \).
+
+\[
+\vert T(x)\vert ^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+\[
+\text{Since } \vert T(x)\vert  = \vert x\vert  \text{ for all } x, \text{ it follows: } x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. Affine Isometries
+
+**Claim:**
+An affine isometry is of the form
+
+\[
+f(x) = Ax + b \quad \text{with } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**Justification:**
+
+If \( f \) is affine, i.e., \( f(x) = Ax + b \), then:
+
+\[
+\vert f(x) - f(y)\vert  = \vert Ax + b - (Ay + b)\vert  = \vert A(x - y)\vert  = \vert x - y\vert
+\]
+
+\[
+\Rightarrow \vert A(x - y)\vert  = \vert x - y\vert  \quad \forall x, y \in \mathbb{R}^n \Rightarrow \vert Ax\vert  = \vert x\vert  \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. Preservation of the Scalar Product
+
+**Claim:**
+If \( f \) is linear and isometric, then:
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+for all unit vectors \( u, v \in \mathbb{R}^n \).
+
+**Proof:**
+
+Since \( f \) is linear and isometric, there exists an orthogonal matrix \( A \) such that \( f(x) = Ax \). Then:
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top Iv = \langle u, v \rangle
+\]
+
+---
+
+## 4. Nonlinear Isometries?
+
+**Question:** Do nonlinear isometries exist?
+
+**Answer:**
+In Euclidean space \( \mathbb{R}^n \), every isometry is automatically **affine**, i.e., there are **no non-affine (nonlinear) isometries** that preserve distances.
+
+---
+
+## Characterization of All Isometries
+
+**Theorem:**
+Every isometry \( f: \mathbb{R}^n \to \mathbb{R}^n \) that preserves the Euclidean distance is an affine map of the form:
+
+\[
+f(x) = Ax + b
+\]
+
+with \( A \in \mathrm{O}(n) \) and \( b \in \mathbb{R}^n \).
+
+**Proof Idea:**
+
+1. Let \( f \) be an isometry. Then:
+
+\[
+\vert f(x) - f(y)\vert  = \vert x - y\vert
+\]
+
+2. Define \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \). Then:
+
+\[
+\vert g(x) - g(y)\vert  = \vert x - y\vert  \Rightarrow \vert g(x)\vert  = \vert x\vert
+\]
+
+3. One shows: such maps are linear, i.e., \( g(x) = Ax \) with \( A \in \mathrm{O}(n) \)
+
+4. It follows that:
+
+\[
+f(x) = Ax + f(0)
+\]
+
+---
+
+## The Euclidean Group \( \mathrm{E}(n) \)
+
+The set of all isometries in \( \mathbb{R}^n \) forms a group under composition:
+
+\[
+\mathrm{E}(n) := \{f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**Properties:**
+
+- **Closure:** \( f \circ g(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **Inverse:** \( f^{-1}(x) = A^\top(x - b) \)
+- **Identity:** \( \text{id}(x) = x \)
+
+---
+
+## Summary
+
+- Linear isometries $\leftrightarrow$ orthogonal matrices
+- Affine isometries $\leftrightarrow$ orthogonal matrices + translation
+- Every isometry in \( \mathbb{R}^n \) is affine
+- The set of all isometries forms the **Euclidean group** \( \mathrm{E}(n) \)

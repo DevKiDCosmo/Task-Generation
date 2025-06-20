@@ -1,0 +1,116 @@
+# \( \mathbb{R}^n \) における等距変換（アイソメトリー）
+
+写像 \( f: \mathbb{R}^n \to \mathbb{R}^n \) が**等距変換**であるとは、ユークリッド距離を保つこと、すなわち次を満たすことである：
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{任意の } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. 線形等距変換
+
+**命題：**  
+線形写像 \( T: \mathbb{R}^n \to \mathbb{R}^n \) が等距であるとき、\( T(x) = Ax \) の形で表され、行列 \( A \in \mathbb{R}^{n \times n} \) は**直交行列**である。つまり \( A^\top A = I \)。
+
+**証明：**
+
+\( T \) は線形なので、\( \vert T(x) \vert = \vert x \vert \) を示せばよい：
+
+\[
+\vert T(x) \vert^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+このとき：
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. アフィン等距変換
+
+**命題：**  
+アフィンな等距変換は、次の形で表される：
+
+\[
+f(x) = Ax + b \quad (A \in \mathrm{O}(n),\ b \in \mathbb{R}^n)
+\]
+
+**理由：**
+
+アフィン写像 \( f(x) = Ax + b \) に対して：
+
+\[
+\vert f(x) - f(y) \vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. 内積の保存
+
+**命題：**  
+線形かつ等距な写像 \( f \) に対して：
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+**証明：**
+
+\( f(x) = Ax \) とおくと：
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v = \langle u, v \rangle
+\]
+
+---
+
+## 4. アフィンでない等距変換は存在するか？
+
+**答え：**  
+ユークリッド空間 \( \mathbb{R}^n \) において、**すべての等距変換はアフィン写像**である。したがって、**アフィンでない等距変換は存在しない。**
+
+---
+
+## 等距変換の特徴付け
+
+**定理：**  
+任意の等距変換 \( f: \mathbb{R}^n \to \mathbb{R}^n \) は、次の形で表される：
+
+\[
+f(x) = Ax + b \quad (A \in \mathrm{O}(n),\ b \in \mathbb{R}^n)
+\]
+
+**証明の概要：**
+
+1. \( g(x) := f(x) - f(0) \) とおく（これで \( g(0) = 0 \)）
+2. \( \vert g(x) - g(y) \vert = \vert x - y \vert \Rightarrow \vert g(x) \vert = \vert x \vert \)
+3. \( g \) は線形、よって \( g(x) = Ax \)（\( A \) は直交行列）
+4. よって \( f(x) = Ax + f(0) \)
+
+---
+
+## ユークリッド群 \( \mathrm{E}(n) \)
+
+すべての等距変換の集合は、**関数合成に関して群をなす**：
+
+\[
+\mathrm{E}(n) := \{ f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**性質：**
+
+- **閉性：** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **逆元：** \( f^{-1}(x) = A^\top(x - b) \)
+- **単位元：** \( \text{id}(x) = x \)
+
+---
+
+## まとめ
+
+- 線形等距変換 $\leftrightarrow$ 直交行列  
+- アフィン等距変換 $\leftrightarrow$ 直交行列 + 並進ベクトル  
+- \( \mathbb{R}^n \) におけるすべての等距変換はアフィン写像  
+- 等距変換全体の集合は **ユークリッド群** \( \mathrm{E}(n) \) を構成する

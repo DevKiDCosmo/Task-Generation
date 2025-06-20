@@ -1,0 +1,63 @@
+Uma aplicação \( f : \mathbb{R}^n \to \mathbb{R}^n \) é chamada de **isometria** se preserva a distância euclidiana entre dois pontos, ou seja, para todos \( x, y \in \mathbb{R}^n \) vale:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert
+\]
+
+### Exercícios:
+
+1. **Isometrias lineares:**
+
+    Mostre que toda isometria linear \( T: \mathbb{R}^n \to \mathbb{R}^n \) pode ser representada por uma matriz ortogonal \( A \in \mathbb{R}^{n \times n} \), ou seja:
+
+    \[
+    T(x) = Ax \quad \text{com} \quad A^\top A = I
+    \]
+
+2. **Isometrias afins:**
+
+    Determine todas as isometrias \( f: \mathbb{R}^n \to \mathbb{R}^n \) que são **afins**, isto é, da forma
+
+    \[
+    f(x) = Ax + b
+    \]
+
+    onde \( A \in \mathbb{R}^{n \times n} \) é ortogonal e \( b \in \mathbb{R}^n \).
+
+3. **Preservação do produto escalar:**
+
+    Sejam \( u, v \in \mathbb{R}^n \) dois vetores unitários. Mostre que toda isometria \( f \), que é linear, preserva o produto escalar:
+
+    \[
+    \langle f(u), f(v) \rangle = \langle u, v \rangle
+    \]
+
+4. **Construção de uma isometria especial:**
+
+    Dê um exemplo de uma isometria \( f: \mathbb{R}^n \to \mathbb{R}^n \) que não é linear, mas que ainda preserva as distâncias. Mostre que \( f \) é realmente uma isometria.
+
+---
+
+### Problema de prova: caracterização das isometrias em \( \mathbb{R}^n \)
+
+Seja \( f: \mathbb{R}^n \to \mathbb{R}^n \) uma isometria, ou seja:
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{para todos } x, y \in \mathbb{R}^n.
+\]
+
+### A provar:
+
+Toda isometria \( f \) em \( \mathbb{R}^n \) é uma transformação afim da forma
+
+\[
+f(x) = Ax + b,
+\]
+
+onde \( A \) é uma matriz ortogonal, ou pode ser representada como composição dessas com reflexões ou translações.
+
+---
+
+### Observação para aprofundamento (opcional):
+
+Mostre que o conjunto de todas as isometrias em \( \mathbb{R}^n \) forma um grupo sob a operação de composição, chamado de **grupo euclidiano \( \mathrm{E}(n) \)**.

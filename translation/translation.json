@@ -16,7 +16,8 @@
     "nl": "Geschatte tijd om op te lossen",
     "sv": "Uppskattad tid för att lösa",
     "fn": "Ratkaisuun arvioitu aika",
-    "vn": "Thời gian ước tính để giải quyết"
+    "vn": "Thời gian ước tính để giải quyết",
+    "se": "Beräknad tid för att lösa"
   },
   "difficulty": {
     "de": "Schwierigkeitsgrad",
@@ -36,7 +37,8 @@
     "sv": "Svårighetsgrad",
     "fn": "Vaikeustaso",
     "da": "Sværhedsgrad",
-    "vn": "Độ khó"
+    "vn": "Độ khó",
+    "se": "Svårighetsgrad"
   },
   "tags": {
     "de": "Stichwörter",
@@ -56,7 +58,8 @@
     "sv": "Taggar",
     "fn": "Tunnisteet",
     "da": "Tags",
-    "vn": "Thẻ"
+    "vn": "Thẻ",
+    "se": "Taggar"
   },
   "on_date": {
     "de": "am",
@@ -76,7 +79,8 @@
     "sv": "den",
     "fn": "päivämäärä",
     "da": "den",
-    "vn": "vào"
+    "vn": "vào",
+    "se": "den"
   },
   "author": {
     "de": "Autor",
@@ -96,7 +100,8 @@
     "sv": "Författare",
     "fn": "Kirjoittaja",
     "da": "Forfatter",
-    "vn": "Tác giả"
+    "vn": "Tác giả",
+    "se": "Författare"
   },
   "original": {
     "de": "Ein Original",
@@ -116,7 +121,8 @@
     "sv": "Ett Original",
     "fn": "Alkuperäinen",
     "da": "Et Original",
-    "vn": "Một Bản Gốc"
+    "vn": "Một Bản Gốc",
+    "se": "Ett Original"
   },
   "category": {
     "de": "Kategorie",
@@ -136,7 +142,8 @@
     "sv": "Kategori",
     "fn": "Kategoria",
     "da": "Kategori",
-    "vn": "Danh mục"
+    "vn": "Danh mục",
+    "se": "Kategori"
   },
   "language_instruction": {
     "de": "Einführung und Informationen",
@@ -156,7 +163,8 @@
     "sv": "Introduktion och Information",
     "fn": "Johdanto ja Tiedot",
     "da": "Introduktion og Information",
-    "vn": "Giới thiệu và Thông tin"
+    "vn": "Giới thiệu và Thông tin",
+    "se": "Introduktion och Information"
   },
   "solution": {
     "de": "Lösung",
@@ -177,7 +185,8 @@
     "fn": "Ratkaisu",
     "da": "Løsning",
     "fi": "Ratkaisu",
-    "vn": "Giải pháp"
+    "vn": "Giải pháp",
+    "se": "Lösning"
   },
   "language": {
     "de": "Deutsch",
@@ -201,7 +210,9 @@
     "cs": "Čeština",
     "hu": "Magyar",
     "ro": "Română",
-    "vi": "Tiếng Việt"
+    "vi": "Tiếng Việt",
+    "th": "ภาษาไทย",
+    "se": "Svenska"
   },
   "h": {
     "de": "Stunden",
@@ -221,7 +232,8 @@
     "sv": "Timmar",
     "fn": "Tunnit",
     "da": "Timer",
-    "vn": "Giờ"
+    "vn": "Giờ",
+    "se": "Timmar"
   },
   "m": {
     "de": "Minuten",
@@ -241,6 +253,7 @@
     "sv": "Minuter",
     "fn": "Minuutit",
     "da": "Minutter",
-    "vn": "Phút"
+    "vn": "Phút",
+    "se": "Minuter"
   }
 }

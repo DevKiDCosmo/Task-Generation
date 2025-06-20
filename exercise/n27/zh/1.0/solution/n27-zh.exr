@@ -1,0 +1,121 @@
+# \( \mathbb{R}^n \) 中的等距映射
+
+一个映射 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 称为**等距映射**（isometry），如果它保持距离不变：
+
+\[
+\vert f(x) - f(y) \vert = \vert x - y \vert \quad \text{对所有 } x, y \in \mathbb{R}^n
+\]
+
+---
+
+## 1. 线性等距映射
+
+**定理：**  
+若 \( T: \mathbb{R}^n \to \mathbb{R}^n \) 是线性等距映射，则有：
+
+\[
+T(x) = Ax \quad \text{其中 } A^\top A = I
+\]
+
+**证明：**
+
+由于 \( T \) 为线性映射：
+
+\[
+\vert T(x) \vert^2 = \langle T(x), T(x) \rangle = \langle Ax, Ax \rangle = x^\top A^\top A x
+\]
+
+又因 \( \vert T(x) \vert^2 = \vert x \vert^2 \)，得：
+
+\[
+x^\top A^\top A x = x^\top x \Rightarrow A^\top A = I
+\]
+
+---
+
+## 2. 仿射等距映射
+
+**定理：**  
+任何仿射等距映射均可表示为：
+
+\[
+f(x) = Ax + b \quad \text{其中 } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**说明：**
+
+因为：
+
+\[
+\vert f(x) - f(y) \vert = \vert A(x - y) \vert = \vert x - y \vert \Rightarrow A^\top A = I
+\]
+
+---
+
+## 3. 内积保持性
+
+**定理：**  
+若 \( f \) 是线性等距映射，则有：
+
+\[
+\langle f(u), f(v) \rangle = \langle u, v \rangle
+\]
+
+**证明：**
+
+设 \( f(x) = Ax \)：
+
+\[
+\langle f(u), f(v) \rangle = \langle Au, Av \rangle = u^\top A^\top A v = u^\top v
+\]
+
+---
+
+## 4. 存在非仿射等距映射吗？
+
+**回答：**  
+在 \( \mathbb{R}^n \) 中，**所有等距映射都是仿射的**。  
+不存在不是仿射的等距映射。
+
+---
+
+## 等距映射的结构
+
+**定理：**  
+任何等距映射 \( f: \mathbb{R}^n \to \mathbb{R}^n \) 可写为：
+
+\[
+f(x) = Ax + b \quad \text{其中 } A \in \mathrm{O}(n),\ b \in \mathbb{R}^n
+\]
+
+**简要证明：**
+
+1. 定义 \( g(x) := f(x) - f(0) \Rightarrow g(0) = 0 \)
+2. 因为 \( \vert g(x) - g(y) \vert = \vert x - y \vert \)，得 \( g \) 为线性等距映射
+3. 推出 \( g(x) = Ax \)，且 \( A^\top A = I \)
+4. 故 \( f(x) = Ax + f(0) \)
+
+---
+
+## 欧氏群 \( \mathrm{E}(n) \)
+
+所有等距映射在函数复合下构成一个**群**，称为欧氏群：
+
+\[
+\mathrm{E}(n) := \{ f: \mathbb{R}^n \to \mathbb{R}^n \mid f(x) = Ax + b,\ A \in \mathrm{O}(n),\ b \in \mathbb{R}^n \}
+\]
+
+**性质：**
+
+- **封闭性：** \( (f \circ g)(x) = A_1 A_2 x + A_1 b_2 + b_1 \)
+- **逆元存在：** \( f^{-1}(x) = A^\top(x - b) \)
+- **单位元：** \( \text{id}(x) = x \)
+
+---
+
+## 总结
+
+- 线性等距映射 $\leftrightarrow$ 正交矩阵  
+- 仿射等距映射 $\leftrightarrow$ 正交矩阵 + 平移  
+- 所有等距映射在 \( \mathbb{R}^n \) 中都是仿射  
+- 等距映射构成**欧氏群** \( \mathrm{E}(n) \)

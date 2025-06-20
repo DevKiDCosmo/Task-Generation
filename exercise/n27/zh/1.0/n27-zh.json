@@ -1,0 +1,21 @@
+{
+    "id": "No.n27",
+    "category": [
+        1,
+        5
+    ],
+    "cid": "1",
+    "time": 60,
+    "nam_score": 3.0,
+    "author": "Original",
+    "date": "07.06.2025",
+    "main": {
+        "title": "n维欧几里得空间的等距映射和证明任务：\\( \\mathbb{R}^n \\)中的等距映射特征化",
+        "content": "content/n27-zh.exr",
+        "solution": "solution/n27-zh.exr"
+    },
+    "difficulty": 4,
+    "tags": [],
+    "UUID": "c9de10ae-0ca7-42e9-ab22-dcb21defed24",
+    "GUID": "5405a62a-d519-498e-a671-279666c67dda"
+}
