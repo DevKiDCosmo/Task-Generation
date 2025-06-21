@@ -1,1 +1,109 @@
-Content for m2 in se
+---
+
+## Uppgiftsbeskrivning
+
+Den här uppgiften undersöker användning av funktionell analys och variationskalkyl inom optimal styrning, med nära kopplingar till kvantmekanik och teknik.
+
+---
+
+## Problemformulering
+
+Betrakta ett endimensionellt system där tillståndsfunktionen **\( y(x,t) \)** (t.ex. temperatur- eller koncentrationsfördelning) beror på den rumsliga variabeln \( x \in [0,L] \) och tiden \( t \in [0,T] \). Systemets utveckling ges av diffusions-ekvationen med styrning \( u(t) \):
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0,L) \times (0,T]
+\]
+
+**Randvillkor**:
+
+- \( y(0,t) = 0 \)
+- \( y(L,t) = 0 \), för \( t \in (0,T] \)
+
+**Begynnelsevillkor**:
+
+- \( y(x,0) = y_0(x) \), för \( x \in [0,L] \)
+
+Här är \( \alpha > 0 \) diffusionskoefficienten, och \( g(x) \) är styrningens rumsliga beroende. Antag att \( y_0(x) \) och \( g(x) \) har tillräcklig regularitet.
+
+Målet är att hitta en optimal styrning \( u(t) \) ur mängden tillåtna styrningar
+
+\[
+U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\max} \right\}
+\]
+
+---
+
+## Kvalitetsfunktional
+
+Funktionalen som ska minimeras är:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{önskad}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+där \( y_{\text{önskad}}(x) \) är måltillståndet och \( \lambda > 0 \) är en regulariseringsparameter som straffar styrningens intensitet.
+
+---
+
+## Del 1: Grundläggande systemanalys
+
+### 1. Existens och entydighet av lösning
+
+Förklara varför ekvationen med givna begynnelse- och randvillkor har en entydig lösning för en given styrning \( u(t) \). Använd lämpliga funktionella rum (t.ex. Sobolev-rum \( H_0^1(\Omega) \), \( L^2(0,T;H_0^1(\Omega)) \)) för att definiera svag lösning.
+
+### 2. Påverkan av styrningsbegränsningar
+
+Diskutera hur begränsningarna
+
+\[
+0 \leq u(t) \leq U_{\max}
+\]
+
+påverkar problemets egenskaper. Jämför med fallet utan begränsningar, och betona rollen av konvexitet och skillnader i optimalitetsvillkor.
+
+---
+
+## Del 2: Variationsanalys och optimalitetsvillkor
+
+### 1. Gâteaux-derivata
+
+Antag att \( J(u) \) är differentierbar. Hitta Gâteaux-derivatan av funktionalen \( J \) i punkten \( u_0(t) \) i riktningen \( h(t) \).
+
+Tips: Betrakta tillståndet \( y_h(x,t) \) som svarar mot styrningen \( u_0(t) + \varepsilon h(t) \), och beräkna
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Roll för det adjungerade systemet
+
+Förklara rollen för det adjungerade systemet i optimal styrning av PDE. Hur underlättar det beräkning av gradienten av funktionalen och hur relaterar det till tillståndets känslighet?
+
+### 3. Nödvändiga första ordningens optimalitetsvillkor
+
+Beskriv det nödvändiga första ordningens villkoret för optimal styrning \( u^*(t) \) inom mängden \( U_{\text{ad}} \). Förklara den geometriska tolkningen av gradienten och mängden tillåtna styrningar, och varför detta garanterar ett minimum.
+
+---
+
+## Del 3: Avancerad analys och gränsbeteende
+
+### 1. Påverkan av regulariseringsparametern
+
+Diskutera hur regulariseringsledet
+
+\[
+\frac{\lambda}{2} \int_0^T u(t)^2 dt
+\]
+
+påverkar den optimala styrningen \( u^*_\lambda(t) \) och det slutliga tillståndet \( y(x,T) \) när \( \lambda \to 0^+ \). Undersök konvergens och egenskaper hos familjen \( \{ u^*_\lambda \} \).
+
+### 2. Strikt ε-δ-bevis
+
+Anta att den optimala styrningen \( u^*(t) \) är känd. Bevisa med ett ε-δ-argument att slutliga tillståndet \( y(x,T) \) kan approximeras till \( y_{\text{önskad}}(x) \) med godtycklig noggrannhet \( \varepsilon > 0 \).
+
+Definiera tydligt:
+
+- \( \varepsilon \): tillåten felmarginal mellan tillståndet och målet,
+- \( \delta \): tillåten avvikelse i styrningen eller parametrar (t.ex. \( \|u - u^*\| < \delta \)).
+
+---

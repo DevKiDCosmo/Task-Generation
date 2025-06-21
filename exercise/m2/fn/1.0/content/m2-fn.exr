@@ -1,1 +1,101 @@
-Content for m2 in fn
+---
+
+## Tehtävänanto
+
+Tämä harjoitus tutkii edistyneiden analyysin ja variaatiolaskennan käsitteiden soveltamista optimaalisen ohjauksen ongelmaan, jolla on läheisiä yhteyksiä kvanttikontrolliin ja eri insinööritieteiden aloihin.
+
+---
+
+## Ongelman määrittely
+
+Tarkastellaan yksidimensionaalista järjestelmää, jonka "tila" **\( y(x,t) \)** (esim. lämpötilajakauma tai diffusoivan aineen konsentraatio) kehittyy avaruusalueella \( \Omega = [0,L] \) ja ajassa \( t \in [0,T] \). Kehitys kuvataan yksinkertaistetulla, diffuusion kaltaisella osittaisdifferentiaaliyhtälöllä, jossa on aika-riippuvainen ohjausparametri \( u(t) \):
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0,L) \times (0,T]
+\]
+
+**Reunaehdot**:
+
+- \( y(0,t) = 0 \)
+- \( y(L,t) = 0 \), kun \( t \in (0,T] \)
+
+ja **alkuehto**:
+
+- \( y(x,0) = y_0(x) \), kun \( x \in [0,L] \)
+
+Tässä \( \alpha > 0 \) on diffuusiovakio ja \( g(x) \) on annettu avaruudellinen funktio, joka kuvaa ohjauksen vaikutusta. Oletetaan, että \( y_0(x) \) ja \( g(x) \) ovat riittävän sileitä.
+
+Tavoitteena on löytää **optimaalinen ohjaus** \( u(t) \in U_{\text{ad}} \), missä
+
+\[
+U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\text{max}} \right\}
+\]
+
+on sallitun ohjauksen joukko.
+
+**Kustannusfunktionaali** määritellään seuraavasti:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+missä \( y_{\text{desired}}(x) \) on haluttu tavoitetila ajan \( T \) kohdalla ja \( \lambda > 0 \) on regularisointiparametri, joka rankaisee ohjauksen voimakkuutta.
+
+---
+
+## Osa 1: Järjestelmän perusanalyysi
+
+### 1. Tilatilan olemassaolo ja yksikäsitteisyys
+
+Selitä käsitteellisesti, miksi annetulla ohjauksella \( u(t) \) sekä alku- ja reunaehdoilla odotetaan olevan yksikäsitteinen ratkaisu \( y(x,t) \) PDE:lle. Viittaa tarvittaviin ominaisuuksiin (esim. rajoittuneisuus, jatkuvuus) ja sopiviin funktionaalitiloihin heikkojen ratkaisujen osalta (esim. Sobolev-tilat \( H_0^1(\Omega) \), \( L^2(0,T; H_0^1(\Omega)) \) jne.).
+
+### 2. Ohjausrajoitusten vaikutus
+
+Pohdi, miten rajoitus \( 0 \leq u(t) \leq U_{\text{max}} \) määrittelyjoukossa \( U_{\text{ad}} \) vaikuttaa optimointiongelman luonteeseen. Vertaa rajoittamattomaan tapaukseen \( U_{\text{ad}} = C([0,T]) \). Selitä konveksisuuden rooli ja miten rajatut optimointiongelmat johtavat erilaisiin optimaalisuusehtoihin.
+
+---
+
+## Osa 2: Variaatioanalyysi ja optimiehdot
+
+### 1. Gateaux-derivaatta kustannusfunktion osalta
+
+Olettaen, että \( J(u) \) on derivoituva, johda **Gateaux-derivaatta** kohdassa \( u_0(t) \) suunnassa \( h(t) \).
+
+**Vihje:** Olkoon \( y_h(x,t) \) PDE:n ratkaisu, kun ohjaus on \( u_0(t) + \varepsilon h(t) \). Laske:
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Adjoitujärjestelmän rooli
+
+Selitä yleisesti adjoidun tilan funktio PDE-optimointiongelmissa. Kuinka se yksinkertaistaa kustannusfunktion gradientin laskentaa? Kuvaa sen suhdetta tilan \( y(x,t) \) herkkyyteen kustannusta kohtaan.
+
+### 3. Ensimmäinen välttämätön optimiehto
+
+Muodosta **ensimmäinen välttämätön optimiehto** (variaatioepäyhtälö), joka optimaalisen ohjauksen \( u^*(t) \in U_{\text{ad}} \) tulee täyttää. Pohdi, miten se yhdistää \( J(u) \) gradientin joukon \( U_{\text{ad}} \) geometriaan ja varmistaa, että \( u^*(t) \) on minimi.
+
+---
+
+## Osa 3: Edistyneet aiheet ja raja-käyttäytyminen
+
+### 1. Optimaaliohjauksen käyttäytyminen regularisoinnin suhteen
+
+Pohdi, mitä tapahtuu regularisointitermille
+
+\[
+\frac{\lambda}{2} \int_0^T u(t)^2 dt
+\]
+
+kun \( \lambda \to 0^+ \). Millaisia vaikutuksia tällä on optimaaliohjaukselle \( u_\lambda^*(t) \) ja lopputilalle \( y(x,T) \)? Muodostaako jono \( \{u_\lambda^*\} \) **Cauchy-jonon** tai osoittaako se **tasaisen konvergenssin** iteratiivisessa lähestymistavassa?
+
+### 2. Epsilon-delta-rigorisuus
+
+Oletetaan, että \( u^*(t) \) tunnetaan optimaalisena. Selitä, kuinka **epsilon-delta-rajojen määritelmä** sovelletaan näyttämään, että \( y(x,T) \) on \( L^2 \)-normissa "mielivaltaisen lähellä" \( y_{\text{desired}}(x) \).
+
+Selitä seuraavien roolit:
+
+- \( \varepsilon \): kuinka lähellä lopputilan halutaan olevan tavoitetilaa
+- \( \delta \): kuinka lähellä ohjausta tai lopetusaikaa (esim. \( \| u - u^* \| < \delta \)) tulee olla, jotta tuo läheisyys varmistuu
+
+---

@@ -1,0 +1,52 @@
+{
+  "title": "The Namische /ˈnamɪʃə/ Collection",
+  "date": "21.06.2025",
+  "paper": "M1.0",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "2398-9323",
+  "doi": "10.5281/zenodo.15710070",
+  "description": "This masterclass-level exercise explores optimal control theory in the context of partial differential equations (PDEs) modeling diffusion processes. The system under study is a one-dimensional diffusion-like PDE where the evolution of a state variable \\(y(x,t)\\) is influenced by a time-dependent control function \\(u(t)\\). Students are tasked with analyzing existence and uniqueness, variational principles, and first-order optimality conditions using tools from functional analysis, Sobolev spaces, and adjoint-based optimization. The goal is to minimize a cost functional balancing the accuracy of the final state with the magnitude of the control effort. This exercise has direct applications in fields such as engineering, quantum control, and applied mathematics, offering insight into the rigorous mathematical treatment of control problems governed by PDEs.",
+  "exercise": {
+    "m2": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh",
+        "es",
+        "vn",
+        "ru",
+        "it",
+        "pt",
+        "fn",
+        "se"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
+  },
+  "tags": [
+    "problem solving"
+  ],
+  "UUID": "...",
+  "GUID": "..."
+}

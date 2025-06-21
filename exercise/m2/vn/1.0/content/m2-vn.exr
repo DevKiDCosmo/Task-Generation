@@ -1,1 +1,109 @@
-Content for m2 in vn
+---
+
+## Mô tả bài toán
+
+Bài toán này nghiên cứu việc sử dụng giải tích hàm và phép biến phân trong điều khiển tối ưu, với mối liên hệ chặt chẽ đến cơ học lượng tử và kỹ thuật.
+
+---
+
+## Đặt bài toán
+
+Xét một hệ thống một chiều, trong đó hàm trạng thái \( y(x,t) \) (ví dụ: phân bố nhiệt độ hoặc nồng độ) phụ thuộc vào biến không gian \( x \in [0,L] \) và thời gian \( t \in [0,T] \). Sự phát triển của hệ được mô tả bởi phương trình khuếch tán có điều khiển \( u(t) \):
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0,L) \times (0,T]
+\]
+
+**Điều kiện biên**:
+
+- \( y(0,t) = 0 \)
+- \( y(L,t) = 0 \), với \( t \in (0,T] \)
+
+**Điều kiện đầu**:
+
+- \( y(x,0) = y_0(x) \), với \( x \in [0,L] \)
+
+Với \( \alpha > 0 \) là hệ số khuếch tán và \( g(x) \) là hàm mô tả cách điều khiển tác động theo không gian. Giả sử \( y_0(x) \) và \( g(x) \) có tính trơn phù hợp.
+
+Mục tiêu là tìm điều khiển tối ưu \( u(t) \) thuộc tập điều khiển khả thi:
+
+\[
+U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\max} \right\}
+\]
+
+---
+
+## Hàm mục tiêu
+
+Hàm mục tiêu cần được tối thiểu hóa là:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{mục tiêu}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+Với \( y_{\text{mục tiêu}}(x) \) là trạng thái đích mong muốn, và \( \lambda > 0 \) là hệ số điều chuẩn nhằm trừng phạt điều khiển quá mạnh.
+
+---
+
+## Phần 1: Phân tích hệ cơ bản
+
+### 1. Tồn tại và duy nhất nghiệm
+
+Giải thích vì sao phương trình với điều kiện đầu và biên đã cho có nghiệm duy nhất cho mỗi điều khiển \( u(t) \). Sử dụng các không gian hàm thích hợp (ví dụ: Sobolev \( H_0^1(\Omega) \), \( L^2(0,T;H_0^1(\Omega)) \)) để định nghĩa nghiệm yếu.
+
+### 2. Ảnh hưởng của ràng buộc điều khiển
+
+Thảo luận ảnh hưởng của ràng buộc:
+
+\[
+0 \leq u(t) \leq U_{\max}
+\]
+
+đối với tính chất của bài toán. So sánh với trường hợp không có ràng buộc và nêu bật vai trò của tính lồi trong bài toán.
+
+---
+
+## Phần 2: Phân tích biến phân và điều kiện tối ưu
+
+### 1. Đạo hàm Gâteaux
+
+Giả sử \( J(u) \) khả vi. Hãy tính đạo hàm Gâteaux của \( J \) tại \( u_0(t) \) theo hướng \( h(t) \).
+
+Gợi ý: Xét trạng thái \( y_h(x,t) \) ứng với điều khiển \( u_0(t) + \varepsilon h(t) \), và tính:
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Vai trò hệ phụ hợp (adjoint system)
+
+Giải thích vai trò của hệ phụ hợp trong điều khiển tối ưu PDE. Hệ này giúp tính đạo hàm của hàm mục tiêu như thế nào và có liên hệ gì đến độ nhạy trạng thái?
+
+### 3. Điều kiện tối ưu bậc nhất
+
+Mô tả điều kiện cần bậc nhất để \( u^*(t) \) là điều khiển tối ưu thuộc tập \( U_{\text{ad}} \). Giải thích trực giác hình học về đạo hàm và tập điều khiển khả thi, tại sao điều kiện này đảm bảo tối ưu cục bộ.
+
+---
+
+## Phần 3: Phân tích nâng cao và giới hạn
+
+### 1. Ảnh hưởng của tham số điều chuẩn
+
+Thảo luận ảnh hưởng của thành phần điều chuẩn:
+
+\[
+\frac{\lambda}{2} \int_0^T u(t)^2 dt
+\]
+
+đến điều khiển tối ưu \( u^*_\lambda(t) \) và trạng thái cuối \( y(x,T) \) khi \( \lambda \to 0^+ \). Xem xét hội tụ và tính chất của dãy điều khiển \( \{ u^*_\lambda \} \).
+
+### 2. Chứng minh ε-δ chặt chẽ
+
+Giả sử điều khiển tối ưu \( u^*(t) \) đã biết. Hãy chứng minh bằng lập luận ε-δ rằng trạng thái cuối \( y(x,T) \) có thể tiệm cận \( y_{\text{mục tiêu}}(x) \) với sai số tuỳ ý \( \varepsilon > 0 \).
+
+Cần xác định rõ:
+
+- \( \varepsilon \): mức sai số cho phép giữa trạng thái và mục tiêu
+- \( \delta \): sai lệch điều khiển hoặc tham số cho phép (ví dụ: \( \|u - u^*\| < \delta \))
+
+---

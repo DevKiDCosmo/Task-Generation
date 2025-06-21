@@ -1,1 +1,101 @@
-Content for m2 in es
+---
+
+## Enunciado
+
+Este ejercicio estudia la aplicación de conceptos avanzados de análisis y cálculo variacional a un problema de control óptimo, con fuertes paralelismos en áreas como el control cuántico y diversas ingenierías.
+
+---
+
+## Planteamiento del problema
+
+Considera un sistema unidimensional cuyo "estado" **\( y(x,t) \)** (por ejemplo, distribución de temperatura o concentración de una sustancia difusiva) evoluciona en un dominio espacial \( \Omega = [0, L] \) y en el tiempo \( t \in [0, T] \). La evolución está gobernada por una ecuación en derivadas parciales (EDP) simplificada, de tipo difusión, con un parámetro de control dependiente del tiempo \( u(t) \):
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0,L) \times (0,T]
+\]
+
+con condiciones de frontera:
+
+- \( y(0,t) = 0 \)
+- \( y(L,t) = 0 \), para \( t \in (0,T] \)
+
+y condición inicial:
+
+- \( y(x,0) = y_0(x) \), para \( x \in [0,L] \)
+
+Aquí \( \alpha > 0 \) es la constante de difusión y \( g(x) \) es una función espacial dada que modela la influencia del control. Se asume que \( y_0(x) \) y \( g(x) \) son suficientemente suaves.
+
+El objetivo es encontrar un **control óptimo** \( u(t) \in U_{\text{ad}} \), donde
+
+\[
+U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\text{max}} \right\}
+\]
+
+es el conjunto de controles admisibles.
+
+La **función costo** está definida como:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+donde \( y_{\text{desired}}(x) \) es el estado objetivo deseado al tiempo \( T \) y \( \lambda > 0 \) es un parámetro de regularización que penaliza el esfuerzo de control.
+
+---
+
+## Parte 1: Análisis básico del sistema
+
+### 1. Existencia y unicidad del estado
+
+Explica conceptualmente por qué para un control dado \( u(t) \) junto con las condiciones iniciales y de frontera se espera una solución única \( y(x,t) \) de la EDP. Considera las propiedades necesarias (como acotación, continuidad) y los espacios funcionales adecuados para soluciones débiles (por ejemplo, espacios de Sobolev \( H_0^1(\Omega) \), \( L^2(0,T; H_0^1(\Omega)) \), etc.).
+
+### 2. Influencia de las restricciones de control
+
+Discute cómo la restricción \( 0 \leq u(t) \leq U_{\text{max}} \) en el dominio \( U_{\text{ad}} \) afecta la naturaleza del problema de optimización. Compara con el caso sin restricciones \( U_{\text{ad}} = C([0,T]) \). Explica el papel de la convexidad y cómo los problemas con restricciones conducen a condiciones óptimas diferentes.
+
+---
+
+## Parte 2: Análisis variacional y condiciones de optimalidad
+
+### 1. Diferenciabilidad de Gateaux de la función costo
+
+Asumiendo que \( J(u) \) es diferenciable, deriva la **derivada de Gateaux** de \( J(u) \) en el punto \( u_0(t) \) en la dirección \( h(t) \).
+
+**Nota:** Sea \( y_h(x,t) \) la solución de la EDP con el control \( u_0(t) + \varepsilon h(t) \). Calcula:
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Rol del sistema adjunto
+
+Explica de forma general la función del estado adjunto en problemas de optimización con EDP. ¿Cómo simplifica el cálculo del gradiente de la función costo? Describe su relación con la "sensibilidad" del costo respecto al estado \( y(x,t) \).
+
+### 3. Primera condición necesaria de optimalidad
+
+Formula la **primera condición necesaria de optimalidad** (desigualdad variacional) que debe cumplir un control óptimo \( u^*(t) \in U_{\text{ad}} \). Discute cómo vincula el gradiente de \( J(u) \) con la geometría de \( U_{\text{ad}} \) para asegurar que \( u^*(t) \) sea un mínimo.
+
+---
+
+## Parte 3: Temas avanzados y comportamiento límite
+
+### 1. Comportamiento del control óptimo ante la regularización
+
+Discute qué ocurre con el término de regularización
+
+\[
+\frac{\lambda}{2} \int_0^T u(t)^2 dt
+\]
+
+cuando \( \lambda \to 0^+ \). ¿Qué efectos tiene esto sobre el comportamiento del control óptimo \( u_\lambda^*(t) \) y el estado final \( y(x,T) \)? ¿Forma la sucesión \( \{u_\lambda^*\} \) una **sucesión de Cauchy** o presenta **convergencia uniforme** bajo un procedimiento iterativo?
+
+### 2. Rigor con definición épsilon-delta
+
+Suponiendo que \( u^*(t) \) es óptimo y conocido, explica cómo se usa la **definición épsilon-delta de límite** para demostrar rigurosamente que \( y(x,T) \) está arbitrariamente cerca de \( y_{\text{desired}}(x) \) en norma \( L^2 \).
+
+Explica el papel de:
+
+- \( \varepsilon \): qué tan cerca debe estar el estado final del estado objetivo.
+- \( \delta \): cuán cerca debe estar el control (o el tiempo final) de su valor óptimo para garantizar esta aproximación.
+
+---

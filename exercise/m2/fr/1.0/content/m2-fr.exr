@@ -1,1 +1,101 @@
-Content for m2 in fr
+---
+
+## Enunciato
+
+Questo esercizio esplora l’applicazione di concetti avanzati di analisi funzionale e calcolo delle variazioni a un problema di controllo ottimale, con forti collegamenti al controllo quantistico e a diverse discipline di ingegneria.
+
+---
+
+## Definizione del problema
+
+Consideriamo un sistema unidimensionale il cui "stato" **\( y(x,t) \)** (ad esempio una distribuzione di temperatura o la concentrazione di un diffusore) evolve in un dominio spaziale \( \Omega = [0,L] \) e in un intervallo temporale \( t \in [0,T] \). L’evoluzione è descritta da un’equazione alle derivate parziali di tipo diffusione semplificata, con un parametro di controllo dipendente dal tempo \( u(t) \):
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0,L) \times (0,T]
+\]
+
+**Condizioni al contorno**:
+
+- \( y(0,t) = 0 \)
+- \( y(L,t) = 0 \), per \( t \in (0,T] \)
+
+e **condizione iniziale**:
+
+- \( y(x,0) = y_0(x) \), per \( x \in [0,L] \)
+
+Qui, \( \alpha > 0 \) è una costante di diffusione e \( g(x) \) una funzione spaziale data che descrive l’effetto del controllo. Si assume che \( y_0(x) \) e \( g(x) \) siano sufficientemente regolari.
+
+L’obiettivo è trovare un **controllo ottimale** \( u(t) \in U_{\text{ad}} \), dove
+
+\[
+U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\text{max}} \right\}
+\]
+
+è l’insieme dei controlli ammissibili.
+
+La **funzione costo** è definita da:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+dove \( y_{\text{desired}}(x) \) è lo stato desiderato al tempo finale \( T \) e \( \lambda > 0 \) è un parametro di regolarizzazione che penalizza l’energia del controllo.
+
+---
+
+## Parte 1: Analisi di base del sistema
+
+### 1. Esistenza e unicità della soluzione
+
+Spiegare concettualmente perché, per un controllo dato \( u(t) \), così come le condizioni iniziali e al contorno imposte, ci si aspetta una soluzione unica \( y(x,t) \) del problema PDE. Fare riferimento alle proprietà necessarie (ad esempio, limitatezza, continuità) e agli spazi funzionali appropriati per soluzioni deboli (es. spazi di Sobolev \( H_0^1(\Omega) \), \( L^2(0,T; H_0^1(\Omega)) \), ecc.).
+
+### 2. Effetto dei vincoli sul controllo
+
+Discutere come il vincolo \( 0 \leq u(t) \leq U_{\text{max}} \) in \( U_{\text{ad}} \) influenzi la natura del problema di ottimizzazione. Confrontare con il caso senza vincoli \( U_{\text{ad}} = C([0,T]) \). Spiegare il ruolo della convessità e come i problemi di ottimizzazione vincolati portano a condizioni di ottimalità diverse.
+
+---
+
+## Parte 2: Analisi variazionale e condizioni di ottimalità
+
+### 1. Derivata di Gateaux della funzione costo
+
+Supponendo che \( J(u) \) sia differenziabile, derivare la **derivata di Gateaux** in un punto \( u_0(t) \) nella direzione \( h(t) \).
+
+**Suggerimento**: Sia \( y_h(x,t) \) la soluzione del PDE per il controllo \( u_0(t) + \varepsilon h(t) \). Calcolare:
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Ruolo del sistema aggiunto (adjoint)
+
+Spiegare in termini generali la funzione dello stato aggiunto nei problemi di ottimizzazione PDE. Come semplifica il calcolo del gradiente della funzione costo? Descrivere il legame con la sensibilità dello stato \( y(x,t) \) rispetto al costo.
+
+### 3. Prima condizione necessaria di ottimalità
+
+Formulare la **prima condizione necessaria di ottimalità** (disuguaglianza variazionale) che deve soddisfare il controllo ottimale \( u^*(t) \in U_{\text{ad}} \). Spiegare come essa collega il gradiente di \( J(u) \) alla geometria dell’insieme \( U_{\text{ad}} \) e garantisce che \( u^*(t) \) sia un minimo.
+
+---
+
+## Parte 3: Argomenti avanzati e comportamento limite
+
+### 1. Comportamento ottimale del controllo in funzione della regolarizzazione
+
+Discutere cosa succede al termine di regolarizzazione
+
+\[
+\frac{\lambda}{2} \int_0^T u(t)^2 dt
+\]
+
+quando \( \lambda \to 0^+ \). Quali sono le implicazioni per il controllo ottimale \( u_\lambda^*(t) \) e lo stato finale \( y(x,T) \)? La successione \( \{u_\lambda^*\} \) forma una successione di Cauchy o converge uniformemente in un approccio iterativo?
+
+### 2. Rigore epsilon-delta
+
+Supponendo che \( u^*(t) \) sia noto come ottimale, spiegare come la definizione delle soglie epsilon-delta si applica per mostrare che \( y(x,T) \) è "arbitrariamente vicino" a \( y_{\text{desired}}(x) \) nella norma \( L^2 \).
+
+Descrivere i ruoli delle seguenti quantità:
+
+- \( \varepsilon \): la vicinanza desiderata dello stato finale allo stato obiettivo
+- \( \delta \): la vicinanza richiesta del controllo o del tempo finale (es. \( \| u - u^* \| < \delta \)) per garantire tale vicinanza
+
+---

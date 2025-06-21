@@ -1,1 +1,93 @@
-Content for m2 in en
+This exercise explores the application of advanced calculus and real analysis concepts to an optimal control problem, which has strong parallels in fields like quantum system control and various engineering disciplines.
+
+---
+
+## Problem Setup
+
+Consider a 1-dimensional system whose "state" **\( y(x,t) \)** (e.g., temperature distribution or concentration of a diffusing substance) evolves over a spatial domain \( \Omega = [0, L] \) and time \( t \in [0, T] \). The evolution is described by a simplified diffusion-like partial differential equation (PDE) with a time-dependent control parameter \( u(t) \):
+
+$$
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad \text{for } (x,t) \in (0, L) \times (0, T]
+$$
+
+with **boundary conditions**:
+
+- \( y(0,t) = 0 \)
+- \( y(L,t) = 0 \), for \( t \in (0, T] \)
+
+and an **initial condition**:
+
+- \( y(x,0) = y_0(x) \), for \( x \in [0, L] \)
+
+Here, \( \alpha > 0 \) is the diffusion constant, and \( g(x) \) is a given spatial function representing the influence of the control. Assume \( y_0(x) \) and \( g(x) \) are sufficiently smooth.
+
+The objective is to find an **optimal control** \( u(t) \in U_{\text{ad}} \), where:
+
+$$
+U_{\text{ad}} = \left\{ u \in C([0,T]) \;\middle|\; 0 \leq u(t) \leq U_{\text{max}} \right\}
+$$
+
+that minimizes the **cost functional**:
+
+$$
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+$$
+
+where \( y_{\text{desired}}(x) \) is the desired target state at time \( T \), and \( \lambda > 0 \) is a regularization parameter penalizing large control effort.
+
+---
+
+## Part 1: Foundational Analysis of the System
+
+### 1. Existence and Uniqueness of the State
+
+Explain, conceptually, why a unique solution \( y(x,t) \) for the given PDE is expected for a given \( u(t) \), initial, and boundary conditions. Reference the required properties (e.g., boundedness, continuity) and function spaces needed for weak solutions (e.g., Sobolev spaces such as \( H^1_0(\Omega) \), \( L^2(0,T; H^1_0(\Omega)) \), etc.).
+
+### 2. Impact of Control Constraints
+
+Discuss how the constraint \( 0 \leq u(t) \leq U_{\text{max}} \) in \( U_{\text{ad}} \) influences the nature of the optimization problem. Compare with the unconstrained case \( U_{\text{ad}} = C([0,T]) \). Explain the role of convexity and how constrained optimization problems lead to different types of optimality conditions.
+
+---
+
+## Part 2: Variational Analysis and Optimality Conditions
+
+### 1. Gateaux Differentiability of the Cost Functional
+
+Assuming \( J(u) \) is differentiable, derive the **Gateaux derivative** of \( J(u) \) at \( u_0(t) \) in the direction \( h(t) \).
+
+**Hint**: Let \( y_h(x,t) \) be the solution to the PDE when the control is \( u_0(t) + \varepsilon h(t) \). Compute:
+
+$$
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+$$
+
+### 2. Role of the Adjoint System
+
+Explain, in general terms, the purpose of the adjoint state in PDE-constrained optimization problems. How does it simplify the calculation of the gradient of the cost functional? Describe its relation to the "sensitivity" of the cost with respect to the state \( y(x,t) \).
+
+### 3. First-Order Necessary Condition
+
+State the **first-order necessary optimality condition** (variational inequality) that must be satisfied by an optimal control \( u^*(t) \in U_{\text{ad}} \). Discuss how it links the gradient of \( J(u) \) to the geometry of \( U_{\text{ad}} \), ensuring that \( u^*(t) \) is a minimizer.
+
+---
+
+## Part 3: Advanced Topics and Limiting Behavior
+
+### 1. Behavior of Optimal Control under Regularization
+
+Discuss what happens to the regularization term:
+
+$$
+\frac{\lambda}{2} \int_0^T u(t)^2 dt
+$$
+
+as \( \lambda \to 0^+ \). What implications does this have on the behavior of the optimal control \( u^*_\lambda(t) \) and the final state \( y(x,T) \)? Would the sequence \( \{u^*_\lambda\} \) form a **Cauchy sequence** or exhibit **uniform convergence** under an iterative approximation scheme?
+
+### 2. Epsilon-Delta Rigor
+
+Suppose \( u^*(t) \) is known to be optimal. Explain how the **epsilon-delta definition of a limit** would be applied to rigorously prove that \( y(x,T) \) is "arbitrarily close" to \( y_{\text{desired}}(x) \) in \( L^2 \)-norm.
+
+Specify the roles of:
+
+- \( \varepsilon \): how close the final state should be to the target
+- \( \delta \): how close the control or final time must be (e.g., \( \|u - u^*\| < \delta \)) to guarantee this closeness

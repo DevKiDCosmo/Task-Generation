@@ -232,11 +232,18 @@ class Generation():
         """
         output = []
         for line in lines:
-            #line = re.sub(r'\\oldsection{(.+?)}', r'\\section{\1}', line)
             line = line.replace('\\|', "\\vert")
-            line = line.replace("->", "\\rightarrow")          # Better code style
-            line = line.replace("<-", "\\leftarrow")           # Better code style
+            line = line.replace("->", "\\rightarrow")
+            line = line.replace("<-", "\\leftarrow")
             output.append(line)
+
+        def replace_dollar_math(lines):
+            text = "\n".join(lines)
+            text = re.sub(r'\$\$(.+?)\$\$', lambda m: r'\[' + m.group(1).strip() + r'\]', text, flags=re.DOTALL)
+            text = re.sub(r'\$(.+?)\$', lambda m: r'\(' + m.group(1).strip() + r'\)', text, flags=re.DOTALL)
+            return text.splitlines()
+
+        output = replace_dollar_math(output)
         return output
 
     def markdown_to_latex(self, lines: list[str]) -> list[str]:

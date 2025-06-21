@@ -88,6 +88,8 @@ From Version Exr 1.1 onwards. The version must be in the exercise register file.
 - Resources like img. etc.: Also resources are now in the exercise register file. The version must be in the exercise register file.
 - Correction File for Submisisons: A Seperate folder called `correction`
 - Point table: A Seperate json called `points.json` in the exercise folder. The file must be registred in the exercise file.
+- Time Table: How much effort is needed for the exercise. A Seperate json called `time.json` in the exercise folder. The file must be registred in the exercise file.
+
 
 # Creating Exercise Stack
 

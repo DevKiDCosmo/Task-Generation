@@ -1,1 +1,101 @@
-Content for m2 in de
+---
+
+## Aufgabenstellung
+
+Diese Übung untersucht die Anwendung fortgeschrittener Konzepte der Analysis und Variationsrechnung auf ein Optimalsteuerungsproblem, das starke Parallelen zu Bereichen wie der Quantensteuerung und verschiedenen Ingenieurdisziplinen aufweist.
+
+---
+
+## Problemstellung
+
+Betrachte ein eindimensionales System, dessen „Zustand“ **\( y(x,t) \)** (z. B. Temperaturverteilung oder Konzentration einer diffundierenden Substanz) sich über einen räumlichen Bereich \( \Omega = [0, L] \) und die Zeit \( t \in [0, T] \) entwickelt. Die Entwicklung wird durch eine vereinfachte, diffusionähnliche partielle Differentialgleichung (PDE) mit einem zeitabhängigen Steuerparameter \( u(t) \) beschrieben:
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0,L) \times (0,T]
+\]
+
+mit **Randbedingungen**:
+
+- \( y(0,t) = 0 \)
+- \( y(L,t) = 0 \), für \( t \in (0,T] \)
+
+und einer **Anfangsbedingung**:
+
+- \( y(x,0) = y_0(x) \), für \( x \in [0,L] \)
+
+Dabei ist \( \alpha > 0 \) die Diffusionskonstante, und \( g(x) \) eine vorgegebene räumliche Funktion, die den Einfluss der Steuerung beschreibt. Es wird angenommen, dass \( y_0(x) \) und \( g(x) \) hinreichend glatt sind.
+
+Ziel ist es, eine **optimale Steuerung** \( u(t) \in U_{\text{ad}} \) zu finden, wobei
+
+\[
+U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\text{max}} \right\}
+\]
+
+die Menge der zulässigen Steuerungen ist.
+
+Das **Kostenfunktional** ist definiert als:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+wobei \( y_{\text{desired}}(x) \) der gewünschte Zielzustand zur Zeit \( T \) ist und \( \lambda > 0 \) ein Regularisierungsparameter, der den Steuerungsaufwand bestraft.
+
+---
+
+## Teil 1: Grundlegende Analyse des Systems
+
+### 1. Existenz und Eindeutigkeit des Zustands
+
+Erkläre konzeptionell, warum für eine gegebene Steuerung \( u(t) \) sowie Anfangs- und Randbedingungen eine eindeutige Lösung \( y(x,t) \) der PDE zu erwarten ist. Beziehe dich auf die notwendigen Eigenschaften (z. B. Beschränktheit, Stetigkeit) und auf die geeigneten Funktionalräume für schwache Lösungen (z. B. Sobolev-Räume wie \( H_0^1(\Omega) \), \( L^2(0,T; H_0^1(\Omega)) \), etc.).
+
+### 2. Einfluss der Steuerungsbeschränkungen
+
+Diskutiere, wie die Beschränkung \( 0 \leq u(t) \leq U_{\text{max}} \) im Definitionsbereich \( U_{\text{ad}} \) die Natur des Optimierungsproblems beeinflusst. Vergleiche mit dem unbeschränkten Fall \( U_{\text{ad}} = C([0,T]) \). Erkläre die Rolle der Konvexität und wie beschränkte Optimierungsprobleme zu anderen Optimalitätsbedingungen führen.
+
+---
+
+## Teil 2: Variationsanalyse und Optimalitätsbedingungen
+
+### 1. Gateaux-Differenzierbarkeit des Kostenfunktionals
+
+Unter der Annahme, dass \( J(u) \) differenzierbar ist, leite die **Gateaux-Ableitung** von \( J(u) \) an der Stelle \( u_0(t) \) in Richtung \( h(t) \) her.
+
+**Hinweis:** Sei \( y_h(x,t) \) die Lösung der PDE, wenn die Steuerung \( u_0(t) + \varepsilon h(t) \) ist. Berechne:
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Rolle des Adjungierten Systems
+
+Erkläre allgemein die Funktion des adjungierten Zustands bei PDE-optimierungsproblemen. Wie vereinfacht dieser die Berechnung des Gradienten des Kostenfunktionals? Beschreibe seine Beziehung zur „Sensitivität“ der Kosten bezüglich des Zustands \( y(x,t) \).
+
+### 3. Erste notwendige Optimalitätsbedingung
+
+Formuliere die **erste notwendige Optimalitätsbedingung** (Variationsungleichung), die eine optimale Steuerung \( u^*(t) \in U_{\text{ad}} \) erfüllen muss. Diskutiere, wie sie den Gradienten von \( J(u) \) mit der Geometrie von \( U_{\text{ad}} \) verknüpft und dadurch sicherstellt, dass \( u^*(t) \) ein Minimierer ist.
+
+---
+
+## Teil 3: Fortgeschrittene Themen und Grenzverhalten
+
+### 1. Verhalten der optimalen Steuerung bei Regularisierung
+
+Diskutiere, was mit dem Regularisierungsterm
+
+\[
+\frac{\lambda}{2} \int_0^T u(t)^2 dt
+\]
+
+passiert, wenn \( \lambda \to 0^+ \) geht. Welche Auswirkungen hat dies auf das Verhalten der optimalen Steuerung \( u_\lambda^*(t) \) und den Endzustand \( y(x,T) \)? Bildet die Folge \( \{u_\lambda^*\} \) eine **Cauchy-Folge** oder zeigt sie eine **gleichmäßige Konvergenz** bei einem iterativen Annäherungsverfahren?
+
+### 2. Epsilon-Delta-Rigorosität
+
+Angenommen, \( u^*(t) \) ist als optimal bekannt. Erkläre, wie die **Epsilon-Delta-Definition eines Grenzwerts** angewandt wird, um rigoros zu beweisen, dass \( y(x,T) \) im \( L^2 \)-Norm-Sinn „beliebig nah“ an \( y_{\text{desired}}(x) \) liegt.
+
+Erläutere die Rollen von:
+
+- \( \varepsilon \): wie nah der Endzustand am Zielzustand sein soll
+- \( \delta \): wie nah die Steuerung oder die Endzeit (z. B. \( \| u - u^* \| < \delta \)) sein muss, um diese Näherung sicherzustellen
+
+---

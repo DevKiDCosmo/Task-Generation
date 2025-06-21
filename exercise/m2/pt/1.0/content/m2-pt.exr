@@ -1,1 +1,95 @@
-Content for m2 in pt
+---
+
+## Descrição do Problema
+
+Este exercício aborda uma aplicação avançada de análise variacional e controle ótimo. Está relacionado a controle quântico e várias áreas da engenharia.
+
+---
+
+## Configuração do Problema
+
+A variável de estado unidimensional \[ y(x,t) \] (por exemplo, temperatura ou concentração) é definida no intervalo \(\Omega = [0, L]\) e no intervalo temporal \[ t \in [0, T] \]. Esta variável de estado é governada pela seguinte equação diferencial parcial (processo de difusão), controlada pela variável de controle \[ u(t) \] (dependente somente do tempo):
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0, L) \times (0, T]
+\]
+
+Condições de contorno:
+
+- \[ y(0,t) = 0 \]
+- \[ y(L,t) = 0 \quad t \in (0, T] \]
+
+Condição inicial:
+
+- \[ y(x,0) = y_0(x), \quad x \in [0, L] \]
+
+Aqui, \(\alpha > 0\) é o coeficiente de difusão, e \[ g(x) \] é uma função conhecida que representa o efeito espacial do controle. Assume-se que \(y_0(x)\) e \(g(x)\) são suficientemente suaves.
+
+O objetivo é encontrar o controle ótimo \[ u(t) \in U_{\text{ad}} \], onde
+
+\[
+U_{\text{ad}} = \{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\text{max}} \}
+\]
+
+é o conjunto admissível de controles, limitado entre 0 e um valor máximo \[ U_{\text{max}} \].
+
+A função objetivo (custo) é dada por:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 dx + \frac{\lambda}{2} \int_0^T u(t)^2 dt
+\]
+
+onde \[ y_{\text{desired}}(x) \] é o estado desejado no tempo final \(T\) e \(\lambda > 0\) é um parâmetro de regularização que penaliza o tamanho do controle.
+
+---
+
+## Parte 1: Análise Básica do Sistema
+
+### 1. Existência e Unicidade
+
+Explique conceitualmente por que, dado um controle \[ u(t) \] e as condições de contorno e iniciais, existe uma solução única \[ y(x,t) \] para a equação diferencial parcial. Discuta os espaços funcionais relevantes (por exemplo, espaços de Sobolev \(H_0^1(\Omega)\), \(L^2(0,T; H_0^1(\Omega))\)), a continuidade e as propriedades do contorno.
+
+### 2. Impacto das Restrições no Controle
+
+Discuta o impacto das restrições \[ 0 \leq u(t) \leq U_{\text{max}} \] no problema de otimização. Compare com o caso sem restrições (\(U_{\text{ad}} = C([0,T])\)) e explique como isso afeta a convexidade e as condições de otimalidade.
+
+---
+
+## Parte 2: Análise Variacional e Condições de Otimalidade
+
+### 1. Cálculo da Derivada de Gâteaux
+
+Assumindo que \(J(u)\) é diferenciável, derive a derivada de Gâteaux de \(J\) no ponto \(u_0(t)\) na direção \(h(t)\).
+
+Aqui, \(\varepsilon\) é uma pequena variação e o controle varia como \(u_0(t) + \varepsilon h(t)\). Denote o estado correspondente por \(y_h(x,t)\). Calcule
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Papel do Sistema Adjunto
+
+Explique, em termos gerais, como o sistema adjunto ajuda na resolução do problema de otimização com restrição de PDE. Como ele simplifica o cálculo do gradiente da função custo e qual a relação com a análise de sensibilidade do estado.
+
+### 3. Condição Necessária de Otimalidade de Primeira Ordem
+
+Expresse a condição necessária de otimalidade de primeira ordem que o controle ótimo \(u^*(t) \in U_{\text{ad}}\) deve satisfazer (inequação variacional). Explique como essa condição relaciona o gradiente da função custo com o conjunto admissível de controles.
+
+---
+
+## Parte 3: Tópicos Avançados e Comportamento Assintótico
+
+### 1. Comportamento do Parâmetro de Regularização
+
+Analise o comportamento do controle ótimo \(u^*_\lambda(t)\) e do estado final \(y(x,T)\) quando o parâmetro de regularização \(\lambda \to 0^+\). Discuta se a sequência \(\{u^*_\lambda\}\) é de Cauchy e se converge uniformemente.
+
+### 2. Garantia de Precisão Épsilon-Delta
+
+Assumindo a existência de um controle ótimo \(u^*(t)\), explique como mostrar usando a definição de épsilon-delta que \(y(x,T)\) pode se aproximar do estado desejado \(y_{\text{desired}}(x)\) dentro de uma precisão arbitrária \(\varepsilon\).
+
+Deixe claro o papel de
+
+- \(\varepsilon\): tolerância na aproximação do estado desejado,
+- \(\delta\): tolerância na variação do controle ou do tempo final.
+
+---

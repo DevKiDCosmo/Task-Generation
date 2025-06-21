@@ -1,1 +1,101 @@
-Content for m2 in it
+---
+
+## Enunciato del problema
+
+Questo esercizio tratta l’applicazione di concetti avanzati di analisi e calcolo delle variazioni a un problema di controllo ottimale, con forti analogie con il controllo quantistico e diversi ambiti di ingegneria.
+
+---
+
+## Definizione del problema
+
+Consideriamo un sistema unidimensionale il cui **stato** \[ y(x,t) \] (ad esempio temperatura o concentrazione) è definito sul dominio \(\Omega = [0, L]\) e nel tempo \[ t \in [0, T] \]. Lo stato è governato da un processo di diffusione parziale dove il controllo \[ u(t) \] dipende solo dal tempo:
+
+\[
+\frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad \text{per } (x,t) \in (0, L) \times (0, T]
+\]
+
+Condizioni al contorno:
+
+- \[ y(0,t) = 0 \]
+- \[ y(L,t) = 0 \], \[ t \in (0, T] \]
+
+Condizione iniziale:
+
+- \[ y(x,0) = y_0(x) \], \[ x \in [0, L] \]
+
+Qui \(\alpha > 0\) è la costante di diffusione, e \[ g(x) \] è una funzione data che descrive l'influenza spaziale del controllo. Si assume che \[ y_0(x) \] e \[ g(x) \] siano sufficientemente regolari.
+
+L’obiettivo è trovare un **controllo ottimale** \[ u(t) \in U_{\text{ad}} \], dove
+
+\[
+U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\text{max}} \right\}
+\]
+
+è l’insieme ammissibile dei controlli, limitati tra 0 e un valore massimo \[ U_{\text{max}} \].
+
+Il controllo ottimale minimizza la **funzione di costo**:
+
+\[
+J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+dove \[ y_{\text{desired}}(x) \] è lo stato desiderato all’istante finale \[ T \], e \(\lambda > 0\) è un parametro di regolarizzazione che penalizza grandi valori del controllo.
+
+---
+
+## Parte 1: Analisi di base del sistema
+
+### 1. Esistenza e unicità
+
+Spiega concettualmente perché, dato un controllo \[ u(t) \] e condizioni iniziali e al contorno specificate, esiste una soluzione unica \[ y(x,t) \] al problema alle derivate parziali. Discuta le proprietà richieste, come la limitatezza, continuità e gli spazi funzionali coinvolti (ad esempio spazi di Sobolev \[ H_0^1(\Omega) \], \[ L^2(0,T; H_0^1(\Omega)) \]).
+
+### 2. Impatto delle restrizioni sul controllo
+
+Discuti l’effetto del vincolo \[ 0 \leq u(t) \leq U_{\text{max}} \] sulla natura del problema di ottimizzazione. Confronta con il caso senza vincoli, dove \[ U_{\text{ad}} = C([0,T]) \]. Spiega il ruolo della convessità e come i vincoli modificano le condizioni di ottimalità.
+
+---
+
+## Parte 2: Analisi variazionale e condizioni di ottimalità
+
+### 1. Calcolo della derivata di Gateaux della funzione di costo
+
+Supponiamo che \[ J(u) \] sia differenziabile, e deriva la **derivata di Gateaux** in \[ u_0(t) \] nella direzione \[ h(t) \].
+
+**Nota:** Sia \[ y_h(x,t) \] la soluzione corrispondente al controllo \[ u_0(t) + \varepsilon h(t) \]. Calcola:
+
+\[
+\left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
+\]
+
+### 2. Ruolo del sistema aggiunto (adjoint)
+
+Spiega in generale l’utilità del sistema aggiunto nei problemi di ottimizzazione con vincoli PDE. Come permette di calcolare il gradiente della funzione di costo? Descrivi il legame con la sensibilità dello stato \[ y(x,t) \].
+
+### 3. Prima condizione necessaria di ottimalità
+
+Formula la **prima condizione necessaria di ottimalità** (disuguaglianza variazionale) che il controllo ottimale \[ u^*(t) \in U_{\text{ad}} \] deve soddisfare. Discuti come essa lega il gradiente di \[ J(u) \] e la geometria di \[ U_{\text{ad}} \] per garantire che \[ u^*(t) \] minimizzi la funzione di costo.
+
+---
+
+## Parte 3: Argomenti avanzati e comportamento limite
+
+### 1. Comportamento dell’ottimalità con la regolarizzazione
+
+Analizza cosa succede al termine di regolarizzazione
+
+\[
+\frac{\lambda}{2} \int_0^T u(t)^2 \, dt
+\]
+
+quando \(\lambda \to 0^+\). Quali sono le conseguenze sul controllo ottimale \[ u^*_\lambda(t) \] e sullo stato finale \[ y(x,T) \]? La successione \(\{u^*_\lambda\}\) è una successione di Cauchy o converge uniformemente?
+
+### 2. Precisione epsilon-delta
+
+Supponi che \[ u^*(t) \] sia un ottimo noto. Spiega, usando la definizione di limite epsilon-delta, come dimostrare che \[ y(x,T) \] può essere arbitrariamente vicino a \[ y_{\text{desired}}(x) \] in norma \[ L^2 \].
+
+Specifica i ruoli di:
+
+- \(\varepsilon\): la precisione desiderata per lo stato finale
+- \(\delta\): la distanza tollerata nel controllo o nel tempo finale per garantire questa precisione
+
+---

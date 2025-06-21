@@ -139,7 +139,7 @@ def prepare_metadata_items(data):
                         type_of_exercise = "Masterclass Exercise."
 
                     metadata = {
-                        "id": f"{type_of_exercise} {exercise_id_cleaned}",
+                        "id": f"{type_of_exercise}{exercise_id_cleaned}",
                         "category": categories,
                         "cid": cid,
                         "time": time,
@@ -171,7 +171,7 @@ def prepare_metadata_items(data):
                     type_of_exercise = "Masterclass Exercise."
 
                 metadata = {
-                    "id": f"{type_of_exercise} {exercise_id_cleaned}",
+                    "id": f"{type_of_exercise}{exercise_id_cleaned}",
                     "category": categories,
                     "cid": cid,
                     "time": time,

@@ -1,22 +1,24 @@
 {
-    "id": "Masterclass Exercise. 2",
+    "id": "Masterclass Exercise.2",
     "category": [
         1,
         2,
-        5
+        3,
+        5,
+        6
     ],
     "cid": "3",
-    "time": 600,
+    "time": 300,
     "nam_score": 7.0,
     "author": "Original",
-    "date": "20.06.2025",
+    "date": "21.06.2025",
     "main": {
-        "title": "诺特定理（场论）",
+        "title": "扩散过程的最优控制",
         "content": "content/m2-zh.exr",
         "solution": "solution/m2-zh.exr"
     },
     "difficulty": 8,
     "tags": [],
-    "UUID": "347a471e-316e-44df-a4e2-87c614f1bcee",
-    "GUID": "4b386277-c0fc-4eb0-8e12-a8e729522392"
+    "UUID": "f4238721-884b-4a9e-b456-37dbdfb55164",
+    "GUID": "3bcdcbf3-51ed-4a98-9693-0d3b32849688"
 }
