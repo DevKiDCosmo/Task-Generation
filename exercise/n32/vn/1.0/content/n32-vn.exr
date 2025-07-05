@@ -1,0 +1,38 @@
+Cho \( R \) là một vành Noether giao hoán với phần tử đơn vị \( 1 \neq 0 \), \( M \) là một \( R \)-môđun sinh bởi hữu hạn phần tử, và xét dãy chính xác sau:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+trong đó \( P \) là một \( R \)-môđun projective.
+
+### Bài tập:
+
+1. **Diễn giải đồng cấu (cohomological interpretation):**
+Chứng minh rằng:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Tính phạm vi đồng biến của phép lấy đối ngẫu:**
+Chứng minh rằng phép lấy đối ngẫu qua hàm \( (-)^* := \operatorname{Hom}_R(-, R) \) là một **phép đồng biến phản biến** (contravariant functor).
+
+3. **Đặc trưng tính projective:**
+Chứng minh hoặc phản bác:
+
+> Nếu \( R \) là một vành địa phương (local ring) và \( M \) là một \( R \)-môđun sinh bởi hữu hạn phần tử, thì:
+\[
+M \text{ là projective } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Câu hỏi bổ sung – Functor dẫn xuất:**
+Định nghĩa các **functor dẫn xuất** của \( \operatorname{Hom}_R(-, R) \) theo lý thuyết phạm trù thông qua một phép phân giải projective của \( M \), và giải thích ý nghĩa của chúng trong các trường hợp:
+   - Tự đối ngẫu của môđun,
+   - Đồng cấu trong lý thuyết môđun và biểu diễn.
+
+### Ghi chú:
+
+- Sử dụng một **phép phân giải projective** của \( M \) để tính \( \operatorname{Ext} \).
+- Lưu ý rằng \( \operatorname{Hom}_R(-, R) \) là **phản biến**, nghĩa là nó đảo chiều các đồng cấu.
+- Khi cần, sử dụng **đối hợp Hom–Tensor** và các kết quả đã biết về môđun projective.
+- Ở câu hỏi bổ sung, hãy trình bày rõ mối liên hệ giữa phép phân giải projective và cách xây dựng \( \operatorname{Ext} \).

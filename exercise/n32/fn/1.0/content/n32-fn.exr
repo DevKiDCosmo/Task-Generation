@@ -1,0 +1,38 @@
+Olkoon \( R \) noetherilainen kommutatiivinen rengas, jossa on ykköselementti \( 1 \neq 0 \), \( R \)-moduuli \( M \), joka on äärellisesti generoitunut, sekä eksakti jono:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+missä \( P \) on projektivi \( R \)-moduuli.
+
+### Tehtävänanto:
+
+1. **Kohomologinen tulkinta:**  
+Todista, että pätee:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Dualisoinnin funktoriaalisuus:**  
+Todista, että dualisointi Hom-funktorin \( (-)^* := \operatorname{Hom}_R(-, R) \) kautta on **kontravariantti funktoriaalinen rakenne**.
+
+3. **Projektivisuuden karakterisointi:**  
+Todista tai kumoa seuraava väite:
+
+> Jos \( R \) on paikallinen rengas ja \( M \) on äärellisesti generoitunut \( R \)-moduuli, niin:
+\[
+M \text{ on projektivi } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Lisäkysymys – Johdetut funktorit:**  
+Määrittele \( \operatorname{Hom}_R(-, R) \):n **johdetut funktorit** kategoriateorian mielessä käyttäen projektivista resoluutiota \( M \):lle, ja selitä niiden merkitys yhteydessä:
+   - Modulien itse-dualisointiin,
+   - Kohomologiaan moduuli- ja representaatioteoriassa.
+
+### Huomioita:
+
+- Käytä **projektivista resoluutiota** \( M \):n laskemisessa \( \operatorname{Ext} \):n avulla.
+- Huomaa, että \( \operatorname{Hom}_R(-, R) \) on **kontravariantti**, eli se kääntää morfismien suunnan.
+- Käytä tarvittaessa **Hom-Tensor-adjunktiota** ja tunnettuja tuloksia projektivisista moduuleista.
+- Lisäkysymyksessä: esitä eksplisiittisesti yhteys projektivisen resoluution ja \( \operatorname{Ext} \):n konstruktion välillä.

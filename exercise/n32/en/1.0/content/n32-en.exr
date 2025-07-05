@@ -1,0 +1,38 @@
+Let \( R \) be a commutative Noetherian ring with unity \( 1 \neq 0 \), let \( M \) be a finitely generated \( R \)-module, and consider the exact sequence:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+where \( P \) is a projective \( R \)-module.
+
+### Problem:
+
+1. **Cohomological Interpretation:**
+Show that:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Functoriality of Dualization:**
+Show that the dualization by the Hom-functor \( (-)^* := \operatorname{Hom}_R(-, R) \) has a **contravariant functorial structure**.
+
+3. **Characterization of Projectivity:**
+Prove or disprove the following statement:
+
+> If \( R \) is a local ring and \( M \) a finitely generated \( R \)-module, then:
+\[
+M \text{ is projective } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Additional Question – Derived Functors:**
+Define the **derived functors** of \( \operatorname{Hom}_R(-, R) \) in the sense of category theory using a projective resolution of \( M \), and explain their significance in the context of:
+   - Self-dualization of modules,
+   - Cohomology in module theory and representation theory.
+
+### Notes:
+
+- Use a **projective resolution** of \( M \) to compute \( \operatorname{Ext} \).
+- Note that \( \operatorname{Hom}_R(-, R) \) is **contravariant**, i.e., it reverses the direction of morphisms.
+- If needed, use the **Hom-Tensor adjunction** and known results about projective modules.
+- For the additional question: explicitly give the connection between a projective resolution and the construction of \( \operatorname{Ext} \).

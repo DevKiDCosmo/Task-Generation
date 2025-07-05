@@ -1,0 +1,21 @@
+{
+    "id": "No.32",
+    "category": [
+        1,
+        4
+    ],
+    "cid": "2",
+    "time": 60,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "05.07.2025",
+    "main": {
+        "title": "抽象代数与范畴论",
+        "content": "content/n32-zh.exr",
+        "solution": "solution/n32-zh.exr"
+    },
+    "difficulty": 5,
+    "tags": [],
+    "UUID": "db6557c6-a38c-4ccb-ad07-685702066157",
+    "GUID": "4a307977-bccc-47ef-98de-5de1ab86362d"
+}

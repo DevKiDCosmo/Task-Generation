@@ -1,0 +1,38 @@
+Låt \( R \) vara en kommutativ noethersk ring med enhets­element \( 1 \neq 0 \), \( M \) en ändligt genererad \( R \)-modul, och betrakta den exakta följande sekvensen:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+där \( P \) är en projektiv \( R \)-modul.
+
+### Uppgifter:
+
+1. **Kohomologisk tolkning:**  
+Visa att det gäller:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Functorialitet av dualisering:**  
+Visa att dualiseringen via hom-funktorn \( (-)^* := \operatorname{Hom}_R(-, R) \) har en **kontravariant funktoriell struktur**.
+
+3. **Karaktärisering av projektivitet:**  
+Bevisa eller motbevisa följande påstående:
+
+> Om \( R \) är en lokal ring och \( M \) en ändligt genererad \( R \)-modul, så gäller:
+\[
+M \text{ är projektiv } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Tilläggsfråga – Deriverade funktorer:**  
+Definiera de **deriverade funktorerna** av \( \operatorname{Hom}_R(-, R) \) i kategoriteoretisk mening via en projektiv resolution av \( M \), och förklara deras betydelse i samband med:
+   - Självdualisering av moduler,
+   - Kohomologi inom modul- och representationsteori.
+
+### Anmärkningar:
+
+- Använd en **projektiv resolution** av \( M \) för att beräkna \( \operatorname{Ext} \).
+- Observera att \( \operatorname{Hom}_R(-, R) \) är **kontravariant**, dvs. vänder riktningen på morfismer.
+- Använd vid behov **Hom-Tensor-adjunktion** och kända resultat om projektiva moduler.
+- I tilläggsfrågan, ange tydligt sambandet mellan en projektiv resolution och konstruktionen av \( \operatorname{Ext} \).

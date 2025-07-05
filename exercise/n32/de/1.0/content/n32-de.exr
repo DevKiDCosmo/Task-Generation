@@ -1,0 +1,36 @@
+Gegeben sei ein kommutativer noetherscher Ring \( R \) mit Einselement \( 1 \neq 0 \), ein endlich erzeugter \( R \)-Modul \( M \), sowie eine exakte Sequenz:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+wobei \( P \) ein projektiver \( R \)-Modul ist.
+
+### Aufgabenstellung:
+
+1. **Kohomologische Interpretation:**
+Zeige, dass gilt:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+2. **Funktorialität der Dualisierung:**
+Zeige, dass die Dualisierung durch den Hom-Funktor \( (-)^* := \operatorname{Hom}_R(-, R) \) eine **kontravariante funktorielle Struktur** besitzt.
+3. **Charakterisierung von Projektivität:**
+Zeige oder widerlege:
+
+    > Wenn \( R \) ein lokaler Ring ist und \( M \) ein endlich erzeugter \( R \)-Modul, dann ist:
+    \[
+    M \text{ ist projektiv } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+    \]
+    >
+4. **Zusatzfrage – Abgeleitete Funktoren:**
+Definiere die **abgeleiteten Funktoren** von \( \operatorname{Hom}_R(-, R) \) im Sinne der Kategorientheorie über eine projektive Auflösung von \( M \), und erkläre ihre Bedeutung im Zusammenhang mit:
+    - Selbstdualisierung von Modulen,
+    - Kohomologie in der Modul- und Darstellungstheorie.
+
+### Hinweise:
+
+- Verwende eine **projektive Auflösung** von \( M \) zur Berechnung von \( \operatorname{Ext} \).
+- Beachte, dass \( \operatorname{Hom}_R(-, R) \) **kontravariant** ist, d.h. es kehrt die Richtung von Morphismen um.
+- Nutze bei Bedarf die **Hom-Tensor-Adjunktion** und bekannte Resultate über projektive Module.
+- Zur Zusatzfrage: Gib explizit den Zusammenhang zwischen einer projektiven Auflösung und der Konstruktion von \( \operatorname{Ext} \) an.

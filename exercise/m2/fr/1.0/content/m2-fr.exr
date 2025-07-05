@@ -1,101 +1,101 @@
 ---
 
-## Enunciato
+## Énoncé de l’exercice
 
-Questo esercizio esplora l’applicazione di concetti avanzati di analisi funzionale e calcolo delle variazioni a un problema di controllo ottimale, con forti collegamenti al controllo quantistico e a diverse discipline di ingegneria.
+Cet exercice explore l'application des concepts avancés d'analyse et de calcul variationnel à un problème de contrôle optimal, en lien étroit avec le contrôle quantique et divers domaines de l'ingénierie.
 
 ---
 
-## Definizione del problema
+## Définition du problème
 
-Consideriamo un sistema unidimensionale il cui "stato" **\( y(x,t) \)** (ad esempio una distribuzione di temperatura o la concentrazione di un diffusore) evolve in un dominio spaziale \( \Omega = [0,L] \) e in un intervallo temporale \( t \in [0,T] \). L’evoluzione è descritta da un’equazione alle derivate parziali di tipo diffusione semplificata, con un parametro di controllo dipendente dal tempo \( u(t) \):
+Considérons un système unidimensionnel dont l’**état** \( y(x,t) \) (par exemple, une distribution de température ou la concentration d’une substance diffusante) évolue dans un domaine spatial \( \Omega = [0,L] \) et temporel \( t \in [0,T] \). L’évolution est décrite par une équation aux dérivées partielles de type diffusion, avec un paramètre de contrôle dépendant du temps \( u(t) \) :
 
 \[
 \frac{\partial y}{\partial t} - \alpha \frac{\partial^2 y}{\partial x^2} = u(t) \cdot g(x), \quad (x,t) \in (0,L) \times (0,T]
 \]
 
-**Condizioni al contorno**:
+**Conditions aux limites** :
 
 - \( y(0,t) = 0 \)
-- \( y(L,t) = 0 \), per \( t \in (0,T] \)
+- \( y(L,t) = 0 \), pour \( t \in (0,T] \)
 
-e **condizione iniziale**:
+et **condition initiale** :
 
-- \( y(x,0) = y_0(x) \), per \( x \in [0,L] \)
+- \( y(x,0) = y_0(x) \), pour \( x \in [0,L] \)
 
-Qui, \( \alpha > 0 \) è una costante di diffusione e \( g(x) \) una funzione spaziale data che descrive l’effetto del controllo. Si assume che \( y_0(x) \) e \( g(x) \) siano sufficientemente regolari.
+Ici, \( \alpha > 0 \) est un coefficient de diffusion, et \( g(x) \) est une fonction spatiale donnée qui décrit l’effet du contrôle. On suppose que \( y_0(x) \) et \( g(x) \) sont suffisamment réguliers.
 
-L’obiettivo è trovare un **controllo ottimale** \( u(t) \in U_{\text{ad}} \), dove
+L’objectif est de déterminer un **contrôle optimal** \( u(t) \in U_{\text{ad}} \), où
 
 \[
 U_{\text{ad}} = \left\{ u \in C([0,T]) \mid 0 \leq u(t) \leq U_{\text{max}} \right\}
 \]
 
-è l’insieme dei controlli ammissibili.
+représente l’ensemble des contrôles admissibles.
 
-La **funzione costo** è definita da:
+Le **fonctionnel de coût** est défini par :
 
 \[
 J(u) = \frac{1}{2} \int_0^L (y(x,T) - y_{\text{desired}}(x))^2 \, dx + \frac{\lambda}{2} \int_0^T u(t)^2 \, dt
 \]
 
-dove \( y_{\text{desired}}(x) \) è lo stato desiderato al tempo finale \( T \) e \( \lambda > 0 \) è un parametro di regolarizzazione che penalizza l’energia del controllo.
+où \( y_{\text{desired}}(x) \) est l’état final souhaité à l’instant \( T \), et \( \lambda > 0 \) est un paramètre de régularisation pénalisant l’intensité du contrôle.
 
 ---
 
-## Parte 1: Analisi di base del sistema
+## Partie 1 : Analyse fondamentale du système
 
-### 1. Esistenza e unicità della soluzione
+### 1. Existence et unicité de l’état
 
-Spiegare concettualmente perché, per un controllo dato \( u(t) \), così come le condizioni iniziali e al contorno imposte, ci si aspetta una soluzione unica \( y(x,t) \) del problema PDE. Fare riferimento alle proprietà necessarie (ad esempio, limitatezza, continuità) e agli spazi funzionali appropriati per soluzioni deboli (es. spazi di Sobolev \( H_0^1(\Omega) \), \( L^2(0,T; H_0^1(\Omega)) \), ecc.).
+Expliquez conceptuellement pourquoi, pour un contrôle donné \( u(t) \), avec les conditions initiales et aux limites données, il est attendu que l’équation admette une solution unique \( y(x,t) \). Faites référence aux propriétés nécessaires (bornitude, continuité) ainsi qu’aux espaces fonctionnels adaptés aux solutions faibles (par exemple, espaces de Sobolev \( H_0^1(\Omega) \), \( L^2(0,T; H_0^1(\Omega)) \), etc.).
 
-### 2. Effetto dei vincoli sul controllo
+### 2. Influence des contraintes sur le contrôle
 
-Discutere come il vincolo \( 0 \leq u(t) \leq U_{\text{max}} \) in \( U_{\text{ad}} \) influenzi la natura del problema di ottimizzazione. Confrontare con il caso senza vincoli \( U_{\text{ad}} = C([0,T]) \). Spiegare il ruolo della convessità e come i problemi di ottimizzazione vincolati portano a condizioni di ottimalità diverse.
+Réfléchissez à la manière dont la contrainte \( 0 \leq u(t) \leq U_{\text{max}} \) dans l’ensemble \( U_{\text{ad}} \) affecte la nature du problème d’optimisation. Comparez avec le cas non contraint \( U_{\text{ad}} = C([0,T]) \). Discutez du rôle de la convexité et comment les problèmes contraints conduisent à des conditions d’optimalité différentes.
 
 ---
 
-## Parte 2: Analisi variazionale e condizioni di ottimalità
+## Partie 2 : Analyse variationnelle et conditions d’optimalité
 
-### 1. Derivata di Gateaux della funzione costo
+### 1. Dérivée de Gateaux du fonctionnel de coût
 
-Supponendo che \( J(u) \) sia differenziabile, derivare la **derivata di Gateaux** in un punto \( u_0(t) \) nella direzione \( h(t) \).
+En supposant que \( J(u) \) est différentiable, dérivez la **dérivée de Gateaux** en \( u_0(t) \) dans la direction \( h(t) \).
 
-**Suggerimento**: Sia \( y_h(x,t) \) la soluzione del PDE per il controllo \( u_0(t) + \varepsilon h(t) \). Calcolare:
+**Indication :** Soit \( y_h(x,t) \) la solution de l’EDP pour un contrôle \( u_0(t) + \varepsilon h(t) \). Calculez :
 
 \[
 \left. \frac{d}{d\varepsilon} J(u_0 + \varepsilon h) \right|_{\varepsilon=0}
 \]
 
-### 2. Ruolo del sistema aggiunto (adjoint)
+### 2. Rôle du système adjoint
 
-Spiegare in termini generali la funzione dello stato aggiunto nei problemi di ottimizzazione PDE. Come semplifica il calcolo del gradiente della funzione costo? Descrivere il legame con la sensibilità dello stato \( y(x,t) \) rispetto al costo.
+Expliquez le rôle général de l’état adjoint dans les problèmes de contrôle optimal régis par des EDP. Comment facilite-t-il le calcul du gradient du fonctionnel de coût ? Décrivez sa relation avec la sensibilité de l’état \( y(x,t) \) par rapport au coût.
 
-### 3. Prima condizione necessaria di ottimalità
+### 3. Condition nécessaire d’optimalité
 
-Formulare la **prima condizione necessaria di ottimalità** (disuguaglianza variazionale) che deve soddisfare il controllo ottimale \( u^*(t) \in U_{\text{ad}} \). Spiegare come essa collega il gradiente di \( J(u) \) alla geometria dell’insieme \( U_{\text{ad}} \) e garantisce che \( u^*(t) \) sia un minimo.
+Formulez la **condition nécessaire d’optimalité** (inégalité variationnelle) que le contrôle optimal \( u^*(t) \in U_{\text{ad}} \) doit satisfaire. Réfléchissez à la façon dont cela relie le gradient de \( J(u) \) à la géométrie de l’ensemble \( U_{\text{ad}} \) et garantit que \( u^*(t) \) est bien un minimum.
 
 ---
 
-## Parte 3: Argomenti avanzati e comportamento limite
+## Partie 3 : Aspects avancés et comportement asymptotique
 
-### 1. Comportamento ottimale del controllo in funzione della regolarizzazione
+### 1. Comportement du contrôle optimal en fonction de la régularisation
 
-Discutere cosa succede al termine di regolarizzazione
+Étudiez le comportement du terme de régularisation
 
 \[
 \frac{\lambda}{2} \int_0^T u(t)^2 dt
 \]
 
-quando \( \lambda \to 0^+ \). Quali sono le implicazioni per il controllo ottimale \( u_\lambda^*(t) \) e lo stato finale \( y(x,T) \)? La successione \( \{u_\lambda^*\} \) forma una successione di Cauchy o converge uniformemente in un approccio iterativo?
+lorsque \( \lambda \to 0^+ \). Quelles conséquences cela a-t-il sur le contrôle optimal \( u_\lambda^*(t) \) et sur l’état final \( y(x,T) \) ? La suite \( \{u_\lambda^*\} \) forme-t-elle une **suite de Cauchy** ou montre-t-elle une **convergence uniforme** dans une approche itérative ?
 
-### 2. Rigore epsilon-delta
+### 2. Rigueur epsilon-delta
 
-Supponendo che \( u^*(t) \) sia noto come ottimale, spiegare come la definizione delle soglie epsilon-delta si applica per mostrare che \( y(x,T) \) è "arbitrariamente vicino" a \( y_{\text{desired}}(x) \) nella norma \( L^2 \).
+Supposons que \( u^*(t) \) soit connu comme optimal. Expliquez comment la **définition epsilon-delta** permet de démontrer que \( y(x,T) \) est « arbitrairement proche » de \( y_{\text{desired}}(x) \) en norme \( L^2 \).
 
-Descrivere i ruoli delle seguenti quantità:
+Expliquez le rôle des éléments suivants :
 
-- \( \varepsilon \): la vicinanza desiderata dello stato finale allo stato obiettivo
-- \( \delta \): la vicinanza richiesta del controllo o del tempo finale (es. \( \| u - u^* \| < \delta \)) per garantire tale vicinanza
+- \( \varepsilon \) : niveau de proximité souhaité entre l’état final et la cible
+- \( \delta \) : tolérance sur le contrôle ou le temps (par ex. \( \| u - u^* \| < \delta \)) nécessaire pour garantir cette proximité
 
 ---

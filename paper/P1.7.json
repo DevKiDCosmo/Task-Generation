@@ -1,0 +1,52 @@
+{
+  "title": "The Namische /ˈnamɪʃə/ Collection",
+  "date": "05.07.2025",
+  "paper": "P1.7",
+  "version": "1.0",
+  "revision": "1",
+  "archive": "29381-9323",
+  "doi": "10.5281/zenodo.15616397",
+  "description": "Noether Theory",
+  "exercise": {
+    "n32": {
+      "language": [
+        "de",
+        "en",
+        "fr",
+        "jp",
+        "kr",
+        "zh",
+        "es",
+        "vn",
+        "ru",
+        "it",
+        "pt",
+        "fn",
+        "se"
+      ],
+      "version": [
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0",
+        "1.0"
+      ],
+      "exercise": [
+        1
+      ]
+    }
+  },
+  "tags": [
+    "problem solving"
+  ],
+  "UUID": "...",
+  "GUID": "..."
+}

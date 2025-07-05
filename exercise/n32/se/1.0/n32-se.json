@@ -1,0 +1,21 @@
+{
+    "id": "No.32",
+    "category": [
+        1,
+        4
+    ],
+    "cid": "2",
+    "time": 60,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "05.07.2025",
+    "main": {
+        "title": "Abstrakt algebra och kategoriteori",
+        "content": "content/n32-se.exr",
+        "solution": "solution/n32-se.exr"
+    },
+    "difficulty": 5,
+    "tags": [],
+    "UUID": "db6557c6-a38c-4ccb-ad07-685702066157",
+    "GUID": "e2add8dd-467f-40b1-9b90-d64983d0402c"
+}

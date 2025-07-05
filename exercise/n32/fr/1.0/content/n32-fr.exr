@@ -1,0 +1,38 @@
+Soit \( R \) un anneau commutatif noethérien avec élément unité \( 1 \neq 0 \), un \( R \)-module \( M \) de type fini, ainsi qu'une suite exacte :
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+où \( P \) est un \( R \)-module projectif.
+
+### Énoncé des exercices :
+
+1. **Interprétation cohomologique :**  
+Montrer que :
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Fonctorialité de la dualisation :**  
+Montrer que la dualisation via le foncteur Hom \( (-)^* := \operatorname{Hom}_R(-, R) \) possède une **structure fonctorielle contravariante**.
+
+3. **Caractérisation de la projectivité :**  
+Montrer ou réfuter l'affirmation suivante :
+
+> Si \( R \) est un anneau local et \( M \) un \( R \)-module de type fini, alors :
+\[
+M \text{ est projectif } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Question supplémentaire – Foncteurs dérivés :**  
+Définir les **foncteurs dérivés** de \( \operatorname{Hom}_R(-, R) \) au sens de la théorie des catégories à l’aide d’une résolution projective de \( M \), et expliquer leur signification dans le contexte :
+   - de l’autodualisation des modules,
+   - de la cohomologie dans la théorie des modules et des représentations.
+
+### Remarques :
+
+- Utiliser une **résolution projective** de \( M \) pour le calcul de \( \operatorname{Ext} \).
+- Noter que \( \operatorname{Hom}_R(-, R) \) est **contravariant**, c’est-à-dire qu’il inverse le sens des morphismes.
+- Utiliser si nécessaire l’**adjonction Hom-Tenseur** ainsi que des résultats connus sur les modules projectifs.
+- Pour la question supplémentaire : donner explicitement le lien entre une résolution projective et la construction de \( \operatorname{Ext} \).

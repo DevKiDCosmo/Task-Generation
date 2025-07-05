@@ -1,0 +1,38 @@
+Sea \( R \) un anillo conmutativo noetheriano con unidad \( 1 \neq 0 \), sea \( M \) un \( R \)-módulo finitamente generado, y considérese la secuencia exacta:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+donde \( P \) es un \( R \)-módulo proyectivo.
+
+### Enunciado del problema:
+
+1. **Interpretación cohomológica:**
+Demuestra que:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Funcionalidad de la dualización:**
+Demuestra que la dualización mediante el funtor Hom \( (-)^* := \operatorname{Hom}_R(-, R) \) posee una **estructura functorial contravariante**.
+
+3. **Caracterización de la proyectividad:**
+Demuestra o refuta la siguiente afirmación:
+
+> Si \( R \) es un anillo local y \( M \) un \( R \)-módulo finitamente generado, entonces:
+\[
+M \text{ es proyectivo } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Pregunta adicional – Funtores derivados:**
+Define los **funtores derivados** de \( \operatorname{Hom}_R(-, R) \) en el sentido de la teoría de categorías utilizando una resolución proyectiva de \( M \), y explica su importancia en el contexto de:
+   - Autodualización de módulos,
+   - Cohomología en la teoría de módulos y de representaciones.
+
+### Notas:
+
+- Utiliza una **resolución proyectiva** de \( M \) para calcular \( \operatorname{Ext} \).
+- Ten en cuenta que \( \operatorname{Hom}_R(-, R) \) es **contravariante**, es decir, invierte la dirección de los morfismos.
+- Si es necesario, utiliza la **adyunción Hom-Tensor** y resultados conocidos sobre módulos proyectivos.
+- Para la pregunta adicional: da explícitamente la conexión entre una resolución proyectiva y la construcción de \( \operatorname{Ext} \).

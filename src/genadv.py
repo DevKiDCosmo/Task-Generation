@@ -232,9 +232,9 @@ class Generation():
         """
         output = []
         for line in lines:
-            line = line.replace('\\|', "\\vert")
-            line = line.replace("->", "\\rightarrow")
-            line = line.replace("<-", "\\leftarrow")
+            line = line.replace('\\|', "\\vert ")
+            line = line.replace("->", "\\rightarrow ")
+            line = line.replace("<-", "\\leftarrow ")
             output.append(line)
 
         def replace_dollar_math(lines):
@@ -261,13 +261,27 @@ class Generation():
                 output.append(f'\\end{{{env}}}')
 
         def apply_formatting(text: str) -> str:
-            text = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', text)
-            text = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', text)
-            text = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'\\textit{\1}', text)
-            text = re.sub(r'__(.+?)__', r'\\underline{\1}', text)
-            text = re.sub(r'~~(.+?)~~', r'\\sout{\1}', text)
-            text = re.sub(r'`([^`]+?)`', r'\\texttt{\1}', text)
-            text = re.sub(r'^\s*#+\s+(.*)', r'\\subsubsection{\1}', text)
+            text = re.sub(r'\*\*\*(.+?)\*\*\*', r'\\textbf{\\textit{\1}}', text, flags=re.DOTALL)
+            text = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', text, flags=re.DOTALL)
+
+            # Kursiv nur außerhalb von \( ... \) oder \[ ... \] anwenden. Search scope is 20
+            text = re.sub(
+                r'(?<!\*)\*(?!\*)([^\*]+?)\*(?!\*)',
+                lambda m: r'\\textit{' + m.group(1) + r'}'
+                if not re.search(r'\\\(|\\\[|\\\{', m.string[max(0, m.start()-10):m.start()])
+                and not re.search(r'\\\)|\\\]|\\\}', m.string[m.end():m.end()+10])
+                else m.group(0),
+                text
+            )
+
+            # Kursiv innerhalb Math Mode. Search scope 20.
+
+            # Temporary no solution 22.06.2025
+
+            text = re.sub(r'__(.+?)__', r'\\underline{\1}', text, flags=re.DOTALL)
+            text = re.sub(r'~~(.+?)~~', r'\\sout{\1}', text, flags=re.DOTALL)
+            text = re.sub(r'`([^`]+?)`', r'\\texttt{\1}', text, flags=re.DOTALL)
+            text = re.sub(r'^\s*#+\s+(.*)', r'\\subsubsection{\1}', text, flags=re.DOTALL)
             return text
 
         i = 0

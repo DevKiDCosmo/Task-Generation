@@ -1,0 +1,66 @@
+{
+  "Base": "./exercise",
+  "ID": "n32",
+  "Version": [
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0",
+    "1.0"
+  ],
+  "Category": [
+    1,
+    4
+  ],
+  "CID": "2",
+  "Time": [
+    60
+  ],
+  "NAM-Score": 5,
+  "Author": "Original",
+  "Date": "05.07.2025",
+  "Difficulty": 5,
+  "Tags": [],
+  "Partial": false,
+  "Language": [
+    "de",
+    "fr",
+    "en",
+    "jp",
+    "kr",
+    "zh",
+    "es",
+    "vn",
+    "ru",
+    "it",
+    "pt",
+    "fn",
+    "se"
+  ],
+  "Title": {
+    "1": [
+      "Abstrakte Algebra und Kategorientheorie",
+      "Théorie des catégories et algèbre abstraite",
+      "Abstract Algebra and Category Theory",
+      "抽象代数とカテゴリー理論",
+      "추상 대수학 및 범주 이론",
+      "抽象代数与范畴论",
+      "Álgebra Abstracta y Teoría de Categorías",
+      "Đại số trừu tượng và Lý thuyết danh mục",
+      "Абстрактная алгебра и теория категорий",
+      "Algebra Astratta e Teoria delle Categorie",
+      "Álgebra Abstrata e Teoria das Categorias",
+      "Abstrakt Algebra och Kategoriteori",
+      "Abstrakt algebra och kategoriteori"
+    ]
+  }
+}

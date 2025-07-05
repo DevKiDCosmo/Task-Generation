@@ -1,0 +1,38 @@
+Sia \( R \) un anello commutativo noetheriano con elemento identità \( 1 \neq 0 \), un \( R \)-modulo \( M \) di tipo finito, e una successione esatta:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+dove \( P \) è un \( R \)-modulo proiettivo.
+
+### Testo dell'esercizio:
+
+1. **Interpretazione coomologica:**  
+Dimostrare che:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Funtorialità della dualizzazione:**  
+Dimostrare che la dualizzazione mediante il funtore Hom \( (-)^* := \operatorname{Hom}_R(-, R) \) possiede una **struttura funtoriale contravariante**.
+
+3. **Caratterizzazione della proiettività:**  
+Dimostrare o confutare la seguente affermazione:
+
+> Se \( R \) è un anello locale e \( M \) un \( R \)-modulo di tipo finito, allora:
+\[
+M \text{ è proiettivo } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Domanda aggiuntiva – Funtori derivati:**  
+Definire i **funtori derivati** di \( \operatorname{Hom}_R(-, R) \) nel senso della teoria delle categorie usando una risoluzione proiettiva di \( M \), e spiegare il loro significato in relazione a:
+   - Autodualizzazione dei moduli,
+   - Coomologia nella teoria dei moduli e delle rappresentazioni.
+
+### Osservazioni:
+
+- Utilizzare una **risoluzione proiettiva** di \( M \) per calcolare \( \operatorname{Ext} \).
+- Notare che \( \operatorname{Hom}_R(-, R) \) è **contravariante**, ovvero inverte la direzione dei morfismi.
+- Utilizzare, se necessario, l’**aggiunzione Hom-Tensore** e risultati noti sui moduli proiettivi.
+- Per la domanda aggiuntiva: indicare esplicitamente il legame tra una risoluzione proiettiva e la costruzione di \( \operatorname{Ext} \).

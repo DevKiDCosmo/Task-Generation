@@ -1,0 +1,38 @@
+Seja \( R \) um anel comutativo noetheriano com elemento unidade \( 1 \neq 0 \), \( M \) um \( R \)-módulo de tipo finito, e considere a seguinte sequência exata:
+
+\[
+0 \to N \xrightarrow{f} P \xrightarrow{g} M \to 0
+\]
+
+onde \( P \) é um \( R \)-módulo projetivo.
+
+### Questões:
+
+1. **Interpretação cohomológica:**  
+Mostra que:
+\[
+\operatorname{Ext}^1_R(M, R) \cong \operatorname{Hom}_R(N, R) / f^*(\operatorname{Hom}_R(P, R))
+\]
+
+2. **Functorialidade da dualização:**  
+Demonstra que a dualização através do funtor \( (-)^* := \operatorname{Hom}_R(-, R) \) define uma **estrutura functorial contravariante**.
+
+3. **Caracterização da projetividade:**  
+Demonstra ou refuta a seguinte proposição:
+
+> Se \( R \) é um anel local e \( M \) um \( R \)-módulo de tipo finito, então:
+\[
+M \text{ é projetivo } \Longleftrightarrow \operatorname{Ext}^1_R(M, R) = 0
+\]
+
+4. **Questão adicional – Functores derivados:**  
+Define os **functores derivados** de \( \operatorname{Hom}_R(-, R) \) no sentido da teoria das categorias através de uma resolução projetiva de \( M \), e explica o seu significado em relação a:
+   - Auto-dualidade de módulos,
+   - Cohomologia na teoria de módulos e representações.
+
+### Notas:
+
+- Utiliza uma **resolução projetiva** de \( M \) para calcular \( \operatorname{Ext} \).
+- Lembra que \( \operatorname{Hom}_R(-, R) \) é **contravariante**, ou seja, inverte a direção dos morfismos.
+- Se necessário, usa a **adjunção Hom–Tensor** e resultados conhecidos sobre módulos projetivos.
+- Na questão adicional, apresenta claramente a relação entre uma resolução projetiva e a construção de \( \operatorname{Ext} \).

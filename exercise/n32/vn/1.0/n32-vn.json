@@ -1,0 +1,21 @@
+{
+    "id": "No.32",
+    "category": [
+        1,
+        4
+    ],
+    "cid": "2",
+    "time": 60,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "05.07.2025",
+    "main": {
+        "title": "Đại số trừu tượng và Lý thuyết danh mục",
+        "content": "content/n32-vn.exr",
+        "solution": "solution/n32-vn.exr"
+    },
+    "difficulty": 5,
+    "tags": [],
+    "UUID": "db6557c6-a38c-4ccb-ad07-685702066157",
+    "GUID": "12fd2008-8ff5-44dd-b51f-3f8c641dd901"
+}

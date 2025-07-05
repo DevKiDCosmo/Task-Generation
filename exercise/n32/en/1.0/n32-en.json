@@ -1,0 +1,21 @@
+{
+    "id": "No.32",
+    "category": [
+        1,
+        4
+    ],
+    "cid": "2",
+    "time": 60,
+    "nam_score": 5.0,
+    "author": "Original",
+    "date": "05.07.2025",
+    "main": {
+        "title": "Abstract Algebra and Category Theory",
+        "content": "content/n32-en.exr",
+        "solution": "solution/n32-en.exr"
+    },
+    "difficulty": 5,
+    "tags": [],
+    "UUID": "db6557c6-a38c-4ccb-ad07-685702066157",
+    "GUID": "a815cac6-59da-4c73-963e-edba9c58b11d"
+}
